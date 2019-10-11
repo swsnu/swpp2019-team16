@@ -17,7 +17,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # run test coverage
-jest --coverage --coverageReporters=text-lcov | coveralls
+yarn test --coverage --coverageReporters=text-lcov | coveralls
 
 if [ $? -ne 0 ]; then
     echo "update test coverage fail" >&2
