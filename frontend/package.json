@@ -41,7 +41,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "CI=true yarn test && prettier --write \"src/**/*.js\""
+      "pre-push": "CI=true yarn test && prettier --write \"src/**/*.js\""
     }
   },
   "devDependencies": {
