@@ -42,7 +42,7 @@ Before submitting a pull request, please make sure the following is done:
 1. Fork the repository and clone the forked repository on your own machine
 
 ```sh
-git clone https://github.com/swsnu/swpp2019-team16.git
+git clone https://github.com/<username>/swpp2019-team16.git
 ```
 
 2. Add `upstream` remote to your git. `upstream` is source repository.
