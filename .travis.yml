@@ -1,0 +1,30 @@
+language: node_js
+
+node_js:
+  - "10.15"
+
+env:
+  global:
+    - COMMIT=${TRAVIS_COMMIT::8}
+
+cache:
+  npm: true
+  yarn: true
+
+branches:
+  only:
+    - master
+
+before_install:
+  - cd ./frontend
+
+install:
+  - yarn global add jest coveralls
+  - yarn install
+
+script:
+  - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then bash ./scripts/travis/frontend_on_pull_request.sh; fi'
+  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then bash ./scripts/travis/frontend_on_non_pull_request.sh; fi'
+
+
+

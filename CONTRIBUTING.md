@@ -6,13 +6,32 @@ In order to contribute to our project, first you need to setup project on your o
 
 ### Frontend
 
+```sh
+git clone https://github.com/swsnu/swpp2019-team16.git
+cd ./swpp2019-team16/frontend
+yarn install
+```
+
 ### Backend
 
 ## Development Workflow
 
 After finishing bootstraping project, you can follow this workflow to add feature and send pull request to our project.
 
+#### Before you start coding
+
+* Please create issue about what you are going to develop
+
+* Or if there're issues already, you can add 'assignee' as your github id on the issue page.
+
 ### Frontend
+
+* Run your development server with `yarn start` command
+* And start coding!
+
+* After you have done your task, you should check whether following things are successfully finish: `yarn test`, `yarn build`
+
+* If you forget about these things, don't worry ['husky'](https://github.com/typicode/husky) will do it for you before push to repository.
 
 ### Backend
 
@@ -20,8 +39,40 @@ After finishing bootstraping project, you can follow this workflow to add featur
 
 Before submitting a pull request, please make sure the following is done:
 
-1. Fork the repository and create your branch from master
-2. 
+1. Fork the repository and clone the forked repository on your own machine
+
+```sh
+git clone https://github.com/swsnu/swpp2019-team16.git
+```
+
+2. Add `upstream` remote to your git. `upstream` is source repository.
+
+```sh
+git remote add upstream https://github.com/swsnu/swpp2019-team16.git
+```
+
+3. Create your branch from master
+
+```sh
+git checkout -b <branch>
+```
+
+4. Develop your feature. 
+5. Add commit with the message. And message should follow [these rules](#commit-message-guidelines)
+
+```sh
+git commit -m "feat: add awesome feature"
+```
+
+6. Push to `origin`. `origin` is your forked repository.
+
+```sh
+git push origin <branch>
+```
+
+6. Create pull request from `origin` to `upstream`
+
+ 
 
 ### Commit Message Guidelines
 
@@ -62,4 +113,5 @@ fixes issue #12
 * **revert**: Revert some updates
 * **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
 * **test**: Adding missing tests or correcting existing tests
+
 
