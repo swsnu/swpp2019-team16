@@ -4,3 +4,9 @@
 
 To contribute, please see [CONTRIBUTING.md](./CONTRIBUTING.md)
 
+
+
+## Requirement and specification
+
+To see requirements and specification, please see [requirements and specification](https://github.com/swsnu/swpp2019-team16/wiki)
+
