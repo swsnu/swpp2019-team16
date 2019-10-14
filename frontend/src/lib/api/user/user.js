@@ -1,5 +1,6 @@
-import client from "./client";
+import client from "../client";
 
-//export const list = () => client.get(`/api/user`);
+export function get(id){
+  return client.get('/api/v1/user/' + id) ;
+}
 
-export const get = id => client.get(`/api/user/${id}`);
