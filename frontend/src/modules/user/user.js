@@ -29,7 +29,6 @@ function checkFailureSaga() {
 function* logoutSaga() {
   try {
     localStorage.removeItem('user');
-
     yield put({ type: LOGOUT_SUCCESS });
   } catch (e) {
     console.error(e);
@@ -49,7 +48,7 @@ const initialState = {
   logoutError: null,
 };
 
-export default handleActions(
+const user =  handleActions(
   {
     [TEMP_SET_USER]: (state, { payload: user }) => ({
       ...state,
@@ -68,6 +67,7 @@ export default handleActions(
     [LOGOUT_SUCCESS]: state => ({
       ...state,
       user: null,
+      logoutError: null,
     }),
     [LOGOUT_FAILURE]: (state, { payload: error }) => ({
       ...state,
@@ -76,3 +76,5 @@ export default handleActions(
   },
   initialState,
 )
+
+export default user;
