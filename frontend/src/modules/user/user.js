@@ -22,7 +22,7 @@ function checkFailureSaga() {
   try {
     localStorage.removeItem('user');
   } catch (e) {
-    console.log('localStorage is not working');
+    console.error('localStorage is not working');
   }
 }
 

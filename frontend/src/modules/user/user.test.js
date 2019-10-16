@@ -118,7 +118,6 @@ describe('user', () => {
       })
 
       it('logout failure', async() => {
-        console.log = function () {};
         console.error = function () {};
         jest.spyOn(window.localStorage.__proto__, 'removeItem')
         .mockImplementation(()=>{
