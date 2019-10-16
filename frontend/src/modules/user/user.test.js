@@ -1,7 +1,10 @@
 import SagaTester from 'redux-saga-tester';
 import * as userAPI from '../../lib/api/user/user';
 import user, { userSaga, initialState, tempSetUser, check, logout} from './user';
+<<<<<<< HEAD
 import { ERROR } from '../../../node_modules/jest-validate/build/utils';
+=======
+>>>>>>> 36024425ceadeba7f28db748ebd4c08712c4b0e4
 
 jest.mock('../../lib/api/user/user');
 
@@ -94,6 +97,7 @@ describe('user', () => {
   });
     
   describe('saga', () => {
+<<<<<<< HEAD
     describe('logoutSaga', () => {
       it('logout success', async() => {
         const sagaTester = new SagaTester({
@@ -148,6 +152,8 @@ describe('user', () => {
       
     });
 
+=======
+>>>>>>> 36024425ceadeba7f28db748ebd4c08712c4b0e4
     describe('checkSaga', () => {
       it('should throw error when server respond with error', async () => {
         jest.spyOn(userAPI, 'get')
@@ -177,6 +183,7 @@ describe('user', () => {
           error: true,
         });
       });
+<<<<<<< HEAD
     });
 
 
@@ -208,5 +215,8 @@ describe('user', () => {
         });
       });
     });
+=======
+    });    
+>>>>>>> 36024425ceadeba7f28db748ebd4c08712c4b0e4
   });
 });
