@@ -178,7 +178,6 @@ describe('user', () => {
       });
     });
 
-
     describe('checkFailureSaga', () => {
       it('localStorage is not working', async () => {
 
