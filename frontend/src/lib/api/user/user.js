@@ -1,6 +1,5 @@
-import client from "../client";
+import client from '../client';
 
-export function get(id){
+export function get(id) {
   return client.get(`/api/v1/user/${id}`);
 }
-

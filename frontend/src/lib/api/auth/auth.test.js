@@ -9,7 +9,7 @@ describe('api/auth', () => {
   });
 
   describe('login', () => {
-    it('should successfully return params', async (done) => {
+    it('should successfully return params', async done => {
       jest.spyOn(client, 'post').mockImplementation((url, body) => {
         expect(url).toBe('/api/v1/auth/login');
         expect(body.email).toBe('user@gmail.com');
@@ -17,12 +17,12 @@ describe('api/auth', () => {
         done();
       });
 
-      authAPI.login({ email: 'user@gmail.com', password: 'password'});
+      authAPI.login({ email: 'user@gmail.com', password: 'password' });
     });
   });
 
   describe('register', () => {
-    it('should successfully return params', async (done) => {
+    it('should successfully return params', async done => {
       jest.spyOn(client, 'post').mockImplementation((url, body) => {
         expect(url).toBe('/api/v1/auth/register');
         expect(body).toStrictEqual({
@@ -44,6 +44,6 @@ describe('api/auth', () => {
           plate: '54가 0639',
         },
       });
-    })
-  })
+    });
+  });
 });

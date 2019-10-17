@@ -9,8 +9,8 @@ describe('api/user', () => {
   });
 
   describe('get', () => {
-    it('should successfully get user info', async (done) => {
-      jest.spyOn(client, 'get').mockImplementation((url) => {
+    it('should successfully get user info', async done => {
+      jest.spyOn(client, 'get').mockImplementation(url => {
         expect(url).toBe('/api/v1/user/1');
         done();
       });

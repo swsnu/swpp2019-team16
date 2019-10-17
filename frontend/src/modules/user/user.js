@@ -1,8 +1,9 @@
 import { createAction, handleActions } from 'redux-actions';
 import { takeLatest, call, put } from 'redux-saga/effects';
 import * as userAPI from '../../lib/api/user/user';
-import createRequestSaga, { createRequestActionTypes } from '../../lib/createRequestSaga';
-
+import createRequestSaga, {
+  createRequestActionTypes,
+} from '../../lib/createRequestSaga';
 
 const TEMP_SET_USER = 'user/TEMP_SET_USER';
 const [CHECK, CHECK_SUCCESS, CHECK_FAILURE] = createRequestActionTypes(
@@ -48,7 +49,7 @@ const initialState = {
   logoutError: null,
 };
 
-const user =  handleActions(
+const user = handleActions(
   {
     [TEMP_SET_USER]: (state, { payload: user }) => ({
       ...state,
@@ -75,6 +76,6 @@ const user =  handleActions(
     }),
   },
   initialState,
-)
+);
 
 export default user;
