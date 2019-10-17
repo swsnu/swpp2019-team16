@@ -1,6 +1,12 @@
 import SagaTester from 'redux-saga-tester';
 import * as userAPI from '../../lib/api/user/user';
-import user, { userSaga, initialState, tempSetUser, check, logout} from './user';
+import user, {
+  userSaga,
+  initialState,
+  tempSetUser,
+  check,
+  logout,
+} from './user';
 import { ERROR } from '../../../node_modules/jest-validate/build/utils';
 
 jest.mock('../../lib/api/user/user');
@@ -37,65 +43,78 @@ describe('user', () => {
   });
 
   describe('reducer', () => {
-    
     describe('TEMP_SET_USER', () => {
       it('should successfully update states', async () => {
-        expect(user({ user: null},
-          { type: 'user/TEMP_SET_USER', payload: {id:'TEST_USER'}}))
-          .toStrictEqual({
-            user: {id:'TEST_USER'}
-          });
+        expect(
+          user(
+            { user: null },
+            { type: 'user/TEMP_SET_USER', payload: { id: 'TEST_USER' } },
+          ),
+        ).toStrictEqual({
+          user: { id: 'TEST_USER' },
+        });
       });
     });
-    
 
     describe('CHECK_SUCCESS', () => {
       it('should successfully update states', async () => {
-        expect(user({user: {id: 'TEST_USER'}},
-          { type: 'user/CHECK_SUCCESS', payload: {id:'TEST_USER'}}))
-          .toStrictEqual({
-            user: {id:'TEST_USER'},
-            checkError: null
-          });
+        expect(
+          user(
+            { user: { id: 'TEST_USER' } },
+            { type: 'user/CHECK_SUCCESS', payload: { id: 'TEST_USER' } },
+          ),
+        ).toStrictEqual({
+          user: { id: 'TEST_USER' },
+          checkError: null,
+        });
       });
     });
 
     describe('CHECK_FAILURE', () => {
       it('should successfully update states', async () => {
-        expect(user({user: null},
-          { type: 'user/CHECK_FAILURE', payload: {error:'TEST_ERROR'}}))
-          .toStrictEqual({
-            user: null,
-            checkError: {error:'TEST_ERROR'}
-          });
+        expect(
+          user(
+            { user: null },
+            { type: 'user/CHECK_FAILURE', payload: { error: 'TEST_ERROR' } },
+          ),
+        ).toStrictEqual({
+          user: null,
+          checkError: { error: 'TEST_ERROR' },
+        });
       });
     });
-    
+
     describe('LOGOUT_SUCCESS', () => {
       it('should successfully update states', async () => {
-        expect(user({user: {id:"TEST_USER"}},
-          { type: 'user/LOGOUT_SUCCESS', payload: {} }))
-          .toStrictEqual({
-            user: null,
-            logoutError: null
-          });
+        expect(
+          user(
+            { user: { id: 'TEST_USER' } },
+            { type: 'user/LOGOUT_SUCCESS', payload: {} },
+          ),
+        ).toStrictEqual({
+          user: null,
+          logoutError: null,
+        });
       });
     });
 
     describe('LOGOUT_FAILURE', () => {
       it('should successfully update states', async () => {
-        expect(user({},
-          { type: 'user/LOGOUT_FAILURE', payload: {error:'TEST_ERROR'}}))
-          .toStrictEqual({
-            logoutError: {error:'TEST_ERROR'}
-          });
+        expect(
+          user(
+            {},
+            { type: 'user/LOGOUT_FAILURE', payload: { error: 'TEST_ERROR' } },
+          ),
+        ).toStrictEqual({
+          logoutError: { error: 'TEST_ERROR' },
+        });
       });
     });
   });
-    
+
   describe('saga', () => {
     describe('logoutSaga', () => {
-      it('logout success', async() => {
+      it('logout success', async () => {
         const sagaTester = new SagaTester({
           initialState,
           reducers: user,
@@ -112,17 +131,16 @@ describe('user', () => {
 
         const result = sagaTester.getCalledActions();
 
-        expect(result).toContainEqual(
-          { type: 'user/LOGOUT_SUCCESS' }
-        );
-      })
+        expect(result).toContainEqual({ type: 'user/LOGOUT_SUCCESS' });
+      });
 
-      it('logout failure', async() => {
-        console.error = function () {};
-        jest.spyOn(window.localStorage.__proto__, 'removeItem')
-        .mockImplementation(()=>{
-          throw new ERROR();
-        });
+      it('logout failure', async () => {
+        console.error = function() {};
+        jest
+          .spyOn(window.localStorage.__proto__, 'removeItem')
+          .mockImplementation(() => {
+            throw new ERROR();
+          });
 
         const sagaTester = new SagaTester({
           initialState,
@@ -141,18 +159,16 @@ describe('user', () => {
         const result = sagaTester.getCalledActions();
 
         expect(result).toContainEqual({
-          type: 'user/LOGOUT_FAILURE'
+          type: 'user/LOGOUT_FAILURE',
         });
-      })
-      
+      });
     });
 
     describe('checkSaga', () => {
       it('should throw error when server respond with error', async () => {
-        jest.spyOn(userAPI, 'get')
-          .mockImplementation(() => {
-            throw new Error('Internal Error');
-          });
+        jest.spyOn(userAPI, 'get').mockImplementation(() => {
+          throw new Error('Internal Error');
+        });
 
         const sagaTester = new SagaTester({
           initialState,
@@ -180,12 +196,12 @@ describe('user', () => {
 
     describe('checkFailureSaga', () => {
       it('localStorage is not working', async () => {
-
-        jest.spyOn(window.localStorage.__proto__, 'removeItem')
-          .mockImplementation(()=>{
+        jest
+          .spyOn(window.localStorage.__proto__, 'removeItem')
+          .mockImplementation(() => {
             throw new ERROR();
           });
-        
+
         const sagaTester = new SagaTester({
           initialState,
           reducers: user,
@@ -202,7 +218,7 @@ describe('user', () => {
 
         expect(result).toContainEqual({
           type: 'user/CHECK_FAILURE',
-          payload: {}
+          payload: {},
         });
       });
     });

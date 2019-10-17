@@ -1,9 +1,7 @@
-import {
-  createAction, handleActions
-} from 'redux-actions';
+import { createAction, handleActions } from 'redux-actions';
 import { takeLatest } from 'redux-saga/effects';
 import createRequestSaga, {
-  createRequestActionTypes
+  createRequestActionTypes,
 } from '../../lib/createRequestSaga';
 import * as authAPI from '../../lib/api/auth/auth';
 
@@ -29,11 +27,14 @@ export const changeField = createAction(
 
 export const initalizeForm = createAction(INITIALIZE_FORM, form => form);
 
-export const register = createAction(REGISTER, ({ email, password, vehicleInfo }) => ({
-  email,
-  password,
-  vehicleInfo,
-}));
+export const register = createAction(
+  REGISTER,
+  ({ email, password, vehicleInfo }) => ({
+    email,
+    password,
+    vehicleInfo,
+  }),
+);
 
 export const login = createAction(LOGIN, ({ email, password }) => ({
   email,
@@ -65,7 +66,7 @@ export const initialState = {
 
 const auth = handleActions(
   {
-    [CHANGE_FIELD]: (state, { payload: { form, key, value }}) => ({
+    [CHANGE_FIELD]: (state, { payload: { form, key, value } }) => ({
       ...state,
       [form]: {
         ...state[form],
@@ -92,7 +93,7 @@ const auth = handleActions(
     }),
     [LOGIN_FAILURE]: (state, { payload: error }) => ({
       ...state,
-      authError: error
+      authError: error,
     }),
   },
   initialState,
