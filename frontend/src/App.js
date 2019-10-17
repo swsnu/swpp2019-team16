@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import IntroPage from './pages/IntroPage/IntroPage';
 import RequestPage from './pages/RequestPage/RequestPage';
 import WaitingPage from './pages/WaitingPage/WaitingPage';
