@@ -2,10 +2,6 @@
 
 exports[`<App /> SHOULD match with snapshot 1`] = `
 <div>
-  <div>
-    <div>
-      Ya-Ta!
-    </div>
-  </div>
+  <div />
 </div>
 `;
