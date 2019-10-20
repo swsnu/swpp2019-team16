@@ -4,11 +4,7 @@ import TextInput from './';
 
 describe('<TextInput />', () => {
   it('SHOULD match with snapshot', async () => {
-    const { container } = render(
-      <TextInput
-        label="TextInput Label"
-      />
-    );
+    const { container } = render(<TextInput label="TextInput Label" />);
     expect(container).toMatchSnapshot();
   });
 });
