@@ -30,6 +30,9 @@ function TextInputMaterial({
       name={name}
       type={type}
       onChange={onChange}
+      margin="normal"
+      variant="outlined"
+      fullWidth
     />
   );
 }
