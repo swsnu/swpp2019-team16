@@ -6,6 +6,9 @@ branches:
   only:
     - master
 
+notifications:
+  webhooks: https://coveralls.io/webhook?repo_token=EnGcvdrS3eau2ktEjkLEekqfFdohcMRaB
+
 jobs:
   include:
     - stage: unit-test
@@ -29,14 +32,22 @@ jobs:
       language: python
       python:
         - "3.7"
+      services:
+        - docker
       cache:
         pip: true
       before_install:
+        - pip install docker-compose
+        - pip install coveralls
         - cd ./backend
       install:
         - pip install -r requirements/development.txt
+      before_script:
+        - 'docker-compose up -d && python app/manage.py wait_for_redis --settings=app.settings.development'
       script:
         - 'bash ./scripts/travis.sh'
+      after_success:
+        - coveralls
 
 
 

@@ -2,7 +2,7 @@ from abc import ABCMeta
 from .time import monotonic_utc_now
 
 
-class DomainEvent(metaclass = ABCMeta):
+class DomainEvent(metaclass=ABCMeta):
 
     def __init__(self, version):
         self._occurred_on = monotonic_utc_now()

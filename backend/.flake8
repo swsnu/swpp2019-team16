@@ -1,0 +1,15 @@
+[flake8]
+exclude =
+  migrations,
+  __pycache__,
+  manage.py,
+  settings
+  venv
+
+[autopep8]
+exclude =
+  migrations,
+  __pycache__,
+  manage.py,
+  settings
+  venv

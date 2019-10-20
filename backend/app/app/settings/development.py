@@ -17,4 +17,5 @@ DATABASES = {
     }
 }
 
-REDIS_CONNECTION_POOL = ConnectionPool(host=env('REDIS_HOST'), port=env('REDIS_PORT'), db=0)
+REDIS_CONNECTION_POOL = ConnectionPool(
+    host=env('REDIS_HOST'), port=env('REDIS_PORT'), db=0)
