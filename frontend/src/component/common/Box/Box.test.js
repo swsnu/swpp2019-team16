@@ -1,10 +1,11 @@
 import React from 'react';
-import IntroPage from './IntroPage';
 import { render, fireEvent } from '@testing-library/react';
+import Box from './';
 
-describe('<IntroPage />', () => {
+describe('<Box />', () => {
   it('SHOULD match with snapshot', async () => {
-    const { container } = render(<IntroPage />);
+    const { container } = render(<Box children={<div>Box Text</div>} />);
+
     expect(container).toMatchSnapshot();
   });
 });

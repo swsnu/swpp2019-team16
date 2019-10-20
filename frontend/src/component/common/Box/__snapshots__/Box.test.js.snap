@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Box /> SHOULD match with snapshot 1`] = `
+<div>
+  <div
+    class="MuiBox-root MuiBox-root-2"
+  >
+    <div>
+      Box Text
+    </div>
+  </div>
+</div>
+`;
