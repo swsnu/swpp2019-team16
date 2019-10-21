@@ -11,7 +11,6 @@ import FinalPage from './pages/FinalPage/FinalPage';
 function App() {
   return (
     <div>
-      <div>Ya-Ta!</div>
       <Switch>
         <Route component={IntroPage} path="/intro" exact />
         <Route component={RequestPage} path="/request" exact />
