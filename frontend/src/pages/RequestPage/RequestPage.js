@@ -1,6 +1,7 @@
 import React from 'react';
+import Main from '../_layouts/Main';
 
 function RequestPage() {
-  return <div>Request Page!</div>;
+  return <Main>Request Page!</Main>;
 }
 export default RequestPage;

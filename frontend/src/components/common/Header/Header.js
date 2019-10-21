@@ -1,4 +1,5 @@
 import React from 'react';
+import { styled } from '@material-ui/styles';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -18,7 +19,7 @@ HeaderMaterial.propTypes = {
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1,
+    width: '100%',
   },
   menuButton: {
     marginRight: theme.spacing(2),

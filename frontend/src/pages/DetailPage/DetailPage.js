@@ -1,6 +1,7 @@
 import React from 'react';
+import Main from '../_layouts/Main';
 
 function DetailPage() {
-  return <div>Detail Page!</div>;
+  return <Main>Detail Page!</Main>;
 }
 export default DetailPage;

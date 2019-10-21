@@ -1,6 +1,7 @@
 import React from 'react';
+import Main from '../_layouts/Main';
 
 function WaitingPage() {
-  return <div>Waiting Page!</div>;
+  return <Main>Waiting Page!</Main>;
 }
 export default WaitingPage;

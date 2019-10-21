@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<WaitingPage /> SHOULD match with snapshot 1`] = `
+exports[`<Main /> SHOULD match with snapshoot 1`] = `
 <div>
   <div
     class="sc-bwzfXH kulSxP"
@@ -25,7 +25,9 @@ exports[`<WaitingPage /> SHOULD match with snapshot 1`] = `
     <main
       class="sc-bdVaJa ekJyAd"
     >
-      Waiting Page!
+      <div>
+        Page
+      </div>
     </main>
   </div>
 </div>

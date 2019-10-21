@@ -1,6 +1,7 @@
 import React from 'react';
+import Main from '../_layouts/Main';
 
 function FinalPage() {
-  return <div>Final Page!</div>;
+  return <Main>Final Page!</Main>;
 }
 export default FinalPage;

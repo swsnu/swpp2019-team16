@@ -1,6 +1,7 @@
 import React from 'react';
+import Main from '../_layouts/Main';
 
 function GroupPage() {
-  return <div>Group Page!</div>;
+  return <Main>Group Page!</Main>;
 }
 export default GroupPage;

@@ -5,7 +5,9 @@ import styled from 'styled-components';
 const ContainerBlock = styled.main`
   display: flex;
   flex-direction: column;
-  margin-top: 64px;
+  margin-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 `;
 
 Container.propTypes = {
@@ -13,11 +15,7 @@ Container.propTypes = {
 };
 
 function Container({ children }) {
-  return (
-    <ContainerBlock>
-      {children}
-    </ContainerBlock>
-  );
+  return <ContainerBlock>{children}</ContainerBlock>;
 }
 
 export default Container;

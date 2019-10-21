@@ -1,6 +1,7 @@
 import React from 'react';
+import Main from '../_layouts/Main';
 
 function RequestCallPage() {
-  return <div>RequestCall Page!</div>;
+  return <Main>RequestCall Page!</Main>;
 }
 export default RequestCallPage;
