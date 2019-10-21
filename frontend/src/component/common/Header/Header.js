@@ -10,7 +10,7 @@ import Menu from '@material-ui/core/Menu';
 import PropTypes from 'prop-types';
 
 HeaderMaterial.propTypes = {
-  auth: PropTypes.bool,
+  auth: PropTypes.object,
   onClickLogo: PropTypes.func,
   onClickLogout: PropTypes.func,
   onClickPoint: PropTypes.func,
@@ -36,7 +36,11 @@ export default function HeaderMaterial({
 }) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
+
   const open = Boolean(anchorEl);
+  const onClickClose = () => {
+    setAnchorEl(null);
+  };
 
   const onClickMenu = event => {
     setAnchorEl(event.currentTarget);
@@ -77,8 +81,9 @@ export default function HeaderMaterial({
                   horizontal: 'right',
                 }}
                 open={open}
+                onClose={onClickClose}
               >
-                <MenuItem onClick={onClickChargePoint}>Charge</MenuItem>
+                <MenuItem onClick={onClickChargePoint}>Charge point</MenuItem>
                 <MenuItem onClick={onClickLogout}>Log out</MenuItem>
               </Menu>
             </div>
