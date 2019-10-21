@@ -1,11 +1,10 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import Button from './Button';
+import Header from './Header';
 
-describe('<Button />', () => {
+describe('<Header />', () => {
   it('SHOULD match with snapshot', async () => {
-    const { container } = render(<Button children={<div>Button Text</div>} />);
-
+    const { container } = render(<Header />);
     expect(container).toMatchSnapshot();
   });
 });
