@@ -10,6 +10,9 @@ TextInputMaterial.propTypes = {
   name: PropTypes.string,
   type: PropTypes.string,
   onChange: PropTypes.func,
+  margin: PropTypes.string,
+  variant: PropTypes.string,
+  fullWidth: PropTypes.bool,
 };
 
 function TextInputMaterial({
@@ -20,6 +23,9 @@ function TextInputMaterial({
   name,
   type,
   onChange,
+  margin,
+  variant,
+  fullWidth,
 }) {
   return (
     <TextField
@@ -32,7 +38,7 @@ function TextInputMaterial({
       onChange={onChange}
       margin="normal"
       variant="outlined"
-      fullWidth
+      fullWidth={fullWidth}
     />
   );
 }
