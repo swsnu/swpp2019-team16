@@ -3,7 +3,7 @@
 exports[`<TextInput /> SHOULD match with snapshot 1`] = `
 <div>
   <div
-    class="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal MuiFormControl-fullWidth"
+    class="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
   >
     <label
       class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
@@ -12,7 +12,7 @@ exports[`<TextInput /> SHOULD match with snapshot 1`] = `
       TextInput Label
     </label>
     <div
-      class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+      class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
     >
       <input
         aria-invalid="false"
