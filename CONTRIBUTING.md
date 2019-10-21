@@ -14,6 +14,24 @@ yarn install
 
 ### Backend
 
+```sh
+# if you already clone project, skip this step
+git clone https://github.com/swsnu/swpp2019-team16.git
+
+cd ./swpp2019-team16/backend
+
+# install your virtual environment
+virtualenv -m python3 venv
+
+# activate!
+source ./venv/bin/activate
+
+# install dev requirements
+pip3 install -r requirements/development.txt
+```
+
+
+
 ## Development Workflow
 
 After finishing bootstraping project, you can follow this workflow to add feature and send pull request to our project.
@@ -28,12 +46,24 @@ After finishing bootstraping project, you can follow this workflow to add featur
 
 * Run your development server with `yarn start` command
 * And start coding!
-
-* After you have done your task, you should check whether following things are successfully finish: `yarn test`, `yarn build`
-
+* After you have done your task, you should check whether following things are successfully finish:
+  *  `yarn test`: Run all tests we wrote
+  *  `yarn build`: Run build, this checks whether source successfully interpreted.
+  *  `prettier --write \"src/**/*.js\"`: Run prettier, this helps to unify format of the code.
 * If you forget about these things, don't worry ['husky'](https://github.com/typicode/husky) will do it for you before push to repository.
 
 ### Backend
+
+* Run your local server with `python3 app/manage.py runserver` command (Assumed that you are on `/backend`)
+
+* And start coding!
+
+* After you have done your task, you should check whether following things are successfully finish:
+
+  * `python3 app/manage.py test --settings=app.settings.development`: Run all test we wrote.
+  * `flake8`: Run linter. When you find warning, please fix it before you send pull request
+
+  
 
 ## Sending a Pull Request
 
