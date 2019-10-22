@@ -1,6 +1,7 @@
 import React from 'react';
+import Main from '../_layouts/Main';
 
 function IntroPage() {
-  return <div>Intro Page!</div>;
+  return <Main>Intro Page!</Main>;
 }
 export default IntroPage;

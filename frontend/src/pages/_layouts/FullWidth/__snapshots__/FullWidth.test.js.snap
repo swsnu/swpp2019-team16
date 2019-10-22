@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FullWidth /> SHOULD match with snapshoot 1`] = `
+<div>
+  <div
+    class="sc-bdVaJa gzGnwb"
+  >
+    <div>
+      Full width page
+    </div>
+  </div>
+</div>
+`;
