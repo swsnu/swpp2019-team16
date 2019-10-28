@@ -1,7 +1,12 @@
 import React from 'react';
 import Main from '../_layouts/Main';
+import Introduction from 'components/intro/Introduction';
 
 function IntroPage() {
-  return <Main>Intro Page!</Main>;
+  return (
+    <Main>
+      <Introduction />
+    </Main>
+  );
 }
 export default IntroPage;
