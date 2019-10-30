@@ -6,7 +6,7 @@ flake8 . --exit-zero
 cd ..
 
 # run test
-python common/manage.py test --settings=app.settings.development
+python common/manage.py test --settings=common.settings.development
 
 if [ $? -ne 0 ]; then
     echo "backend test failed" >&2
