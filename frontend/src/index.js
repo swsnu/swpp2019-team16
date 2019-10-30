@@ -10,6 +10,7 @@ import createSagaMiddleware from 'redux-saga';
 import rootReducer, { rootSaga } from './modules';
 import * as serviceWorker from './serviceWorker';
 
+import 'bootstrap/dist/css/bootstrap.css'
 const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(

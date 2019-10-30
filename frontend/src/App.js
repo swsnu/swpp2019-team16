@@ -7,6 +7,10 @@ import WaitingPage from './pages/WaitingPage/WaitingPage';
 import GroupPage from './pages/GroupPage/GroupPage';
 import DetailPage from './pages/DetailPage/DetailPage';
 import FinalPage from './pages/FinalPage/FinalPage';
+import LoginPage from './pages/LoginPage/LoginPage'
+
+
+import 'bootstrap/dist/css/bootstrap.css';
 
 function App() {
   return (
@@ -19,6 +23,7 @@ function App() {
         <Route component={GroupPage} path="/group" exact />
         <Route component={DetailPage} path="/detail" exact />
         <Route component={FinalPage} path="/final" exact />
+        <Route component={LoginPage} path="/login" exact/>
       </Switch>
     </div>
   );
