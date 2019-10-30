@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # run code formatting test
-cd app
+cd common
 flake8 . --exit-zero
 cd ..
 

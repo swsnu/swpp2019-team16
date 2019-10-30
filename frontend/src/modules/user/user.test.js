@@ -1,5 +1,5 @@
 import SagaTester from 'redux-saga-tester';
-import * as userAPI from '../../lib/api/user/user';
+import * as userAPI from '../../lib/api/user';
 import user, {
   userSaga,
   initialState,
@@ -7,9 +7,8 @@ import user, {
   check,
   logout,
 } from './user';
-import { ERROR } from '../../../node_modules/jest-validate/build/utils';
 
-jest.mock('../../lib/api/user/user');
+jest.mock('../../lib/api/user');
 
 describe('user', () => {
   afterEach(() => {
