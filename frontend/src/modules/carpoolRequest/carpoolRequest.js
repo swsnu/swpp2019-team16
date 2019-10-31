@@ -13,7 +13,7 @@ const [
 
 const [
   CANCEL_CARPOOL,
-  CANCEL_CARPOOL_SUCCESS, 
+  CANCEL_CARPOOL_SUCCESS,
   CANCEL_CARPOOL_FAILURE,
 ] = createRequestActionTypes('carpoolRequest/CANCEL_CARPOOL');
 
