@@ -2,12 +2,17 @@
 
 ## Requirement and specification
 
-To see requirements and specification, please see [requirements and specification](https://github.com/swsnu/swpp2019-team16/wiki)
+To see requirements and specification, please check [requirements and specification](https://github.com/swsnu/swpp2019-team16/wiki/Project-Abstract)
+
+## Design and Planning
+
+To see design and planning, please check [design and planning](https://github.com/swsnu/swpp2019-team16/wiki/Design-and-Planning)
+
 
 
 ## Contributing
 
-To contribute, please see [CONTRIBUTING.md](./CONTRIBUTING.md)
+To contribute, please check [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 
 
