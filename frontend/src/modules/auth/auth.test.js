@@ -1,5 +1,5 @@
 import SagaTester from 'redux-saga-tester';
-import * as authAPI from '../../lib/api/auth/auth';
+import * as authAPI from '../../lib/api/auth';
 import auth, {
   authSaga,
   changeField,
@@ -9,7 +9,7 @@ import auth, {
   register,
 } from './auth';
 
-jest.mock('../../lib/api/auth/auth');
+jest.mock('../../lib/api/auth');
 
 describe('auth', () => {
   afterEach(() => {

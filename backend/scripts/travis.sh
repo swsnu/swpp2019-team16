@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # run code formatting test
-cd app
+cd common
 flake8 . --exit-zero
 cd ..
 
 # run test
-python app/manage.py test --settings=app.settings.development
+python common/manage.py test --settings=common.settings.development
 
 if [ $? -ne 0 ]; then
     echo "backend test failed" >&2
@@ -14,7 +14,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # run test coverage
-coverage run --source='app' app/manage.py test --settings=app.settings.development
+coverage run --source='common' common/manage.py test --settings=common.settings.development
 
 coverage report -m
 

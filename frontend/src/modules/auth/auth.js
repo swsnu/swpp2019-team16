@@ -3,7 +3,7 @@ import { takeLatest } from 'redux-saga/effects';
 import createRequestSaga, {
   createRequestActionTypes,
 } from '../../lib/createRequestSaga';
-import * as authAPI from '../../lib/api/auth/auth';
+import * as authAPI from '../../lib/api/auth';
 
 const CHANGE_FIELD = 'auth/CHANGE_FIELD';
 const INITIALIZE_FORM = 'auth/INITIALIZE_FORM';
