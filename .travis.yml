@@ -16,6 +16,12 @@ jobs:
       language: node_js
       node_js:
         - "10.15"
+      dist: trusty
+      addons:
+        sonarcloud:
+          organization: "swsnu"
+          token:
+            secure: "qDniPeV0O7Z39rBoJ/7ollJTASHzavYMvGA8H9IUAPohdkcWOImZ06SS8zEpDmihm8M3ouVN41vg+twRUpYX3BOPuXe3uzRl1kThdMIXwcHZR9B/uQp/xzMEorimXyOJxMKpK0KVOKEnqwyyPmDCLqc7eQ1J+3JOzPAM47eNQzljDnDItA++9YtMPhdYe0PwQedi/pc0suPv4XzW29Ij5M+JHAxiMjK/okekk9/HQvH61uVlxhFRXTCMZhkCTIn+28SFgoZYnXGJIzZCfoJi27/4+/bGpm2liX+MxdZLj7TJI5EyBTHF4goriBCndfQNUtfzfETxHuwbLIzvN36uazxfREKl8DBSsBV1IRwYHtvPNKuml+lM3SKUdUk9aO3Jny73fxrQP4yNSlu3/TG+u3kFAlj3ofNrvmK1c6cLi7ZvXp91+cdOZmOAqwXUvfupx7Ht+rzeHeu1EBTN6domUi3u4oMmuuqwh8PHzeNHsyK0Yn9O67nh9Qx8mxn7oEYzS5A0bbFFYqPHrAs7IVHELOlyHSP2yuIik1A1OrRJFo5NUVpmE/yg4RW+cbcxGyzaqxGB/T2NTdX3ouXzJ5hc6lvL5PyiylKro1Kfi8TnD7RQoXmOpZ4C7RvfhjVXGffRngkGicJ+jUqLKVuSTIXSjN/pESJc4+2h8HpufW62N0s="
       cache:
         npm: true
         yarn: true

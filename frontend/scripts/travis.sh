@@ -24,4 +24,6 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
+sonar-scanner
+
 exit 0
