@@ -1,5 +1,4 @@
 import SagaTester from 'redux-saga-tester';
-import * as carpoolAPI from '../../lib/api/group';
 import group, {
   groupSaga,
   initialState,
@@ -11,7 +10,6 @@ import group, {
   notifyDriverLocation,
   confirmCost,
 } from './group';
-import expectExport from '../../../node_modules/expect/build/index';
 
 jest.mock('../../lib/api/group');
 
