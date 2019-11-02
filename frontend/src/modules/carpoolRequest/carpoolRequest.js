@@ -63,7 +63,7 @@ const carpoolRequest = handleActions(
     [REQUEST_CARPOOL_SUCCESS]: (state, { payload: carpoolRequest }) => ({
       ...state,
       carpoolRequest: carpoolRequest,
-      requestCarpoolError: null, 
+      requestCarpoolError: null,
     }),
 
     [REQUEST_CARPOOL_FAILURE]: (state, { payload: error }) => ({
