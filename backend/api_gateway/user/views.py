@@ -3,7 +3,8 @@ import json
 from django.http import HttpResponseNotAllowed, HttpResponse
 
 from backend.common.command.user_create_command import UserCreateCommand
-from backend.common.messaging.infra.adapter.redis.redis_message_publisher import RedisMessagePublisher
+from backend.common.messaging.infra.adapter.redis.redis_message_publisher \
+    import RedisMessagePublisher
 
 
 def register_user(request):

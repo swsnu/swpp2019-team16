@@ -44,7 +44,8 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         if self.vehicle is None:
-            return 'email={},point={}'.format(self.email, self.point)
+            return 'email={},point={}'\
+                .format(self.email, self.point)
         else:
-            return 'email={},point={},vehicle={}'.format(self.email, self.point, self.vehicle)
-
+            return 'email={},point={},vehicle={}'\
+                .format(self.email, self.point, self.vehicle)

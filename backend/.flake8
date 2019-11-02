@@ -4,7 +4,8 @@ exclude =
   __pycache__,
   manage.py,
   settings
-  venv
+  venv,
+  models.py
 
 [autopep8]
 exclude =
@@ -12,4 +13,5 @@ exclude =
   __pycache__,
   manage.py,
   settings
-  venv
+  venv,
+  models.py

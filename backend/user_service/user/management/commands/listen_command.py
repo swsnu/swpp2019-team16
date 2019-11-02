@@ -4,23 +4,29 @@ import functools
 
 from django.core.management import BaseCommand
 
-from backend.user_service.user.infra.adapter.user_create_command_handler import UserCreateCommandHandler
-from backend.user_service.user.app.user_application_service import UserApplicationService
-from backend.common.messaging.infra.adapter.redis.redis_message_subscriber import RedisMessageSubscriber
-from backend.common.command.user_create_command import USER_CREATE_COMMAND
+from backend.user_service.user.infra.adapter.user_create_command_handler \
+    import UserCreateCommandHandler
+from backend.user_service.user.app.user_application_service \
+    import UserApplicationService
+from backend.common.messaging.infra.adapter.redis.redis_message_subscriber \
+    import RedisMessageSubscriber
+from backend.common.command.user_create_command \
+    import USER_CREATE_COMMAND
 
 
 class Command(BaseCommand):
 
     user_application_service = UserApplicationService()
-    user_create_command_handler = UserCreateCommandHandler(user_application_service=user_application_service)
+    user_create_command_handler = UserCreateCommandHandler(
+        user_application_service=user_application_service)
     subscriber = RedisMessageSubscriber()
 
     def register_signal_handler(self, loop):
         for signame in ('SIGINT', 'SIGTERM'):
-            loop.add_signal_handler(getattr(signal, signame),
-                                    functools.partial(asyncio.ensure_future,
-                                                      self.shutdown(signame, loop)))
+            loop.add_signal_handler(
+                getattr(signal, signame),
+                functools.partial(asyncio.ensure_future,
+                                  self.shutdown(signame, loop)))
 
     def handle(self, *args, **options):
         loop = asyncio.get_event_loop()
@@ -50,9 +56,10 @@ class Command(BaseCommand):
         print('caught {0}'.format(sig))
         tasks = [task for task in asyncio.Task.all_tasks() if task is not
                  asyncio.tasks.Task.current_task()]
+
         list(map(lambda task: task.cancel(), tasks))
         results = await asyncio.gather(*tasks, return_exceptions=True)
-        print('finished awaiting cancelled tasks, results: {0}'.format(results))
+
+        print('finished awaiting cancelled tasks, results: {0}'
+              .format(results))
         loop.stop()
-
-

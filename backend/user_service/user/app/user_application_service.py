@@ -17,4 +17,3 @@ class UserApplicationService():
 
         get_user_model().objects.create_user(
             email=email, password=password, vehicle=vehicle)
-

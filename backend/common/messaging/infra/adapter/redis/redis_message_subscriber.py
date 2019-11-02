@@ -35,7 +35,8 @@ class RedisMessageSubscriber(implements(MessageSubscriber)):
             except Exception as ex:
                 # TODO: refactor it
                 # TODO: replace print() with logger
-                print(''.join(traceback.format_exception(None, ex, ex.__traceback__)))
+                print(''.join(traceback.format_exception(
+                    None, ex, ex.__traceback__)))
 
     @property
     def stop(self):
