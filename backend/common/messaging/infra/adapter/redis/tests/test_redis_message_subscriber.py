@@ -60,6 +60,4 @@ class RedisMessageSubscriberIntegrationTestCase(TestCase):
             await publish_task
             await subscribe_task
 
-            subscriber.close()
-
         asyncio.run(run_async_test())

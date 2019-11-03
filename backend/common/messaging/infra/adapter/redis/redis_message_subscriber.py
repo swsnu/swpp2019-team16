@@ -44,3 +44,4 @@ class RedisMessageSubscriber(implements(MessageSubscriber)):
 
     def close(self):
         self.__stop = True
+        self.__client.close()

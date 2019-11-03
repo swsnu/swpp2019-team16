@@ -15,5 +15,5 @@ class UserApplicationService():
         if car_type is not None and plate is not None:
             vehicle = Vehicle.objects.create(car_type=car_type, plate=plate)
 
-        get_user_model().objects.create_user(
+        return get_user_model().objects.create_user(
             email=email, password=password, vehicle=vehicle)

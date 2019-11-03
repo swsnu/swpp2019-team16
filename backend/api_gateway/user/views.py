@@ -2,9 +2,13 @@ import json
 
 from django.http import HttpResponseNotAllowed, HttpResponse
 
-from backend.common.command.user_create_command import UserCreateCommand
-from backend.common.messaging.infra.adapter.redis.redis_message_publisher \
-    import RedisMessagePublisher
+from backend.common.command.user_create_command import UserCreateCommand, USER_CREATE_COMMAND
+from backend.common.rpc.infra.adapter.redis.redis_rpc_client import RedisRpcClient
+
+
+"""
+TODO: add exception controller
+"""
 
 
 def register_user(request):
@@ -19,6 +23,6 @@ def __register_user(request):
     # TODO: check KeyError
     command = UserCreateCommand(email=body['email'], password=body['password'])
 
-    RedisMessagePublisher().publish_message(command)
+    result = RedisRpcClient().call(USER_CREATE_COMMAND, command)
 
     return HttpResponse(status=204)

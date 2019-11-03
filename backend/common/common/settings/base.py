@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'messaging',
     'utils',
     'command',
+    'rpc',
 ]
 
 MIDDLEWARE = [
