@@ -43,7 +43,8 @@ jobs:
       install:
         - pip install -r requirements/development.txt
       before_script:
-        - 'docker-compose up -d && python common/manage.py wait_for_redis --settings=common.settings.development'
+        - 'docker-compose up -d'
+        - 'python common/manage.py wait_for_redis --settings=common.settings.development'
       script:
         - 'bash ./scripts/travis.sh'
       after_success:

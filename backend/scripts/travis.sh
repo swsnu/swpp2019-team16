@@ -1,20 +1,54 @@
 #!/bin/bash
 
-# run code formatting test
-cd common
-flake8 . --exit-zero
-cd ..
+function test_component() {
+    PACKAGE=$1
+    cd $PACKAGE
 
-# run test
-python common/manage.py test --settings=common.settings.development
+    echo "###########################"
+    echo "RUN [$PACKAGE] MIGRATION"
+    echo "###########################"
 
-if [ $? -ne 0 ]; then
-    echo "backend test failed" >&2
-    exit 1
-fi
+    python manage.py migrate --settings=$PACKAGE.settings.development
 
-# run test coverage
-coverage run --source='common' common/manage.py test --settings=common.settings.development
+    echo "###########################"
+    echo "RUN [$PACKAGE] CHECK CODE FORMATTING"
+    echo "###########################"
+
+    # run flake8
+    flake8 . --exit-zero
+    if [ $? -ne 0 ]; then
+        echo "flake8 failed" >&2
+        exit 1
+    fi
+
+    echo "###########################"
+    echo "RUN [$PACKAGE] TEST"
+    echo "###########################"
+
+    # run test
+    python manage.py test --settings=$PACKAGE.settings.development
+
+    if [ $? -ne 0 ]; then
+        echo "django test failed" >&2
+        exit 1
+    fi
+
+    echo "###########################"
+    echo "RUN [$PACKAGE] COVERAGE"
+    echo "###########################"
+
+    # run coverage
+    coverage run --source=. manage.py test --settings=$PACKAGE.settings.development
+
+    cd ..
+
+    # combine coverage
+    coverage combine --append ./$PACKAGE/.coverage
+}
+
+test_component api_gateway
+test_component common
+test_component user_service
 
 coverage report -m
 
