@@ -5,6 +5,8 @@ exports[`<Heading /> SHOULD match with snapshot 1`] = `
   <h2
     class="MuiTypography-root MuiTypography-h2"
     title="Heading title"
-  />
+  >
+    Heading title
+  </h2>
 </div>
 `;
