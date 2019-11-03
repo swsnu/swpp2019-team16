@@ -14,10 +14,7 @@ from backend.common.rpc.rpc_response import RpcResponse
 class RedisRpcServer(implements(RpcServer)):
 
     def __init__(self):
-        try:
-            self.__client = Redis(connection_pool=settings.REDIS_CONNECTION_POOL)
-        except Exception as e:
-            print(e)
+        self.__client = Redis(connection_pool=settings.REDIS_CONNECTION_POOL)
         self.__stop = False
 
     async def register_handler(self, topic, request_handler):
@@ -33,7 +30,7 @@ class RedisRpcServer(implements(RpcServer)):
 
                 """
                 when request successfully unmarshalled, process request
-                with request_handler 
+                with request_handler
                 """
                 result = request_handler.handle(request.params)
 

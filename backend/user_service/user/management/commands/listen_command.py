@@ -12,7 +12,8 @@ from backend.common.messaging.infra.adapter.redis.redis_message_subscriber \
     import RedisMessageSubscriber
 from backend.common.command.user_create_command \
     import USER_CREATE_COMMAND
-from backend.common.rpc.infra.adapter.redis.redis_rpc_server import RedisRpcServer
+from backend.common.rpc.infra.adapter.redis.redis_rpc_server \
+    import RedisRpcServer
 
 
 class Command(BaseCommand):

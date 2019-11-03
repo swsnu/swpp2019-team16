@@ -1,6 +1,6 @@
 class RpcRequest:
 
-    def __init__(self, params, id, method = ''):
+    def __init__(self, params, id, method=''):
         self._jsonrpc = '2.0'
         self._params = params
         self._id = id

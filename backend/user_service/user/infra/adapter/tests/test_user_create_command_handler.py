@@ -1,18 +1,22 @@
 from django.test import TestCase
 
-from backend.user_service.user.infra.adapter.user_create_command_handler import UserCreateCommandHandler
-from backend.common.command.user_create_command import UserCreateCommand
+from backend.user_service.user.infra.adapter.user_create_command_handler \
+    import UserCreateCommandHandler
+from backend.common.command.user_create_command \
+    import UserCreateCommand
 
 
 class UserCreateCommandHandlerTestCase(TestCase):
 
     def test_when_message_has_no_email_or_password_raise_exception(self):
-        user_create_command_handler = UserCreateCommandHandler(user_application_service=None)
+        user_create_command_handler = \
+            UserCreateCommandHandler(user_application_service=None)
 
         with self.assertRaises(ValueError):
-            user_create_command_handler.handle(UserCreateCommand(email=None, password=None))
+            user_create_command_handler.handle(
+                UserCreateCommand(email=None, password=None))
 
-    def test_when_message_has_valid_field_then_call_application_service_register(self):
+    def test_when_message_valid_field_then_call_register(self):
 
         class MockUserApplicationService:
 
@@ -33,7 +37,8 @@ class UserCreateCommandHandlerTestCase(TestCase):
             self.assertEqual(car_type, CAR_TYPE)
             self.assertEqual(plate, PLATE)
 
-        mock_user_application_service = MockUserApplicationService(assert_func=assert_func)
+        mock_user_application_service = \
+            MockUserApplicationService(assert_func=assert_func)
         user_create_command_handler = UserCreateCommandHandler(
             user_application_service=mock_user_application_service)
 

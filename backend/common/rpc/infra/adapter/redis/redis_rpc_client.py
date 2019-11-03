@@ -12,10 +12,7 @@ from backend.common.rpc.rpc_request import RpcRequest
 class RedisRpcClient(implements(RpcClient)):
 
     def __init__(self):
-        try:
-            self.__client = Redis(connection_pool=settings.REDIS_CONNECTION_POOL)
-        except Exception as e:
-            print(e)
+        self.__client = Redis(connection_pool=settings.REDIS_CONNECTION_POOL)
 
     def call(self, topic, data):
         request = RpcRequest(
@@ -23,5 +20,5 @@ class RedisRpcClient(implements(RpcClient)):
             id=shortuuid.uuid(),
         )
         self.__client.lpush(topic, pickle.dumps(request))
-        a, response = self.__client.brpop(keys=request.id, timeout=5)
+        _, response = self.__client.brpop(keys=request.id)
         return pickle.loads(response)

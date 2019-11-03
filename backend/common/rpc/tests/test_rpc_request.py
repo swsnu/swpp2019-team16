@@ -14,4 +14,6 @@ class RpcRequestTestCase(TestCase):
 
     def test_str(self):
         rpc_request = RpcRequest(id='hello', params='params', method='create')
-        self.assertEqual(str(rpc_request), 'jsonrpc=2.0,id=hello,params=params,method=create')
+        self.assertEqual(
+            str(rpc_request),
+            'jsonrpc=2.0,id=hello,params=params,method=create')
