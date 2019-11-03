@@ -8,7 +8,14 @@ HeadingMaterial.propTypes = {
 };
 
 function HeadingMaterial({ title }) {
-  return <Typography variant="h2" title={title} />;
+  return (
+    <Typography 
+      variant="h2" 
+      title={title}
+    >
+    {title}
+    </Typography>    
+  );
 }
 
 export default HeadingMaterial;
