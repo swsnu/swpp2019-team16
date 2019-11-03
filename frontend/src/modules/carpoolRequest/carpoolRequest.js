@@ -1,5 +1,5 @@
 import { createAction, handleActions } from 'redux-actions';
-import { takeLatest, call, put } from 'redux-saga/effects';
+import { takeLatest } from 'redux-saga/effects';
 import * as carpoolAPI from '../../lib/api/carpool';
 import createRequestSaga, {
   createRequestActionTypes,
