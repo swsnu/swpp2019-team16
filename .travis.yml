@@ -31,8 +31,8 @@ jobs:
         - yarn global add jest coveralls
         - yarn install
       script:
-        - 'bash ./scripts/travis.sh'
-        - sonar-scanner
+        - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then bash ./scripts/travis_on_pull_request.sh; fi'
+        - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then bash ./scripts/travis_on_non_pull_request.sh; fi'
         
     - stage: unit-test
       name: "Backend"
