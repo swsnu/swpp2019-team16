@@ -1,5 +1,5 @@
 import { createAction, handleActions } from 'redux-actions';
-import { takeLatest, call, put } from 'redux-saga/effects';
+import { takeLatest } from 'redux-saga/effects';
 import * as groupAPI from '../../lib/api/group/group';
 import createRequestSaga, {
   createRequestActionTypes,
