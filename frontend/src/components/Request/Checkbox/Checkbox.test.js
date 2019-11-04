@@ -5,7 +5,7 @@ import Checkbox from './Checkbox';
 describe('<Checkbox />', () => {
   it('SHOULD match with snapshot', async () => {
     const { container } = render(
-      <Checkbox children={<div>Checkbox Test</div>} />,
+      <Checkbox name="from" value="SNU" onClick={() => {}} checked={true} />,
     );
 
     expect(container).toMatchSnapshot();

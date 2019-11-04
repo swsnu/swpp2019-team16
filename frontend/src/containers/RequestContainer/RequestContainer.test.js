@@ -1,12 +1,9 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
-import RequestContainer from './requestContainer';
+import RequestContainer from './RequestContainer';
 import { renderWithRedux } from '../../test/utils';
 import { MemoryRouter, Route } from 'react-router-dom';
 
-jest.mock('../../components/request/request', () =>
-  jest.fn(props => <div></div>),
-);
+jest.mock('../../components/Request', () => jest.fn(props => <div></div>));
 
 describe('<RequestContainer />', () => {
   const state = {
