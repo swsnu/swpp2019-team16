@@ -49,6 +49,8 @@ function test_component() {
 test_component api_gateway
 test_component common
 test_component user_service
+test_component carpool_request_service
+test_component group_service
 
 coverage report -m
 
