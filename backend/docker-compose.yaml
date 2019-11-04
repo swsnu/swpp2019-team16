@@ -1,7 +1,20 @@
 version: '3'
 
 services:
+  mysql:
+    container_name: mysql
+    image: mysql:5.7.28
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: "yata"
+      MYSQL_USER: "team16"
+      MYSQL_PASSWORD: "team16"
+      MYSQL_ROOT_PASSWORD: "team16"
+
   redis:
+    container_name: redis
     image: redis:5-alpine
     ports:
       - "6379:6379"

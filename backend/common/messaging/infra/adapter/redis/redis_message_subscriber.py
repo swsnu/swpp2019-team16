@@ -1,11 +1,16 @@
 import asyncio
 import pickle
+import logging
+import traceback
 
 from django.conf import settings
 from interface import implements
 from redis import Redis
 
 from backend.common.messaging.message_subscriber import MessageSubscriber
+
+
+logger = logging.getLogger(__name__)
 
 
 class RedisMessageSubscriber(implements(MessageSubscriber)):
@@ -17,16 +22,21 @@ class RedisMessageSubscriber(implements(MessageSubscriber)):
     async def subscribe_message(self, topic, message_handler):
         p = self.__client.pubsub()
         p.subscribe(topic)
-
         while self.stop is False:
-            await asyncio.sleep(0.5)
+            await asyncio.sleep(1)
 
             message = p.get_message(ignore_subscribe_messages=True)
             if message is None:
                 continue
 
-            message_handler.handle(
-                pickle.loads(message['data']))
+            try:
+                message_handler.handle(
+                    pickle.loads(message['data']))
+            except Exception as ex:
+                # TODO: refactor it
+                # TODO: replace print() with logger
+                print(''.join(traceback.format_exception(
+                    None, ex, ex.__traceback__)))
 
     @property
     def stop(self):
@@ -34,3 +44,4 @@ class RedisMessageSubscriber(implements(MessageSubscriber)):
 
     def close(self):
         self.__stop = True
+        self.__client.close()
