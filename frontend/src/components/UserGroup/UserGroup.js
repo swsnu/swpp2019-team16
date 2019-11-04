@@ -5,29 +5,49 @@ import Heading from '../common/Heading/Heading';
 import Container from '../common/Container/Container';
 import Button from '../common/Button/Button';
 import Typography from '@material-ui/core/Typography';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 const UserGroupBlock = styled.div``;
 
 UserGroup.propTypes = {
-  onClick: PropTypes.func,
-  googleMap: PropTypes.object,
-  driverInfo: PropTypes.string.isRequired,
+  group: PropTypes.array.isRequired,
+  onClick: PropTypes.func.isRequired,
+  googleMap: PropTypes.object.isRequired,
+  driverInfo: PropTypes.object.isRequired,
 };
 
-function UserGroup({ onClick, googleMap, driverInfo }) {
+function UserGroup({ group, onClick, googleMap, driverInfo }) {
+  const name = driverInfo.Name;
+  const vehicle = driverInfo.Vehicle;
+  const plate = driverInfo.Plate;
+  const map = googleMap.map;
+  const riders = group.map(value => '[ ' + value + ' ] ');
+
   return (
     <UserGroupBlock>
       <Container fixed children={<Heading title="My Group" />} />
-      <Container>
-        <Typography variant="h5">This is where Google Map will be</Typography>
-        {googleMap}
+      <Container maxwidth="false">
+        <Card>
+          <CardContent>
+            <Typography align="center" variant="h5">
+              This is where {map} will be
+            </Typography>
+          </CardContent>
+        </Card>
       </Container>
-      <Container>
-        <Typography variant="h5">Driver Info:</Typography>
-        {driverInfo}
+      <Container fixed>
+        <Typography variant="h4">Driver Info</Typography>
+        <Typography variant="h5">Name: {name}</Typography>
+        <Typography variant="h5">Vehicle: {vehicle}</Typography>
+        <Typography variant="h5">Plate No.: {plate}</Typography>
       </Container>
-      <Container>
-        <Typography variant="h5">Time left until departure:</Typography>
+      <Container fixed>
+        <Typography variant="h4">Group Info</Typography>
+        <Typography variant="h5">Riders: {riders} </Typography>
+      </Container>
+      <Container fixed>
+        <Typography variant="h4">Time left until departure: 3:00 </Typography>
       </Container>
       <Container maxwidth="sm">
         <Button

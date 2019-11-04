@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`UserGroup /> SHOULD match with snapshot 1`] = `
+exports[`UserGroup /> SHOULD match with snapshot WHEN all data in 1`] = `
 <div>
   <div
     class="sc-bwzfXH uTxCW"
@@ -18,30 +18,75 @@ exports[`UserGroup /> SHOULD match with snapshot 1`] = `
     <main
       class="sc-bdVaJa ekJyAd"
     >
+      <div
+        class="MuiPaper-root MuiPaper-elevation1 MuiCard-root MuiPaper-rounded"
+      >
+        <div
+          class="MuiCardContent-root"
+        >
+          <h5
+            class="MuiTypography-root MuiTypography-h5 MuiTypography-alignCenter"
+          >
+            This is where 
+            GoogleMap
+             will be
+          </h5>
+        </div>
+      </div>
+    </main>
+    <main
+      class="sc-bdVaJa ekJyAd"
+    >
+      <h4
+        class="MuiTypography-root MuiTypography-h4"
+      >
+        Driver Info
+      </h4>
       <h5
         class="MuiTypography-root MuiTypography-h5"
       >
-        This is where Google Map will be
+        Name: 
+        MockDriver
+      </h5>
+      <h5
+        class="MuiTypography-root MuiTypography-h5"
+      >
+        Vehicle: 
+        BMW
+      </h5>
+      <h5
+        class="MuiTypography-root MuiTypography-h5"
+      >
+        Plate No.: 
       </h5>
     </main>
     <main
       class="sc-bdVaJa ekJyAd"
     >
+      <h4
+        class="MuiTypography-root MuiTypography-h4"
+      >
+        Group Info
+      </h4>
       <h5
         class="MuiTypography-root MuiTypography-h5"
       >
-        Driver Info:
+        Riders: 
+        [ rider1 ] 
+        [ rider2 ] 
+        [ rider3 ] 
+        [ rider4 ] 
+         
       </h5>
-      mock info
     </main>
     <main
       class="sc-bdVaJa ekJyAd"
     >
-      <h5
-        class="MuiTypography-root MuiTypography-h5"
+      <h4
+        class="MuiTypography-root MuiTypography-h4"
       >
-        Time left until departure:
-      </h5>
+        Time left until departure: 3:00 
+      </h4>
     </main>
     <main
       class="sc-bdVaJa ekJyAd"

@@ -1,6 +1,6 @@
 import React from 'react';
 import Main from '../_layouts/Main';
-import UserGroupContainer from '../../containers/userGroup/UserGroupContainer';
+import UserGroupContainer from '../../containers/UserGroupContainer/UserGroupContainer';
 
 function GroupPage() {
   return (
