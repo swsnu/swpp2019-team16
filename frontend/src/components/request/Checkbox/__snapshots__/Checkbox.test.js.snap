@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Checkbox /> SHOULD match with snapshot 1`] = `
+<div>
+  <span
+    aria-disabled="false"
+    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-10 MuiCheckbox-root makeStyles-root-1"
+  >
+    <span
+      class="MuiIconButton-label"
+    >
+      <input
+        class="PrivateSwitchBase-input-13"
+        data-indeterminate="false"
+        type="checkbox"
+        value=""
+      />
+      <span
+        class="makeStyles-icon-2"
+      />
+    </span>
+  </span>
+</div>
+`;
