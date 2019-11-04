@@ -16,6 +16,12 @@ jobs:
       language: node_js
       node_js:
         - "10.15"
+      dist: trusty
+      addons:
+        sonarcloud:
+          organization: "swsnu"
+          token:
+            secure: "oCztTLlE4+z1mdVabhY+FcxLitW8Eft5HISn9vOd2bJActimNggunHb8BFrHWwqiX/wCvkI3e0Ojz2ZAVu8Hk1GVD2oENhV83hqTSxzzVC2yY4V4PnWIcLLHE2xOX3nULplXy9iZ+6U+jgSD35CVxxOLLzetLMEu9SiHIiPaNS8Jqo+AELiHl/RmYh3TFqUFv6qB61gJ9/xsf6g+g2l6I42wae17B2QDzmHf5Xw83UkhTO9t3S0pSmiDYMyxS99CVB4Hpm7eeF617IqZUici9gH5nDS3xl6oCFQs/Y3BWhZRG9zrdSmGOCzdbMVvMk7qhj36L4ESH9r5LijL/WlBGljpiwnbCV9Qgw/MwzWUqH925efxpUSRoA4U/0w07JGvIrov6SySe6xsOLQVdQ0iCDRT5ygv2IYu652AJNsBriMjobOfGNP8mSJLhWJZTdjKUSlGteJpq3lnPXjk20wSZM56oiue2rodGMNcoImq4RSB1vDgXbSx570fXR7Re18EbDqQHYpwvmeHGbySBW+ATTF76ZDz50uNSsIjvHOt7U5RKEi9YPXJLSb76wlBMpJA2PeP0ng/dfDU6qfmd6reNNj/B30tWMhiZx+RRJIdTlJwyYposlbKJHPD8rY5GT7VrL4boWSKTGEPU2nhKvITls0AvP4gwdioZs9vI8dhxaM="
       cache:
         npm: true
         yarn: true
@@ -26,7 +32,8 @@ jobs:
         - yarn install
       script:
         - 'bash ./scripts/travis.sh'
-
+        - sonar-scanner
+        
     - stage: unit-test
       name: "Backend"
       language: python
