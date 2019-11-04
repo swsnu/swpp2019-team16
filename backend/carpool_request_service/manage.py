@@ -2,6 +2,7 @@
 import os
 import sys
 
+# pragma: no cover
 if __name__ == '__main__':
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'carpool_request_service.settings')
     try:
