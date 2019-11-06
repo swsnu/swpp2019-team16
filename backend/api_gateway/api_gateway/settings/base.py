@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'user',
     'group',
+    'ping',
 ]
 
 MIDDLEWARE = [

@@ -22,7 +22,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\rmessage.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1bgoogle/protobuf/empty.proto\"\x12\n\x04Ping\x12\n\n\x02id\x18\x01 \x01(\t\"\x12\n\x04Pong\x12\n\n\x02id\x18\x01 \x01(\t\"\x05\n\x03\x41\x63k\"`\n\x07Message\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x0c\n\x04type\x18\x02 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\t\x12-\n\ttimestamp\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp2e\n\rStreamService\x12\x1d\n\x0bHealthCheck\x12\x05.Ping\x1a\x05.Pong\"\x00\x12\x35\n\rStreamMessage\x12\x16.google.protobuf.Empty\x1a\x08.Message\"\x00\x30\x01\x62\x06proto3')
+  serialized_pb=_b('\n\rmessage.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1bgoogle/protobuf/empty.proto\"\x12\n\x04Ping\x12\n\n\x02id\x18\x01 \x01(\t\"\x12\n\x04Pong\x12\n\n\x02id\x18\x01 \x01(\t\"\x05\n\x03\x41\x63k\"`\n\x07Message\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04type\x18\x02 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\t\x12-\n\ttimestamp\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp2e\n\rStreamService\x12\x1d\n\x0bHealthCheck\x12\x05.Ping\x1a\x05.Pong\"\x00\x12\x35\n\rStreamMessage\x12\x16.google.protobuf.Empty\x1a\x08.Message\"\x00\x30\x01\x62\x06proto3')
   ,
   dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,])
 
@@ -124,8 +124,8 @@ _MESSAGE = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='id', full_name='Message.id', index=0,
-      number=1, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),

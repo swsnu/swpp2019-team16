@@ -25,7 +25,9 @@ exports[`<WaitingPage /> SHOULD match with snapshot 1`] = `
     <main
       class="sc-bdVaJa ekJyAd"
     >
-      Waiting Page!
+      <div>
+        Waiting for group to be matched
+      </div>
     </main>
   </div>
 </div>

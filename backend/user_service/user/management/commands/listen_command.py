@@ -32,13 +32,8 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         loop = asyncio.get_event_loop()
 
-<<<<<<< HEAD
-        self.register_signal_handler(loop)
-        
-=======
         register_signal_handler(loop, shutdown_process)
 
->>>>>>> feat: implement grpc gateway
         async def main():
             """
             create subscription tasks

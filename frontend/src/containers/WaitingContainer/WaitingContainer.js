@@ -1,61 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
+import React from 'react';
 
-const { StreamServicePromiseClient } = require('../../proto/message_grpc_web_pb');
-const { Empty, Message } = require('../../proto/message_pb');
-
-function deserialize(binArray) {
-  let str = "";
-  for (let i = 0; i < binArray.length; i++) {
-    str += String.fromCharCode(parseInt(binArray[i]));
-  }
-  return JSON.parse(str)
+function WaitingContainer() {
+  return <div>Waiting for group to be matched</div>;
 }
 
-
-WaitingContainer.propTypes = {};
-
-let streamService
-
-let stream
-
-function WaitingContainer({ history }) {
-  const [sec, setSec] = useState(0);
-
-  useEffect(() => {
-    if (sec > 5) {
-      history.push('/group');
-    }
-  }, [sec]);
-
-  useEffect(() => {
-    streamService = new StreamServicePromiseClient('http://localhost:8080', null, null);
-    stream = streamService.streamMessage(new Empty(), {});
-    stream.on('data', response => {
-      console.log('response.data',  deserialize(response.getData()) );
-      const result = deserialize(response.getData());
-      setSec(result.count)
-    });
-
-    stream.on('status', status => {
-      console.log('status', status);
-    });
-
-    stream.on('end', result => {
-      console.log('on end', result);
-    });
-    return () => {
-      stream.cancel();
-    }
-  }, []);
-
-  return (
-    <>
-      <div>Waiting for group to be matched</div>
-      <div>Elpased: {sec}</div>
-    </>
-
-  );
-}
-
-export default withRouter(WaitingContainer);
+export default WaitingContainer;

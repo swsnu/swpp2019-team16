@@ -9,6 +9,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
 import rootReducer, { rootSaga } from './modules';
 import * as serviceWorker from './serviceWorker';
+import { initGrpcConnection } from './lib/createGrpcChannelSaga';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -17,7 +18,13 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(sagaMiddleware)),
 );
 
+function createGrpcConnection() {
+  store.dispatch(initGrpcConnection());
+}
+
 sagaMiddleware.run(rootSaga);
+
+createGrpcConnection();
 
 ReactDOM.render(
   <Provider store={store}>
