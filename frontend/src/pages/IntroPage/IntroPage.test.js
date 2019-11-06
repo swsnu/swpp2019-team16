@@ -8,8 +8,8 @@ describe('<IntroPage />', () => {
   it('SHOULD match with snapshot', async () => {
     const { container } = renderWithRedux(
       <MemoryRouter initialEntries={['/intro']}>
-        <Route component={IntroPage} path='/intro'/>
-      </MemoryRouter>
+        <Route component={IntroPage} path="/intro" />
+      </MemoryRouter>,
     );
     expect(container).toMatchSnapshot();
   });

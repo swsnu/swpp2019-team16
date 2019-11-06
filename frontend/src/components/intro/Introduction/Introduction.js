@@ -5,20 +5,17 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 Introduction.propTypes = {
-  onStart: PropTypes.func.isRequired
+  onStart: PropTypes.func.isRequired,
 };
 
-function Introduction({onStart}) {
-  
+function Introduction({ onStart }) {
   return (
     <div className="Introduction">
       <Typography variant="h1" paragraph>
         Welcome to YA-TA!
       </Typography>
 
-      <Typography variant="h3" >
-        What is yata?
-      </Typography>
+      <Typography variant="h3">What is yata?</Typography>
 
       <Typography variant="h5" paragraph>
         Ya-Ta helps students who need to urgently get to class. Within ten
