@@ -1,6 +1,4 @@
 import asyncio
-import signal
-import functools
 
 from django.core.management import BaseCommand
 
@@ -10,7 +8,7 @@ from backend.carpool_request_service.carpool_request.infra.adapter.carpool_reque
     import CarpoolRequestDeleteCommandHandler
 from backend.carpool_request_service.carpool_request.app.carpool_request_application_service \
     import CarpoolRequestApplicationService
-from backend.common.messaging.infra.adapter.redis.redis_message_subscriber \
+from backend.common.messaging.infra.redis.redis_message_subscriber \
     import RedisMessageSubscriber
 from backend.common.command.carpool_request_create_command \
     import CARPOOL_REQUEST_CREATE_COMMAND
@@ -18,6 +16,7 @@ from backend.common.command.carpool_request_delete_command \
     import CARPOOL_REQUEST_DELETE_COMMAND
 from backend.common.rpc.infra.adapter.redis.redis_rpc_server \
     import RedisRpcServer
+from backend.common.utils.signal_handler import register_signal_handler, shutdown_process
 
 
 class Command(BaseCommand):
@@ -30,17 +29,11 @@ class Command(BaseCommand):
     subscriber = RedisMessageSubscriber()
     rpc_server = RedisRpcServer()
 
-    def register_signal_handler(self, loop):
-        for signame in ('SIGINT', 'SIGTERM'):
-            loop.add_signal_handler(
-                getattr(signal, signame),
-                functools.partial(asyncio.ensure_future,
-                                  self.shutdown(signame, loop)))
-
     def handle(self, *args, **options):
         loop = asyncio.get_event_loop()
 
-        self.register_signal_handler(loop)        
+        register_signal_handler(loop, shutdown=shutdown_process)
+
         async def main():
             """
             create subscription tasks
@@ -65,20 +58,6 @@ class Command(BaseCommand):
                     topic=CARPOOL_REQUEST_DELETE_COMMAND,
                     request_handler=self.carpool_request_delete_command_handler))
 
-            carpool_request_create_subscription_task = asyncio.create_task(
-                self.subscriber.subscribe_message(
-                    topic=CARPOOL_REQUEST_CREATE_COMMAND,
-                    message_handler=self.carpool_request_create_command_handler))
-
-            carpool_request_create_rpc_task = asyncio.create_task(
-                self.rpc_server.register_handler(
-                    topic=CARPOOL_REQUEST_CREATE_COMMAND,
-                    request_handler=self.carpool_request_create_command_handler))
-
-            carpool_request_delete_subscription_task = asyncio.create_task(
-                self.subscriber.subscribe_message(
-                    topic=CARPOOL_REQUEST_DELETE_COMMAND,
-                    message_handler=self.carpool_request_delete_command_handler))
             """
             wait until application stop
             """
