@@ -1,10 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-<<<<<<< HEAD
 exports[`UserGroup /> SHOULD match with snapshot WHEN all data in 1`] = `
-=======
-exports[`UserGroup /> SHOULD match with snapshot 1`] = `
->>>>>>> feat: add user group page
 <div>
   <div
     class="sc-bwzfXH uTxCW"
@@ -22,7 +18,6 @@ exports[`UserGroup /> SHOULD match with snapshot 1`] = `
     <main
       class="sc-bdVaJa ekJyAd"
     >
-<<<<<<< HEAD
       <div
         class="MuiPaper-root MuiPaper-elevation1 MuiCard-root MuiPaper-rounded"
       >
@@ -63,18 +58,11 @@ exports[`UserGroup /> SHOULD match with snapshot 1`] = `
         class="MuiTypography-root MuiTypography-h5"
       >
         Plate No.: 
-=======
-      <h5
-        class="MuiTypography-root MuiTypography-h5"
-      >
-        This is where Google Map will be
->>>>>>> feat: add user group page
       </h5>
     </main>
     <main
       class="sc-bdVaJa ekJyAd"
     >
-<<<<<<< HEAD
       <h4
         class="MuiTypography-root MuiTypography-h4"
       >
@@ -90,31 +78,15 @@ exports[`UserGroup /> SHOULD match with snapshot 1`] = `
         [ rider4 ] 
          
       </h5>
-=======
-      <h5
-        class="MuiTypography-root MuiTypography-h5"
-      >
-        Driver Info:
-      </h5>
-      mock info
->>>>>>> feat: add user group page
     </main>
     <main
       class="sc-bdVaJa ekJyAd"
     >
-<<<<<<< HEAD
       <h4
         class="MuiTypography-root MuiTypography-h4"
       >
         Time left until departure: 3:00 
       </h4>
-=======
-      <h5
-        class="MuiTypography-root MuiTypography-h5"
-      >
-        Time left until departure:
-      </h5>
->>>>>>> feat: add user group page
     </main>
     <main
       class="sc-bdVaJa ekJyAd"

@@ -34,7 +34,7 @@ def __create_carpool_request(request):
         from_location=body['from_location'], 
         to_location=body['to_location'],
         minimum_passenger=body['minimum_passenger'], 
-        rider_id=body['rider_id'],
+        riders=body['riders'],
     )
 
     result = RedisRpcClient().call(CARPOOL_REQUEST_CREATE_COMMAND, command)
