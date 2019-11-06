@@ -1,32 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<GroupPage /> SHOULD match with snapshot 1`] = `
-<div>
-  <div
-    class="sc-bwzfXH kulSxP"
-  >
-    <div
-      class="makeStyles-root-1"
-    >
-      <header
-        class="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorPrimary"
-      >
-        <div
-          class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
-        >
-          <h6
-            class="MuiTypography-root makeStyles-title-3 MuiTypography-h6"
-          >
-            Ya-Ta!
-          </h6>
-        </div>
-      </header>
-    </div>
-    <main
-      class="sc-bdVaJa ekJyAd"
-    >
-      Group Page!
-    </main>
-  </div>
-</div>
-`;
+exports[`<GroupPage /> SHOULD match with snapshot 1`] = `<div />`;
