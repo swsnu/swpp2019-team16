@@ -15,27 +15,12 @@ function deserialize(binArray) {
 
 WaitingContainer.propTypes = {};
 
+let streamService
 
-const streamService = new StreamServicePromiseClient('http://localhost:8080', null, null);
-
-const stream = streamService.streamMessage(new Empty(), {});
+let stream
 
 function WaitingContainer({ history }) {
   const [sec, setSec] = useState(0);
-
-  stream.on('data', response => {
-    console.log('response.data',  deserialize(response.getData()) );
-    const result = deserialize(response.getData());
-    setSec(result.count)
-  });
-
-  stream.on('status', status => {
-    console.log('status', status);
-  });
-
-  stream.on('end', result => {
-    console.log('on end', result);
-  });
 
   useEffect(() => {
     if (sec > 5) {
@@ -44,10 +29,25 @@ function WaitingContainer({ history }) {
   }, [sec]);
 
   useEffect(() => {
+    streamService = new StreamServicePromiseClient('http://localhost:8080', null, null);
+    stream = streamService.streamMessage(new Empty(), {});
+    stream.on('data', response => {
+      console.log('response.data',  deserialize(response.getData()) );
+      const result = deserialize(response.getData());
+      setSec(result.count)
+    });
+
+    stream.on('status', status => {
+      console.log('status', status);
+    });
+
+    stream.on('end', result => {
+      console.log('on end', result);
+    });
     return () => {
       stream.cancel();
     }
-  }, [])
+  }, []);
 
   return (
     <>

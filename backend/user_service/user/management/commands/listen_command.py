@@ -1,6 +1,4 @@
 import asyncio
-import signal
-import functools
 
 from django.core.management import BaseCommand
 
@@ -8,12 +6,13 @@ from backend.user_service.user.infra.adapter.user_create_command_handler \
     import UserCreateCommandHandler
 from backend.user_service.user.app.user_application_service \
     import UserApplicationService
-from backend.common.messaging.infra.adapter.redis.redis_message_subscriber \
+from backend.common.messaging.infra.redis.redis_message_subscriber \
     import RedisMessageSubscriber
 from backend.common.command.user_create_command \
     import USER_CREATE_COMMAND
 from backend.common.rpc.infra.adapter.redis.redis_rpc_server \
     import RedisRpcServer
+from backend.common.utils.signal_handler import register_signal_handler, shutdown_process
 
 
 class Command(BaseCommand):
@@ -24,17 +23,10 @@ class Command(BaseCommand):
     subscriber = RedisMessageSubscriber()
     rpc_server = RedisRpcServer()
 
-    def register_signal_handler(self, loop):
-        for signame in ('SIGINT', 'SIGTERM'):
-            loop.add_signal_handler(
-                getattr(signal, signame),
-                functools.partial(asyncio.ensure_future,
-                                  self.shutdown(signame, loop)))
-
     def handle(self, *args, **options):
         loop = asyncio.get_event_loop()
 
-        self.register_signal_handler(loop)
+        register_signal_handler(loop, shutdown_process)
 
         async def main():
             """
@@ -60,14 +52,3 @@ class Command(BaseCommand):
         loop.create_task(main())
         loop.run_forever()
 
-    async def shutdown(self, sig, loop):
-        print('caught {0}'.format(sig))
-        tasks = [task for task in asyncio.Task.all_tasks() if task is not
-                 asyncio.tasks.Task.current_task()]
-
-        list(map(lambda task: task.cancel(), tasks))
-        results = await asyncio.gather(*tasks, return_exceptions=True)
-
-        print('finished awaiting cancelled tasks, results: {0}'
-              .format(results))
-        loop.stop()

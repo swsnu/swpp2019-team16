@@ -9,7 +9,6 @@ import DetailPage from './pages/DetailPage/DetailPage';
 import FinalPage from './pages/FinalPage/FinalPage';
 
 
-
 function App() {
   return (
     <div>

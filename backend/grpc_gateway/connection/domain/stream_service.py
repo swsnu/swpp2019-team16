@@ -1,29 +1,30 @@
 import json
-import pickle
 import time
-from concurrent import futures
-
-import grpc
+import shortuuid
 
 import backend.proto.message_pb2 as pb
 import backend.proto.message_pb2_grpc as pb_grpc
 
-# TODO: change it to interface, put implementation in infra/
-class MessageStreamServer(pb_grpc.StreamServiceServicer):
 
-    def __init__(self):
+# TODO: change it to interface, put implementation in infra/
+class StreamService(pb_grpc.StreamServiceServicer):
+
+    def __init__(self, message_queue):
         self.__msg_id = 0
         self.__stop = False
+        self.__message_queue = message_queue
 
     def StreamMessage(self, request, context):
-        i = 1
         while True:
             time.sleep(1)
-            print('sleep 1 sec before stream message...')
-            yield pb.Message(id=i, type='hello', data=json.dumps({
-                'count': i,
-            }))
-            i += 1
+
+            message = self.__message_queue.get()
+
+            yield pb.Message(
+                id=shortuuid.uuid(),
+                type=message.type_name,
+                data=json.dumps(message),
+            )
 
     def HealthCheck(self, request, context):
         print('ping received: {}'.format(request.id))
