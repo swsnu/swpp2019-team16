@@ -1,18 +1,15 @@
-import React, { useCallback } from 'react';
 import ButtonMaterial from 'components/common/Button';
-import { withRouter } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 import './Introduction.css';
+import PropTypes from 'prop-types';
+import React from 'react';
 
-function Introduction({history}) {
+Introduction.propTypes = {
+  onStart: PropTypes.func.isRequired
+};
+
+function Introduction({onStart}) {
   
-  const onStart = useCallback(
-    () => {
-      history.push("/request");
-    },
-    [history],
-  );
-
   return (
     <div className="Introduction">
       <Typography variant="h1" paragraph>
@@ -40,4 +37,4 @@ function Introduction({history}) {
     </div>
   );
 }
-export default withRouter(Introduction);
+export default Introduction;
