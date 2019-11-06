@@ -32,6 +32,7 @@ def __register_user(request):
         email=body['email'], password=body['password'])
 
     result = RedisRpcClient().call(USER_CREATE_COMMAND, command)
-
+    data = {'jsonrps': result.jsonrpc, 'id':result.id, 'result':result.result}
+    
     # TODO: handling exception
-    return with_json_response(status=204, data=result)
+    return with_json_response(status=204, data=data)

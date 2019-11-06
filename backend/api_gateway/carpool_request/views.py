@@ -30,16 +30,18 @@ def create_carpool_request(request):
 def __create_carpool_request(request):
     body = json.loads(request.body.decode())
     # TODO: check KeyError
-    command = CarpoolCreateCommand(
+    command = CarpoolRequestCreateCommand(
         from_location=body['from_location'], 
         to_location=body['to_location'],
-        minimum_passenger=body['minimum_passenger'], request=request)
+        minimum_passenger=body['minimum_passenger'], 
+        rider_id=body['rider_id'],
+    )
 
     result = RedisRpcClient().call(CARPOOL_REQUEST_CREATE_COMMAND, command)
+    data = {'jsonrps': result.jsonrpc, 'id':result.id, 'result':result.result}
 
     # TODO: handling exception
-    return with_json_response(status=204, data=result)
-
+    return with_json_response(status=204, data=data)
 
 def delete_carpool_request(request):
     if request.method == 'DELETE':
@@ -49,10 +51,11 @@ def delete_carpool_request(request):
 
 
 def __delete_carpool_request(request):
-    # body = json.loads(request.body.decode())
+    body = json.loads(request.body.decode())
     # TODO: check KeyError
-    command = CarpoolDeleteCommand(request=request)
+    command = CarpoolRequestDeleteCommand(request_id=body['request_id'])
     result = RedisRpcClient().call(CARPOOL_REQUEST_DELETE_COMMAND, command)
-
+    data = {'jsonrps': result.jsonrpc, 'id':result.id, 'result':result.result}
+    
     # TODO: handling exception
-    return with_json_response(status=204, data=result)
+    return with_json_response(status=204, data=data)
