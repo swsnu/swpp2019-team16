@@ -8,7 +8,7 @@ import grpc
 import backend.proto.message_pb2 as pb
 import backend.proto.message_pb2_grpc as pb_grpc
 
-
+# TODO: change it to interface, put implementation in infra/
 class MessageStreamServer(pb_grpc.StreamServiceServicer):
 
     def __init__(self):
@@ -16,12 +16,12 @@ class MessageStreamServer(pb_grpc.StreamServiceServicer):
         self.__stop = False
 
     def StreamMessage(self, request, context):
-        i = 0
+        i = 1
         while True:
-            time.sleep(2)
-            print('sleep 2 sec before stream message...')
+            time.sleep(1)
+            print('sleep 1 sec before stream message...')
             yield pb.Message(id=i, type='hello', data=json.dumps({
-                'message': 'hello world {}'.format(i)
+                'count': i,
             }))
             i += 1
 

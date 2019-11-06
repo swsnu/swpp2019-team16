@@ -1,10 +1,33 @@
 import {takeEvery, eventChannel} from 'redux-saga';
 
-const { StreamServicePromiseClient } = require('./proto/message_grpc_web_pb');
-const { Empty, Message } = require('./proto/message_pb');
+const { StreamServicePromiseClient } = require('../proto/message_grpc_web_pb');
+const { Empty, Message } = require('../proto/message_pb');
+
+function deserialize(binArray) {
+  let str = "";
+  for (let i = 0; i < binArray.length; i++) {
+    str += String.fromCharCode(parseInt(binArray[i]));
+  }
+  return JSON.parse(str)
+}
+
+// const { StreamServicePromiseClient } = require('./proto/message_grpc_web_pb');
+// const { Empty, Message } = require('./proto/message_pb');
+//
+// const streamService = new StreamServicePromiseClient('http://localhost:8080', null, null);
+//
+// const stream = streamService.streamMessage(new Empty(), {});
+// stream.on('data', response => {
+//   console.log('response.id', response.getId());
+//   console.log('response.data',  deserialize(response.getData()) );
+// });
+//
+// stream.on('status', status => {
+//   console.log('status', status);
+// });
 
 function* createGrpcChannel() {
-  
+
 }
 
 function* initGrpcChannel() {
