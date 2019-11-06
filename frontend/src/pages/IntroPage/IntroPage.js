@@ -1,11 +1,11 @@
 import React from 'react';
 import Main from '../_layouts/Main';
-import Introduction from 'components/intro/Introduction';
+import IntroContainer from 'containers/IntroContainer';
 
 function IntroPage() {
   return (
     <Main>
-      <Introduction />
+      <IntroContainer />
     </Main>
   );
 }

@@ -1,27 +1,21 @@
-import React, { useCallback } from 'react';
 import ButtonMaterial from 'components/common/Button';
-import { withRouter } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 import './Introduction.css';
+import PropTypes from 'prop-types';
+import React from 'react';
 
-function Introduction({history}) {
-  
-  const onStart = useCallback(
-    () => {
-      history.push("/request");
-    },
-    [history],
-  );
+Introduction.propTypes = {
+  onStart: PropTypes.func.isRequired,
+};
 
+function Introduction({ onStart }) {
   return (
     <div className="Introduction">
       <Typography variant="h1" paragraph>
         Welcome to YA-TA!
       </Typography>
 
-      <Typography variant="h3" >
-        What is yata?
-      </Typography>
+      <Typography variant="h3">What is yata?</Typography>
 
       <Typography variant="h5" paragraph>
         Ya-Ta helps students who need to urgently get to class. Within ten
@@ -40,4 +34,4 @@ function Introduction({history}) {
     </div>
   );
 }
-export default withRouter(Introduction);
+export default Introduction;
