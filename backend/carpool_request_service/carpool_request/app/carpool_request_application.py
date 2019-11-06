@@ -9,7 +9,14 @@ class CarpoolRequestApplicationService():
     
     def create(self, from_location, to_location, minimum_passenger, request):
         
-        rider = Rider.objects.get(user=request.user);
+        rider = Rider.objects.get(user=request.user)
         return CarpoolRequest.objects.create(from_location=from_location, to_location=to_location, \
                                                 minimum_passenger=minimum_passenger, rider=rider)
-        
+    
+    def delete(self, request):
+        rider = Rider.objects.get(user=request.user)
+        return CarpoolRequest.objects.filter(rider=rider).delete()
+
+    def get(self, request):
+        rider = Rider.objects.get(user=request.user)
+        return CarpoolRequest.objects.filter(rider=rider)

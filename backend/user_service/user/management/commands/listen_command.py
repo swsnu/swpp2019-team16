@@ -37,13 +37,6 @@ class Command(BaseCommand):
                 functools.partial(asyncio.ensure_future,
                                   self.shutdown(signame, loop)))
 
-    def login_signal_handler(self, loop):
-        for signame in ('SIGINT', 'SIGTERM'):
-            loop.add_signal_handler(
-                getattr(signal, signame),
-                functools.partial(asyncio.ensure_future,
-                                  self.shutdown(signame, loop)))
-
     def handle(self, *args, **options):
         loop = asyncio.get_event_loop()
 
