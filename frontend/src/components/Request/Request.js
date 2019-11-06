@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import Button from '../common/Button';
 import Checkbox from './Checkbox';
 import PropTypes from 'prop-types';
+import './Request.css';
+import Heading from '../common/Heading';
 const RequestBlock = styled.div``;
 
 Request.propTypes = {
@@ -38,8 +40,11 @@ function Request({ user, fromList, toList, minimumPassenger, onClickRequest }) {
   };
 
   return (
-    <RequestBlock>
-      <div data-testid="from">
+    <RequestBlock className="requestBlock">
+      <div className="title">
+        <Heading title="Carpool Request!" />
+      </div>
+      <div className="from" data-testid="from">
         <h2>From</h2>
         {fromList &&
           fromList.map(value => (
@@ -53,7 +58,7 @@ function Request({ user, fromList, toList, minimumPassenger, onClickRequest }) {
           ))}
       </div>
 
-      <div data-testid="to">
+      <div className="to" data-testid="to">
         <h2>To</h2>
         {toList &&
           toList.map(value => (
@@ -67,7 +72,7 @@ function Request({ user, fromList, toList, minimumPassenger, onClickRequest }) {
           ))}
       </div>
 
-      <div data-testid="minimumPassenger">
+      <div className="minimumPassenger" data-testid="minimumPassenger">
         <h2>Minimum Passenger</h2>
         {minimumPassenger &&
           minimumPassenger.map(value => (
@@ -84,12 +89,15 @@ function Request({ user, fromList, toList, minimumPassenger, onClickRequest }) {
             />
           ))}
       </div>
-
-      <Button
-        id="request-submit-button"
-        onClick={onButtonClickHandler}
-        children="Carpool Request"
-      />
+      <div className="button">
+        <Button
+          id="request-submit-button"
+          variant="contained"
+          color="primary"
+          onClick={onButtonClickHandler}
+          children="Carpool Request"
+        />
+      </div>
     </RequestBlock>
   );
 }

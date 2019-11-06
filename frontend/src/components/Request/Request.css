@@ -1,0 +1,30 @@
+.requestBlock{
+	text-align: left;
+}
+
+.title{
+	margin-bottom: 10px;
+}
+
+.from{
+	border-style: solid;
+	padding-left: 10px;
+	margin-bottom: 10px;
+}
+
+.to{
+	border-style: solid;
+	padding-left: 10px;
+	margin-bottom: 10px;
+}
+
+.minimumPassenger{
+	border-style: solid;
+	padding-left: 10px;
+	margin-bottom: 10px;
+}
+
+
+.button{
+	text-align: center;
+}

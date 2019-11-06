@@ -12,18 +12,20 @@ CheckboxLabels.propTypes = {
 
 export default function CheckboxLabels({ name, value, onClick, checked }) {
   return (
-    <FormControlLabel
-      data-testid={value}
-      control={
-        <Checkbox
-          name={name}
-          onClick={onClick}
-          value={value}
-          checked={checked}
-          color="primary"
-        />
-      }
-      label={value}
-    />
+    <div>
+      <FormControlLabel
+        data-testid={value}
+        control={
+          <Checkbox
+            name={name}
+            onClick={onClick}
+            value={value}
+            checked={checked}
+            color="primary"
+          />
+        }
+        label={value}
+      />
+    </div>
   );
 }
