@@ -1,7 +1,6 @@
 from django.db import models
 
 from backend.user_service.user.domain.user import User
-from backend.group_service.group.domain.group import Group
 
 class Driver(models.Model):
     class Meta:
