@@ -5,6 +5,7 @@ import carpoolRequest from './carpoolRequest';
 import group from './group';
 import loading from './loading';
 import user from './user';
+import { grpcSaga } from '../lib/createGrpcChannelSaga';
 
 const rootReducer = combineReducers({
   auth,
@@ -15,7 +16,7 @@ const rootReducer = combineReducers({
 });
 
 export function* rootSaga() {
-  yield all([]);
+  yield all([grpcSaga()]);
 }
 
 export default rootReducer;

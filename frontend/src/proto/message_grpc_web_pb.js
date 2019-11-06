@@ -1,20 +1,17 @@
 /**
- * @fileoverview gRPC-Web generated client stub for 
+ * @fileoverview gRPC-Web generated client stub for
  * @enhanceable
  * @public
  */
 
 // GENERATED CODE -- DO NOT EDIT!
 
-
-
 const grpc = {};
 grpc.web = require('grpc-web');
 
+var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 
-var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js')
-
-var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js')
+var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js');
 const proto = require('./message_pb.js');
 
 /**
@@ -25,8 +22,7 @@ const proto = require('./message_pb.js');
  * @struct
  * @final
  */
-proto.StreamServiceClient =
-    function(hostname, credentials, options) {
+proto.StreamServiceClient = function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
 
@@ -51,7 +47,6 @@ proto.StreamServiceClient =
    */
   this.options_ = options;
 };
-
 
 /**
  * @param {string} hostname
@@ -61,8 +56,7 @@ proto.StreamServiceClient =
  * @struct
  * @final
  */
-proto.StreamServicePromiseClient =
-    function(hostname, credentials, options) {
+proto.StreamServicePromiseClient = function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
 
@@ -87,7 +81,6 @@ proto.StreamServicePromiseClient =
    */
   this.options_ = options;
 };
-
 
 /**
  * @const
@@ -104,9 +97,8 @@ const methodDescriptor_StreamService_HealthCheck = new grpc.web.MethodDescriptor
   function(request) {
     return request.serializeBinary();
   },
-  proto.Pong.deserializeBinary
+  proto.Pong.deserializeBinary,
 );
-
 
 /**
  * @const
@@ -120,9 +112,8 @@ const methodInfo_StreamService_HealthCheck = new grpc.web.AbstractClientBase.Met
   function(request) {
     return request.serializeBinary();
   },
-  proto.Pong.deserializeBinary
+  proto.Pong.deserializeBinary,
 );
-
 
 /**
  * @param {!proto.Ping} request The
@@ -134,16 +125,19 @@ const methodInfo_StreamService_HealthCheck = new grpc.web.AbstractClientBase.Met
  * @return {!grpc.web.ClientReadableStream<!proto.Pong>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.StreamServiceClient.prototype.healthCheck =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/StreamService/HealthCheck',
-      request,
-      metadata || {},
-      methodDescriptor_StreamService_HealthCheck,
-      callback);
+proto.StreamServiceClient.prototype.healthCheck = function(
+  request,
+  metadata,
+  callback,
+) {
+  return this.client_.rpcCall(
+    this.hostname_ + '/StreamService/HealthCheck',
+    request,
+    metadata || {},
+    methodDescriptor_StreamService_HealthCheck,
+    callback,
+  );
 };
-
 
 /**
  * @param {!proto.Ping} request The
@@ -153,15 +147,17 @@ proto.StreamServiceClient.prototype.healthCheck =
  * @return {!Promise<!proto.Pong>}
  *     A native promise that resolves to the response
  */
-proto.StreamServicePromiseClient.prototype.healthCheck =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/StreamService/HealthCheck',
-      request,
-      metadata || {},
-      methodDescriptor_StreamService_HealthCheck);
+proto.StreamServicePromiseClient.prototype.healthCheck = function(
+  request,
+  metadata,
+) {
+  return this.client_.unaryCall(
+    this.hostname_ + '/StreamService/HealthCheck',
+    request,
+    metadata || {},
+    methodDescriptor_StreamService_HealthCheck,
+  );
 };
-
 
 /**
  * @const
@@ -178,9 +174,8 @@ const methodDescriptor_StreamService_StreamMessage = new grpc.web.MethodDescript
   function(request) {
     return request.serializeBinary();
   },
-  proto.Message.deserializeBinary
+  proto.Message.deserializeBinary,
 );
-
 
 /**
  * @const
@@ -194,9 +189,27 @@ const methodInfo_StreamService_StreamMessage = new grpc.web.AbstractClientBase.M
   function(request) {
     return request.serializeBinary();
   },
-  proto.Message.deserializeBinary
+  proto.Message.deserializeBinary,
 );
 
+/**
+ * @param {!proto.google.protobuf.Empty} request The request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!grpc.web.ClientReadableStream<!proto.Message>}
+ *     The XHR Node Readable Stream
+ */
+proto.StreamServiceClient.prototype.streamMessage = function(
+  request,
+  metadata,
+) {
+  return this.client_.serverStreaming(
+    this.hostname_ + '/StreamService/StreamMessage',
+    request,
+    metadata || {},
+    methodDescriptor_StreamService_StreamMessage,
+  );
+};
 
 /**
  * @param {!proto.google.protobuf.Empty} request The request proto
@@ -205,32 +218,16 @@ const methodInfo_StreamService_StreamMessage = new grpc.web.AbstractClientBase.M
  * @return {!grpc.web.ClientReadableStream<!proto.Message>}
  *     The XHR Node Readable Stream
  */
-proto.StreamServiceClient.prototype.streamMessage =
-    function(request, metadata) {
-  return this.client_.serverStreaming(this.hostname_ +
-      '/StreamService/StreamMessage',
-      request,
-      metadata || {},
-      methodDescriptor_StreamService_StreamMessage);
+proto.StreamServicePromiseClient.prototype.streamMessage = function(
+  request,
+  metadata,
+) {
+  return this.client_.serverStreaming(
+    this.hostname_ + '/StreamService/StreamMessage',
+    request,
+    metadata || {},
+    methodDescriptor_StreamService_StreamMessage,
+  );
 };
-
-
-/**
- * @param {!proto.google.protobuf.Empty} request The request proto
- * @param {?Object<string, string>} metadata User defined
- *     call metadata
- * @return {!grpc.web.ClientReadableStream<!proto.Message>}
- *     The XHR Node Readable Stream
- */
-proto.StreamServicePromiseClient.prototype.streamMessage =
-    function(request, metadata) {
-  return this.client_.serverStreaming(this.hostname_ +
-      '/StreamService/StreamMessage',
-      request,
-      metadata || {},
-      methodDescriptor_StreamService_StreamMessage);
-};
-
 
 module.exports = proto;
-

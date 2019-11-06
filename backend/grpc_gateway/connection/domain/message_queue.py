@@ -9,4 +9,7 @@ class MessageQueue:
         self.__messages.put(message)
 
     def get(self):
-        return self.__messages.get(block=True)
+        return self.__messages.get()
+
+    def qsize(self):
+        return self.__messages.qsize()

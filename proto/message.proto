@@ -14,7 +14,7 @@ message Pong {
 message Ack {}
 
 message Message {
-    int64 id = 1;
+    string id = 1;
     string type = 2;
     string data = 3;
     google.protobuf.Timestamp timestamp = 4;

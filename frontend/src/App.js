@@ -8,13 +8,12 @@ import GroupPage from './pages/GroupPage/GroupPage';
 import DetailPage from './pages/DetailPage/DetailPage';
 import FinalPage from './pages/FinalPage/FinalPage';
 
-
 function App() {
   return (
     <div>
       <Switch>
         <Route component={IntroPage} path="/intro" exact />
-        <Route component={RequestPage} path="/" exact />
+        <Route component={RequestPage} path="/request" exact />
         <Route component={RequestCallPage} path="/requestcall" exact />
         <Route component={WaitingPage} path="/waiting" exact />
         <Route component={GroupPage} path="/group" exact />

@@ -11,7 +11,7 @@ def register_signal_handler(loop, shutdown):
                               shutdown(signame, loop)))
 
 
-async def shutdown_process(self, sig, loop):
+async def shutdown_process(sig, loop):
     print('caught {0}'.format(sig))
     tasks = [task for task in asyncio.Task.all_tasks() if task is not
              asyncio.tasks.Task.current_task()]
