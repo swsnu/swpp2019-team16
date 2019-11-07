@@ -40,8 +40,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         loop = asyncio.get_event_loop()
 
-        self.register_signal_handler(loop)
-        
+        self.register_signal_handler(loop)        
         async def main():
             """
             create subscription tasks
@@ -66,6 +65,20 @@ class Command(BaseCommand):
                     topic=CARPOOL_REQUEST_DELETE_COMMAND,
                     request_handler=self.carpool_request_delete_command_handler))
 
+            carpool_request_create_subscription_task = asyncio.create_task(
+                self.subscriber.subscribe_message(
+                    topic=CARPOOL_REQUEST_CREATE_COMMAND,
+                    message_handler=self.carpool_request_create_command_handler))
+
+            carpool_request_create_rpc_task = asyncio.create_task(
+                self.rpc_server.register_handler(
+                    topic=CARPOOL_REQUEST_CREATE_COMMAND,
+                    request_handler=self.carpool_request_create_command_handler))
+
+            carpool_request_delete_subscription_task = asyncio.create_task(
+                self.subscriber.subscribe_message(
+                    topic=CARPOOL_REQUEST_DELETE_COMMAND,
+                    message_handler=self.carpool_request_delete_command_handler))
             """
             wait until application stop
             """
