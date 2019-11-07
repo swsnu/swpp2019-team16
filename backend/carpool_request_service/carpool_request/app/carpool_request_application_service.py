@@ -19,9 +19,8 @@ class CarpoolRequestApplicationService():
         if len(same_location_request) == 4:
             target_request = same_location_request
             target_request.delete()
-            command = GroupCreateCommand(from_location="from_location", to_location="to_location")
+            command = GroupCreateCommand(from_location=from_location, to_location=to_location)
             RedisMessagePublisher().publish_message(command)
-            #print(de)
             
 
         return result

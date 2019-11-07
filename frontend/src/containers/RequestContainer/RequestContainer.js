@@ -18,8 +18,8 @@ function RequestContainer({ history }) {
   const minimumPassenger = ['2', '3', '4'];
 
   const onClickRequest = useCallback(
-    ({ userId, from, toString, minimumPassenger }) => {
-      dispatch(requestCarpool({ userId, from, toString, minimumPassenger }));
+    ({ userId, from, to, minimumPassenger }) => {
+      dispatch(requestCarpool({ userId, from, to, minimumPassenger }));
       history.push('/waiting');
     },
     [dispatch, history],
