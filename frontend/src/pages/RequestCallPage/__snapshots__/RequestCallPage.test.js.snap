@@ -25,7 +25,9 @@ exports[`<RequestCallPage /> SHOULD match with snapshot 1`] = `
     <main
       class="sc-bdVaJa ekJyAd"
     >
-      RequestCall Page!
+      <div>
+        Waiting for group to be matched...
+      </div>
     </main>
   </div>
 </div>

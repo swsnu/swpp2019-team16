@@ -45,6 +45,8 @@ const [
   CONFIRM_COST_FAILURE,
 ] = createRequestActionTypes('group/CONFIRM_COST');
 
+export const GROUP_CREATED = 'group/GROUP_CREATED';
+
 export const createGroup = createAction(
   CREATE_GROUP,
   ({ groupId, riders, driver, from, to }) => ({
@@ -195,6 +197,10 @@ const group = handleActions(
     [CONFIRM_COST_FAILURE]: (state, { payload: error }) => ({
       ...state,
       error: error,
+    }),
+    [GROUP_CREATED]: (state, { payload: group }) => ({
+      ...state,
+      group,
     }),
   },
   initialState,

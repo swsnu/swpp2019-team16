@@ -3,6 +3,11 @@ import { eventChannel } from 'redux-saga';
 import { takeLatest, call, take, put } from 'redux-saga/effects';
 import { createAction } from 'redux-actions';
 import createGrpcStream from './grpc/client';
+import { GROUP_CREATED } from '../modules/group';
+
+const gRpcActionTypeMap = {
+  'event.group_created': GROUP_CREATED,
+};
 
 function createGrpcChannel() {
   return eventChannel(emit => {
@@ -26,7 +31,7 @@ function* initGrpcChannel() {
   while (true) {
     const result = yield take(channel);
     yield put({
-      type: result._type_name,
+      type: gRpcActionTypeMap[result._type_name],
       payload: produce(result, draft => {
         delete draft._type_name;
       }),
