@@ -11,9 +11,10 @@ class Group(models.Model):
         blank=True,
         null=True,
         on_delete=models.CASCADE,
+        related_name='group_of_driver'
     )
-    from_location = models.CharField(max_length=255)
-    to_location = models.CharField(max_length=255)    
+    from_location = models.CharField(max_length=255, default="")
+    to_location = models.CharField(max_length=255, default="")    
     cost = models.IntegerField(default=0)
     departure = models.BooleanField(default=False)
 

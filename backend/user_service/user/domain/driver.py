@@ -6,12 +6,13 @@ class Driver(models.Model):
     class Meta:
         app_label = 'user'
 
-    status = models.CharField(max_length=255)
+    status = models.CharField(max_length=255, default="IDLE")
     group = models.ForeignKey(
         'group.Group',
         null=True,
         blank=True,
         on_delete=models.CASCADE,
+        related_name='driver_of_group'
     )
     user = models.ForeignKey(
         User,

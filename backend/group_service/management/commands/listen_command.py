@@ -7,7 +7,7 @@ from django.core.management import BaseCommand
 from backend.group_service.group.infra.adapter.group_create_command_handler \
     import GroupCreateCommandHandler
 from backend.group_service.group.app.group_application_service \
-    import groupApplicationService
+    import GroupApplicationService
 from backend.common.messaging.infra.adapter.redis.redis_message_subscriber \
     import RedisMessageSubscriber
 from backend.common.command.group_create_command \
@@ -18,8 +18,8 @@ from backend.common.rpc.infra.adapter.redis.redis_rpc_server \
 
 class Command(BaseCommand):
 
-    group_application_service = groupApplicationService()
-    group_create_command_handler = groupCreateCommandHandler(
+    group_application_service = GroupApplicationService()
+    group_create_command_handler = GroupCreateCommandHandler(
         group_application_service=group_application_service)
     subscriber = RedisMessageSubscriber()
     rpc_server = RedisRpcServer()
