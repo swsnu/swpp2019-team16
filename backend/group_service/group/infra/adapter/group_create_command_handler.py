@@ -7,13 +7,16 @@ class GroupCreateCommandHandler(implements(MessageHandler)):
         self.__group_application_service = group_application_service
 
     def handle(self, message):
-        if message.rider_id_list is None or message.from_location is None or \
-                message.to_location is None:
+        
+        print("1")
+        if message.from_location is None or message.to_location is None:
             raise ValueError("Invalid GroupCreate command parameters")
 
-        self.group_application_service.createGroup(
-            rider_id_list=message.rider_id_list, from_location=message.from_location, 
+        print("2")
+        self.__group_application_service.create_group(
+            from_location=message.from_location, 
             to_location=message.to_location)
             
+        print("3")
 
         

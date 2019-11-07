@@ -1,8 +1,8 @@
 from django.urls import path
 
-from backend.api_gateway.group.views import create_user, update_user
+from backend.api_gateway.group.views import create_group, update_group
 
 urlpatterns = [
-    path('create', create_user, name='create'),
-    path('update', update_user, name='update'),
+    path('create', create_group, name='create'),
+    path('update', update_group, name='update'),
 ]
