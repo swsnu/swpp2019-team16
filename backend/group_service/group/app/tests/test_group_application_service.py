@@ -10,7 +10,7 @@ class GroupApplicationServiceTestCase(TestCase):
         self.group_application_service = GroupApplicationService()
 
     def test_create_group(self):
-        RIDER_ID_LIST = ['1', '2', '3', '4']
+        RIDER_ID_LIST = [1, 2, 3, 4]
         FROM_LOCATION = 'SNU Station'
         TO_LOCATION = '301 Building'
 

@@ -5,12 +5,12 @@ GROUP_UPDATED_EVENT = 'event.group_updated'
 
 class GroupCreatedEvent(DomainEvent):
     
-    def __init__(self, driver):
+    def __init__(self, driver_id):
         super().__init__(GROUP_UPDATED_EVENT, "v1")
-        self._driver = driver
+        self._driver_id = driver_id
     
     @property
-    def driver(self):
-        return self._driver
+    def driver_id(self):
+        return self._driver_id
     
    

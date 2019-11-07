@@ -26,7 +26,7 @@ class GroupCreateCommandHandlerTestCase(TestCase):
             def create(self, rider_id_list, from_location, to_location):
                 self.assert_func(rider_id_list, from_location, to_location)
 
-        RIDER_ID_LIST = ['1', '2', '3', '4']
+        RIDER_ID_LIST = [1, 2, 3, 4]
         FROM_LOCATION ='SNU Station'
         TO_LOCATION = '301 Building'
 

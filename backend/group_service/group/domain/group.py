@@ -18,6 +18,6 @@ class Group(models.Model):
     departure = models.BooleanField(default=False)
 
     def __str__(self):
-        return 'cost={},departure={}'\
-            .format(self.cost, self.departure)    
+        return 'driver={},from_location={},to_location={},cost={},departure={}'\
+            .format(self.driver, self.from_location, self.to_location, self.cost, self.departure)    
 

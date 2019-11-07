@@ -5,15 +5,15 @@ GROUP_CREATED_EVENT = 'event.group_created'
 
 class GroupCreatedEvent(DomainEvent):
     
-    def __init__(self, riders, from_location, to_location):
+    def __init__(self, rider_id_list, from_location, to_location):
         super().__init__(GROUP_CREATED_EVENT, "v1")
-        self._riders = riders
+        self._rider_id_list = _rider_id_list
         self._from_location = from_location
         self._to_location = to_location
     
     @property
-    def riders(self):
-        return self._riders
+    def rider_id_list(self):
+        return self._rider_id_list
     
     @property
     def from_location(self):

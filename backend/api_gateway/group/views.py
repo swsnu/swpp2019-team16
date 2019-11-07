@@ -44,7 +44,7 @@ def update_group(request):
 def __update_group(request):
     body = json.loads(request.body.decode())
     # TODO: check KeyError
-    command = GroupUpdateCommand(driver=body['driver'])
+    command = GroupUpdateCommand(driver_id=body['driver_id'])
 
     result = RedisRpcClient().call(GROUP_UPDATE_COMMAND, command)
 
