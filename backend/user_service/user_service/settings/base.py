@@ -16,6 +16,7 @@ import sys
 
 sys.path.append(os.path.abspath('../../common'))
 sys.path.append(os.path.abspath('../..'))
+sys.path.append(os.path.abspath('../../group_service'))
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
@@ -43,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'user',
-    'backend',
+    'backend.group_service.group'
 ]
 
 MIDDLEWARE = [

@@ -1,3 +1,5 @@
+import json
+
 class RpcResponse:
 
     def __init__(self, result, id):
@@ -16,7 +18,8 @@ class RpcResponse:
     @property
     def id(self):
         return self._id
-
+        
     def __str__(self):
+        
         return 'jsonrpc={},id={},result={}'.format(
             self.jsonrpc, self.id, self.result)
