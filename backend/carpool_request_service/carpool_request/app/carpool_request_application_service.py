@@ -28,7 +28,6 @@ class CarpoolRequestApplicationService():
     def delete(self, request_id):
         return CarpoolRequest.objects.filter(id=request_id).delete()
 
-    def get(self, rider_id):
-        rider = Rider.objects.get(id=rider_id)
-        return CarpoolRequest.objects.filter(rider=rider)
-
+    def get(self, request_id):
+        return CarpoolRequest.objects.get(id=request_id)
+        
