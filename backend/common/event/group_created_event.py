@@ -22,3 +22,6 @@ class GroupCreatedEvent(DomainEvent):
     @property
     def to_location(self):
         return self._to_location
+
+    def __str__(self):
+        return 'from_location={},to_location={}'.format(self._from_location, self._to_location)

@@ -15,7 +15,7 @@ class StreamService(pb_grpc.StreamServiceServicer):
     def StreamMessage(self, request, context):
         while True:
             message = self.__message_queue.get()
-
+            print('message', message)
             yield pb.Message(
                 id=shortuuid.uuid(),
                 type=message.type_name,

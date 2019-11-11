@@ -3,7 +3,7 @@ import logging
 
 from backend.user_service.user.domain.rider import Rider
 from backend.carpool_request_service.carpool_request.domain.carpool_request import CarpoolRequest
-from backend.common.messaging.infra.adapter.redis.redis_message_publisher import RedisMessagePublisher
+from backend.common.messaging.infra.redis.redis_message_publisher import RedisMessagePublisher
 from backend.common.command.group_create_command import GroupCreateCommand, GROUP_CREATE_COMMAND
 
 

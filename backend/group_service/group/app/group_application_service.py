@@ -1,7 +1,7 @@
 import logging
 
 from backend.group_service.group.domain.group import Group
-from backend.common.messaging.infra.adapter.redis.redis_message_publisher import RedisMessagePublisher
+from backend.common.messaging.infra.redis.redis_message_publisher import RedisMessagePublisher
 from backend.common.event.group_created_event import GroupCreatedEvent, GROUP_CREATED_EVENT
 
 logger = logging.getLogger(__name__)

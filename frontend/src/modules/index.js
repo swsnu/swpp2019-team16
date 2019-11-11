@@ -1,11 +1,10 @@
 import { combineReducers } from 'redux';
 import { all } from 'redux-saga/effects';
 import auth from './auth';
-import carpoolRequest from './carpoolRequest';
+import carpoolRequest, { carpoolRequestSaga } from './carpoolRequest';
 import group from './group';
 import loading from './loading';
 import user from './user';
-import { grpcSaga } from '../lib/createGrpcChannelSaga';
 
 const rootReducer = combineReducers({
   auth,
@@ -16,7 +15,9 @@ const rootReducer = combineReducers({
 });
 
 export function* rootSaga() {
-  yield all([grpcSaga()]);
+  yield all([
+    carpoolRequestSaga(),
+  ]);
 }
 
 export default rootReducer;
