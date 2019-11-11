@@ -30,4 +30,18 @@ class CarpoolRequestApplicationService():
 
     def get(self, request_id):
         return CarpoolRequest.objects.get(id=request_id)
-        
+    ''' 
+    def login(self, user_id, user_type):
+        if user_type=="RIDER": 
+            rider = Rider.objects.filter(user_id=user_id)
+            if(len(rider)!=0):
+                rider_id = rider.values()[0]['id']
+                if(len(CarpoolRequest.objects.filter(rider_id=rider_id))==0)):
+                    CarpoolRequest.objects.filter(rider_id=rider_id)
+
+        elif user_type == "DRIVER":    
+            
+        else:
+            return "USER_TYPE IS INVALID"
+    '''
+    

@@ -33,3 +33,11 @@ class UserApplicationServiceTestCase(TestCase):
         self.assertEqual(result.email, EMAIL)
         self.assertEqual(result.vehicle.car_type, CAR_TYPE)
         self.assertEqual(result.vehicle.plate, PLATE)
+
+    def test_login(self):
+        EMAIL = 'test@gmail.com'
+        PASSWORD = 1234
+        
+        result = self.user_application_service.login(
+            email=EMAIL, password=PASSWORD
+        )

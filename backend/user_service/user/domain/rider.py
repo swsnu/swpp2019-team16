@@ -6,7 +6,7 @@ class Rider(models.Model):
     class Meta:
         app_label = 'user'
 
-    status = models.CharField(max_length=255)
+    status = models.CharField(max_length=255, default="IDLE")
     group = models.ForeignKey(
         'group.Group',
         blank=True,
@@ -20,6 +20,6 @@ class Rider(models.Model):
 
     def __str__(self):
         if self.group is None:
-            return 'user_id={}'.format(self.user.id)
+            return 'user_id={},status={}'.format(self.user.id, self.status)
         else:
-            return 'user_id={},group_id={}'.format(self.user.id, self.group.id)
+            return 'user_id={},group_id={},status={}'.format(self.user.id, self.group.id, self.status)
