@@ -1,9 +1,9 @@
 import json
 
 from django.contrib.auth import get_user_model, logout, login, authenticate
-
+from django.views.decorators.csrf import ensure_csrf_cookie
 from django.http \
-    import HttpResponseNotAllowed, JsonResponse
+    import HttpResponseNotAllowed, JsonResponse, HttpResponse
 
 from backend.common.command.user_create_command \
     import UserCreateCommand, USER_CREATE_COMMAND
@@ -37,7 +37,7 @@ def __register_user(request):
     body = json.loads(request.body.decode())
     # TODO: check KeyError
     command = UserCreateCommand(
-        email=body['email'], password=body['password'])
+        email=body['email'], password=body['password'], user_type=body['user_type'])
 
     result = RedisRpcClient().call(USER_CREATE_COMMAND, command)
     data = {'jsonrps': result.jsonrpc, 'id':result.id, 'result':result.result}
@@ -82,9 +82,19 @@ def logout_user(request):
 
 def __logout_user(request):
     if request.user.is_authenticated:
-        logout(request)
+        user_id=request.user.id 
+        #print(user_id)
         command = UserLogoutCommand(user_id)
         result = RedisRpcClient().call(USER_LOGOUT_COMMAND, command)
+        #print(result)
+        logout(request)
         return HttpResponse(status=204)
     else:
         return HttpResponse(status=401)
+
+@ensure_csrf_cookie
+def token(request):
+    if request.method == 'GET':
+        return HttpResponse(status=204)
+    else:
+        return HttpResponseNotAllowed(['GET'])

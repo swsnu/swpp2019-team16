@@ -14,6 +14,7 @@ import os
 import sys
 
 
+sys.path.append(os.path.abspath('../../group_service'))
 sys.path.append(os.path.abspath('../../user_service'))
 sys.path.append(os.path.abspath('../../common'))
 sys.path.append(os.path.abspath('../..'))
@@ -43,8 +44,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'backend.user_service.user',
+    'backend.group_service.group',
     'user_endpoint',
-    'group',
+    'group_endpoint',
+    'carpool_request_endpoint',
 ]
 
 MIDDLEWARE = [

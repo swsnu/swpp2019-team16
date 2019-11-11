@@ -15,22 +15,23 @@ logger = logging.getLogger(__name__)
 
 class UserApplicationService():
 
-    def register(self, email, password, car_type, plate):
+    def register(self, email, password, user_type, car_type, plate):
         vehicle = None
         if car_type is not None and plate is not None:
             vehicle = Vehicle.objects.create(car_type=car_type, plate=plate)
 
         return get_user_model().objects.create_user(
-            email=email, password=password, vehicle=vehicle)
+            email=email, password=password, user_type=user_type, vehicle=vehicle)
 
-    def login(self, user_id, user_type):
+    def login(self, user_id):
         user = get_user_model().objects.get(id=user_id)
+        user_type = user.user_type
         if user_type == "RIDER":
-            if(len(Rider.objects.filter(id=user_id))==0):
+            if(len(Rider.objects.filter(user_id=user_id))==0):
                 Rider.objects.create(user=user, status="IDLE")
             return
         elif user_type == "DRIVER":
-            if(len(Driver.objects.filter(id=user_id))==0):
+            if(len(Driver.objects.filter(user_id=user_id))==0):
                 return Driver.objects.create(user=user, status="IDLE")
         else:
             #user_type error handle
@@ -48,18 +49,4 @@ class UserApplicationService():
             rider.delete()
 
         #Driver.objects.filter(id=user_id).delete()
-        
-        '''
-        rider = Rider.objects.get(id=rider_id)
-        result = CarpoolRequest.objects.create(from_location=from_location, to_location=to_location, \
-                                                minimum_passenger=minimum_passenger, rider=rider)
-    
-        hold_request = CarpoolRequest.objects.filter(status="IDLE")
-        same_location_request = hold_request.filter(from_location=result.from_location).filter(to_location=result.to_location)
-        if len(same_location_request) == 4:
-            target_request = same_location_request
-            target_request.delete()
-            command = GroupCreateCommand(from_location=from_location, to_location=to_location)
-            RedisMessagePublisher().publish_message(command)'''
-
         
