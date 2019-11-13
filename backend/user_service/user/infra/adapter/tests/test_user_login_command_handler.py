@@ -14,7 +14,7 @@ class UserLoginCommandHandlerTestCase(TestCase):
 
         with self.assertRaises(ValueError):
             user_login_command_handler.handle(
-                UserLoginCommand(user_id=None, user_type=None))
+                UserLoginCommand(user_id=None))
 
     def test_when_message_valid_field_then_call_register(self):
 
@@ -23,20 +23,17 @@ class UserLoginCommandHandlerTestCase(TestCase):
             def __init__(self, assert_func):
                 self.assert_func = assert_func
 
-            def login(self, user_id, user_type):
-                self.assert_func(user_id, user_type)
+            def login(self, user_id):
+                self.assert_func(user_id)
 
-        USER_ID = 1
-        USER_TYPE = 'RIDER'       
+        USER_ID = 1   
 
-        def assert_func(user_id, user_type):
+        def assert_func(user_id):
             self.assertEqual(user_id, USER_ID)
-            self.assertEqual(user_type, USER_TYPE)
 
         mock_user_application_service = \
             MockUserApplicationService(assert_func=assert_func)
         user_login_command_handler = UserLoginCommandHandler(
             user_application_service=mock_user_application_service)
 
-        user_login_command_handler.handle(UserLoginCommand(
-            user_id=USER_ID, user_type=USER_TYPE))
+        user_login_command_handler.handle(UserLoginCommand(user_id=USER_ID))

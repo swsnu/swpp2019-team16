@@ -63,10 +63,7 @@ def __login_user(request):
     user = authenticate(email=email, password=password)
     if user is not None:
         login(request, user)
-        user_type = req_data['user_type']
-        command = UserLoginCommand(
-        user_id=request.user.id, user_type=user_type
-        )
+        command = UserLoginCommand(user_id=request.user.id)
 
         result = RedisRpcClient().call(USER_LOGIN_COMMAND, command)
         return HttpResponse(status=204)
