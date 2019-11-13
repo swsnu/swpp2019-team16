@@ -18,5 +18,5 @@ class CarpoolRequest(models.Model):
 
 
     def __str__(self):
-        return 'rider_id={},from={},to={}'.format(self.rider.id, self.from_location, self.to_location)
+        return 'rider_id={},from={},to={}'.format(self.rider_id, self.from_location, self.to_location)
 

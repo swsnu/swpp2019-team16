@@ -6,7 +6,8 @@ CARPOOL_REQUEST_CREATE_COMMAND = 'command.carpool_request_create'
 
 class CarpoolRequestCreateCommand(Command):
 
-    def __init__(self, from_location, to_location, minimum_passenger, rider_id):
+    def __init__(self, from_location, \
+                to_location, minimum_passenger, rider_id):
         super().__init__(CARPOOL_REQUEST_CREATE_COMMAND)
         self._from_location = from_location
         self._to_location = to_location
@@ -31,4 +32,5 @@ class CarpoolRequestCreateCommand(Command):
 
     def __str__(self):
         return 'rider_id={},from={},to={},minimum_passenger={}'.format(
-            self._rider_id, self._from_location, self._to_location, self._minimum_passenger)
+            self._rider_id, self._from_location, \
+            self._to_location, self._minimum_passenger)

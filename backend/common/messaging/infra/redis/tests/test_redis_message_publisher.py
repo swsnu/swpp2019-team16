@@ -7,7 +7,7 @@ from redis import Redis
 from tenacity import retry, stop_after_delay, wait_exponential
 
 from backend.common.event.domain_event import DomainEvent
-from backend.common.messaging.infra.adapter.redis.redis_message_publisher \
+from backend.common.messaging.infra.redis.redis_message_publisher \
     import RedisMessagePublisher
 
 

@@ -38,7 +38,7 @@ def __create_carpool_request(request):
     )
 
     result = RedisRpcClient().call(CARPOOL_REQUEST_CREATE_COMMAND, command)
-    data = {'jsonrps': result.jsonrpc, 'id':result.id, 'result':result.result}
+    data = {'jsonrpc': result.jsonrpc, 'id':result.id, 'result':result.result}
 
     # TODO: handling exception
     return with_json_response(status=204, data=data)
@@ -55,7 +55,7 @@ def __delete_carpool_request(request):
     # TODO: check KeyError
     command = CarpoolRequestDeleteCommand(request_id=body['request_id'])
     result = RedisRpcClient().call(CARPOOL_REQUEST_DELETE_COMMAND, command)
-    data = {'jsonrps': result.jsonrpc, 'id':result.id, 'result':result.result}
+    data = {'jsonrpc': result.jsonrpc, 'id':result.id, 'result':result.result}
     
     # TODO: handling exception
     return with_json_response(status=204, data=data)

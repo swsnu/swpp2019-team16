@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'user_endpoint',
     'group_endpoint',
     'carpool_request_endpoint',
+    'ping',
 ]
 
 MIDDLEWARE = [

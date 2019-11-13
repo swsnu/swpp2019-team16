@@ -1,6 +1,6 @@
 import json
 
-from django.contrib.auth import get_user_model, logout, login, authenticate
+from django.contrib.auth import logout, login, authenticate
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.http \
     import HttpResponseNotAllowed, JsonResponse, HttpResponse
@@ -40,7 +40,7 @@ def __register_user(request):
         email=body['email'], password=body['password'], user_type=body['user_type'])
 
     result = RedisRpcClient().call(USER_CREATE_COMMAND, command)
-    data = {'jsonrps': result.jsonrpc, 'id':result.id, 'result':result.result}
+    data = {'jsonrps': result.jsonrpc, 'id': result.id, 'result': result.result}
     
     # TODO: handling exception
     return with_json_response(status=204, data=data)
@@ -82,11 +82,9 @@ def logout_user(request):
 
 def __logout_user(request):
     if request.user.is_authenticated:
-        user_id=request.user.id 
-        #print(user_id)
+        user_id=request.user.id
         command = UserLogoutCommand(user_id)
         result = RedisRpcClient().call(USER_LOGOUT_COMMAND, command)
-        #print(result)
         logout(request)
         return HttpResponse(status=204)
     else:

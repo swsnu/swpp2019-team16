@@ -7,7 +7,7 @@ from interface import implements
 from redis import Redis
 
 from backend.common.messaging.message_handler import MessageHandler
-from backend.common.messaging.infra.adapter.redis.redis_message_subscriber \
+from backend.common.messaging.infra.redis.redis_message_subscriber \
     import RedisMessageSubscriber
 from backend.common.messaging.message import Message
 

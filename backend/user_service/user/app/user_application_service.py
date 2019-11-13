@@ -6,7 +6,7 @@ from backend.user_service.user.domain.vehicle import Vehicle
 from backend.user_service.user.domain.driver import Driver
 from backend.user_service.user.domain.rider import Rider
 from backend.common.command.carpool_request_delete_command import CarpoolRequestDeleteCommand, CARPOOL_REQUEST_DELETE_COMMAND
-from backend.common.messaging.infra.adapter.redis.redis_message_publisher import RedisMessagePublisher
+from backend.common.messaging.infra.redis.redis_message_publisher import RedisMessagePublisher
 from backend.carpool_request_service.carpool_request.domain.carpool_request import CarpoolRequest
 
 

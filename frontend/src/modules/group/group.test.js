@@ -19,26 +19,6 @@ describe('group', () => {
   });
 
   describe('action', () => {
-    describe('CREATE_GROUP', () => {
-      it('should successfully create action', async () => {
-        const action = createGroup({
-          groupId: '1',
-          driver: '1',
-          riders: 'riderList',
-          from: 'from',
-          to: 'to',
-        });
-        expect(action.type).toStrictEqual('group/CREATE_GROUP');
-        expect(action.payload).toStrictEqual({
-          groupId: '1',
-          driver: '1',
-          riders: 'riderList',
-          from: 'from',
-          to: 'to',
-        });
-      });
-    });
-
     describe('ACCEPT_GROUP', () => {
       it('should successfully create action', async () => {
         const action = acceptGroup({
@@ -123,43 +103,6 @@ describe('group', () => {
   });
 
   describe('reducer', () => {
-    describe('CREATE_GROUP_SUCCESS', () => {
-      it('should successfully update states', async () => {
-        expect(
-          group(
-            {
-              group: null,
-              error: null,
-            },
-            {
-              type: 'group/CREATE_GROUP_SUCCESS',
-              payload: { id: 'TEST_REQUEST' },
-            },
-          ),
-        ).toStrictEqual({
-          group: { id: 'TEST_REQUEST' },
-          error: null,
-        });
-      });
-    });
-
-    describe('CREATE_GROUP_FAILURE', () => {
-      it('should successfully update states', async () => {
-        expect(
-          group(
-            { group: null },
-            {
-              type: 'group/CREATE_GROUP_FAILURE',
-              payload: { error: 'TEST_ERROR' },
-            },
-          ),
-        ).toStrictEqual({
-          group: null,
-          error: { error: 'TEST_ERROR' },
-        });
-      });
-    });
-
     describe('ACCEPT_GROUP_SUCCESS', () => {
       it('should successfully update states', async () => {
         expect(
@@ -384,43 +327,6 @@ describe('group', () => {
   });
 
   describe('saga', () => {
-    describe('createGroupSaga', () => {
-      it('createGroupSaga success', async () => {
-        const sagaTester = new SagaTester({
-          initialState,
-          reducers: group,
-        });
-
-        sagaTester.start(groupSaga);
-
-        sagaTester.dispatch({
-          type: 'group/CREATE_GROUP',
-          payload: {
-            groupId: '1',
-            driver: '1',
-            riders: 'riderList',
-            from: 'from',
-            to: 'to',
-          },
-        });
-
-        await sagaTester.waitFor('group/CREATE_GROUP');
-
-        const result = sagaTester.getCalledActions();
-
-        expect(result).toContainEqual({
-          type: 'group/CREATE_GROUP',
-          payload: {
-            groupId: '1',
-            driver: '1',
-            riders: 'riderList',
-            from: 'from',
-            to: 'to',
-          },
-        });
-      });
-    });
-
     describe('acceptGroupSaga', () => {
       it('acceptGroupSaga success', async () => {
         const sagaTester = new SagaTester({

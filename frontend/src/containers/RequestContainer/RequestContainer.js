@@ -18,10 +18,9 @@ function RequestContainer({ history }) {
   const toList = ['301 building', 'Student Center', 'Dormitory three-way'];
   const minimumPassenger = ['2', '3', '4'];
 
-  let onClickRequest = useCallback(
-    ({ userId, from, to, minimumPassenger }) => {
-      console.log("test")
-      dispatch(requestCarpool({ userId, from, to, minimumPassenger }));
+  const onClickRequest = useCallback(
+    ({ rider_id, from, to, minimumPassenger }) => {
+      dispatch(requestCarpool({ rider_id, from, to, minimumPassenger }));
       history.push('/waiting');
     },
     [dispatch, history]

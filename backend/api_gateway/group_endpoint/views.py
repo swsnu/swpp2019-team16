@@ -31,7 +31,7 @@ def __create_group(request):
         to_location=body['to_location'])
 
     result = RedisRpcClient().call(GROUP_CREATE_COMMAND, command)
-    data = {'jsonrps': result.jsonrpc, 'id':result.id, 'result':result.result}
+    data = {'jsonrpc': result.jsonrpc, 'id':result.id, 'result':result.result}
 
     # TODO: handling exception
     return with_json_response(status=204, data=data)
@@ -48,7 +48,7 @@ def __update_group(request):
     command = GroupUpdateCommand(driver_id=body['driver_id'])
 
     result = RedisRpcClient().call(GROUP_UPDATE_COMMAND, command)
-    data = {'jsonrps': result.jsonrpc, 'id':result.id, 'result':result.result}
+    data = {'jsonrpc': result.jsonrpc, 'id':result.id, 'result':result.result}
 
     # TODO: handling exception
     return with_json_response(status=204, data=data)
