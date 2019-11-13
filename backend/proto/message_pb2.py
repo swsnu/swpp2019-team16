@@ -22,7 +22,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\rmessage.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1bgoogle/protobuf/empty.proto\"\x12\n\x04Ping\x12\n\n\x02id\x18\x01 \x01(\t\"\x12\n\x04Pong\x12\n\n\x02id\x18\x01 \x01(\t\"\x05\n\x03\x41\x63k\"`\n\x07Message\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04type\x18\x02 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\t\x12-\n\ttimestamp\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp2e\n\rStreamService\x12\x1d\n\x0bHealthCheck\x12\x05.Ping\x1a\x05.Pong\"\x00\x12\x35\n\rStreamMessage\x12\x16.google.protobuf.Empty\x1a\x08.Message\"\x00\x30\x01\x62\x06proto3')
+  serialized_pb=_b('\n\rmessage.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1bgoogle/protobuf/empty.proto\"\x12\n\x04Ping\x12\n\n\x02id\x18\x01 \x01(\t\"\x12\n\x04Pong\x12\n\n\x02id\x18\x01 \x01(\t\"\x05\n\x03\x41\x63k\"`\n\x07Message\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04type\x18\x02 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\t\x12-\n\ttimestamp\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp2\x98\x01\n\rStreamService\x12\x1d\n\x0bHealthCheck\x12\x05.Ping\x1a\x05.Pong\"\x00\x12\x31\n\x0bSendMessage\x12\x08.Message\x1a\x16.google.protobuf.Empty\"\x00\x12\x35\n\rStreamMessage\x12\x16.google.protobuf.Empty\x1a\x08.Message\"\x00\x30\x01\x62\x06proto3')
   ,
   dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,])
 
@@ -209,8 +209,8 @@ _STREAMSERVICE = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=224,
-  serialized_end=325,
+  serialized_start=225,
+  serialized_end=377,
   methods=[
   _descriptor.MethodDescriptor(
     name='HealthCheck',
@@ -222,9 +222,18 @@ _STREAMSERVICE = _descriptor.ServiceDescriptor(
     serialized_options=None,
   ),
   _descriptor.MethodDescriptor(
+    name='SendMessage',
+    full_name='StreamService.SendMessage',
+    index=1,
+    containing_service=None,
+    input_type=_MESSAGE,
+    output_type=google_dot_protobuf_dot_empty__pb2._EMPTY,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
     name='StreamMessage',
     full_name='StreamService.StreamMessage',
-    index=1,
+    index=2,
     containing_service=None,
     input_type=google_dot_protobuf_dot_empty__pb2._EMPTY,
     output_type=_MESSAGE,

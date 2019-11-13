@@ -22,5 +22,6 @@ message Message {
 
 service StreamService {
     rpc HealthCheck(Ping) returns (Pong) {}
+    rpc SendMessage(Message) returns (google.protobuf.Empty) {}
     rpc StreamMessage(google.protobuf.Empty) returns (stream Message) {}
 }

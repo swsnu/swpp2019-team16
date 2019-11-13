@@ -15,9 +15,7 @@ const rootReducer = combineReducers({
 });
 
 export function* rootSaga() {
-  yield all([
-    carpoolRequestSaga(),
-  ]);
+  yield all([carpoolRequestSaga()]);
 }
 
 export default rootReducer;

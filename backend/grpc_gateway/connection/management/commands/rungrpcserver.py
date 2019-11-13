@@ -6,7 +6,6 @@ import grpc
 from django.conf import settings
 from django.core.management import BaseCommand
 
-from backend.grpc_gateway.connection.domain.message_queue import MessageQueue
 from backend.grpc_gateway.connection.domain.stream_service import StreamService
 from backend.grpc_gateway.connection.infra.grpc_server import GrpcServer
 from backend.common.utils.signal_handler \
@@ -25,12 +24,10 @@ import backend.proto.message_pb2_grpc as pb_grpc
 class Command(BaseCommand):
     subscriber = RedisMessageSubscriber()
 
-    message_queue = MessageQueue()
+    stream_service = StreamService()
 
-    stream_service = StreamService(message_queue=message_queue)
-
-    group_created_event_handler = GroupCreatedEventHandler(message_queue)
-    ping_command_handler = PingCommandHandler(message_queue)
+    group_created_event_handler = GroupCreatedEventHandler()
+    ping_command_handler = PingCommandHandler()
 
     grpc_server = GrpcServer(stream_service)
 

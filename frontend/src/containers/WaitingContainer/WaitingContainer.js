@@ -14,13 +14,15 @@ function WaitingContainer({ history }) {
   useEffect(() => {
     const stream = createGrpcStream();
     stream.on('data', message => {
-      message = JSON.parse(message.getData());
-
-      if (message._type_name === 'event.group_created') {
-        dispatch(groupCreated({
-          from: message._from_location,
-          to: message._to_location,
-        }));
+      const parsed = JSON.parse(message.getData());
+      console.log('parsed', parsed);
+      if (parsed._type_name === 'event.group_created') {
+        dispatch(
+          groupCreated({
+            from: parsed._from_location,
+            to: parsed._to_location,
+          }),
+        );
       }
     });
     stream.on('status', status => {
@@ -33,8 +35,8 @@ function WaitingContainer({ history }) {
     return () => {
       dispatch(unloadGroup());
       stream.cancel();
-    }
-  }, []);
+    };
+  }, [dispatch, history]);
 
   useEffect(() => {
     if (group) {

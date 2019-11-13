@@ -21,7 +21,4 @@ class GrpcServer:
 
         grpc_server.start()
 
-        try:
-            grpc_server.wait_for_termination()
-        except KeyboardInterrupt:
-            grpc_server.stop(0)
+        grpc_server.wait_for_termination()

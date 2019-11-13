@@ -20,6 +20,11 @@ class StreamServiceStub(object):
         request_serializer=message__pb2.Ping.SerializeToString,
         response_deserializer=message__pb2.Pong.FromString,
         )
+    self.SendMessage = channel.unary_unary(
+        '/StreamService/SendMessage',
+        request_serializer=message__pb2.Message.SerializeToString,
+        response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+        )
     self.StreamMessage = channel.unary_stream(
         '/StreamService/StreamMessage',
         request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
@@ -32,6 +37,13 @@ class StreamServiceServicer(object):
   pass
 
   def HealthCheck(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def SendMessage(self, request, context):
     # missing associated documentation comment in .proto file
     pass
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -52,6 +64,11 @@ def add_StreamServiceServicer_to_server(servicer, server):
           servicer.HealthCheck,
           request_deserializer=message__pb2.Ping.FromString,
           response_serializer=message__pb2.Pong.SerializeToString,
+      ),
+      'SendMessage': grpc.unary_unary_rpc_method_handler(
+          servicer.SendMessage,
+          request_deserializer=message__pb2.Message.FromString,
+          response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
       ),
       'StreamMessage': grpc.unary_stream_rpc_method_handler(
           servicer.StreamMessage,

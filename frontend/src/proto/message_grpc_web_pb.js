@@ -162,6 +162,83 @@ proto.StreamServicePromiseClient.prototype.healthCheck = function(
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
+ *   !proto.Message,
+ *   !proto.google.protobuf.Empty>}
+ */
+const methodDescriptor_StreamService_SendMessage = new grpc.web.MethodDescriptor(
+  '/StreamService/SendMessage',
+  grpc.web.MethodType.UNARY,
+  proto.Message,
+  google_protobuf_empty_pb.Empty,
+  /** @param {!proto.Message} request */
+  function(request) {
+    return request.serializeBinary();
+  },
+  google_protobuf_empty_pb.Empty.deserializeBinary,
+);
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.Message,
+ *   !proto.google.protobuf.Empty>}
+ */
+const methodInfo_StreamService_SendMessage = new grpc.web.AbstractClientBase.MethodInfo(
+  google_protobuf_empty_pb.Empty,
+  /** @param {!proto.Message} request */
+  function(request) {
+    return request.serializeBinary();
+  },
+  google_protobuf_empty_pb.Empty.deserializeBinary,
+);
+
+/**
+ * @param {!proto.Message} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.google.protobuf.Empty)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.StreamServiceClient.prototype.sendMessage = function(
+  request,
+  metadata,
+  callback,
+) {
+  return this.client_.rpcCall(
+    this.hostname_ + '/StreamService/SendMessage',
+    request,
+    metadata || {},
+    methodDescriptor_StreamService_SendMessage,
+    callback,
+  );
+};
+
+/**
+ * @param {!proto.Message} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.google.protobuf.Empty>}
+ *     A native promise that resolves to the response
+ */
+proto.StreamServicePromiseClient.prototype.sendMessage = function(
+  request,
+  metadata,
+) {
+  return this.client_.unaryCall(
+    this.hostname_ + '/StreamService/SendMessage',
+    request,
+    metadata || {},
+    methodDescriptor_StreamService_SendMessage,
+  );
+};
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
  *   !proto.google.protobuf.Empty,
  *   !proto.Message>}
  */
