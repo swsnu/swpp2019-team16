@@ -2,6 +2,7 @@ from django.db import models
 
 from backend.user_service.user.domain.user import User
 
+
 class Rider(models.Model):
     class Meta:
         app_label = 'user'

@@ -1,5 +1,6 @@
-from interface import implements 
+from interface import implements
 from backend.common.messaging.message_handler import MessageHandler
+
 
 class GroupUpdateCommandHandler(implements(MessageHandler)):
 
@@ -12,6 +13,3 @@ class GroupUpdateCommandHandler(implements(MessageHandler)):
 
         self.__group_application_service.update_group(
             group_id=message.group_id, driver_id=message.driver_id)
-            
-
-        

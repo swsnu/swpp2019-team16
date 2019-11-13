@@ -5,6 +5,7 @@ from backend.group_service.group.infra.adapter.group_create_command_handler \
 from backend.common.command.group_create_command \
     import GroupCreateCommand
 
+
 class GroupCreateCommandHandlerTestCase(TestCase):
 
     def test_when_invalid(self):
@@ -14,7 +15,8 @@ class GroupCreateCommandHandlerTestCase(TestCase):
 
         with self.assertRaises(ValueError):
             group_create_command_handler.handle(
-                GroupCreateCommandHandler(rider_id_list=None))
+                GroupCreateCommand(
+                    rider_id_list=None, from_location=None, to_location=None))
 
     def test_when_group_created(self):
 
@@ -23,14 +25,14 @@ class GroupCreateCommandHandlerTestCase(TestCase):
             def __init__(self, assert_func):
                 self.assert_func = assert_func
 
-            def create(self, rider_id_list, from_location, to_location):
+            def create_group(self, rider_id_list, from_location, to_location):
                 self.assert_func(rider_id_list, from_location, to_location)
 
         RIDER_ID_LIST = [1, 2, 3, 4]
-        FROM_LOCATION ='SNU Station'
+        FROM_LOCATION = 'SNU Station'
         TO_LOCATION = '301 Building'
 
-        def assert_func(rider_id_list, from_location, to_location, cost, departure):
+        def assert_func(rider_id_list, from_location, to_location):
             self.assertEqual(rider_id_list, RIDER_ID_LIST)
             self.assertEqual(from_location, FROM_LOCATION)
             self.assertEqual(to_location, TO_LOCATION)
@@ -38,7 +40,7 @@ class GroupCreateCommandHandlerTestCase(TestCase):
         mock_group_application_service = \
             MockGroupApplicationService(assert_func=assert_func)
         group_create_command_handler = GroupCreateCommandHandler(
-            group_application_service = mock_group_application_service)
+            group_application_service=mock_group_application_service)
 
-        group_create_command_handler.handle(GroupCreateCommandHandler(
-            rider_id_list=RIDER_ID_LIST, from_location=FROM_LOCATION, to_location=TO_LOCATION))  
+        group_create_command_handler.handle(GroupCreateCommand(
+            rider_id_list=RIDER_ID_LIST, from_location=FROM_LOCATION, to_location=TO_LOCATION))
