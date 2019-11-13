@@ -6,6 +6,8 @@ from backend.user_service.user.infra.adapter.user_create_command_handler \
     import UserCreateCommandHandler
 from backend.user_service.user.infra.adapter.user_login_command_handler \
     import UserLoginCommandHandler
+from backend.user_service.user.infra.adapter.user_logout_command_handler \
+    import UserLogoutCommandHandler
 from backend.user_service.user.app.user_application_service \
     import UserApplicationService
 from backend.common.messaging.infra.redis.redis_message_subscriber \
@@ -14,6 +16,8 @@ from backend.common.command.user_create_command \
     import USER_CREATE_COMMAND
 from backend.common.command.user_login_command \
     import USER_LOGIN_COMMAND
+from backend.common.command.user_logout_command \
+    import USER_LOGOUT_COMMAND
 from backend.common.rpc.infra.adapter.redis.redis_rpc_server \
     import RedisRpcServer
 from backend.common.utils.signal_handler import register_signal_handler, shutdown_process
@@ -26,6 +30,9 @@ class Command(BaseCommand):
         user_application_service=user_application_service)
     user_login_command_handler = UserLoginCommandHandler(
         user_application_service=user_application_service)
+    user_logout_command_handler = UserLogoutCommandHandler(
+        user_application_service=user_application_service
+    )
     subscriber = RedisMessageSubscriber()
     rpc_server = RedisRpcServer()
 
@@ -58,6 +65,16 @@ class Command(BaseCommand):
                     topic=USER_LOGIN_COMMAND,
                     request_handler=self.user_login_command_handler))
         
+            user_logout_subscription_task = asyncio.create_task(
+                self.subscriber.subscribe_message(
+                    topic=USER_LOGOUT_COMMAND,
+                    message_handler=self.user_logout_command_handler))
+
+            user_logout_rpc_task = asyncio.create_task(
+                self.rpc_server.register_handler(
+                    topic=USER_LOGOUT_COMMAND,
+                    request_handler=self.user_logout_command_handler))
+        
             """
             wait until application stop
             """
@@ -66,6 +83,8 @@ class Command(BaseCommand):
                 user_create_rpc_task,
                 user_login_subscription_task,
                 user_login_rpc_task,
+                user_logout_subscription_task,
+                user_logout_rpc_task,
             )
 
         loop.create_task(main())

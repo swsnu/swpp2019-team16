@@ -14,6 +14,10 @@ from backend.common.command.carpool_request_create_command \
     import CARPOOL_REQUEST_CREATE_COMMAND
 from backend.common.command.carpool_request_delete_command \
     import CARPOOL_REQUEST_DELETE_COMMAND
+'''
+from backend.common.command.user_login_command \
+    import USER_LOGIN_COMMAND
+'''
 from backend.common.rpc.infra.adapter.redis.redis_rpc_server \
     import RedisRpcServer
 from backend.common.utils.signal_handler import register_signal_handler, shutdown_process
@@ -26,6 +30,9 @@ class Command(BaseCommand):
         carpool_request_application_service=carpool_request_application_service)
     carpool_request_delete_command_handler = CarpoolRequestDeleteCommandHandler(
         carpool_request_application_service=carpool_request_application_service)
+    '''
+    user_login_command_handler = UserLoginCommandHandler(
+        carpool_request_application_service=carpool_request_application_service)'''
     subscriber = RedisMessageSubscriber()
     rpc_server = RedisRpcServer()
 
@@ -58,6 +65,31 @@ class Command(BaseCommand):
                     topic=CARPOOL_REQUEST_DELETE_COMMAND,
                     request_handler=self.carpool_request_delete_command_handler))
 
+            carpool_request_create_subscription_task = asyncio.create_task(
+                self.subscriber.subscribe_message(
+                    topic=CARPOOL_REQUEST_CREATE_COMMAND,
+                    message_handler=self.carpool_request_create_command_handler))
+
+            carpool_request_create_rpc_task = asyncio.create_task(
+                self.rpc_server.register_handler(
+                    topic=CARPOOL_REQUEST_CREATE_COMMAND,
+                    request_handler=self.carpool_request_create_command_handler))
+
+            carpool_request_delete_subscription_task = asyncio.create_task(
+                self.subscriber.subscribe_message(
+                    topic=CARPOOL_REQUEST_DELETE_COMMAND,
+                    message_handler=self.carpool_request_delete_command_handler))
+            '''
+            user_login_subscription_task = asyncio.create_task(
+                self.subscriber.subscribe_message(
+                    topic=USER_LOGIN_COMMAND,
+                    message_handler=self.user_login_command_handler))
+
+            user_login_rpc_task = asyncio.create_task(
+                self.rpc_server.register_handler(
+                    topic=USER_LOGIN_COMMAND,
+                    request_handler=self.user_login_command_handler))'''
+        
             """
             wait until application stop
             """
@@ -65,7 +97,7 @@ class Command(BaseCommand):
                 carpool_request_create_subscription_task,
                 carpool_request_create_rpc_task,
                 carpool_request_delete_subscription_task,
-                carpool_request_delete_rpc_task,
+                carpool_request_delete_rpc_task
             )
 
         loop.create_task(main())

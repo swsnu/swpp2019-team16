@@ -8,13 +8,13 @@ from backend.common.command.user_login_command \
 
 class UserLoginCommandHandlerTestCase(TestCase):
 
-    def test_when_message_has_no_email_or_password_or_no_user_type_raise_exception(self):
+    def test_when_message_has_user_id_or_no_user_type_raise_exception(self):
         user_login_command_handler = \
             UserLoginCommandHandler(user_application_service=None)
 
         with self.assertRaises(ValueError):
             user_login_command_handler.handle(
-                UserLoginCommand(email=None, password=None, user_type=None, request=None))
+                UserLoginCommand(user_id=None))
 
     def test_when_message_valid_field_then_call_register(self):
 
@@ -23,24 +23,17 @@ class UserLoginCommandHandlerTestCase(TestCase):
             def __init__(self, assert_func):
                 self.assert_func = assert_func
 
-            def login(self, email, password, user_type, request):
-                self.assert_func(email, password, user_type, request)
+            def login(self, user_id):
+                self.assert_func(user_id)
 
-        EMAIL = 'test@gmail.com'
-        PASSWORD = 1234
-        USER_TYPE = 'RIDER'        
-        REQUEST = {'user':{id: 1}}
+        USER_ID = 1   
 
-        def assert_func(email, password, user_type, request):
-            self.assertEqual(email, EMAIL)
-            self.assertEqual(password, PASSWORD)
-            self.assertEqual(user_type, USER_TYPE)
-            self.assertEqual(request, REQUEST)
+        def assert_func(user_id):
+            self.assertEqual(user_id, USER_ID)
 
         mock_user_application_service = \
             MockUserApplicationService(assert_func=assert_func)
         user_login_command_handler = UserLoginCommandHandler(
             user_application_service=mock_user_application_service)
 
-        user_login_command_handler.handle(UserLoginCommand(
-            email=EMAIL, password=PASSWORD, user_type=USER_TYPE, request=REQUEST))
+        user_login_command_handler.handle(UserLoginCommand(user_id=USER_ID))

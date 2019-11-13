@@ -2,12 +2,13 @@ import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Request from '../../components/Request';
 import { withRouter } from 'react-router-dom';
-import { requestCarpool } from '../../modules/carpoolRequest';
+import { requestCarpool } from '../../modules/carpoolRequest/carpoolRequest';
 
 RequestContainer.propTypes = {};
 
 function RequestContainer({ history }) {
-  const dispatch = useDispatch();
+  const dispatch= useDispatch();
+
   const user = useSelector(user => ({
     user: user.user,
   }));
@@ -18,11 +19,11 @@ function RequestContainer({ history }) {
   const minimumPassenger = ['2', '3', '4'];
 
   const onClickRequest = useCallback(
-    ({ userId, from, to, minimumPassenger }) => {
-      dispatch(requestCarpool({ userId, from, to, minimumPassenger }));
+    ({ rider_id, from, to, minimumPassenger }) => {
+      dispatch(requestCarpool({ rider_id, from, to, minimumPassenger }));
       history.push('/waiting');
     },
-    [dispatch, history],
+    [dispatch, history]
   );
 
   if (!user) {

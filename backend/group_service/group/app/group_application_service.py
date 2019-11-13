@@ -7,11 +7,10 @@ from backend.common.event.group_created_event import GroupCreatedEvent, GROUP_CR
 logger = logging.getLogger(__name__)
 
 class GroupApplicationService:
-    def create_group(self, from_location, to_location):
-
+    def create_group(self, rider_id_list, from_location, to_location):
         print("created group")
         Group.objects.create(from_location=from_location, to_location=to_location)
-        event = GroupCreatedEvent(from_location=from_location, to_location=to_location)
+        event = GroupCreatedEvent(rider_id_list=rider_id_list, from_location=from_location, to_location=to_location)
         RedisMessagePublisher().publish_message(event)
             
         return;

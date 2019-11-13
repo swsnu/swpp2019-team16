@@ -31,12 +31,15 @@ function Request({ user, fromList, toList, minimumPassenger, onClickRequest }) {
       return;
     }
 
+    console.log("button test")
     onClickRequest({
       userId: 1,
       from: from,
       to: to,
       minimumPassenger: minPassenger,
     });
+    console.log("button test2")
+    
   };
 
   return (

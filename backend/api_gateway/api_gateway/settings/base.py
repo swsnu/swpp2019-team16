@@ -14,6 +14,8 @@ import os
 import sys
 
 
+sys.path.append(os.path.abspath('../../group_service'))
+sys.path.append(os.path.abspath('../../user_service'))
 sys.path.append(os.path.abspath('../../common'))
 sys.path.append(os.path.abspath('../..'))
 
@@ -41,8 +43,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'user',
-    'group',
+    'backend.user_service.user',
+    'backend.group_service.group',
+    'user_endpoint',
+    'group_endpoint',
+    'carpool_request_endpoint',
     'ping',
 ]
 
@@ -125,3 +130,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+AUTH_USER_MODEL = 'user.User'
