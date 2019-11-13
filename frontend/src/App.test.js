@@ -1,13 +1,13 @@
 import React from 'react';
 import App from './App';
-import { render, fireEvent } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter, Route } from 'react-router-dom';
+import { renderWithRedux } from './test/utils';
 
 describe('<App />', () => {
   it('SHOULD match with snapshot', async () => {
-    const { container } = render(
+    const { container } = renderWithRedux(
       <MemoryRouter>
-        <App />
+        <Route component={App} path="/" />
       </MemoryRouter>,
     );
     expect(container).toMatchSnapshot();

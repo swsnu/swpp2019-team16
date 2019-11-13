@@ -5,11 +5,11 @@ export function get(id) {
 }
 
 export function create({ userId, from, to, minimumPassenger }) {
-  return client.post('/api/v1/carpool', {
-    userId: userId,
-    from: from,
-    to: to,
-    minimumPassenger: minimumPassenger,
+  return client.post('/api/v1/carpool_request/create', {
+    rider_id: 1,
+    from_location: from,
+    to_location: to,
+    minimum_passenger: minimumPassenger,
   });
 }
 

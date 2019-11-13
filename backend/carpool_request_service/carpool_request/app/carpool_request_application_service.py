@@ -3,7 +3,7 @@ import logging
 
 from backend.user_service.user.domain.rider import Rider
 from backend.carpool_request_service.carpool_request.domain.carpool_request import CarpoolRequest
-from backend.common.messaging.infra.adapter.redis.redis_message_publisher import RedisMessagePublisher
+from backend.common.messaging.infra.redis.redis_message_publisher import RedisMessagePublisher
 from backend.common.command.group_create_command import GroupCreateCommand, GROUP_CREATE_COMMAND
 
 
@@ -19,9 +19,8 @@ class CarpoolRequestApplicationService():
         if len(same_location_request) == 4:
             target_request = same_location_request
             target_request.delete()
-            command = GroupCreateCommand(from_location="from_location", to_location="to_location")
+            command = GroupCreateCommand(from_location=from_location, to_location=to_location)
             RedisMessagePublisher().publish_message(command)
-            #print(de)
             
 
         return result

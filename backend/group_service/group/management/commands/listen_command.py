@@ -8,7 +8,7 @@ from backend.group_service.group.infra.adapter.group_create_command_handler \
     import GroupCreateCommandHandler
 from backend.group_service.group.app.group_application_service \
     import GroupApplicationService
-from backend.common.messaging.infra.adapter.redis.redis_message_subscriber \
+from backend.common.messaging.infra.redis.redis_message_subscriber \
     import RedisMessageSubscriber
 from backend.common.command.group_create_command \
     import GROUP_CREATE_COMMAND

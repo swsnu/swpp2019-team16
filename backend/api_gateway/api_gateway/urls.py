@@ -20,4 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/user/', include('user.urls')),
     path('api/v1/carpool_request/', include('carpool_request.urls')),
+    path('api/v1/healthz/', include('ping.urls')),
+    path('api/v1/group/', include('group.urls')),
 ]

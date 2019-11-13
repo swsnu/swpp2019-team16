@@ -23,10 +23,4 @@ describe('UserGroup />', () => {
     );
     expect(container).toMatchSnapshot();
   });
-
-  // const onClickOnTaxi = jest.fn(params => {
-  //   expect(params.id).toBe(USER_ID);
-  //   done();
-  // });
-  // fireEvent.click(getByText('On Taxi'));
 });
