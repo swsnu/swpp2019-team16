@@ -3,7 +3,8 @@ import json
 from django.http import JsonResponse, HttpResponseNotAllowed, HttpResponse
 
 from backend.common.command.ping_command import PingCommand
-from backend.common.messaging.infra.redis.redis_message_publisher import RedisMessagePublisher
+from backend.common.messaging.infra.redis.redis_message_publisher \
+    import RedisMessagePublisher
 
 
 def with_json_response(status, data):

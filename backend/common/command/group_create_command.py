@@ -12,6 +12,10 @@ class GroupCreateCommand(Command):
         self._to_location = to_location
 
     @property
+    def rider_id_list(self):
+        return self._rider_id_list
+
+    @property
     def from_location(self):
         return self._from_location
         
@@ -19,10 +23,6 @@ class GroupCreateCommand(Command):
     def to_location(self):
         return self._to_location
 
-    @property
-    def rider_id_list(self):
-        return self._rider_id_list
-
     def __str__(self):
-        return 'from_location={},to_location={}'.format(
-            self._from_location, self._to_location)    
+        return 'rider_id_list={},from_location={},to_location={}'.format(
+            self._rider_id_list, self._from_location, self._to_location)

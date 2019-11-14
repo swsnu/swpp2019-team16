@@ -2,6 +2,7 @@ from django.db import models
 
 from backend.user_service.user.domain.user import User
 
+
 class Driver(models.Model):
     class Meta:
         app_label = 'user'
@@ -30,4 +31,3 @@ class Driver(models.Model):
             return 'user_id={}'.format(self.user.id)
         else:
             return 'user_id={},group={}'.format(self.group.id)
-  

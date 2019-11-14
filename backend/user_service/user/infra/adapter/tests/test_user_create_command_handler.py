@@ -45,4 +45,5 @@ class UserCreateCommandHandlerTestCase(TestCase):
             user_application_service=mock_user_application_service)
 
         user_create_command_handler.handle(UserCreateCommand(
-            email=EMAIL, password=PASSWORD, user_type=USER_TYPE, car_type=CAR_TYPE, plate=PLATE))
+            email=EMAIL, password=PASSWORD, user_type=USER_TYPE,
+            car_type=CAR_TYPE, plate=PLATE))
