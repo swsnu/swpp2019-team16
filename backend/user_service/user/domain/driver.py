@@ -30,4 +30,4 @@ class Driver(models.Model):
         if self.group is None:
             return 'user_id={}'.format(self.user.id)
         else:
-            return 'user_id={},group={}'.format(self.group.id)
+            return 'user_id={},group={}'.format(self.user.id, self.group.id)

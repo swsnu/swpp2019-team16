@@ -5,7 +5,6 @@ import carpoolRequest, { carpoolRequestSaga } from './carpoolRequest';
 import group from './group';
 import loading from './loading';
 import user from './user';
-import { carpoolRequestSaga } from './carpoolRequest/index';
 
 const rootReducer = combineReducers({
   auth,

@@ -7,7 +7,7 @@ import { requestCarpool } from '../../modules/carpoolRequest/carpoolRequest';
 RequestContainer.propTypes = {};
 
 function RequestContainer({ history }) {
-  const dispatch= useDispatch();
+  const dispatch = useDispatch();
 
   const user = useSelector(user => ({
     user: user.user,
@@ -23,7 +23,7 @@ function RequestContainer({ history }) {
       dispatch(requestCarpool({ rider_id, from, to, minimumPassenger }));
       history.push('/waiting');
     },
-    [dispatch, history]
+    [dispatch, history],
   );
 
   if (!user) {
