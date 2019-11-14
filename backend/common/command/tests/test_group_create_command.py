@@ -20,4 +20,4 @@ class GroupCreateCommandTestCase(TestCase):
             from_location='SNU Station', to_location='301 Building')
         self.assertEqual(
             str(command),
-            'rider_id_list=[1, 2, 3, 4], from_location=SNU Station,to_location=301 Building')
+            'rider_id_list=[1, 2, 3, 4],from_location=SNU Station,to_location=301 Building')

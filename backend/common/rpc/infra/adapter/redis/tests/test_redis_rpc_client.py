@@ -17,7 +17,7 @@ class RedisRpcClientTestCase(TestCase):
 
     def test_call(self):
         TOPIC = RandomWords().get_random_word()
-        PARAMS = UserCreateCommand(email='test@gmail.com', password=1234)
+        PARAMS = UserCreateCommand(email='test@gmail.com', password=1234, user_type='RIDER')
         RESULT = 'ok'
 
         def listen():
