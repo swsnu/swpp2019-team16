@@ -8,7 +8,7 @@ function test_component() {
     echo "RUN [$PACKAGE] MIGRATION"
     echo "###########################"
 
-    python manage.py migrate --settings=$PACKAGE.settings.development
+    python3 manage.py migrate --settings=$PACKAGE.settings.development
 
     echo "###########################"
     echo "RUN [$PACKAGE] CHECK CODE FORMATTING"
@@ -26,7 +26,7 @@ function test_component() {
     echo "###########################"
 
     # run test
-    python manage.py test --settings=$PACKAGE.settings.development
+    python3 manage.py test --settings=$PACKAGE.settings.development
 
     if [ $? -ne 0 ]; then
         echo "django test failed" >&2

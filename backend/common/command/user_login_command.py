@@ -15,5 +15,4 @@ class UserLoginCommand(Command):
         return self._user_id 
 
     def __str__(self):
-        return 'user_id={},user_type={}' \
-            .format(self._user_id, self._user_type)
+        return 'user_id={}'.format(self._user_id)

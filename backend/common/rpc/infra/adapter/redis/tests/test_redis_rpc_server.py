@@ -22,7 +22,7 @@ class RedisRpcServerTestCase(TestCase):
 
     def test_register_handler(self):
         TOPIC = RandomWords().get_random_word()
-        PARAMS = UserCreateCommand(email='test@gmail.com', password=1234)
+        PARAMS = UserCreateCommand(email='test@gmail.com', password=1234, user_type='RIDER')
 
         def call():
             """ wait 1 sec for server to start """
