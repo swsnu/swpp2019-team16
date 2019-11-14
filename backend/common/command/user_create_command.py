@@ -36,4 +36,5 @@ class UserCreateCommand(Command):
 
     def __str__(self):
         return 'email={},password={},user_type={},car_type={},plate={}'.format(
-            self._email, self._password, self._user_type, self._car_type, self._plate)
+            self._email, self._password, self._user_type, self._car_type,
+            self._plate)

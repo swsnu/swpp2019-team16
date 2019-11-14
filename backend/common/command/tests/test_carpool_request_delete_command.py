@@ -1,6 +1,7 @@
 from django.test import TestCase
 
-from backend.common.command.carpool_request_delete_command import CarpoolRequestDeleteCommand
+from backend.common.command.carpool_request_delete_command \
+    import CarpoolRequestDeleteCommand
 
 
 class CarpoolRequestDeleteCommandTestCase(TestCase):

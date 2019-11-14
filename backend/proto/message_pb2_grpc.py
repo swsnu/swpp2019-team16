@@ -6,8 +6,7 @@ import backend.proto.message_pb2 as message__pb2
 
 
 class StreamServiceStub(object):
-  # missing associated documentation comment in .proto file
-  pass
+  pass # missing associated documentation comment in .proto file
 
   def __init__(self, channel):
     """Constructor.

@@ -1,5 +1,4 @@
-import json 
-
+import json
 from django.http \
     import HttpResponseNotAllowed, JsonResponse
 

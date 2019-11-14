@@ -1,11 +1,9 @@
-import json
-
 from django.contrib.auth import logout, login, authenticate
 from django.views.decorators.csrf import ensure_csrf_cookie
-from django.http \
-    import HttpResponseNotAllowed, JsonResponse,\
-        HttpResponse, HttpResponseBadRequest
-
+from django.http import HttpResponseNotAllowed, \
+    JsonResponse, HttpResponse, HttpResponseBadRequest
+import json
+from json import JSONDecodeError
 from backend.common.command.user_create_command \
     import UserCreateCommand, USER_CREATE_COMMAND
 from backend.common.command.user_login_command \
@@ -42,9 +40,9 @@ def __register_user(request):
         user_type=body['user_type'])
 
     result = RedisRpcClient().call(USER_CREATE_COMMAND, command)
-    data = {
-        'jsonrps': result.jsonrpc, 'id': result.id, 'result': result.result}
-    
+    data = {'jsonrps': result.jsonrpc,
+            'id': result.id, 'result': result.result}
+
     # TODO: handling exception
     return with_json_response(status=204, data=data)
 
@@ -61,9 +59,8 @@ def __login_user(request):
         req_data = json.loads(request.body.decode())
         email = req_data['email']
         password = req_data['password']
-    except:
-        return HttpResponseBadRequest()
-    
+    except(KeyError, JSONDecodeError) as e:
+        return HttpResponseBadRequest(e)
     user = authenticate(email=email, password=password)
     if user is not None:
         login(request, user)

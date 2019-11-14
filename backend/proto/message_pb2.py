@@ -174,29 +174,29 @@ DESCRIPTOR.message_types_by_name['Message'] = _MESSAGE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Ping = _reflection.GeneratedProtocolMessageType('Ping', (_message.Message,), {
-  'DESCRIPTOR' : _PING,
-  '__module__' : 'message_pb2'
+  'DESCRIPTOR': _PING,
+  '__module__': 'message_pb2'
   # @@protoc_insertion_point(class_scope:Ping)
   })
 _sym_db.RegisterMessage(Ping)
 
 Pong = _reflection.GeneratedProtocolMessageType('Pong', (_message.Message,), {
-  'DESCRIPTOR' : _PONG,
-  '__module__' : 'message_pb2'
+  'DESCRIPTOR': _PONG,
+  '__module__': 'message_pb2'
   # @@protoc_insertion_point(class_scope:Pong)
   })
 _sym_db.RegisterMessage(Pong)
 
 Ack = _reflection.GeneratedProtocolMessageType('Ack', (_message.Message,), {
-  'DESCRIPTOR' : _ACK,
-  '__module__' : 'message_pb2'
+  'DESCRIPTOR': _ACK,
+  '__module__': 'message_pb2'
   # @@protoc_insertion_point(class_scope:Ack)
   })
 _sym_db.RegisterMessage(Ack)
 
 Message = _reflection.GeneratedProtocolMessageType('Message', (_message.Message,), {
-  'DESCRIPTOR' : _MESSAGE,
-  '__module__' : 'message_pb2'
+  'DESCRIPTOR': _MESSAGE,
+  '__module__': 'message_pb2'
   # @@protoc_insertion_point(class_scope:Message)
   })
 _sym_db.RegisterMessage(Message)

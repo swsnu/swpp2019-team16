@@ -1,4 +1,3 @@
-import asyncio
 from concurrent import futures
 
 import grpc
@@ -14,11 +13,12 @@ class GrpcServer:
     def listen(self):
 
         grpc_server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-        pb_grpc.add_StreamServiceServicer_to_server(self.__stream_service, grpc_server)
+        pb_grpc.add_StreamServiceServicer_to_server(
+            self.__stream_service, grpc_server)
 
         grpc_server.add_insecure_port('[::]:' + str(settings.GRPC_SERVER_PORT))
-        print('MessageStreamServer listen on {}'.format('[::]:' + str(settings.GRPC_SERVER_PORT)))
-
+        print('MessageStreamServer listen on {}'.format(
+            '[::]:' + str(settings.GRPC_SERVER_PORT)))
         grpc_server.start()
 
         grpc_server.wait_for_termination()
