@@ -23,4 +23,5 @@ class Rider(models.Model):
         if self.group is None:
             return 'user_id={},status={}'.format(self.user.id, self.status)
         else:
-            return 'user_id={},group_id={},status={}'.format(self.user.id, self.group.id, self.status)
+            return 'user_id={},group_id={},status={}'.format(
+                self.user.id, self.group.id, self.status)

@@ -26,7 +26,7 @@ class UserLoginCommandHandlerTestCase(TestCase):
             def login(self, user_id):
                 self.assert_func(user_id)
 
-        USER_ID = 1   
+        USER_ID = 1
 
         def assert_func(user_id):
             self.assertEqual(user_id, USER_ID)
