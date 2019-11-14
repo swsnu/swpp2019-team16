@@ -42,5 +42,8 @@ class GroupCreateCommandHandlerTestCase(TestCase):
         group_create_command_handler = GroupCreateCommandHandler(
             group_application_service=mock_group_application_service)
 
-        group_create_command_handler.handle(GroupCreateCommand(
-            rider_id_list=RIDER_ID_LIST, from_location=FROM_LOCATION, to_location=TO_LOCATION))
+        group_create_command_handler.handle(
+            GroupCreateCommand(
+                rider_id_list=RIDER_ID_LIST,
+                from_location=FROM_LOCATION,
+                to_location=TO_LOCATION))
