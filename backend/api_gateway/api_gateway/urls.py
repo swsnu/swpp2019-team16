@@ -21,5 +21,5 @@ urlpatterns = [
     path('api/v1/user/', include('user_endpoint.urls')),
     path('api/v1/carpool_request/', include('carpool_request_endpoint.urls')),
     path('api/v1/group/', include('group_endpoint.urls')),
-    path('api/v1/healthz/', include('ping.urls')),
+    path('api/v1/healthz/', include('ping_endpoint.urls')),
 ]

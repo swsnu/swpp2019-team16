@@ -1,6 +1,6 @@
 from django.urls import path
 
-from backend.api_gateway.ping.views import ping
+from backend.api_gateway.ping_endpoint.views import ping
 
 urlpatterns = [
     path('', ping, name='ping'),

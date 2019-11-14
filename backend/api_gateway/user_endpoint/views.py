@@ -69,7 +69,7 @@ def __login_user(request):
         login(request, user)
         command = UserLoginCommand(user_id=request.user.id)
 
-        result = RedisRpcClient().call(USER_LOGIN_COMMAND, command)
+        RedisRpcClient().call(USER_LOGIN_COMMAND, command)
         return HttpResponse(status=204)
     else:
         return HttpResponse(status=401)
@@ -86,7 +86,7 @@ def __logout_user(request):
     if request.user.is_authenticated:
         user_id = request.user.id
         command = UserLogoutCommand(user_id)
-        result = RedisRpcClient().call(USER_LOGOUT_COMMAND, command)
+        RedisRpcClient().call(USER_LOGOUT_COMMAND, command)
         logout(request)
         return HttpResponse(status=204)
     else:
