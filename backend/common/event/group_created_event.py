@@ -18,7 +18,7 @@ class GroupCreatedEvent(DomainEvent):
     @property
     def from_location(self):
         return self._from_location
-        
+
     @property
     def to_location(self):
         return self._to_location

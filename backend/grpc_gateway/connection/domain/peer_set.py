@@ -18,7 +18,8 @@ class PeerSet(object):
         print("Peer {} disconnecting".format(peer))
         with self._peers_lock:
             if peer not in self._peers:
-                raise RuntimeError("Tried to disconnect peer '{}' but it was never connected.".format(peer))
+                raise RuntimeError("Tried to disconnect peer '{}' \
+                    but it was never connected.".format(peer))
             self._peers[peer] -= 1
             if self._peers[peer] == 0:
                 del self._peers[peer]
