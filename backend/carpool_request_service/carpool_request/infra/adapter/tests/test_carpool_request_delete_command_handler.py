@@ -1,6 +1,7 @@
 from django.test import TestCase
 
-from backend.carpool_request_service.carpool_request.infra.adapter.carpool_request_delete_command_handler \
+from backend.carpool_request_service.carpool_request.infra.adapter\
+    .carpool_request_delete_command_handler \
     import CarpoolRequestDeleteCommandHandler
 from backend.common.command.carpool_request_delete_command \
     import CarpoolRequestDeleteCommand
@@ -10,7 +11,8 @@ class CarpoolRequestCreateCommandHandlerTestCase(TestCase):
 
     def test_delete_with_no_request_id(self):
         carpool_request_delete_command_handler = \
-            CarpoolRequestDeleteCommandHandler(carpool_request_application_service=None)
+            CarpoolRequestDeleteCommandHandler(
+                carpool_request_application_service=None)
 
         with self.assertRaises(ValueError):
             carpool_request_delete_command_handler.handle(
@@ -31,10 +33,12 @@ class CarpoolRequestCreateCommandHandlerTestCase(TestCase):
         def assert_func(request_id):
             self.assertEqual(request_id, REQUEST_ID)
 
-        mock_carpool_request_application_service = \
+        carpool_request_app = \
             MockCarpoolRequestApplicationService(assert_func=assert_func)
-        carpool_request_delete_command_handler = CarpoolRequestDeleteCommandHandler(
-            carpool_request_application_service=mock_carpool_request_application_service)
+        carpool_request_delete_command_handler = \
+            CarpoolRequestDeleteCommandHandler(
+                carpool_request_application_service=carpool_request_app)
 
-        carpool_request_delete_command_handler.handle(CarpoolRequestDeleteCommand(
-            request_id=REQUEST_ID))
+        carpool_request_delete_command_handler.handle(
+            CarpoolRequestDeleteCommand(
+                request_id=REQUEST_ID))

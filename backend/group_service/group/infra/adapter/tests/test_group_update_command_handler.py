@@ -39,4 +39,6 @@ class GroupUpdateCommandHandlerTestCase(TestCase):
         group_update_command_handler = GroupUpdateCommandHandler(
             group_application_service=mock_group_application_service)
 
-        group_update_command_handler.handle(GroupUpdateCommand(group_id=GROUP_ID, driver_id=DRIVER_ID))
+        group_update_command_handler.handle(
+            GroupUpdateCommand(group_id=GROUP_ID, driver_id=DRIVER_ID)
+        )
