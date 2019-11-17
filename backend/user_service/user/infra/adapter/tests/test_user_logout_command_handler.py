@@ -30,7 +30,7 @@ class UserLogoutCommandHandlerTestCase(TestCase):
 
         def assert_func(user_id):
             self.assertEqual(user_id, USER_ID)
-            
+
         mock_user_application_service = \
             MockUserApplicationService(assert_func=assert_func)
         user_logout_command_handler = UserLogoutCommandHandler(

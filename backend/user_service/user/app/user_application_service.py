@@ -1,12 +1,12 @@
 import logging
 
-from django.contrib.auth import get_user_model, logout, login, authenticate
+from django.contrib.auth import get_user_model, logout, login
 
 from backend.user_service.user.domain.vehicle import Vehicle
 from backend.user_service.user.domain.driver import Driver
 from backend.user_service.user.domain.rider import Rider
 from backend.common.command.carpool_request_delete_command \
-    import CarpoolRequestDeleteCommand, CARPOOL_REQUEST_DELETE_COMMAND
+    import CarpoolRequestDeleteCommand
 from backend.common.messaging.infra.redis.redis_message_publisher \
     import RedisMessagePublisher
 from backend.carpool_request_service.carpool_request.domain.carpool_request \
@@ -40,7 +40,7 @@ class UserApplicationService():
         else:
             # user_type error handle
             return "USER_TYPE ERROR"
-        
+
     def logout(self, user_id):
         rider = Rider.objects.filter(user_id=user_id)
         if(len(rider) != 0):
@@ -51,6 +51,3 @@ class UserApplicationService():
                 command = CarpoolRequestDeleteCommand(request_id=request_id)
                 RedisMessagePublisher().publish_message(command)
             rider.delete()
-
-        # Driver.objects.filter(id=user_id).delete()
-        

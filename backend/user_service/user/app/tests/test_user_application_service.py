@@ -3,8 +3,6 @@ from django.test import TestCase
 from backend.user_service.user.app.user_application_service \
     import UserApplicationService
 
-from backend.user_service.user.domain.user import User
-
 
 class UserApplicationServiceTestCase(TestCase):
 
@@ -52,8 +50,6 @@ class UserApplicationServiceTestCase(TestCase):
             email=EMAIL, password=PASSWORD,
             user_type=USER_TYPE, car_type=CAR_TYPE, plate=PLATE)
 
-        USER_ID = 1
-
         self.user_application_service.login(
             user_id=1
         )
@@ -66,7 +62,7 @@ class UserApplicationServiceTestCase(TestCase):
             email=EMAIL, password=PASSWORD,
             user_type=USER_TYPE, car_type=None, plate=None)
         self.user_application_service.login(user_id=2)
-        
+
         EMAIL = 'test3@gmail.com'
         PASSWORD = 12345
         USER_TYPE = "wrong type"
@@ -85,10 +81,8 @@ class UserApplicationServiceTestCase(TestCase):
         PLATE = '1234가'
 
         self.user_application_service.register(
-            email=EMAIL, password=PASSWORD, 
+            email=EMAIL, password=PASSWORD,
             user_type=USER_TYPE, car_type=CAR_TYPE, plate=PLATE)
 
-        USER_ID = 1
-        
         self.user_application_service.login(user_id=1)
         self.user_application_service.logout(user_id=1)
