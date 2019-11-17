@@ -1,20 +1,20 @@
 from django.test import TestCase
 
-from backend.user_service.user.infra.adapter.user_login_command_handler \
-    import UserLoginCommandHandler
-from backend.common.command.user_login_command \
-    import UserLoginCommand
+from backend.user_service.user.infra.adapter.user_login_event_handler \
+    import UserLoginEventHandler
+from backend.common.event.user_login_event \
+    import UserLoginEvent
 
 
-class UserLoginCommandHandlerTestCase(TestCase):
+class UserLoginEventHandlerTestCase(TestCase):
 
     def test_when_message_has_user_id_or_no_user_type_raise_exception(self):
-        user_login_command_handler = \
-            UserLoginCommandHandler(user_application_service=None)
+        user_login_event_handler = \
+            UserLoginEventHandler(user_application_service=None)
 
         with self.assertRaises(ValueError):
-            user_login_command_handler.handle(
-                UserLoginCommand(user_id=None))
+            user_login_event_handler.handle(
+                UserLoginEvent(user_id=None))
 
     def test_when_message_valid_field_then_call_register(self):
 
@@ -33,7 +33,7 @@ class UserLoginCommandHandlerTestCase(TestCase):
 
         mock_user_application_service = \
             MockUserApplicationService(assert_func=assert_func)
-        user_login_command_handler = UserLoginCommandHandler(
+        user_login_event_handler = UserLoginEventHandler(
             user_application_service=mock_user_application_service)
 
-        user_login_command_handler.handle(UserLoginCommand(user_id=USER_ID))
+        user_login_event_handler.handle(UserLoginEvent(user_id=USER_ID))

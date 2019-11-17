@@ -1,20 +1,20 @@
 from django.test import TestCase
 
-from backend.user_service.user.infra.adapter.user_logout_command_handler \
-    import UserLogoutCommandHandler
-from backend.common.command.user_logout_command \
-    import UserLogoutCommand
+from backend.user_service.user.infra.adapter.user_logout_event_handler \
+    import UserLogoutEventHandler
+from backend.common.event.user_logout_event \
+    import UserLogoutEvent
 
 
-class UserLogoutCommandHandlerTestCase(TestCase):
+class UserLogoutEventHandlerTestCase(TestCase):
 
     def test_when_message_has_no_user_id_raise_exception(self):
-        user_logout_command_handler = \
-            UserLogoutCommandHandler(user_application_service=None)
+        user_logout_event_handler = \
+            UserLogoutEventHandler(user_application_service=None)
 
         with self.assertRaises(ValueError):
-            user_logout_command_handler.handle(
-                UserLogoutCommand(user_id=None))
+            user_logout_event_handler.handle(
+                UserLogoutEvent(user_id=None))
 
     def test_when_message_valid_field_then_call_register(self):
 
@@ -33,8 +33,8 @@ class UserLogoutCommandHandlerTestCase(TestCase):
 
         mock_user_application_service = \
             MockUserApplicationService(assert_func=assert_func)
-        user_logout_command_handler = UserLogoutCommandHandler(
+        user_logout_event_handler = UserLogoutEventHandler(
             user_application_service=mock_user_application_service)
 
-        user_logout_command_handler.handle(UserLogoutCommand(
+        user_logout_event_handler.handle(UserLogoutEvent(
             user_id=USER_ID))

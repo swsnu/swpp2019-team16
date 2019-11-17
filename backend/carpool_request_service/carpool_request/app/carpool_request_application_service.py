@@ -16,11 +16,11 @@ class CarpoolRequestApplicationService():
             rider=rider
         )
         hold_request = CarpoolRequest.objects.filter(status="IDLE")
-        same_location_request = hold_request\
+        same_location_requests = hold_request\
             .filter(from_location=result.from_location)\
             .filter(to_location=result.to_location)
-        if len(same_location_request) == 4:
-            target_request = same_location_request
+        if len(same_location_requests) == 4:
+            target_request = same_location_requests
             rider_id_list = []
             for i in range(4):
                 rider_id_list.append(target_request.values()[i]['rider_id'])

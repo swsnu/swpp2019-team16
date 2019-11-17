@@ -6,10 +6,10 @@ import json
 from json import JSONDecodeError
 from backend.common.command.user_create_command \
     import UserCreateCommand, USER_CREATE_COMMAND
-from backend.common.command.user_login_command \
-    import UserLoginCommand, USER_LOGIN_COMMAND
-from backend.common.command.user_logout_command \
-    import UserLogoutCommand, USER_LOGOUT_COMMAND
+from backend.common.event.user_login_event \
+    import UserLoginEvent
+from backend.common.event.user_logout_event \
+    import UserLogoutEvent
 
 
 from backend.common.rpc.infra.adapter.redis.redis_rpc_client \
@@ -64,9 +64,8 @@ def __login_user(request):
     user = authenticate(email=email, password=password)
     if user is not None:
         login(request, user)
-        command = UserLoginCommand(user_id=request.user.id)
-
-        RedisRpcClient().call(USER_LOGIN_COMMAND, command)
+        event = UserLoginEvent(user_id=request.user.id)
+        RedisRpcClient().call(event)
         return HttpResponse(status=204)
     else:
         return HttpResponse(status=401)
@@ -82,8 +81,8 @@ def logout_user(request):
 def __logout_user(request):
     if request.user.is_authenticated:
         user_id = request.user.id
-        command = UserLogoutCommand(user_id)
-        RedisRpcClient().call(USER_LOGOUT_COMMAND, command)
+        event = UserLogoutEvent(user_id)
+        RedisRpcClient().call(event)
         logout(request)
         return HttpResponse(status=204)
     else:
