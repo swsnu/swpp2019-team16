@@ -1,23 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Heading from '../common/Heading/Heading';
-import Container from '../common/Container/Container';
-import Button from '../common/Button/Button';
+import Heading from '../../common/Heading/Heading';
+import Container from '../../common/Container/Container';
+import Button from '../../common/Button/Button';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 
 const UserGroupBlock = styled.div``;
 
-UserGroup.propTypes = {
+UserGroupSection.propTypes = {
   group: PropTypes.array.isRequired,
   onClick: PropTypes.func.isRequired,
   googleMap: PropTypes.object.isRequired,
   driverInfo: PropTypes.object.isRequired,
 };
 
-function UserGroup({ group, onClick, googleMap, driverInfo }) {
+function UserGroupSection({ group, onClick, googleMap, driverInfo }) {
   const name = driverInfo.Name;
   const vehicle = driverInfo.Vehicle;
   const plate = driverInfo.Plate;
@@ -61,4 +61,4 @@ function UserGroup({ group, onClick, googleMap, driverInfo }) {
   );
 }
 
-export default UserGroup;
+export default UserGroupSection;

@@ -1,6 +1,6 @@
 import React from 'react';
 import Main from '../_layouts/Main';
-import IntroContainer from 'containers/IntroContainer';
+import IntroContainer from '../../containers/Intro/Introduction';
 
 function IntroPage() {
   return (

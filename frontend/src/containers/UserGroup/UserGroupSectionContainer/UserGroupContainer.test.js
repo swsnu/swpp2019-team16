@@ -1,15 +1,14 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
 import UserGroupContainer from './UserGroupContainer';
-import { renderWithRedux } from '../../test/utils';
+import { renderWithRedux } from '../../../test/utils';
 import { MemoryRouter, Route } from 'react-router-dom';
-import expectExport from '../../../node_modules/expect/build/index';
+import expectExport from 'expect';
 
-jest.mock('../../components/UserGroup/UserGroup', () =>
+jest.mock('../../../components/UserGroup/UserGroupSection', () =>
   jest.fn(props => <div></div>),
 );
 
-describe('<UserGroupContainer />', () => {
+describe('<UserGroupSectionContainer />', () => {
   it('SHOULD match with snapshot', async () => {
     const { container } = renderWithRedux(
       <MemoryRouter initialEntries={['/group']}>

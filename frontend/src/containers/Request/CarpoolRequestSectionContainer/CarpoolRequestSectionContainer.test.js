@@ -1,11 +1,11 @@
 import React from 'react';
-import RequestContainer from './RequestContainer';
-import { renderWithRedux } from '../../test/utils';
+import RequestContainer from './CarpoolRequestSectionContainer';
+import { renderWithRedux } from '../../../test/utils';
 import { MemoryRouter, Route } from 'react-router-dom';
 
-jest.mock('../../components/Request', () => jest.fn(props => <div></div>));
+jest.mock('../../../components/Request/CarpoolRequestSection', () => jest.fn(props => <div>Request</div>));
 
-describe('<RequestContainer />', () => {
+describe('<CarpoolRequestSectionContainer />', () => {
   const state = {
     user: {
       user: {

@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import UserGroup from '../../components/UserGroup/UserGroup';
+import UserGroupSection from '../../../components/UserGroup/UserGroupSection';
 import { withRouter } from 'react-router-dom';
-import { onTaxi } from '../../modules/group/group';
+import { onTaxi } from '../../../modules/group/group';
 
 // todo: need to send Google Map API as props
 // todo: need to add timer
@@ -24,7 +24,7 @@ function UserGroupContainer() {
   };
   const group = ['Rider1', 'Rider2', 'Rider3', 'Rider4'];
   return (
-    <UserGroup
+    <UserGroupSection
       group={group}
       onClick={onClickOnTaxi}
       googleMap={googleMap}

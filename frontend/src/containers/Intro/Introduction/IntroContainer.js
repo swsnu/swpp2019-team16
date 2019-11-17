@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { withRouter } from 'react-router-dom';
-import Introduction from 'components/intro/Introduction';
+import Introduction from '../../../components/Intro/Introduction';
 
 function IntroContainer({ history }) {
   const onStart = useCallback(() => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import UserGroup from './UserGroup';
+import UserGroupSection from './UserGroupSection';
 
 describe('UserGroup />', () => {
   it('SHOULD match with snapshot WHEN all data in', async () => {
@@ -14,7 +14,7 @@ describe('UserGroup />', () => {
       'Plate No.': '01A 1234',
     };
     const { container } = render(
-      <UserGroup
+      <UserGroupSection
         onClick={() => {}}
         group={group}
         googleMap={googleMap}

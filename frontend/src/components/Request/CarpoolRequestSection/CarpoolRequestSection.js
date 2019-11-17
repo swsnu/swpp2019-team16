@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Button from '../common/Button';
-import Checkbox from './Checkbox';
+import Button from '../../common/Button';
+import Heading from '../../common/Heading';
+import Checkbox from '../Checkbox';
 import PropTypes from 'prop-types';
-import './Request.css';
-import Heading from '../common/Heading';
+import './CarpoolRequestSection.css';
+
 const RequestBlock = styled.div``;
 
-Request.propTypes = {
+CarpoolRequestSection.propTypes = {
   user: PropTypes.object.isRequired,
   fromList: PropTypes.array.isRequired,
   toList: PropTypes.array.isRequired,
@@ -15,7 +16,7 @@ Request.propTypes = {
   onClickRequest: PropTypes.func.isRequired,
 };
 
-function Request({ user, fromList, toList, minimumPassenger, onClickRequest }) {
+function CarpoolRequestSection({ user, fromList, toList, minimumPassenger, onClickRequest }) {
   const [from, setFrom] = useState(null);
   const [to, setTo] = useState(null);
   const [minPassenger, setMinPassenger] = useState(null);
@@ -102,4 +103,4 @@ function Request({ user, fromList, toList, minimumPassenger, onClickRequest }) {
   );
 }
 
-export default Request;
+export default CarpoolRequestSection;

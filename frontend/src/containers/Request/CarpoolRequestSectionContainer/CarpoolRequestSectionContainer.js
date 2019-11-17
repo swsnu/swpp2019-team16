@@ -1,12 +1,12 @@
 import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Request from '../../components/Request';
+import CarpoolRequestSection from '../../../components/Request/CarpoolRequestSection';
 import { withRouter } from 'react-router-dom';
-import { requestCarpool } from '../../modules/carpoolRequest/carpoolRequest';
+import { requestCarpool } from '../../../modules/carpoolRequest';
 
-RequestContainer.propTypes = {};
+CarpoolRequestSectionContainer.propTypes = {};
 
-function RequestContainer({ history }) {
+function CarpoolRequestSectionContainer({ history }) {
   const dispatch = useDispatch();
 
   const user = useSelector(user => ({
@@ -31,7 +31,7 @@ function RequestContainer({ history }) {
   }
 
   return (
-    <Request
+    <CarpoolRequestSection
       user={user}
       fromList={fromList}
       toList={toList}
@@ -41,4 +41,4 @@ function RequestContainer({ history }) {
   );
 }
 
-export default withRouter(RequestContainer);
+export default withRouter(CarpoolRequestSectionContainer);

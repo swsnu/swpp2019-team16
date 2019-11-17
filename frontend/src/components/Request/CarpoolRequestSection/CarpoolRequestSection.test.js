@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import Request from './Request';
+import CarpoolRequestSection from './CarpoolRequestSection';
 
 describe('<Request />', () => {
   it('SHOULD match with snapshot WHEN all data in', async () => {
@@ -13,7 +13,7 @@ describe('<Request />', () => {
     };
 
     const { container } = render(
-      <Request
+      <CarpoolRequestSection
         user={USER}
         fromList={from_list}
         toList={to_list}
@@ -33,7 +33,7 @@ describe('<Request />', () => {
     const mockFn = jest.fn();
 
     const utils = render(
-      <Request
+      <CarpoolRequestSection
         user={USER}
         fromList={from_list}
         toList={to_list}
@@ -55,7 +55,7 @@ describe('<Request />', () => {
     const mockFn = jest.fn();
 
     const utils = render(
-      <Request
+      <CarpoolRequestSection
         user={USER}
         fromList={from_list}
         toList={to_list}
