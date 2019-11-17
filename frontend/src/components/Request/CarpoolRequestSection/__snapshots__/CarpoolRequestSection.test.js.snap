@@ -421,7 +421,7 @@ exports[`<Request /> SHOULD match with snapshot WHEN all data in 1`] = `
       class="button"
     >
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+        class="MuiButtonBase-root MuiButton-root makeStyles-root-68 makeStyles-root-71 MuiButton-contained makeStyles-contained-69 makeStyles-contained-72 MuiButton-contained makeStyles-contained-69 makeStyles-contained-72"
         tabindex="0"
         type="button"
       >

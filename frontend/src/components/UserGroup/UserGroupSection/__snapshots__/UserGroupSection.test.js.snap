@@ -92,7 +92,7 @@ exports[`UserGroup /> SHOULD match with snapshot WHEN all data in 1`] = `
       class="sc-bdVaJa ekJyAd"
     >
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-contained"
+        class="MuiButtonBase-root MuiButton-root makeStyles-root-60 makeStyles-root-63 MuiButton-contained makeStyles-contained-61 makeStyles-contained-64 MuiButton-contained makeStyles-contained-61 makeStyles-contained-64"
         tabindex="0"
         type="button"
       >
