@@ -20,5 +20,4 @@ class UserTestCase(TestCase):
             user_type="DRIVER", point=123, vehicle=vehicle)
         self.assertEqual(
             str(user),
-            'email=test@gmail.com,\
-            user_type=DRIVER,point=123,vehicle=car_type=benz,plate=1234')
+            'email=test@gmail.com,user_type=DRIVER,point=123,vehicle=car_type=benz,plate=1234')

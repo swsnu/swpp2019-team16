@@ -1,6 +1,6 @@
 import logging
 
-from django.contrib.auth import get_user_model, logout, login
+from django.contrib.auth import get_user_model
 
 from backend.user_service.user.domain.vehicle import Vehicle
 from backend.user_service.user.domain.driver import Driver

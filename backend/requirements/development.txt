@@ -13,3 +13,4 @@ flake8>=3.6.0,<3.7.0
 autopep8>1.4.0,<=1.4.4
 python-coveralls
 coverage
+black

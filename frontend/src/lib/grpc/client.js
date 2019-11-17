@@ -1,6 +1,4 @@
-const {
-  StreamServiceClient,
-} = require('../../proto/message_grpc_web_pb');
+const { StreamServiceClient } = require('../../proto/message_grpc_web_pb');
 const { Empty } = require('../../proto/message_pb');
 
 export default function createGrpcStream() {
