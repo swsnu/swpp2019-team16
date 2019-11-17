@@ -18,11 +18,13 @@ def with_json_response(status, data):
     return JsonResponse(data=json.dumps(data), status=status, safe=False)
 
 
-def create_carpool_request(request):
+def carpool_request(request):
     if request.method == 'POST':
         return __create_carpool_request(request)
+    elif request.method == 'DELETE':
+        return __delete_carpool_request(request)
     else:
-        return HttpResponseNotAllowed(['POST'])
+        return HttpResponseNotAllowed(['POST', 'DELETE'])
 
 
 def __create_carpool_request(request):
@@ -41,13 +43,6 @@ def __create_carpool_request(request):
 
     # TODO: handling exception
     return with_json_response(status=204, data=data)
-
-
-def delete_carpool_request(request):
-    if request.method == 'DELETE':
-        return __delete_carpool_request(request)
-    else:
-        return HttpResponseNotAllowed(['DELETE'])
 
 
 def __delete_carpool_request(request):
