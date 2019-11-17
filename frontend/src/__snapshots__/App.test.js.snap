@@ -4,66 +4,36 @@ exports[`<App /> SHOULD match with snapshot 1`] = `
 <div>
   <div>
     <div
-      class="sc-bwzfXH kulSxP"
+      class="sc-bdVaJa bPGLpq"
     >
       <div
         class="makeStyles-root-1"
       >
-        <header
-          class="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorPrimary"
-        >
-          <div
-            class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
-          >
-            <h6
-              class="MuiTypography-root makeStyles-title-3 MuiTypography-h6"
-            >
-              Ya-Ta!
-            </h6>
-          </div>
-        </header>
-      </div>
-      <main
-        class="sc-bdVaJa ekJyAd"
-      >
         <div
-          class="Introduction"
+          class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
         >
-          <p
-            class="MuiTypography-root MuiTypography-h1 MuiTypography-paragraph"
+          <h4
+            class="MuiTypography-root makeStyles-title-3 MuiTypography-h4"
           >
-            Welcome to YA-TA!
-          </p>
-          <h3
-            class="MuiTypography-root MuiTypography-h3"
+            Ya-Ta!
+          </h4>
+          <button
+            class="MuiButtonBase-root MuiButton-root makeStyles-root-38 makeStyles-root-41 MuiButton-text makeStyles-text-40 makeStyles-text-43 MuiButton-text makeStyles-text-40 makeStyles-text-43"
+            tabindex="0"
+            type="button"
           >
-            What is yata?
-          </h3>
-          <p
-            class="MuiTypography-root MuiTypography-h5 MuiTypography-paragraph"
-          >
-            Ya-Ta helps students who need to urgently get to class. Within ten minutes, Ya-Ta groups students with these similar, urgent, needs, and grabs a taxi for them.
-          </p>
-          <div
-            class="startButton"
-          >
-            <button
-              class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
-              tabindex="0"
-              type="button"
+            <span
+              class="MuiButton-label"
             >
-              <span
-                class="MuiButton-label"
-              >
-                Start!
-              </span>
-              <span
-                class="MuiTouchRipple-root"
-              />
-            </button>
-          </div>
+              Log In
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
         </div>
-      </main>
+      </div>
+      <div />
     </div>
   </div>
 </div>

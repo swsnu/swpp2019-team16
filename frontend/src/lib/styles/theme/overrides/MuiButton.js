@@ -17,5 +17,5 @@
 export default {
   root: {
     fontFamily: 'Noto Sans',
-  }
+  },
 };

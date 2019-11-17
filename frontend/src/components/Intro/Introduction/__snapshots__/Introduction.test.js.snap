@@ -2,42 +2,6 @@
 
 exports[`<Introduction /> SHOULD match with snapshot 1`] = `
 <div>
-  <div
-    class="Introduction"
-  >
-    <p
-      class="MuiTypography-root MuiTypography-h1 MuiTypography-paragraph"
-    >
-      Welcome to YA-TA!
-    </p>
-    <h3
-      class="MuiTypography-root MuiTypography-h3"
-    >
-      What is yata?
-    </h3>
-    <p
-      class="MuiTypography-root MuiTypography-h5 MuiTypography-paragraph"
-    >
-      Ya-Ta helps students who need to urgently get to class. Within ten minutes, Ya-Ta groups students with these similar, urgent, needs, and grabs a taxi for them.
-    </p>
-    <div
-      class="startButton"
-    >
-      <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
-        tabindex="0"
-        type="button"
-      >
-        <span
-          class="MuiButton-label"
-        >
-          Start!
-        </span>
-        <span
-          class="MuiTouchRipple-root"
-        />
-      </button>
-    </div>
-  </div>
+  <div />
 </div>
 `;

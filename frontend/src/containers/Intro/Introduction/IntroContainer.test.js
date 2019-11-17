@@ -1,8 +1,11 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
 import IntroContainer from './IntroContainer';
-import { renderWithRedux } from 'test/utils';
+import { renderWithRedux } from '../../../test/utils';
 import { MemoryRouter, Route } from 'react-router-dom';
+
+jest.mock('@fullpage/react-fullpage', () => ({ children }) => (
+  <div>{children}</div>
+));
 
 describe('<IntroContainer />', () => {
   it('SHOULD match with snapshot', async () => {

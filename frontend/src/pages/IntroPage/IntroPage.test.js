@@ -4,6 +4,10 @@ import { render, fireEvent } from '@testing-library/react';
 import { MemoryRouter, Route } from 'react-router-dom';
 import { redenerWithRedux, renderWithRedux } from '../../test/utils';
 
+jest.mock('@fullpage/react-fullpage', () => ({ children }) => (
+  <div>{children}</div>
+));
+
 describe('<IntroPage />', () => {
   it('SHOULD match with snapshot', async () => {
     const { container } = renderWithRedux(

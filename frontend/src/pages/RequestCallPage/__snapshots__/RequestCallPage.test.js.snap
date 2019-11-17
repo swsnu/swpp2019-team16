@@ -32,13 +32,9 @@ exports[`<RequestCallPage /> SHOULD match with snapshot 1`] = `
         </button>
       </div>
     </div>
-    <main
-      class="sc-bdVaJa ekJyAd"
-    >
-      <div>
-        Waiting for group to be matched...
-      </div>
-    </main>
+    <div>
+      Waiting for group to be matched...
+    </div>
   </div>
 </div>
 `;

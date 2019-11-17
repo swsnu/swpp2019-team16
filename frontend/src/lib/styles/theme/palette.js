@@ -36,4 +36,4 @@ export default {
     secondary: '#41464F',
     link: '#060607',
   },
-}
+};

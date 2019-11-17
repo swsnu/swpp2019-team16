@@ -1,5 +1,5 @@
 import clns from 'classnames';
-import Fullpage from '@fullpage/react-fullpage';
+import FullPage from '@fullpage/react-fullpage';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
@@ -47,14 +47,16 @@ const useWhatIsSectionStyles = makeStyles({
   },
 });
 
-function WhatIsSection() {
+WhatIsSection.propTypes = {
+  onStart: PropTypes.func.isRequired,
+};
+
+function WhatIsSection({ onStart }) {
   const styles = useWhatIsSectionStyles();
   return (
-    <div className={clns("section", styles.root) }>
+    <div className={clns('section', styles.root)}>
       <div className={styles.title}>
-        <Typography variant="h1">
-          Ya-Ta comes to rescue!
-        </Typography>
+        <Typography variant="h1">Ya-Ta comes to rescue!</Typography>
       </div>
       <div className={styles.content}>
         <Typography variant="h2">
@@ -72,7 +74,9 @@ function WhatIsSection() {
         </Typography>
       </div>
       <div className={styles.getStartedButton}>
-        <ButtonMaterial size={'large'} color={'secondary'}>Get Started</ButtonMaterial>
+        <ButtonMaterial size={'large'} color={'secondary'} onClick={onStart}>
+          Get Started
+        </ButtonMaterial>
       </div>
     </div>
   );
@@ -110,14 +114,16 @@ const useSubSectionStyles = makeStyles({
   },
 });
 
-function SubSection() {
+SubSection.propTypes = {
+  onStart: PropTypes.func.isRequired,
+};
+
+function SubSection({ onStart }) {
   const styles = useSubSectionStyles();
   return (
-    <div className={clns("section", styles.root)} >
+    <div className={clns('section', styles.root)}>
       <div className={styles.title}>
-        <Typography variant="h1">
-          The clock is ticking.
-        </Typography>
+        <Typography variant="h1">The clock is ticking.</Typography>
       </div>
       <div className={styles.subtitle}>
         <Typography variant="h2">
@@ -125,7 +131,9 @@ function SubSection() {
         </Typography>
       </div>
       <div className={styles.getStartedButton}>
-        <ButtonMaterial size={'large'}>Get Started</ButtonMaterial>
+        <ButtonMaterial size={'large'} onClick={onStart}>
+          Get Started
+        </ButtonMaterial>
       </div>
     </div>
   );
@@ -163,10 +171,14 @@ const useMainSectionStyles = makeStyles({
   },
 });
 
-function MainSection() {
+MainSection.propTypes = {
+  onStart: PropTypes.func.isRequired,
+};
+
+function MainSection({ onStart }) {
   const styles = useMainSectionStyles();
   return (
-    <div className={clns("section", styles.root) }>
+    <div className={clns('section', styles.root)}>
       <div className={styles.title}>
         <Typography variant="h1">
           No more waiting long line of SNU shuttle bus!
@@ -178,7 +190,9 @@ function MainSection() {
         </Typography>
       </div>
       <div className={styles.getStartedButton}>
-        <ButtonMaterial size={'large'} color={'secondary'}>Get Started</ButtonMaterial>
+        <ButtonMaterial size={'large'} color={'secondary'} onClick={onStart}>
+          Get Started
+        </ButtonMaterial>
       </div>
     </div>
   );
@@ -190,20 +204,19 @@ Introduction.propTypes = {
 
 function Introduction({ onStart }) {
   return (
-    <Fullpage
-      scrollingSpeed = {1000}
-
+    <FullPage
+      scrollingSpeed={1000}
       render={({ state, fullpageApi }) => {
         return (
-          <Fullpage.Wrapper>
-            <MainSection />
-            <SubSection />
-            <WhatIsSection />
-          </Fullpage.Wrapper>
+          <FullPage.Wrapper>
+            <MainSection onStart={onStart} />
+            <SubSection onStart={onStart} />
+            <WhatIsSection onStart={onStart} />
+          </FullPage.Wrapper>
         );
       }}
     />
-  )
+  );
 }
 
 export default Introduction;

@@ -61,41 +61,39 @@ export default function HeaderMaterial({
         >
           Ya-Ta!
         </Typography>
-        {
-          auth === null
-          ? (
-              <div>
-                <IconButton
-                  aria-label="account of current user"
-                  aria-controls="menu-appbar"
-                  aria-haspopup="true"
-                  onClick={onClickMenu}
-                  color="inherit"
-                >
-                  <AccountCircle />
-                </IconButton>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorEl}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  open={open}
-                  onClose={onClickClose}
-                >
-                  <MenuItem onClick={onClickChargePoint}>Charge point</MenuItem>
-                  <MenuItem onClick={onClickLogout}>Log out</MenuItem>
-                </Menu>
-              </div>
-            )
-          : <ButtonMaterial variant={'text'}>Log In</ButtonMaterial>
-        }
+        {auth === null ? (
+          <div>
+            <IconButton
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={onClickMenu}
+              color="inherit"
+            >
+              <AccountCircle />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorEl}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={open}
+              onClose={onClickClose}
+            >
+              <MenuItem onClick={onClickChargePoint}>Charge point</MenuItem>
+              <MenuItem onClick={onClickLogout}>Log out</MenuItem>
+            </Menu>
+          </div>
+        ) : (
+          <ButtonMaterial variant={'text'}>Log In</ButtonMaterial>
+        )}
       </Toolbar>
     </div>
   );

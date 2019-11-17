@@ -86,5 +86,5 @@ export default {
     letterSpacing: '-0.04px',
     lineHeight: '16px',
     fontFamily,
-  }
-}
+  },
+};

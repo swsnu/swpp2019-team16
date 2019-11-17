@@ -16,7 +16,13 @@ CarpoolRequestSection.propTypes = {
   onClickRequest: PropTypes.func.isRequired,
 };
 
-function CarpoolRequestSection({ user, fromList, toList, minimumPassenger, onClickRequest }) {
+function CarpoolRequestSection({
+  user,
+  fromList,
+  toList,
+  minimumPassenger,
+  onClickRequest,
+}) {
   const [from, setFrom] = useState(null);
   const [to, setTo] = useState(null);
   const [minPassenger, setMinPassenger] = useState(null);

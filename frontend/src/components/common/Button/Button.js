@@ -47,8 +47,8 @@ const useStyles = makeStyles({
     },
   },
   contained: {
-    boxShadow: props => props.disableShadow ? 'none' : '',
-    border: props => props.disableShadow ? '1px solid #E7E7E7' : 'none',
+    boxShadow: props => (props.disableShadow ? 'none' : ''),
+    border: props => (props.disableShadow ? '1px solid #E7E7E7' : 'none'),
     color: props => {
       switch (props.color) {
         case 'primary':
@@ -68,7 +68,7 @@ const useStyles = makeStyles({
         default:
           return theme.palette.primary.dark;
       }
-    }
+    },
   },
   text: {
     color: props => {
@@ -81,15 +81,15 @@ const useStyles = makeStyles({
           return theme.palette.primary.contrastText;
       }
     },
-  }
+  },
 });
 
 ButtonMaterial.propTypes = {
   children: PropTypes.node.isRequired,
-  variant: PropTypes.oneOf('contained', 'text'),
-  color: PropTypes.oneOf('primary', 'secondary'),
-  backgroundColor: PropTypes.oneOf('primary', 'secondary'),
-  size: PropTypes.oneOf('small', 'medium', 'large'),
+  variant: PropTypes.oneOf(['contained', 'text']),
+  color: PropTypes.oneOf(['primary', 'secondary']),
+  backgroundColor: PropTypes.oneOf(['primary', 'secondary']),
+  size: PropTypes.oneOf(['small', 'medium', 'large']),
   onClick: PropTypes.func,
   href: PropTypes.string,
   fullWidth: PropTypes.bool,
