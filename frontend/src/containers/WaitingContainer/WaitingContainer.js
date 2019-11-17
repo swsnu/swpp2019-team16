@@ -42,7 +42,7 @@ function WaitingContainer({ history }) {
     if (group) {
       history.push('/group');
     }
-  }, [group]);
+  }, [group, history]);
 
   return <div>Waiting for group to be matched</div>;
 }

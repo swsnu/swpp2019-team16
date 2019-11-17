@@ -1,5 +1,4 @@
 const {
-  StreamServicePromiseClient,
   StreamServiceClient,
 } = require('../../proto/message_grpc_web_pb');
 const { Empty } = require('../../proto/message_pb');
