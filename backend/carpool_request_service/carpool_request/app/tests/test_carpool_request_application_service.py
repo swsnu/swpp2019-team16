@@ -41,9 +41,10 @@ class CarpoolRequestApplicationServiceTestCase(TestCase):
             from_location, to_location, minimum_passenger, rider_id
         )
         request_id = 1
-        self.carpool_request_application_service.delete(
+        result = self.carpool_request_application_service.delete(
             request_id
         )
+        self.assertEqual(result[0], 1)
 
     # TODO: assert after get
     def test_get(self):
@@ -55,5 +56,11 @@ class CarpoolRequestApplicationServiceTestCase(TestCase):
             from_location, to_location, minimum_passenger, rider_id
         )
         request_id = 1
-        self.carpool_request_application_service.get(
-            request_id=request_id)
+        result = self.carpool_request_application_service.get(
+            request_id=request_id
+        )
+
+        self.assertEqual(result.from_location, from_location)
+        self.assertEqual(result.to_location, to_location)
+        self.assertEqual(result.minimum_passenger, minimum_passenger)
+        self.assertEqual(result.rider_id, rider_id)

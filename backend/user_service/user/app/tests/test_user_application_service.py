@@ -71,7 +71,7 @@ class UserApplicationServiceTestCase(TestCase):
             email=EMAIL, password=PASSWORD,
             user_type=USER_TYPE, car_type=None, plate=None)
         result = self.user_application_service.login(user_id=3)
-        self.assertEqual(result, "USER_TYPE ERROR")
+        self.assertEqual(result, ValueError)
 
     def test_logout(self):
         EMAIL = 'test@gmail.com'
