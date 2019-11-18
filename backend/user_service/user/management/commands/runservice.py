@@ -25,13 +25,12 @@ from backend.common.utils.signal_handler \
 
 
 class Command(BaseCommand):
-
     user_application_service = UserApplicationService()
     user_create_command_handler = UserCreateCommandHandler(
         user_application_service=user_application_service)
-    user_login_command_handler = UserLoginEventHandler(
+    user_login_event_handler = UserLoginEventHandler(
         user_application_service=user_application_service)
-    user_logout_command_handler = UserLogoutEventHandler(
+    user_logout_event_handler = UserLogoutEventHandler(
         user_application_service=user_application_service
     )
     subscriber = RedisMessageSubscriber()

@@ -10,6 +10,8 @@ from backend.common.event.user_login_event \
     import UserLoginEvent
 from backend.common.event.user_logout_event \
     import UserLogoutEvent
+from backend.common.messaging.infra.redis.redis_message_publisher \
+    import RedisMessagePublisher
 
 
 from backend.common.rpc.infra.adapter.redis.redis_rpc_client \
@@ -65,7 +67,7 @@ def __login_user(request):
     if user is not None:
         login(request, user)
         event = UserLoginEvent(user_id=request.user.id)
-        RedisRpcClient().call(event)
+        RedisMessagePublisher().publish_message(event)
         return HttpResponse(status=204)
     else:
         return HttpResponse(status=401)
@@ -82,7 +84,7 @@ def __logout_user(request):
     if request.user.is_authenticated:
         user_id = request.user.id
         event = UserLogoutEvent(user_id)
-        RedisRpcClient().call(event)
+        RedisMessagePublisher().publish_message(event)
         logout(request)
         return HttpResponse(status=204)
     else:
