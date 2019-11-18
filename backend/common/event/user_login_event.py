@@ -1,13 +1,13 @@
-from .command import Command
+from backend.common.event.domain_event import DomainEvent
 
 
-USER_LOGIN_COMMAND = 'command.user_login'
+USER_LOGIN_EVENT = 'event.user_login'
 
 
-class UserLoginCommand(Command):
+class UserLoginEvent(DomainEvent):
 
     def __init__(self, user_id):
-        super().__init__(USER_LOGIN_COMMAND)
+        super().__init__(USER_LOGIN_EVENT, "v1")
         self._user_id = user_id
 
     @property

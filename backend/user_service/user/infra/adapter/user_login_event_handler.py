@@ -3,7 +3,7 @@ from interface import implements
 from backend.common.messaging.message_handler import MessageHandler
 
 
-class UserLoginCommandHandler(implements(MessageHandler)):
+class UserLoginEventHandler(implements(MessageHandler)):
 
     def __init__(self, user_application_service):
         self.__user_application_service = user_application_service
