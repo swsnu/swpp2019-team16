@@ -1,8 +1,7 @@
 import React from 'react';
 import LoginPage from './LoginPage';
-import { render, fireEvent } from '@testing-library/react';
 import { MemoryRouter, Route } from 'react-router-dom';
-import { redenerWithRedux, renderWithRedux } from 'test/utils';
+import { renderWithRedux } from 'test/utils';
 
 describe('<LoginPage />', () => {
   it('SHOULD match with snapshot', async () => {
