@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SignUpForm /> SHOULD match with snapshot 1`] = `
+<div>
+  <div
+    class="sc-bdVaJa bDWFJH"
+  >
+    <h3>
+      Join Ya-Ta!
+    </h3>
+    <h1>
+      Create Your Account
+    </h1>
+    <div
+      class="MuiBox-root MuiBox-root-2"
+    >
+      <h3>
+        Email
+      </h3>
+      <input
+        id="email-input"
+        name="email"
+        type="text"
+        value=""
+      />
+      <h3>
+        Password
+      </h3>
+      <input
+        id="password-input"
+        name="password"
+        type="password"
+        value=""
+      />
+      <h3>
+        Password Confirm
+      </h3>
+      <input
+        id="password-confirmation-input"
+        name="passwordConfirmation"
+        type="password"
+        value=""
+      />
+      <h3>
+        Vehicle Info (for Driver users)
+      </h3>
+      <input
+        id="vehicle-info-input"
+        name="vehicleInfo"
+        type="text"
+        value=""
+      />
+      <h3>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-contained"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            Confirm
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+      </h3>
+    </div>
+  </div>
+</div>
+`;
