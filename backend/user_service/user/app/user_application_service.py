@@ -32,14 +32,13 @@ class UserApplicationService():
         user_type = user.user_type
         if user_type == "RIDER":
             if(len(Rider.objects.filter(user_id=user_id)) == 0):
-                Rider.objects.create(user=user, status="IDLE")
-            return
+                return Rider.objects.create(user=user, status="IDLE")
         elif user_type == "DRIVER":
             if(len(Driver.objects.filter(user_id=user_id)) == 0):
                 return Driver.objects.create(user=user, status="IDLE")
         else:
             # user_type error handle
-            return "USER_TYPE ERROR"
+            return ValueError
 
     def logout(self, user_id):
         rider = Rider.objects.filter(user_id=user_id)
