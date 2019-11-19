@@ -31,6 +31,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     email = models.EmailField(max_length=255, unique=True)
     point = models.IntegerField(default=0)
+    user_type = models.CharField(max_length=127, default="USER")
     vehicle = models.ForeignKey(
         Vehicle,
         blank=True,
@@ -44,8 +45,8 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         if self.vehicle is None:
-            return 'email={},point={}'\
-                .format(self.email, self.point)
+            return 'email={},user_type={},point={}'\
+                .format(self.email, self.user_type, self.point)
         else:
-            return 'email={},point={},vehicle={}'\
-                .format(self.email, self.point, self.vehicle)
+            return 'email={},user_type={},point={},vehicle={}'\
+                .format(self.email, self.user_type, self.point, self.vehicle)

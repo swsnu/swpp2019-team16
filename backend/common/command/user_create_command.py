@@ -6,10 +6,11 @@ USER_CREATE_COMMAND = 'command.user_create'
 
 class UserCreateCommand(Command):
 
-    def __init__(self, email, password, car_type=None, plate=None):
+    def __init__(self, email, password, user_type, car_type=None, plate=None):
         super().__init__(USER_CREATE_COMMAND)
         self._email = email
         self._password = password
+        self._user_type = user_type
         self._car_type = car_type
         self._plate = plate
 
@@ -22,6 +23,10 @@ class UserCreateCommand(Command):
         return self._password
 
     @property
+    def user_type(self):
+        return self._user_type
+
+    @property
     def car_type(self):
         return self._car_type
 
@@ -30,5 +35,6 @@ class UserCreateCommand(Command):
         return self._plate
 
     def __str__(self):
-        return 'email={},password={},car_type={},plate={}'.format(
-            self._email, self._password, self._car_type, self._plate)
+        return 'email={},password={},user_type={},car_type={},plate={}'.format(
+            self._email, self._password, self._user_type, self._car_type,
+            self._plate)

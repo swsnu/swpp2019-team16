@@ -32,7 +32,7 @@ function Request({ user, fromList, toList, minimumPassenger, onClickRequest }) {
     }
 
     onClickRequest({
-      userId: user.id,
+      userId: 1,
       from: from,
       to: to,
       minimumPassenger: minPassenger,

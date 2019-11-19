@@ -3,3 +3,4 @@ omit=
   manage.py
   */wsgi.py
   */urls.py
+  */runservice.py
