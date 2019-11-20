@@ -29,10 +29,12 @@ export const initalizeForm = createAction(INITIALIZE_FORM, form => form);
 
 export const register = createAction(
   REGISTER,
-  ({ email, password, vehicleInfo }) => ({
+  ({ userType, email, password, carType, plateNo }) => ({
+    userType,
     email,
     password,
-    vehicleInfo,
+    carType,
+    plateNo,
   }),
 );
 
@@ -51,10 +53,12 @@ export function* authSaga() {
 
 export const initialState = {
   register: {
+    userType: '',
     email: '',
     password: '',
-    vehicleInfo: null,
     passwordConfirmation: '',
+    carType: '',
+    plateNo: '',
   },
   login: {
     email: '',

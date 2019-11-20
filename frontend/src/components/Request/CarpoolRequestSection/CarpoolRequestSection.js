@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Button from '../../common/Button';
-import Heading from '../../common/Heading';
-import Checkbox from '../Checkbox';
+import Button from '../../common/Button/Button';
+import Checkbox from '../../common/Checkbox/Checkbox';
+import Heading from '../../common/Heading/Heading';
 import PropTypes from 'prop-types';
 import './CarpoolRequestSection.css';
 

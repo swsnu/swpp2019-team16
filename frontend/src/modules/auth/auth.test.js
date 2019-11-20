@@ -44,22 +44,20 @@ describe('auth', () => {
     describe('register', () => {
       it('should successfully create action', async () => {
         const action = register({
+          userType: 'rider',
           email: 'zeroFruit@gmail.com',
           password: 'password',
-          vehicleInfo: {
-            carType: 'Mercedes-Benz',
-            plate: '54가 0639',
-          },
+          carType: 'Mercedes-Benz',
+          plateNo: '54가 0639',
         });
 
         expect(action.type).toStrictEqual('auth/REGISTER');
         expect(action.payload).toStrictEqual({
+          userType: 'rider',
           email: 'zeroFruit@gmail.com',
           password: 'password',
-          vehicleInfo: {
-            carType: 'Mercedes-Benz',
-            plate: '54가 0639',
-          },
+          carType: 'Mercedes-Benz',
+          plateNo: '54가 0639',
         });
       });
     });

@@ -1,0 +1,156 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SignUp /> SHOULD match with snapshot WHEN driver 1`] = `
+<div>
+  <div
+    class="sc-bwzfXH uTxCW"
+  >
+    <div
+      class="MuiBox-root MuiBox-root-82"
+    >
+      <h4
+        class="MuiTypography-root MuiTypography-h4"
+      >
+        Email
+      </h4>
+      <input
+        id="email-input"
+        name="email"
+        type="text"
+        value="dkim94"
+      />
+      <h4
+        class="MuiTypography-root MuiTypography-h4"
+      >
+        Password
+      </h4>
+      <input
+        id="password-input"
+        name="password"
+        type="password"
+        value="123"
+      />
+      <h4
+        class="MuiTypography-root MuiTypography-h4"
+      >
+        Password Confirm
+      </h4>
+      <input
+        id="password-confirmation-input"
+        name="passwordConfirmation"
+        type="password"
+        value=""
+      />
+      <h4
+        class="MuiTypography-root MuiTypography-h4"
+      >
+        Vehicle Info
+      </h4>
+      <h5
+        class="MuiTypography-root MuiTypography-h5"
+      >
+        Car Type
+      </h5>
+      <input
+        id="car-type-input"
+        name="carType"
+        type="text"
+        value=""
+      />
+      <h5
+        class="MuiTypography-root MuiTypography-h5"
+      >
+        Plate No.
+      </h5>
+      <input
+        id="plate-no-input"
+        name="plateNo"
+        type="text"
+        value=""
+      />
+      <div
+        class="MuiBox-root MuiBox-root-113"
+      >
+        <button
+          class="MuiButtonBase-root MuiButton-root makeStyles-root-114 makeStyles-root-117 MuiButton-contained makeStyles-contained-115 makeStyles-contained-118 MuiButton-contained makeStyles-contained-115 makeStyles-contained-118"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            Confirm
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<SignUp /> SHOULD match with snapshot WHEN rider 1`] = `
+<div>
+  <div
+    class="sc-bdVaJa bDWFJH"
+  >
+    <div
+      class="MuiBox-root MuiBox-root-2"
+    >
+      <h4
+        class="MuiTypography-root MuiTypography-h4"
+      >
+        Email
+      </h4>
+      <input
+        id="email-input"
+        name="email"
+        type="text"
+        value="dkim94"
+      />
+      <h4
+        class="MuiTypography-root MuiTypography-h4"
+      >
+        Password
+      </h4>
+      <input
+        id="password-input"
+        name="password"
+        type="password"
+        value="123"
+      />
+      <h4
+        class="MuiTypography-root MuiTypography-h4"
+      >
+        Password Confirm
+      </h4>
+      <input
+        id="password-confirmation-input"
+        name="passwordConfirmation"
+        type="password"
+        value=""
+      />
+      <div
+        class="MuiBox-root MuiBox-root-33"
+      >
+        <button
+          class="MuiButtonBase-root MuiButton-root makeStyles-root-34 makeStyles-root-37 MuiButton-contained makeStyles-contained-35 makeStyles-contained-38 MuiButton-contained makeStyles-contained-35 makeStyles-contained-38"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            Confirm
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;

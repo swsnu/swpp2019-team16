@@ -14,10 +14,10 @@ class UserTestCase(TestCase):
                          'email=test@gmail.com,user_type=RIDER,point=123')
 
     def test_user_string_when_vehicle_exist(self):
-        vehicle = Vehicle(car_type='benz', plate=1234)
+        vehicle = Vehicle(car_type='benz', plate_no=1234)
         user = User(
             email='test@gmail.com', password='1234',
             user_type="DRIVER", point=123, vehicle=vehicle)
         self.assertEqual(
             str(user),
-            'email=test@gmail.com,user_type=DRIVER,point=123,vehicle=car_type=benz,plate=1234')
+            'email=test@gmail.com,user_type=DRIVER,point=123,vehicle=car_type=benz,plate_no=1234')
