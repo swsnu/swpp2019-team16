@@ -18,11 +18,13 @@ def with_json_response(status, data):
     return JsonResponse(data=json.dumps(data), status=status, safe=False)
 
 
-def create_group(request):
+def group(request):
     if request.method == 'POST':
         return __create_group(request)
+    elif request.method == 'PUT':
+        return __update_group(request)
     else:
-        return HttpResponseNotAllowed(['POST'])
+        return HttpResponseNotAllowed(['POST', 'PUT'])
 
 
 def __create_group(request):
@@ -38,13 +40,6 @@ def __create_group(request):
 
     # TODO: handling exception
     return with_json_response(status=204, data=data)
-
-
-def update_group(request):
-    if request.method == 'PUT':
-        return __update_group(request)
-    else:
-        return HttpResponseNotAllowed(['PUT'])
 
 
 def __update_group(request):
