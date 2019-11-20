@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+message Ping {
+    string id = 1;
+}
+
+message Pong {
+    string id = 1;
+}
+
+message Ack {}
+
+message Message {
+    string id = 1;
+    string type = 2;
+    string data = 3;
+    google.protobuf.Timestamp timestamp = 4;
+}
+
+service StreamService {
+    rpc HealthCheck(Ping) returns (Pong) {}
+    rpc SendMessage(Message) returns (google.protobuf.Empty) {}
+    rpc StreamMessage(google.protobuf.Empty) returns (stream Message) {}
+}

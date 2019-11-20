@@ -14,11 +14,13 @@ class Group(models.Model):
         related_name='group_of_driver'
     )
     from_location = models.CharField(max_length=255, default="")
-    to_location = models.CharField(max_length=255, default="")    
+    to_location = models.CharField(max_length=255, default="")
     cost = models.IntegerField(default=0)
     departure = models.BooleanField(default=False)
 
     def __str__(self):
-        return 'driver={},from_location={},to_location={},cost={},departure={}'\
-            .format(self.driver, self.from_location, self.to_location, self.cost, self.departure)    
-
+        return 'driver={},from_location={},\
+                to_location={},cost={},departure={}'\
+            .format(
+                self.driver, self.from_location,
+                self.to_location, self.cost, self.departure)

@@ -1,7 +1,12 @@
 import React from 'react';
 import Main from '../_layouts/Main';
+import RequestCallContainer from '../../containers/RequestCallContainer';
 
 function RequestCallPage() {
-  return <Main>RequestCall Page!</Main>;
+  return (
+    <Main>
+      <RequestCallContainer />
+    </Main>
+  );
 }
 export default RequestCallPage;

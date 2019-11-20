@@ -2,9 +2,9 @@ import pickle
 import threading
 import time
 
+import shortuuid
 from django.conf import settings
 from django.test import TestCase
-from random_word import RandomWords
 from redis import Redis
 
 from backend.common.rpc.infra.adapter.redis.redis_rpc_client \
@@ -16,8 +16,9 @@ from backend.common.command.user_create_command \
 class RedisRpcClientTestCase(TestCase):
 
     def test_call(self):
-        TOPIC = RandomWords().get_random_word()
-        PARAMS = UserCreateCommand(email='test@gmail.com', password=1234)
+        TOPIC = shortuuid.uuid()
+        PARAMS = UserCreateCommand(
+            email='test@gmail.com', password=1234, user_type='RIDER')
         RESULT = 'ok'
 
         def listen():

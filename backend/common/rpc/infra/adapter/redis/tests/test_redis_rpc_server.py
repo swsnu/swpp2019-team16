@@ -7,7 +7,6 @@ import shortuuid
 from django.conf import settings
 from django.test import TestCase
 from interface import implements
-from random_word import RandomWords
 from redis import Redis
 
 from backend.common.command.user_create_command \
@@ -21,8 +20,9 @@ from backend.common.rpc.rpc_request import RpcRequest
 class RedisRpcServerTestCase(TestCase):
 
     def test_register_handler(self):
-        TOPIC = RandomWords().get_random_word()
-        PARAMS = UserCreateCommand(email='test@gmail.com', password=1234)
+        TOPIC = shortuuid.uuid()
+        PARAMS = UserCreateCommand(
+            email='test@gmail.com', password=1234, user_type='RIDER')
 
         def call():
             """ wait 1 sec for server to start """

@@ -1,5 +1,6 @@
-from interface import implements 
+from interface import implements
 from backend.common.messaging.message_handler import MessageHandler
+
 
 class GroupCreateCommandHandler(implements(MessageHandler)):
 
@@ -7,16 +8,10 @@ class GroupCreateCommandHandler(implements(MessageHandler)):
         self.__group_application_service = group_application_service
 
     def handle(self, message):
-        
-        print("1")
-        if message.from_location is None or message.to_location is None:
+        if message.from_location is None or message.to_location is None \
+                or message.rider_id_list is None:
             raise ValueError("Invalid GroupCreate command parameters")
-
-        print("2")
         self.__group_application_service.create_group(
-            from_location=message.from_location, 
+            rider_id_list=message.rider_id_list,
+            from_location=message.from_location,
             to_location=message.to_location)
-            
-        print("3")
-
-        

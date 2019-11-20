@@ -6,12 +6,6 @@ import createRequestSaga, {
 } from '../../lib/createRequestSaga';
 
 const [
-  CREATE_GROUP,
-  CREATE_GROUP_SUCCESS,
-  CREATE_GROUP_FAILURE,
-] = createRequestActionTypes('group/CREATE_GROUP');
-
-const [
   ACCEPT_GROUP,
   ACCEPT_GROUP_SUCCESS,
   ACCEPT_GROUP_FAILURE,
@@ -45,8 +39,11 @@ const [
   CONFIRM_COST_FAILURE,
 ] = createRequestActionTypes('group/CONFIRM_COST');
 
-export const createGroup = createAction(
-  CREATE_GROUP,
+export const GROUP_CREATED = 'group/GROUP_CREATED';
+export const UNLOAD_GROUP = 'group/UNLOAD_GROUP';
+
+export const groupCreated = createAction(
+  GROUP_CREATED,
   ({ groupId, riders, driver, from, to }) => ({
     groupId,
     riders,
@@ -55,6 +52,9 @@ export const createGroup = createAction(
     to,
   }),
 );
+
+export const unloadGroup = createAction(UNLOAD_GROUP);
+
 export const acceptGroup = createAction(
   ACCEPT_GROUP,
   ({ groupId, driverId }) => ({
@@ -87,10 +87,6 @@ export const confirmCost = createAction(
   }),
 );
 
-export const createGroupSaga = createRequestSaga(
-  CREATE_GROUP,
-  groupAPI.createGroup,
-);
 export const acceptGroupSaga = createRequestSaga(
   ACCEPT_GROUP,
   groupAPI.acceptGroup,
@@ -111,7 +107,6 @@ export const confirmCostSaga = createRequestSaga(
 );
 
 export function* groupSaga() {
-  yield takeLatest(CREATE_GROUP, createGroupSaga);
   yield takeLatest(ACCEPT_GROUP, acceptGroupSaga);
   yield takeLatest(ON_TAXI, onTaxiSaga);
   yield takeLatest(DEPARTURE, departureSaga);
@@ -127,17 +122,14 @@ const initialState = {
 
 const group = handleActions(
   {
-    [CREATE_GROUP_SUCCESS]: (state, { payload: group }) => ({
+    [GROUP_CREATED]: (state, { payload: group }) => ({
       ...state,
-      group: group,
-      error: null,
+      group,
     }),
-
-    [CREATE_GROUP_FAILURE]: (state, { payload: error }) => ({
+    [UNLOAD_GROUP]: state => ({
       ...state,
-      error: error,
+      group: null,
     }),
-
     [ACCEPT_GROUP_SUCCESS]: (state, { payload: group }) => ({
       ...state,
       group: group,
@@ -195,6 +187,10 @@ const group = handleActions(
     [CONFIRM_COST_FAILURE]: (state, { payload: error }) => ({
       ...state,
       error: error,
+    }),
+    [GROUP_CREATED]: (state, { payload: group }) => ({
+      ...state,
+      group,
     }),
   },
   initialState,
