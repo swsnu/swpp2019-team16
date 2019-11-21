@@ -2,6 +2,39 @@
 
 exports[`<App /> SHOULD match with snapshot 1`] = `
 <div>
-  <div />
+  <div>
+    <div
+      class="sc-bdVaJa bPGLpq"
+    >
+      <div
+        class="makeStyles-root-1"
+      >
+        <div
+          class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+        >
+          <h4
+            class="MuiTypography-root makeStyles-title-3 MuiTypography-h4"
+          >
+            Ya-Ta!
+          </h4>
+          <button
+            class="MuiButtonBase-root MuiButton-root makeStyles-root-38 makeStyles-root-41 MuiButton-text makeStyles-text-40 makeStyles-text-43 MuiButton-text makeStyles-text-40 makeStyles-text-43"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              Log In
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+      </div>
+      <div />
+    </div>
+  </div>
 </div>
 `;

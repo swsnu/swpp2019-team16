@@ -1,56 +1,39 @@
-import { colors } from '@material-ui/core';
-
+/*
+ * Copyright 2019 Haechi-labs
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 const white = '#FFFFFF';
-const black = '#000000';
+const black = '#060607';
 
 export default {
-  black,
   white,
+  black,
   primary: {
     contrastText: white,
-    dark: colors.indigo[900],
-    main: colors.indigo[500],
-    light: colors.indigo[100],
-  },
-  secondary: {
-    contrastText: white,
-    dark: colors.blue[900],
-    main: colors.blue['A400'],
-    light: colors.blue['A400'],
-  },
-  success: {
-    contrastText: white,
-    dark: colors.green[900],
-    main: colors.green[600],
-    light: colors.green[400],
-  },
-  info: {
-    contrastText: white,
-    dark: colors.blue[900],
-    main: colors.blue[600],
-    light: colors.blue[400],
-  },
-  warning: {
-    contrastText: white,
-    dark: colors.orange[900],
-    main: colors.orange[600],
-    light: colors.orange[400],
-  },
-  error: {
-    contrastText: white,
-    dark: colors.red[900],
-    main: colors.red[600],
-    light: colors.red[400],
-  },
-  text: {
-    primary: colors.blueGrey[900],
-    secondary: colors.blueGrey[600],
-    link: colors.blue[600],
+    main: '#2F3740',
+    dark: black,
   },
   background: {
-    default: white,
+    default: '#F2F2F2',
     paper: white,
   },
-  icon: colors.blueGrey[600],
-  divider: colors.grey[200],
+  error: {
+    main: '#E00000',
+  },
+  text: {
+    primary: '#41464F',
+    secondary: '#41464F',
+    link: '#060607',
+  },
 };

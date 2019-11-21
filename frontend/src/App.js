@@ -12,7 +12,7 @@ function App() {
   return (
     <div>
       <Switch>
-        <Route component={IntroPage} path="/intro" exact />
+        <Route component={IntroPage} path="/" exact />
         <Route component={RequestPage} path="/request" exact />
         <Route component={RequestCallPage} path="/requestcall" exact />
         <Route component={WaitingPage} path="/waiting" exact />
