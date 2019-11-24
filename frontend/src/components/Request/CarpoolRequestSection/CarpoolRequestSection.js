@@ -1,12 +1,38 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
-import Button from '../../common/Button/Button';
-import Checkbox from '../../common/Checkbox/Checkbox';
-import Heading from '../../common/Heading/Heading';
+import clns from 'classnames';
 import PropTypes from 'prop-types';
-import './CarpoolRequestSection.css';
+import { makeStyles } from '@material-ui/styles';
+import FromSection from './FromSection';
+import ToSection from './ToSection';
+import MinimumPassengerSection from './MinimumPassengerSection';
+import DecideSection from './DecideSection';
+import FullPage from '@fullpage/react-fullpage';
+import theme from '../../../lib/styles/theme';
 
-const RequestBlock = styled.div``;
+const useStyles = makeStyles({
+  root: {
+    display: 'flex',
+    flex: 1,
+    flexDirection: 'column',
+  },
+  fromSection: {
+    display: 'flex',
+    flex: 1,
+    flexDirection: 'column',
+    paddingTop: '0',
+    paddingBottom: '0',
+    paddingLeft: '32px',
+    paddingRight: '32px',
+
+    backgroundColor: theme.palette.common.white,
+    color: theme.palette.text.primary,
+  },
+  toSection: {
+    display: 'flex',
+    flex: 1,
+    flexDirection: 'column',
+  },
+});
 
 CarpoolRequestSection.propTypes = {
   user: PropTypes.object.isRequired,
@@ -20,9 +46,10 @@ function CarpoolRequestSection({
   user,
   fromList,
   toList,
-  minimumPassenger,
+  minimumPassenger, // TODO: change prop name
   onClickRequest,
 }) {
+  const styles = useStyles();
   const [from, setFrom] = useState(null);
   const [to, setTo] = useState(null);
   const [minPassenger, setMinPassenger] = useState(null);
@@ -47,65 +74,39 @@ function CarpoolRequestSection({
   };
 
   return (
-    <RequestBlock className="requestBlock">
-      <div className="title">
-        <Heading title="Carpool Request!" />
-      </div>
-      <div className="from" data-testid="from">
-        <h2>From</h2>
-        {fromList &&
-          fromList.map(value => (
-            <Checkbox
-              key={value}
-              name={'from'}
-              value={value}
-              onClick={() => (from === value ? setFrom(null) : setFrom(value))}
-              checked={value === from}
-            />
-          ))}
-      </div>
-
-      <div className="to" data-testid="to">
-        <h2>To</h2>
-        {toList &&
-          toList.map(value => (
-            <Checkbox
-              key={value}
-              name={'to'}
-              value={value}
-              onClick={() => (to === value ? setTo(null) : setTo(value))}
-              checked={value === to}
-            />
-          ))}
-      </div>
-
-      <div className="minimumPassenger" data-testid="minimumPassenger">
-        <h2>Minimum Passenger</h2>
-        {minimumPassenger &&
-          minimumPassenger.map(value => (
-            <Checkbox
-              key={value}
-              name={'minimumPassenger'}
-              value={value}
-              onClick={() =>
-                minPassenger === value
-                  ? setMinPassenger(null)
-                  : setMinPassenger(value)
-              }
-              checked={value === minPassenger}
-            />
-          ))}
-      </div>
-      <div className="button">
-        <Button
-          id="request-submit-button"
-          variant="contained"
-          color="primary"
-          onClick={onButtonClickHandler}
-          children="Carpool Request"
-        />
-      </div>
-    </RequestBlock>
+    <FullPage
+      scrollingSpeed={1000}
+      render={({ state, fullpageApi }) => {
+        return (
+          <FullPage.Wrapper>
+            <div className={clns("section", styles.fromSection)}  data-testid="from">
+              <FromSection
+                fromList={fromList}
+                selectedFrom={from}
+                onClickFrom={setFrom}
+              />
+            </div>
+            <div className="section" data-testid="to">
+              <ToSection
+                toList={toList}
+                selectedTo={to}
+                onClickTo={setTo}
+              />
+            </div>
+            <div className="section" data-testid="minimumPassenger">
+              <MinimumPassengerSection
+                minimumPassengerOptions={minimumPassenger}
+                selectedMinimumPassenger={minPassenger}
+                onClickMinimumPassenger={setMinPassenger}
+              />
+            </div>
+            <div className="section">
+              <DecideSection onClick={onButtonClickHandler}/>
+            </div>
+          </FullPage.Wrapper>
+        )
+      }}
+    />
   );
 }
 

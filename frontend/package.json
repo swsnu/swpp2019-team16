@@ -8,11 +8,13 @@
     "@material-ui/icons": "^4.4.3",
     "@material-ui/styles": "^4.5.0",
     "axios": "^0.19.0",
+    "classnames": "^2.2.6",
+    "google-map-react": "^1.1.5",
     "google-protobuf": "^3.10.0",
     "grpc-web": "^1.0.6",
-    "classnames": "^2.2.6",
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
+    "react-app-env": "^1.2.3",
     "react-dom": "^16.10.2",
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.1.2",
@@ -23,10 +25,12 @@
     "styled-components": "^4.4.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "react-app-env --env-file=config/.development.env start",
+    "build": "react-app-env --env-file=config/.development.env build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -49,8 +53,14 @@
     }
   },
   "devDependencies": {
+    "@babel/core": "^7.7.4",
+    "@storybook/addon-actions": "^5.2.6",
+    "@storybook/addon-links": "^5.2.6",
+    "@storybook/addons": "^5.2.6",
+    "@storybook/react": "^5.2.6",
     "@testing-library/jest-dom": "^4.1.2",
     "@testing-library/react": "^9.3.0",
+    "babel-loader": "^8.0.6",
     "husky": "^3.0.8",
     "redux-devtools-extension": "^2.13.8",
     "redux-mock-store": "^1.5.3",
@@ -63,6 +73,5 @@
       "!src/serviceWorker.js"
     ]
   },
-  
-  "proxy":"http://localhost:8000"
+  "proxy": "http://localhost:8000"
 }
