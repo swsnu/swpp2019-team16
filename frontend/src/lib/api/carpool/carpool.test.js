@@ -22,7 +22,7 @@ describe('api/carpool', () => {
   describe('create', () => {
     it('should successfully create carpoolRequest', async done => {
       jest.spyOn(client, 'post').mockImplementation(url => {
-        expect(url).toBe('/api/v1/carpool_request/create');
+        expect(url).toBe('/api/v1/carpool_request/');
         done();
       });
 

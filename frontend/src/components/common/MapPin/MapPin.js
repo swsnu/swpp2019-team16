@@ -13,7 +13,7 @@ const useStyles = makeStyles({
   icon: {
     width: '50px',
     height: '50px',
-  }
+  },
 });
 
 function MapPin() {
@@ -32,6 +32,6 @@ function MapPin() {
       />
     </IconButton>
   );
-};
+}
 
 export default MapPin;

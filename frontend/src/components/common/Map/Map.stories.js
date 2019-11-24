@@ -20,16 +20,13 @@ storiesOf('common/Map', module)
   ))
   .add('default', () => (
     <Map
-      width={"100%"}
-      height={"400px"}
+      width={'100%'}
+      height={'400px'}
       center={{
         lat: 37.480126,
         lng: 126.952436,
       }}
     >
-      <MapPin
-        lat={37.480126}
-        lng={126.952436}
-      />
+      <MapPin lat={37.480126} lng={126.952436} />
     </Map>
   ));

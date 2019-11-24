@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import Checkbox from '../../common/Checkbox';
 import { Typography } from '@material-ui/core';
+import Map from '../../common/Map';
+import MapPin from '../../common/MapPin';
+import { LocationPropTypes } from '../../../types/location';
 
 const useStyles = makeStyles({
   root: {
@@ -12,16 +15,27 @@ const useStyles = makeStyles({
     alignItems: 'center',
   },
   title: {
-    marginBottom: '25px',
+    marginBottom: '30px',
   },
   content: {
-
-  }
+    marginBottom: '25px',
+  },
+  map: {
+    width: '100%',
+    flex: 1,
+    marginBottom: '25px',
+  },
+  noLocationSelected: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '400px',
+  },
 });
 
 FromSection.propTypes = {
-  fromList: PropTypes.arrayOf(PropTypes.string).isRequired,
-  selectedFrom: PropTypes.string,
+  fromList: PropTypes.arrayOf(LocationPropTypes).isRequired,
+  selectedFrom: LocationPropTypes,
   onClickFrom: PropTypes.func.isRequired,
 };
 
@@ -30,30 +44,48 @@ function FromSection({ fromList, selectedFrom, onClickFrom }) {
   return (
     <div className={styles.root}>
       <div className={styles.title}>
-        <Typography variant={"h2"}>
-          Where are you going to
-        </Typography>
-        <Typography variant={"h2"}>
-          take taxi?
-        </Typography>
+        <Typography variant={'h2'}>Where are you?</Typography>
       </div>
       <div className={styles.content}>
-        {
-          fromList &&
-          fromList.map(from => (
+        {fromList &&
+          fromList.map(location => (
             <Checkbox
-              key={from}
+              key={location.name}
               name={'from'}
-              value={from}
-              onClick={
-                () => selectedFrom === from
+              value={location.name}
+              onClick={() =>
+                selectedFrom === location.name
                   ? onClickFrom(null)
-                  : onClickFrom(from)
+                  : onClickFrom(location)
               }
-              checked={selectedFrom === from}
+              checked={
+                selectedFrom !== null && selectedFrom.name === location.name
+              }
             />
-          ))
-        }
+          ))}
+      </div>
+      <div className={styles.map}>
+        {selectedFrom === null ? (
+          <div className={styles.noLocationSelected}>
+            <Typography variant={'h5'}>No location selected.</Typography>
+          </div>
+        ) : (
+          <div>
+            <Map
+              center={{
+                lat: selectedFrom.coordinate.lat,
+                lng: selectedFrom.coordinate.lng,
+              }}
+              width={'100%'}
+              height={'400px'}
+            >
+              <MapPin
+                lat={selectedFrom.coordinate.lat}
+                lng={selectedFrom.coordinate.lng}
+              />
+            </Map>
+          </div>
+        )}
       </div>
     </div>
   );

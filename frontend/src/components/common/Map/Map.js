@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import GoogleMap from 'google-map-react';
 import { makeStyles } from '@material-ui/styles';
-import MapPin from '../MapPin';
 
 const useStyles = makeStyles({
   root: {
@@ -25,10 +24,7 @@ function Map({ width, height, children, center }) {
   const styles = useStyles({ width, height });
   return (
     <div className={styles.root}>
-      <GoogleMap
-        center={center}
-        defaultZoom={17}
-      >
+      <GoogleMap center={center} defaultZoom={17}>
         {children}
       </GoogleMap>
     </div>

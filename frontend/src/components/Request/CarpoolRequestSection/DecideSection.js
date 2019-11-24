@@ -2,9 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import Button from '../../common/Button';
+import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles({
-  root: {},
+  root: {
+    display: 'flex',
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  title: {
+    marginBottom: '25px',
+  },
+  content: {},
 });
 
 DecideSection.propTypes = {
@@ -15,13 +26,18 @@ function DecideSection({ onClick }) {
   const styles = useStyles();
   return (
     <div className={styles.root}>
-      <Button
-        id="request-submit-button"
-        variant="contained"
-        color="primary"
-        onClick={onClick}
-        children="Carpool Request"
-      />
+      <div className={styles.title}>
+        <Typography variant={'h2'}>Are you ready to call Ya-Ta?</Typography>
+      </div>
+      <div className={styles.content}>
+        <Button
+          id="request-submit-button"
+          variant="contained"
+          color="secondary"
+          onClick={onClick}
+          children="Send Request"
+        />
+      </div>
     </div>
   );
 }

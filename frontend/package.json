@@ -25,8 +25,8 @@
     "styled-components": "^4.4.0"
   },
   "scripts": {
-    "start": "react-app-env --env-file=config/.development.env start",
-    "build": "react-app-env --env-file=config/.development.env build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006",
@@ -69,6 +69,7 @@
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}",
+      "!src/proto/*",
       "!src/index.js",
       "!src/serviceWorker.js"
     ]

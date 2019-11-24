@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DecideSection /> should match with snapshot - default 1`] = `
+<div>
+  <div
+    class="makeStyles-root-1"
+  >
+    <div
+      class="makeStyles-title-2"
+    >
+      <h2
+        class="MuiTypography-root MuiTypography-h2"
+      >
+        Are you ready to call Ya-Ta?
+      </h2>
+    </div>
+    <div
+      class="makeStyles-content-3"
+    >
+      <button
+        class="MuiButtonBase-root MuiButton-root makeStyles-root-34 makeStyles-root-37 MuiButton-contained makeStyles-contained-35 makeStyles-contained-38 MuiButton-contained makeStyles-contained-35 makeStyles-contained-38"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          Send Request
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+  </div>
+</div>
+`;

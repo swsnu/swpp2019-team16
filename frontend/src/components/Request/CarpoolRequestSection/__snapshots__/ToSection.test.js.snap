@@ -1,0 +1,364 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ToSection /> should match with snapshot - default 1`] = `
+<div>
+  <div
+    class="makeStyles-root-1"
+  >
+    <div
+      class="makeStyles-title-2"
+    >
+      <h2
+        class="MuiTypography-root MuiTypography-h2"
+      >
+        Where do you want to go?
+      </h2>
+    </div>
+    <div
+      class="makeStyles-content-3"
+    >
+      <div>
+        <label
+          class="MuiFormControlLabel-root"
+          data-testid="301 building"
+        >
+          <span
+            aria-disabled="false"
+            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-48 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-49 Mui-checked MuiIconButton-colorSecondary"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <input
+                checked=""
+                class="PrivateSwitchBase-input-51"
+                data-indeterminate="false"
+                name="from"
+                type="checkbox"
+                value="301 building"
+              />
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </span>
+          <span
+            class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+          >
+            301 building
+          </span>
+        </label>
+      </div>
+      <div>
+        <label
+          class="MuiFormControlLabel-root"
+          data-testid="Student Center"
+        >
+          <span
+            aria-disabled="false"
+            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-48 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <input
+                class="PrivateSwitchBase-input-51"
+                data-indeterminate="false"
+                name="from"
+                type="checkbox"
+                value="Student Center"
+              />
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </span>
+          <span
+            class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+          >
+            Student Center
+          </span>
+        </label>
+      </div>
+      <div>
+        <label
+          class="MuiFormControlLabel-root"
+          data-testid="Dormitory three-way"
+        >
+          <span
+            aria-disabled="false"
+            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-48 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <input
+                class="PrivateSwitchBase-input-51"
+                data-indeterminate="false"
+                name="from"
+                type="checkbox"
+                value="Dormitory three-way"
+              />
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </span>
+          <span
+            class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+          >
+            Dormitory three-way
+          </span>
+        </label>
+      </div>
+    </div>
+    <div
+      class="makeStyles-map-4"
+    >
+      <div>
+        <div
+          class="makeStyles-root-73 makeStyles-root-74"
+        >
+          <div
+            style="width: 100%; height: 100%; margin: 0px; padding: 0px; position: relative;"
+          >
+            <div
+              style="width: 100%; height: 100%; left: 0px; top: 0px; margin: 0px; padding: 0px; position: absolute;"
+            />
+            <div
+              style="width: 50%; height: 50%; left: 50%; top: 50%; margin: 0px; padding: 0px; position: absolute;"
+            >
+              <div
+                style="width: 100%; height: 100%; left: 0px; top: 0px; margin: 0px; padding: 0px; position: absolute;"
+              >
+                <div
+                  style="width: 0px; height: 0px; left: 0px; top: 0px; background-color: transparent; position: absolute;"
+                >
+                  <button
+                    class="MuiButtonBase-root MuiIconButton-root makeStyles-root-75"
+                    tabindex="0"
+                    type="button"
+                  >
+                    <span
+                      class="MuiIconButton-label"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root makeStyles-icon-76 MuiSvgIcon-colorSecondary"
+                        focusable="false"
+                        role="presentation"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M12 2c-4.97 0-9 4.03-9 9 0 4.17 2.84 7.67 6.69 8.69L12 22l2.31-2.31C18.16 18.67 21 15.17 21 11c0-4.97-4.03-9-9-9zm0 2c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.3c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"
+                        />
+                      </svg>
+                    </span>
+                    <span
+                      class="MuiTouchRipple-root"
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ToSection /> should match with snapshot - when no selected location 1`] = `
+<div>
+  <div
+    class="makeStyles-root-87"
+  >
+    <div
+      class="makeStyles-title-88"
+    >
+      <h2
+        class="MuiTypography-root MuiTypography-h2"
+      >
+        Where do you want to go?
+      </h2>
+    </div>
+    <div
+      class="makeStyles-content-89"
+    >
+      <div>
+        <label
+          class="MuiFormControlLabel-root"
+          data-testid="301 building"
+        >
+          <span
+            aria-disabled="false"
+            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-134 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <input
+                class="PrivateSwitchBase-input-137"
+                data-indeterminate="false"
+                name="from"
+                type="checkbox"
+                value="301 building"
+              />
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </span>
+          <span
+            class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+          >
+            301 building
+          </span>
+        </label>
+      </div>
+      <div>
+        <label
+          class="MuiFormControlLabel-root"
+          data-testid="Student Center"
+        >
+          <span
+            aria-disabled="false"
+            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-134 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <input
+                class="PrivateSwitchBase-input-137"
+                data-indeterminate="false"
+                name="from"
+                type="checkbox"
+                value="Student Center"
+              />
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </span>
+          <span
+            class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+          >
+            Student Center
+          </span>
+        </label>
+      </div>
+      <div>
+        <label
+          class="MuiFormControlLabel-root"
+          data-testid="Dormitory three-way"
+        >
+          <span
+            aria-disabled="false"
+            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-134 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <input
+                class="PrivateSwitchBase-input-137"
+                data-indeterminate="false"
+                name="from"
+                type="checkbox"
+                value="Dormitory three-way"
+              />
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </span>
+          <span
+            class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+          >
+            Dormitory three-way
+          </span>
+        </label>
+      </div>
+    </div>
+    <div
+      class="makeStyles-map-90"
+    >
+      <div
+        class="makeStyles-noLocationSelected-91"
+      >
+        <h5
+          class="MuiTypography-root MuiTypography-h5"
+        >
+          No location selected.
+        </h5>
+      </div>
+    </div>
+  </div>
+</div>
+`;

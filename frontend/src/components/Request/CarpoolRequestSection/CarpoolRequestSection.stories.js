@@ -7,6 +7,7 @@ import CarpoolRequestSection from './CarpoolRequestSection';
 import { ThemeProvider } from '@material-ui/styles';
 import theme from '../../../lib/styles/theme';
 import { CssBaseline } from '@material-ui/core';
+import { fromLocationList, toLocationList } from '../../../types/location';
 
 storiesOf('Request/CarpoolRequestSection', module)
   .addDecorator(story => (
@@ -20,9 +21,9 @@ storiesOf('Request/CarpoolRequestSection', module)
   .add('default', () => (
     <CarpoolRequestSection
       user={{}}
-      fromList={['SNU station', 'Nakseongdae station', 'Nokdu Street']}
-      toList={['301 building', 'Student Center', 'Dormitory three-way']}
-      minimumPassenger={['2', '3', '4']}
+      fromLocationList={fromLocationList}
+      toLocationList={toLocationList}
+      minimumPassengerList={['2', '3', '4']}
       onClickRequest={() => {}}
     />
   ));

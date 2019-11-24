@@ -25,8 +25,8 @@ const [
 
 export const requestCarpool = createAction(
   REQUEST_CARPOOL,
-  ({ userId, from, to, minimumPassenger }) => ({
-    userId,
+  ({ riderId, from, to, minimumPassenger }) => ({
+    riderId,
     from,
     to,
     minimumPassenger,
