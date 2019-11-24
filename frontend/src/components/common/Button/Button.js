@@ -37,9 +37,7 @@ const useStyles = makeStyles({
     borderRadius: props => {
       switch (props.size) {
         case 'small':
-          return '4px';
         case 'medium':
-          return '4px';
         case 'large':
         default:
           return '4px';
