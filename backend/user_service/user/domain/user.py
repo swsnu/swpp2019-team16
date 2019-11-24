@@ -1,8 +1,9 @@
 from django.db import models
 from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
 from django.contrib.auth.models import PermissionsMixin
+from rest_framework import serializers
 
-from backend.user_service.user.domain.vehicle import Vehicle
+from backend.user_service.user.domain.vehicle import Vehicle, VehicleSerializer
 
 
 class UserManager(BaseUserManager):
@@ -50,3 +51,13 @@ class User(AbstractBaseUser, PermissionsMixin):
         else:
             return 'email={},user_type={},point={},vehicle={}'\
                 .format(self.email, self.user_type, self.point, self.vehicle)
+
+
+class UserSerializer(serializers.ModelSerializer):
+
+    vehicle = VehicleSerializer(many=False, read_only=True)
+
+    class Meta:
+        model = User
+        fields = ('id', 'email', 'user_type', 'vehicle')
+        read_only_fields = ('id', 'email', 'user_type')

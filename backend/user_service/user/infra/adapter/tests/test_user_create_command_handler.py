@@ -23,21 +23,21 @@ class UserCreateCommandHandlerTestCase(TestCase):
             def __init__(self, assert_func):
                 self.assert_func = assert_func
 
-            def register(self, email, password, user_type, car_type, plate):
-                self.assert_func(email, password, user_type, car_type, plate)
+            def register(self, email, password, user_type, car_type, plate_no):
+                self.assert_func(email, password, user_type, car_type, plate_no)
 
         EMAIL = 'test@gmail.com'
         PASSWORD = 1234
         USER_TYPE = 'RIDER'
         CAR_TYPE = None
-        PLATE = None
+        PLATE_NO = None
 
-        def assert_func(email, password, user_type, car_type, plate):
+        def assert_func(email, password, user_type, car_type, plate_no):
             self.assertEqual(email, EMAIL)
             self.assertEqual(password, PASSWORD)
             self.assertEqual(user_type, USER_TYPE)
             self.assertEqual(car_type, CAR_TYPE)
-            self.assertEqual(plate, PLATE)
+            self.assertEqual(plate_no, PLATE_NO)
 
         mock_user_application_service = \
             MockUserApplicationService(assert_func=assert_func)
@@ -46,4 +46,4 @@ class UserCreateCommandHandlerTestCase(TestCase):
 
         user_create_command_handler.handle(UserCreateCommand(
             email=EMAIL, password=PASSWORD, user_type=USER_TYPE,
-            car_type=CAR_TYPE, plate=PLATE))
+            car_type=CAR_TYPE, plate_no=PLATE_NO))
