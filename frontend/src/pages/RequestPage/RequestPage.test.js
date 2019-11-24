@@ -1,8 +1,11 @@
 import React from 'react';
 import RequestPage from './RequestPage';
-import { render, fireEvent } from '@testing-library/react';
 import { MemoryRouter, Route } from 'react-router-dom';
 import { renderWithRedux } from 'test/utils';
+
+jest.mock('@fullpage/react-fullpage', () => ({ children }) => (
+  <div>{children}</div>
+));
 
 describe('<RequestPage />', () => {
   it('SHOULD match with snapshot', async () => {

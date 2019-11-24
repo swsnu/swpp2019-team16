@@ -1,8 +1,7 @@
 import React from 'react';
 import IntroPage from './IntroPage';
-import { render, fireEvent } from '@testing-library/react';
 import { MemoryRouter, Route } from 'react-router-dom';
-import { redenerWithRedux, renderWithRedux } from '../../test/utils';
+import { renderWithRedux } from '../../test/utils';
 
 jest.mock('@fullpage/react-fullpage', () => ({ children }) => (
   <div>{children}</div>

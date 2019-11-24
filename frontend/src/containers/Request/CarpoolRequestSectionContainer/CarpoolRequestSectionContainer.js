@@ -1,10 +1,16 @@
 import React, { useCallback } from 'react';
+import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import CarpoolRequestSection from '../../../components/Request/CarpoolRequestSection';
 import { withRouter } from 'react-router-dom';
 import { requestCarpool } from '../../../modules/carpoolRequest';
+import { fromLocationList, toLocationList } from '../../../types/location';
 
-CarpoolRequestSectionContainer.propTypes = {};
+const MINIMUM_PASSENGER_LIST = ['2', '3', '4'];
+
+CarpoolRequestSectionContainer.propTypes = {
+  history: PropTypes.object.isRequired,
+};
 
 function CarpoolRequestSectionContainer({ history }) {
   const dispatch = useDispatch();
@@ -13,14 +19,9 @@ function CarpoolRequestSectionContainer({ history }) {
     user: user.user,
   }));
 
-  //TODO: it should be loaded from DB
-  const fromList = ['SNU station', 'Nakseongdae station', 'Nokdu Street'];
-  const toList = ['301 building', 'Student Center', 'Dormitory three-way'];
-  const minimumPassenger = ['2', '3', '4'];
-
   const onClickRequest = useCallback(
-    ({ rider_id, from, to, minimumPassenger }) => {
-      dispatch(requestCarpool({ rider_id, from, to, minimumPassenger }));
+    ({ riderId, from, to, minimumPassenger }) => {
+      dispatch(requestCarpool({ riderId, from, to, minimumPassenger }));
       history.push('/waiting');
     },
     [dispatch, history],
@@ -33,10 +34,10 @@ function CarpoolRequestSectionContainer({ history }) {
   return (
     <CarpoolRequestSection
       user={user}
-      fromList={fromList}
-      toList={toList}
-      minimumPassenger={minimumPassenger}
-      onClickRequest={onClickRequest}
+      fromLocationList={fromLocationList}
+      toLocationList={toLocationList}
+      minimumPassengerList={MINIMUM_PASSENGER_LIST}
+      onCarpoolRequest={onClickRequest}
     />
   );
 }

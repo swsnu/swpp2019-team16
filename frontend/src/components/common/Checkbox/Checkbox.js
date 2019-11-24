@@ -4,13 +4,20 @@ import Checkbox from '@material-ui/core/Checkbox';
 import PropTypes from 'prop-types';
 
 CheckboxLabels.propTypes = {
+  color: PropTypes.oneOf(['primary', 'secondary']),
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
   checked: PropTypes.bool.isRequired,
 };
 
-export default function CheckboxLabels({ name, value, onClick, checked }) {
+export default function CheckboxLabels({
+  name,
+  value,
+  onClick,
+  checked,
+  color = 'primary',
+}) {
   return (
     <div>
       <FormControlLabel
@@ -21,7 +28,7 @@ export default function CheckboxLabels({ name, value, onClick, checked }) {
             onClick={onClick}
             value={value}
             checked={checked}
-            color="primary"
+            color={color}
           />
         }
         label={value}

@@ -19,6 +19,10 @@ const black = '#060607';
 export default {
   white,
   black,
+  common: {
+    white,
+    black,
+  },
   primary: {
     contrastText: white,
     main: '#2F3740',

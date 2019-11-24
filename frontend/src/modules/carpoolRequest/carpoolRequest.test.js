@@ -19,14 +19,14 @@ describe('carpool', () => {
     describe('REQUEST_CARPOOL', () => {
       it('should successfully create action', async () => {
         const action = requestCarpool({
-          userId: '1',
+          riderId: '1',
           from: 'from',
           to: 'to',
           minimumPassenger: '3',
         });
         expect(action.type).toStrictEqual('carpoolRequest/REQUEST_CARPOOL');
         expect(action.payload).toStrictEqual({
-          userId: '1',
+          riderId: '1',
           from: 'from',
           to: 'to',
           minimumPassenger: '3',
