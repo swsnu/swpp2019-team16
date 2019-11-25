@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import RequestCallSection from '../../components/RequestCall/RequestCallSection';
 import { withRouter } from 'react-router-dom';
@@ -9,24 +9,48 @@ RequestCallContainer.propTypes = {};
 function RequestCallContainer({ history }) {  
   const dispatch = useDispatch();
 
-  const user = useSelector(user => ({
+  const { user, group } = useSelector(({user, group}) => ({
     user: user.user,
+    group: group.group
   }));
-
-  const { group } = useSelector(({ group }) => ({
-    group: group.group,
-  }));
-  
-  const groupId = 1;
-  const driverId = 1;
 
   const onClickRequestCall = useCallback(
-    ({groupId, driverId}) => {
+    ({groupId, driverId}) => { 
       dispatch(acceptGroup({groupId, driverId}));
       history.push('/group');
     }, [dispatch, history],
   );
-  /*
+
+  useEffect(() => {
+    /*
+    const stream = createGrpcStream();
+    stream.on('data', message => {
+      const parsed = JSON.parse(message.getData());
+      console.log('parsed', parsed);
+      if (parsed._type_name === 'event.group_recommended') {
+        dispatch(
+          groupCreated({
+            from: parsed._from_location,
+            to: parsed._to_location,
+          }),
+        );
+      }
+    });
+    stream.on('status', status => {
+      console.log('status', status);
+    });
+    stream.on('end', end => {
+      console.log('end', end);
+    });
+
+    return () => {
+      dispatch(unloadGroup());
+      stream.cancel();
+    };
+    */
+  }, [dispatch, history]);
+
+/*  
   if (!user) {
     return <div>we are loading user...</div>;
   }
@@ -38,6 +62,7 @@ function RequestCallContainer({ history }) {
   return (
     <RequestCallSection
       user={user}
+      group={group}
       onClickRequestCall={onClickRequestCall}
     />
   );

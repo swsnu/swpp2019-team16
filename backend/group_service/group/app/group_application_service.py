@@ -5,6 +5,8 @@ from backend.common.messaging.infra.redis.redis_message_publisher \
     import RedisMessagePublisher
 from backend.common.event.group_created_event \
     import GroupCreatedEvent
+from backend.common.event.group_updated_event \
+    import GroupUpdatedEvent
 
 logger = logging.getLogger(__name__)
 
@@ -25,4 +27,7 @@ class GroupApplicationService:
     def update_group(self, group_id, driver_id):
         myGroup = Group.objects.get(id=group_id)
         myGroup.driver_id = driver_id
+        myGroup.save()
+        event = GroupUpdatedEvent(driver_id=driver_id)
+        RedisMessagePublisher().publish_message(event)
         return myGroup

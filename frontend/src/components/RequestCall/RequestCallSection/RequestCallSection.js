@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import Button from '../../common/Button';
 import Heading from '../../common/Heading';
@@ -9,21 +9,32 @@ const RequestCallBlock = styled.div``;
 
 RequestCallSection.propTypes = {
   user: PropTypes.object.isRequired,
+  group: PropTypes.object,
   onClickRequestCall: PropTypes.func.isRequired,
 };
 
 function RequestCallSection({
   user,
+  group,
   onClickRequestCall,
 }) {
-  //const [groupId, setGroupId] = useState(null);
-  const groupId = 1
-  const driverId = 1
+  const driverId = 1 // api call을 통해 user id로 driver id 구하기...
+  const groupId = 1 // group.id
   
-  let onButtonClickHandler = () => {
+  const onButtonClickHandler = () => {
     onClickRequestCall({groupId, driverId})
   }
 
+  useEffect(() => {
+    recognizer.recognized = (r, event) => {
+      let word = 'Stop'
+      console.log(event.result.text);
+      if(event.result.text.includes(word)){
+        recognizer.stopContinuousRecognitionAsync();
+      }
+    };
+    recognizer.startContinuousRecognitionAsync();
+  });
 
   return (
     <RequestCallBlock className="requestCallBlock">
