@@ -1,6 +1,6 @@
 import React from 'react';
 import Main from '../_layouts/Main';
-import RequestContainer from '../../containers/RequestContainer';
+import RequestContainer from '../../containers/Request/CarpoolRequestSectionContainer';
 
 function RequestPage() {
   return (

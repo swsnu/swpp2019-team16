@@ -24,25 +24,23 @@ describe('api/auth', () => {
   describe('register', () => {
     it('should successfully return params', async done => {
       jest.spyOn(client, 'post').mockImplementation((url, body) => {
-        expect(url).toBe('/api/v1/auth/register');
+        expect(url).toBe('/api/v1/user/register');
         expect(body).toStrictEqual({
+          userType: 'rider',
           email: 'user@gmail.com',
           password: 'password',
-          vehicleInfo: {
-            carType: 'Mercedes-Benz',
-            plate: '54가 0639',
-          },
+          carType: 'Mercedes-Benz',
+          plateNo: '54가 0639',
         });
         done();
       });
 
       authAPI.register({
+        userType: 'rider',
         email: 'user@gmail.com',
         password: 'password',
-        vehicleInfo: {
-          carType: 'Mercedes-Benz',
-          plate: '54가 0639',
-        },
+        carType: 'Mercedes-Benz',
+        plateNo: '54가 0639',
       });
     });
   });

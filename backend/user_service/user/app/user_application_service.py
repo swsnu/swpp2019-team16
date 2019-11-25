@@ -11,6 +11,7 @@ from backend.common.messaging.infra.redis.redis_message_publisher \
     import RedisMessagePublisher
 from backend.carpool_request_service.carpool_request.domain.carpool_request \
     import CarpoolRequest
+from backend.user_service.user.domain.user import UserSerializer
 
 
 logger = logging.getLogger(__name__)
@@ -18,22 +19,24 @@ logger = logging.getLogger(__name__)
 
 class UserApplicationService():
 
-    def register(self, email, password, user_type, car_type, plate):
+    def register(self, email, password, user_type, car_type, plate_no):
         vehicle = None
-        if car_type is not None and plate is not None:
-            vehicle = Vehicle.objects.create(car_type=car_type, plate=plate)
+        if car_type is not None and plate_no is not None:
+            vehicle = Vehicle.objects.create(car_type=car_type, plate_no=plate_no)
 
-        return get_user_model().objects.create_user(
+        user = get_user_model().objects.create_user(
             email=email, password=password,
             user_type=user_type, vehicle=vehicle)
+
+        return UserSerializer(user).data
 
     def login(self, user_id):
         user = get_user_model().objects.get(id=user_id)
         user_type = user.user_type
-        if user_type == "RIDER":
+        if user_type == "rider":
             if(len(Rider.objects.filter(user_id=user_id)) == 0):
                 return Rider.objects.create(user=user, status="IDLE")
-        elif user_type == "DRIVER":
+        elif user_type == "driver":
             if(len(Driver.objects.filter(user_id=user_id)) == 0):
                 return Driver.objects.create(user=user, status="IDLE")
         else:

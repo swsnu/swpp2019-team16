@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CarpoolRequestSection /> SHOULD match with snapshot WHEN all data in 1`] = `
+<div>
+  <div />
+</div>
+`;

@@ -1,6 +1,4 @@
 import asyncio
-import signal
-import functools
 
 from django.core.management import BaseCommand
 
@@ -18,6 +16,7 @@ from backend.common.command.group_update_command \
     import GROUP_UPDATE_COMMAND
 from backend.common.rpc.infra.adapter.redis.redis_rpc_server \
     import RedisRpcServer
+from backend.common.utils.signal_handler import register_signal_handler, shutdown_process
 
 
 class Command(BaseCommand):
@@ -30,17 +29,10 @@ class Command(BaseCommand):
     subscriber = RedisMessageSubscriber()
     rpc_server = RedisRpcServer()
 
-    def register_signal_handler(self, loop):
-        for signame in ('SIGINT', 'SIGTERM'):
-            loop.add_signal_handler(
-                getattr(signal, signame),
-                functools.partial(asyncio.ensure_future,
-                                  self.shutdown(signame, loop)))
-
     def handle(self, *args, **options):
         loop = asyncio.get_event_loop()
 
-        self.register_signal_handler(loop)
+        register_signal_handler(loop, shutdown=shutdown_process)
 
         async def main():
             """

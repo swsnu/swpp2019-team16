@@ -13,7 +13,7 @@ class UserCreateCommandHandler(implements(MessageHandler)):
                 message.password is None:
             raise ValueError("Invalid UserCreate command parameters")
 
-        self.__user_application_service.register(
+        return self.__user_application_service.register(
             email=message.email, password=message.password,
             user_type=message.user_type, car_type=message.car_type,
-            plate=message.plate)
+            plate_no=message.plate_no)

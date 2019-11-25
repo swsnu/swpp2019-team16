@@ -12,8 +12,6 @@ from backend.common.event.user_logout_event \
     import UserLogoutEvent
 from backend.common.messaging.infra.redis.redis_message_publisher \
     import RedisMessagePublisher
-
-
 from backend.common.rpc.infra.adapter.redis.redis_rpc_client \
     import RedisRpcClient
 
@@ -38,15 +36,17 @@ def __register_user(request):
     body = json.loads(request.body.decode())
     # TODO: check KeyError
     command = UserCreateCommand(
-        email=body['email'], password=body['password'],
-        user_type=body['user_type'])
+        email=body['email'],
+        password=body['password'],
+        user_type=body['userType'],
+        car_type=body['carType'],
+        plate_no=body['plateNo']
+        )
 
-    result = RedisRpcClient().call(USER_CREATE_COMMAND, command)
-    data = {'jsonrps': result.jsonrpc,
-            'id': result.id, 'result': result.result}
+    rpc_response = RedisRpcClient().call(USER_CREATE_COMMAND, command)
 
     # TODO: handling exception
-    return with_json_response(status=204, data=data)
+    return JsonResponse(data=rpc_response.result, status=200)
 
 
 def login_user(request):

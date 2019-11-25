@@ -7,12 +7,14 @@ import WaitingPage from './pages/WaitingPage/WaitingPage';
 import GroupPage from './pages/GroupPage/GroupPage';
 import DetailPage from './pages/DetailPage/DetailPage';
 import FinalPage from './pages/FinalPage/FinalPage';
+import SignUpPage from './pages/SignUpPage/SignUpPage';
 
 function App() {
   return (
     <div>
       <Switch>
-        <Route component={IntroPage} path="/intro" exact />
+        <Route component={IntroPage} path="/" exact />
+        <Route component={SignUpPage} path="/signup" exact />
         <Route component={RequestPage} path="/request" exact />
         <Route component={RequestCallPage} path="/requestcall" exact />
         <Route component={WaitingPage} path="/waiting" exact />

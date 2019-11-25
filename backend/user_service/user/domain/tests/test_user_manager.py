@@ -13,7 +13,7 @@ class UserManagerTestCase(TestCase):
     def test_create_user_with_email_then_successful(self):
         email = 'test@gmail.com'
         password = 'TestPass123'
-        vehicle = Vehicle.objects.create(car_type='benz', plate='1234')
+        vehicle = Vehicle.objects.create(car_type='benz', plate_no='1234')
 
         user = get_user_model().objects.create_user(
             email=email, password=password, vehicle=vehicle)
@@ -40,7 +40,7 @@ class UserManagerTestCase(TestCase):
         user = get_user_model().objects.create_user(
             email=email,
             password='TestPass123',
-            vehicle=Vehicle.objects.create(car_type='benz', plate='1234')
+            vehicle=Vehicle.objects.create(car_type='benz', plate_no='1234')
         )
 
         self.assertEqual(user.email, email.lower())
@@ -50,5 +50,5 @@ class UserManagerTestCase(TestCase):
             get_user_model().objects.create_user(
                 email=None,
                 password='TestPass123',
-                vehicle=Vehicle.objects.create(car_type='benz', plate='1234')
+                vehicle=Vehicle.objects.create(car_type='benz', plate_no='1234')
             )
