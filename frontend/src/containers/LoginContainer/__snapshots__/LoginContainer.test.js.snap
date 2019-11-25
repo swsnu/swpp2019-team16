@@ -1,0 +1,130 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LoginContainer /> SHOULD match with snapshot 1`] = `
+<div>
+  <div
+    class="loginPage"
+  >
+    <div
+      class="title"
+    >
+      <h2
+        class="MuiTypography-root MuiTypography-h2"
+        title="Login"
+      >
+        Login
+      </h2>
+    </div>
+    <div
+      class="inputID"
+    >
+      <div
+        class="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+          data-shrink="false"
+        >
+          ID
+        </label>
+        <div
+          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+        >
+          <input
+            aria-invalid="false"
+            class="MuiInputBase-input MuiOutlinedInput-input"
+            type="text"
+            value=""
+          />
+          <fieldset
+            aria-hidden="true"
+            class="PrivateNotchedOutline-root-90 MuiOutlinedInput-notchedOutline"
+            style="padding-left: 8px;"
+          >
+            <legend
+              class="PrivateNotchedOutline-legend-91"
+              style="width: 0.01px;"
+            >
+              <span>
+                ​
+              </span>
+            </legend>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+    <div
+      class="input"
+    >
+      <div
+        class="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+          data-shrink="false"
+        >
+          Password
+        </label>
+        <div
+          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+        >
+          <input
+            aria-invalid="false"
+            class="MuiInputBase-input MuiOutlinedInput-input"
+            type="text"
+            value=""
+          />
+          <fieldset
+            aria-hidden="true"
+            class="PrivateNotchedOutline-root-90 MuiOutlinedInput-notchedOutline"
+            style="padding-left: 8px;"
+          >
+            <legend
+              class="PrivateNotchedOutline-legend-91"
+              style="width: 0.01px;"
+            >
+              <span>
+                ​
+              </span>
+            </legend>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+    <span
+      class="loginButton"
+    >
+      <button
+        class="MuiButtonBase-root MuiButton-root makeStyles-root-92 makeStyles-root-95 MuiButton-contained makeStyles-contained-93 makeStyles-contained-96 MuiButton-contained makeStyles-contained-93 makeStyles-contained-96"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          Login
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+    </span>
+    <span>
+      <button
+        class="MuiButtonBase-root MuiButton-root makeStyles-root-92 makeStyles-root-129 MuiButton-contained makeStyles-contained-93 makeStyles-contained-130 MuiButton-contained makeStyles-contained-93 makeStyles-contained-130"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          Register
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+    </span>
+  </div>
+</div>
+`;
