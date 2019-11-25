@@ -21,6 +21,7 @@ function App() {
         <Route component={GroupPage} path="/group" exact />
         <Route component={DetailPage} path="/detail" exact />
         <Route component={FinalPage} path="/final" exact />
+        <Route component={LoginPage} path="/login" exact />
       </Switch>
     </div>
   );
