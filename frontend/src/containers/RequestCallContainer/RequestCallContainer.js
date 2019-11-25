@@ -2,7 +2,7 @@ import React, { useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import RequestCallSection from '../../components/RequestCall/RequestCallSection';
 import { withRouter } from 'react-router-dom';
-import { acceptGroup } from '../../modules/group';
+import { acceptGroup, groupPushed, unloadGroup } from '../../modules/group';
 
 RequestCallContainer.propTypes = {};
 
@@ -22,16 +22,16 @@ function RequestCallContainer({ history }) {
   );
 
   useEffect(() => {
-    /*
     const stream = createGrpcStream();
     stream.on('data', message => {
       const parsed = JSON.parse(message.getData());
       console.log('parsed', parsed);
-      if (parsed._type_name === 'event.group_recommended') {
+      if (parsed._type_name === 'event.group_pushed') {
         dispatch(
-          groupCreated({
-            from: parsed._from_location,
-            to: parsed._to_location,
+          groupPushed({
+            groupId: parsed._group_id
+            //from: parsed._from_location,
+            //to: parsed._to_location,
           }),
         );
       }
@@ -47,7 +47,7 @@ function RequestCallContainer({ history }) {
       dispatch(unloadGroup());
       stream.cancel();
     };
-    */
+    
   }, [dispatch, history]);
 
 /*  

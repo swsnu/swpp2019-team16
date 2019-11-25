@@ -40,6 +40,7 @@ const [
 ] = createRequestActionTypes('group/CONFIRM_COST');
 
 export const GROUP_CREATED = 'group/GROUP_CREATED';
+export const GROUP_PUSHED = 'group/GROUP_PUSHED';
 export const UNLOAD_GROUP = 'group/UNLOAD_GROUP';
 
 export const groupCreated = createAction(
@@ -50,6 +51,13 @@ export const groupCreated = createAction(
     driver,
     from,
     to,
+  }),
+);
+
+export const groupPushed = createAction(
+  GROUP_PUSHED,
+  ({groupId}) => ({
+    groupId,
   }),
 );
 
@@ -126,6 +134,10 @@ const group = handleActions(
       ...state,
       group,
     }),
+    [GROUP_PUSHED]: (state, { payload: group }) => ({
+      ...state,
+      group,
+    }),
     [UNLOAD_GROUP]: state => ({
       ...state,
       group: null,
@@ -188,10 +200,7 @@ const group = handleActions(
       ...state,
       error: error,
     }),
-    [GROUP_CREATED]: (state, { payload: group }) => ({
-      ...state,
-      group,
-    }),
+    
   },
   initialState,
 );
