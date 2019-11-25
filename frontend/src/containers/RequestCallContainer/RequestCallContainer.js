@@ -1,21 +1,46 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import styled from 'styled-components';
-
-const RequestCallContainerBlock = styled.div``;
+import React, { useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import RequestCallSection from '../../components/RequestCall/RequestCallSection';
+import { withRouter } from 'react-router-dom';
+import { acceptGroup } from '../../modules/group';
 
 RequestCallContainer.propTypes = {};
 
-// TODO: need refactor
-function RequestCallContainer() {
+function RequestCallContainer({ history }) {  
+  const dispatch = useDispatch();
+
+  const user = useSelector(user => ({
+    user: user.user,
+  }));
+
   const { group } = useSelector(({ group }) => ({
     group: group.group,
   }));
+  
+  const groupId = 1;
+  const driverId = 1;
+
+  const onClickRequestCall = useCallback(
+    ({groupId, driverId}) => {
+      dispatch(acceptGroup({groupId, driverId}));
+      history.push('/group');
+    }, [dispatch, history],
+  );
+  /*
+  if (!user) {
+    return <div>we are loading user...</div>;
+  }
 
   if (!group) {
     return <div>Waiting for group to be matched...</div>;
   }
-  return <RequestCallContainerBlock>Group Info</RequestCallContainerBlock>;
+  */
+  return (
+    <RequestCallSection
+      user={user}
+      onClickRequestCall={onClickRequestCall}
+    />
+  );
 }
 
-export default RequestCallContainer;
+export default withRouter(RequestCallContainer);
