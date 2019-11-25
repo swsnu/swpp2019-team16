@@ -8,6 +8,7 @@ import GroupPage from './pages/GroupPage/GroupPage';
 import DetailPage from './pages/DetailPage/DetailPage';
 import FinalPage from './pages/FinalPage/FinalPage';
 import SignUpPage from './pages/SignUpPage/SignUpPage';
+import LoginPage from 'pages/LoginPage/LoginPage';
 
 function App() {
   return (
