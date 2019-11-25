@@ -26,6 +26,7 @@ function RequestCallSection({
   }
 
   useEffect(() => {
+    /*
     recognizer.recognized = (r, event) => {
       let word = 'Stop'
       console.log(event.result.text);
@@ -34,6 +35,7 @@ function RequestCallSection({
       }
     };
     recognizer.startContinuousRecognitionAsync();
+    */
   });
 
   return (

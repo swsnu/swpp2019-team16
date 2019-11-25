@@ -20,7 +20,7 @@ function RequestCallContainer({ history }) {
       history.push('/group');
     }, [dispatch, history],
   );
-
+/*
   useEffect(() => {
     const stream = createGrpcStream();
     stream.on('data', message => {
@@ -49,7 +49,7 @@ function RequestCallContainer({ history }) {
     };
     
   }, [dispatch, history]);
-
+*/
 /*  
   if (!user) {
     return <div>we are loading user...</div>;

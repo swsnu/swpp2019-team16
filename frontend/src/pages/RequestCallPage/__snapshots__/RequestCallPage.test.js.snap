@@ -32,8 +32,37 @@ exports[`<RequestCallPage /> SHOULD match with snapshot 1`] = `
         </button>
       </div>
     </div>
-    <div>
-      Waiting for group to be matched...
+    <div
+      class="sc-bwzfXH uTxCW requestCallBlock"
+    >
+      <div
+        class="title"
+      >
+        <h2
+          class="MuiTypography-root MuiTypography-h2"
+          title="Request Call!"
+        >
+          Request Call!
+        </h2>
+      </div>
+      <div
+        class="button"
+      >
+        <button
+          class="MuiButtonBase-root MuiButton-root makeStyles-root-38 makeStyles-root-75 MuiButton-contained makeStyles-contained-39 makeStyles-contained-76 MuiButton-contained makeStyles-contained-39 makeStyles-contained-76"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            Accept the Request!
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+      </div>
     </div>
   </div>
 </div>
