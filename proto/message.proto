@@ -11,17 +11,23 @@ message Pong {
     string id = 1;
 }
 
+message Syn {
+    int32 id = 1;
+}
+
 message Ack {}
 
 message Message {
     string id = 1;
-    string type = 2;
-    string data = 3;
-    google.protobuf.Timestamp timestamp = 4;
+    // target is array of int which contains recipient of this message
+    repeated int32 target = 2;
+    string type = 3;
+    string data = 4;
+    google.protobuf.Timestamp timestamp = 5;
 }
 
 service StreamService {
     rpc HealthCheck(Ping) returns (Pong) {}
     rpc SendMessage(Message) returns (google.protobuf.Empty) {}
-    rpc StreamMessage(google.protobuf.Empty) returns (stream Message) {}
+    rpc StreamMessage(Syn) returns (stream Message) {}
 }

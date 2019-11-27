@@ -21,6 +21,7 @@ class UserApplicationService():
 
     def register(self, email, password, user_type, car_type, plate_no):
         vehicle = None
+
         if car_type is not None and plate_no is not None:
             vehicle = Vehicle.objects.create(car_type=car_type, plate_no=plate_no)
 
@@ -34,10 +35,10 @@ class UserApplicationService():
         user = get_user_model().objects.get(id=user_id)
         user_type = user.user_type
         if user_type == "rider":
-            if(len(Rider.objects.filter(user_id=user_id)) == 0):
+            if len(Rider.objects.filter(user_id=user_id)) == 0:
                 return Rider.objects.create(user=user, status="IDLE")
         elif user_type == "driver":
-            if(len(Driver.objects.filter(user_id=user_id)) == 0):
+            if len(Driver.objects.filter(user_id=user_id)) == 0:
                 return Driver.objects.create(user=user, status="IDLE")
         else:
             # user_type error handle

@@ -8,6 +8,7 @@ pytest>=5.2.2,<5.2.3
 shortuuid>=0.5.0,<0.5.1
 random-word>=1.0.4,<1.0.5
 grpcio-tools==1.24.3
+mock==3.0.5
 
 flake8>=3.6.0,<3.7.0
 autopep8>1.4.0,<=1.4.4

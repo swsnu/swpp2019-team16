@@ -12,7 +12,7 @@ function WaitingContainer({ history }) {
   }));
 
   useEffect(() => {
-    const stream = createGrpcStream();
+    const stream = createGrpcStream({ id: 2 });
     stream.on('data', message => {
       const parsed = JSON.parse(message.getData());
       console.log('parsed', parsed);
