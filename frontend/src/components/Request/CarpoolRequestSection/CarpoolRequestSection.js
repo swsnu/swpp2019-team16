@@ -87,7 +87,7 @@ function CarpoolRequestSection({
 
     onCarpoolRequest({
       // TODO: change rider id with real one
-      riderId: 2,
+      riderId: 1,
       from: fromLocation.name,
       to: toLocation.name,
       minimumPassenger: minimumPassenger,

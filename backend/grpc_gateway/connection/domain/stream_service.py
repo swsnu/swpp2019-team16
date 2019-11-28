@@ -37,7 +37,6 @@ class StreamService(pb_grpc.StreamServiceServicer):
                 )
 
     def SendMessage(self, request, context):
-        print('SendMessage', request)
         self.__message_list.append(request)
         return empty_pb2.Empty()
 

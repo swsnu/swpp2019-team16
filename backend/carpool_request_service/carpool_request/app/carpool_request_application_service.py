@@ -8,17 +8,21 @@ from backend.common.command.group_create_command import GroupCreateCommand
 
 class CarpoolRequestApplicationService():
     def create(self, from_location, to_location, minimum_passenger, rider_id):
+        # TODO: handle NotFound exception
         rider = Rider.objects.get(id=rider_id)
+
         result = CarpoolRequest.objects.create(
             from_location=from_location,
             to_location=to_location,
             minimum_passenger=minimum_passenger,
             rider=rider
         )
+
         hold_request = CarpoolRequest.objects.filter(status="IDLE")
         same_location_requests = hold_request\
             .filter(from_location=result.from_location)\
             .filter(to_location=result.to_location)
+
         if len(same_location_requests) == 4:
             target_request = same_location_requests
             rider_id_list = []

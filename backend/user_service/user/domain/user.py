@@ -8,12 +8,15 @@ from backend.user_service.user.domain.vehicle import Vehicle, VehicleSerializer
 
 class UserManager(BaseUserManager):
 
-    def create_user(self, email, password=None, vehicle=None, **extra_fields):
+    def create_user(self, email, password, user_type, vehicle=None, **extra_fields):
         if not email:
             raise ValueError('User must have an email address')
+        if user_type != 'rider' and user_type != 'driver':
+            raise ValueError('UserType must be either driver or rider')
 
         user = self.model(
             email=self.normalize_email(email),
+            user_type=user_type,
             vehicle=vehicle,
             **extra_fields
         )
@@ -32,7 +35,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     email = models.EmailField(max_length=255, unique=True)
     point = models.IntegerField(default=0)
-    user_type = models.CharField(max_length=127, default="USER")
+    user_type = models.CharField(max_length=127)
     vehicle = models.ForeignKey(
         Vehicle,
         blank=True,
