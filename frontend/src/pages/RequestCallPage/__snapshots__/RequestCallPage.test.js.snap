@@ -62,6 +62,48 @@ exports[`<RequestCallPage /> SHOULD match with snapshot 1`] = `
             class="MuiTouchRipple-root"
           />
         </button>
+        <div>
+          <label
+            class="MuiFormControlLabel-root"
+            data-testid="STT Mode"
+          >
+            <span
+              aria-disabled="false"
+              class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-90 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <input
+                  class="PrivateSwitchBase-input-93"
+                  data-indeterminate="false"
+                  name="STT"
+                  type="checkbox"
+                  value="STT Mode"
+                />
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  role="presentation"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </span>
+            <span
+              class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+            >
+              STT Mode
+            </span>
+          </label>
+        </div>
       </div>
     </div>
   </div>

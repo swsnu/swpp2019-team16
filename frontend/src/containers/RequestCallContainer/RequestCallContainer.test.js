@@ -28,6 +28,10 @@ class MockMessage {
 
 describe('<RequestCallContainer />', () => {
   const initialState = {
+    user: {
+      user: null,
+    },
+    
     group: {
       group: null,
     },

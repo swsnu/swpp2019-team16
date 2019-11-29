@@ -1,14 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Button from '../../common/Button';
 import Heading from '../../common/Heading';
 import PropTypes from 'prop-types';
 import recognizer from '../../../lib/speech'
+import Checkbox from 'components/common/Checkbox/index';
 
 const RequestCallBlock = styled.div``;
 
 RequestCallSection.propTypes = {
-  user: PropTypes.object.isRequired,
+  user: PropTypes.object,//.isRequired,
   group: PropTypes.object,
   onClickRequestCall: PropTypes.func.isRequired,
 };
@@ -18,6 +19,9 @@ function RequestCallSection({
   group,
   onClickRequestCall,
 }) {
+  
+  const [speechToText, setSpeechToText] = useState(false);
+  const [triggerText, setTriggerText] = useState("Stop");
   const driverId = 1 // api call을 통해 user id로 driver id 구하기...
   const groupId = 1 // group.id
   
@@ -25,18 +29,23 @@ function RequestCallSection({
     onClickRequestCall({groupId, driverId})
   }
 
-  useEffect(() => {
-    /*
-    recognizer.recognized = (r, event) => {
-      let word = 'Stop'
-      console.log(event.result.text);
-      if(event.result.text.includes(word)){
-        recognizer.stopContinuousRecognitionAsync();
-      }
-    };
-    recognizer.startContinuousRecognitionAsync();
-    */
-  });
+  let onSTTHandler = () => {
+    if(!speechToText){
+      console.log("Active STT")
+      recognizer.recognized = (r, event) => {
+        console.log("Recognized message: " + event.result.text);
+        if(event.result.text.includes(triggerText)){
+          console.log("Triggered message: " + triggerText)
+        }
+      };
+      recognizer.startContinuousRecognitionAsync();
+    }
+    else{
+      console.log("Deactive STT")
+      recognizer.stopContinuousRecognitionAsync();
+    }
+    setSpeechToText(speechToText ? false : true)
+  }
 
   return (
     <RequestCallBlock className="requestCallBlock">
@@ -50,6 +59,12 @@ function RequestCallSection({
           color="primary"
           onClick={onButtonClickHandler}
           children="Accept the Request!"
+        />
+        <Checkbox
+          value={"STT Mode"}
+          name={'STT'}
+          onClick={onSTTHandler}
+          checked={speechToText} 
         />
       </div>
     </RequestCallBlock>
