@@ -16,7 +16,8 @@ from backend.common.command.group_update_command \
     import GROUP_UPDATE_COMMAND
 from backend.common.rpc.infra.adapter.redis.redis_rpc_server \
     import RedisRpcServer
-from backend.common.utils.signal_handler import register_signal_handler, shutdown_process
+from backend.common.utils.signal_handler \
+    import register_signal_handler, shutdown_process
 
 
 class Command(BaseCommand):

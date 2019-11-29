@@ -6,6 +6,9 @@ import { MemoryRouter, Route } from 'react-router-dom';
 describe('<RequestCallPage />', () => {
   it('SHOULD match with snapshot', async () => {
     const state = {
+      user: {
+        user: {id:1},
+      },
       group: {
         group: null,
       },
