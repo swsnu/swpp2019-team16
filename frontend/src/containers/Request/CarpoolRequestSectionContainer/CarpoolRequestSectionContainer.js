@@ -12,6 +12,7 @@ CarpoolRequestSectionContainer.propTypes = {
   history: PropTypes.object.isRequired,
 };
 
+// TODO: add carpool request create error handling
 function CarpoolRequestSectionContainer({ history }) {
   const dispatch = useDispatch();
 

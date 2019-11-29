@@ -12,7 +12,7 @@ class UserApplicationServiceTestCase(TestCase):
     def test_register_when_no_vehicle_then_create_user_without_vehicle(self):
         EMAIL = 'test@gmail.com'
         PASSWORD = 1234
-        USER_TYPE = "RIDER"
+        USER_TYPE = "rider"
         CAR_TYPE = 'benz'
         PLATE_NO = None
 
@@ -27,7 +27,7 @@ class UserApplicationServiceTestCase(TestCase):
         EMAIL = 'test@gmail.com'
         PASSWORD = 1234
         CAR_TYPE = 'benz'
-        USER_TYPE = "DRIVER"
+        USER_TYPE = "driver"
         PLATE_NO = '1234가'
 
         result = self.user_application_service.register(
@@ -43,7 +43,7 @@ class UserApplicationServiceTestCase(TestCase):
         EMAIL = 'test@gmail.com'
         PASSWORD = 1234
         CAR_TYPE = 'benz'
-        USER_TYPE = "DRIVER"
+        USER_TYPE = "driver"
         PLATE_NO = '1234가'
 
         self.user_application_service.register(
@@ -56,28 +56,28 @@ class UserApplicationServiceTestCase(TestCase):
 
         EMAIL = 'test2@gmail.com'
         PASSWORD = 12345
-        USER_TYPE = "RIDER"
+        USER_TYPE = "rider"
 
         self.user_application_service.register(
             email=EMAIL, password=PASSWORD,
             user_type=USER_TYPE, car_type=None, plate_no=None)
         self.user_application_service.login(user_id=2)
 
-        EMAIL = 'test3@gmail.com'
-        PASSWORD = 12345
-        USER_TYPE = "wrong type"
+        with self.assertRaises(ValueError):
+            EMAIL = 'test3@gmail.com'
+            PASSWORD = 12345
+            USER_TYPE = "wrong type"
 
-        self.user_application_service.register(
-            email=EMAIL, password=PASSWORD,
-            user_type=USER_TYPE, car_type=None, plate_no=None)
-        result = self.user_application_service.login(user_id=3)
-        self.assertEqual(result, ValueError)
+            self.user_application_service.register(
+                email=EMAIL, password=PASSWORD,
+                user_type=USER_TYPE, car_type=None, plate_no=None)
+            self.user_application_service.login(user_id=3)
 
     def test_logout(self):
         EMAIL = 'test@gmail.com'
         PASSWORD = 1234
         CAR_TYPE = 'benz'
-        USER_TYPE = "DRIVER"
+        USER_TYPE = "driver"
         PLATE_NO = '1234가'
 
         self.user_application_service.register(

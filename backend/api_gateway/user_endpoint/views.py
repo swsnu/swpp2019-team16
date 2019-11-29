@@ -34,14 +34,14 @@ def register_user(request):
 
 def __register_user(request):
     body = json.loads(request.body.decode())
-    # TODO: check KeyError
+    # TODO: check KeyError if key does not exist throw 4XX
     command = UserCreateCommand(
         email=body['email'],
         password=body['password'],
         user_type=body['userType'],
         car_type=body['carType'],
         plate_no=body['plateNo']
-        )
+    )
 
     rpc_response = RedisRpcClient().call(USER_CREATE_COMMAND, command)
 

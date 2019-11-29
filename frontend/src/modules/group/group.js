@@ -188,10 +188,6 @@ const group = handleActions(
       ...state,
       error: error,
     }),
-    [GROUP_CREATED]: (state, { payload: group }) => ({
-      ...state,
-      group,
-    }),
   },
   initialState,
 );

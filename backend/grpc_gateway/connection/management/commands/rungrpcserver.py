@@ -1,6 +1,9 @@
 import asyncio
+import grpc
 import threading
 from django.core.management import BaseCommand
+
+import backend.proto.message_pb2_grpc as pb_grpc
 
 from backend.grpc_gateway.connection.domain.stream_service import StreamService
 from backend.grpc_gateway.connection.infra.grpc_server import GrpcServer
@@ -21,7 +24,10 @@ class Command(BaseCommand):
 
     stream_service = StreamService()
 
-    group_created_event_handler = GroupCreatedEventHandler()
+    conn = pb_grpc.StreamServiceStub(
+        grpc.insecure_channel('localhost' + ':' + str(9090)))
+
+    group_created_event_handler = GroupCreatedEventHandler(conn=conn)
     ping_command_handler = PingCommandHandler()
 
     grpc_server = GrpcServer(stream_service)
