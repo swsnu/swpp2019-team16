@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 /**
  * @fileoverview gRPC-Web generated client stub for
  * @enhanceable
@@ -7,7 +5,7 @@
  */
 
 // GENERATED CODE -- DO NOT EDIT!
-
+/* eslint-disable */
 const grpc = {};
 grpc.web = require('grpc-web');
 
@@ -241,15 +239,15 @@ proto.StreamServicePromiseClient.prototype.sendMessage = function(
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.google.protobuf.Empty,
+ *   !proto.Syn,
  *   !proto.Message>}
  */
 const methodDescriptor_StreamService_StreamMessage = new grpc.web.MethodDescriptor(
   '/StreamService/StreamMessage',
   grpc.web.MethodType.SERVER_STREAMING,
-  google_protobuf_empty_pb.Empty,
+  proto.Syn,
   proto.Message,
-  /** @param {!proto.google.protobuf.Empty} request */
+  /** @param {!proto.Syn} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -259,12 +257,12 @@ const methodDescriptor_StreamService_StreamMessage = new grpc.web.MethodDescript
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.google.protobuf.Empty,
+ *   !proto.Syn,
  *   !proto.Message>}
  */
 const methodInfo_StreamService_StreamMessage = new grpc.web.AbstractClientBase.MethodInfo(
   proto.Message,
-  /** @param {!proto.google.protobuf.Empty} request */
+  /** @param {!proto.Syn} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -272,7 +270,7 @@ const methodInfo_StreamService_StreamMessage = new grpc.web.AbstractClientBase.M
 );
 
 /**
- * @param {!proto.google.protobuf.Empty} request The request proto
+ * @param {!proto.Syn} request The request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.Message>}
@@ -291,7 +289,7 @@ proto.StreamServiceClient.prototype.streamMessage = function(
 };
 
 /**
- * @param {!proto.google.protobuf.Empty} request The request proto
+ * @param {!proto.Syn} request The request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.Message>}

@@ -6,7 +6,8 @@ import backend.proto.message_pb2 as message__pb2
 
 
 class StreamServiceStub(object):
-  pass # missing associated documentation comment in .proto file
+  # missing associated documentation comment in .proto file
+  pass
 
   def __init__(self, channel):
     """Constructor.
@@ -26,7 +27,7 @@ class StreamServiceStub(object):
         )
     self.StreamMessage = channel.unary_stream(
         '/StreamService/StreamMessage',
-        request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+        request_serializer=message__pb2.Syn.SerializeToString,
         response_deserializer=message__pb2.Message.FromString,
         )
 
@@ -71,7 +72,7 @@ def add_StreamServiceServicer_to_server(servicer, server):
       ),
       'StreamMessage': grpc.unary_stream_rpc_method_handler(
           servicer.StreamMessage,
-          request_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+          request_deserializer=message__pb2.Syn.FromString,
           response_serializer=message__pb2.Message.SerializeToString,
       ),
   }
