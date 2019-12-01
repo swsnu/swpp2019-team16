@@ -16,6 +16,4 @@ storiesOf('Waiting/WaitingSection', module)
       </ThemeProvider>
     </BrowserRouter>
   ))
-  .add('default', () => (
-    <WaitingSection/>
-  ));
+  .add('default', () => <WaitingSection />);

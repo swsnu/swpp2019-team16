@@ -5,7 +5,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 import theme from '../../../lib/styles/theme';
 import Typography from '@material-ui/core/Typography';
-import ButtonMaterial from '../../common/Button';
+import Button from '../../common/Button';
 
 const useWhatIsSectionStyles = makeStyles({
   root: {
@@ -74,9 +74,9 @@ function WhatIsSection({ onStart }) {
         </Typography>
       </div>
       <div className={styles.getStartedButton}>
-        <ButtonMaterial size={'large'} color={'secondary'} onClick={onStart}>
+        <Button size={'large'} color={'secondary'} onClick={onStart}>
           Get Started
-        </ButtonMaterial>
+        </Button>
       </div>
     </div>
   );
@@ -131,9 +131,9 @@ function SubSection({ onStart }) {
         </Typography>
       </div>
       <div className={styles.getStartedButton}>
-        <ButtonMaterial size={'large'} onClick={onStart}>
+        <Button size={'large'} onClick={onStart}>
           Get Started
-        </ButtonMaterial>
+        </Button>
       </div>
     </div>
   );
@@ -190,9 +190,9 @@ function MainSection({ onStart }) {
         </Typography>
       </div>
       <div className={styles.getStartedButton}>
-        <ButtonMaterial size={'large'} color={'secondary'} onClick={onStart}>
+        <Button size={'large'} color={'secondary'} onClick={onStart}>
           Get Started
-        </ButtonMaterial>
+        </Button>
       </div>
     </div>
   );

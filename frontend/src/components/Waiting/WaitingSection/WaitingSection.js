@@ -6,6 +6,8 @@ import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles({
   root: {
+    height: '600px',
+    marginTop: '',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -18,6 +20,7 @@ const useStyles = makeStyles({
     marginBottom: '3rem',
   },
   quote: {
+    height: '350px',
     maxWidth: '500px',
     textAlign: 'center',
   },
@@ -29,7 +32,7 @@ function WaitingSection() {
 
   useEffect(() => {
     const taskId = setInterval(() => {
-      setQuote(quoteGenerator.getRandomQuote())
+      setQuote(quoteGenerator.getRandomQuote());
     }, 4000);
     return () => clearInterval(taskId);
   }, []);
@@ -37,20 +40,16 @@ function WaitingSection() {
   return (
     <div className={styles.root}>
       <div className={styles.title}>
-        <Typography variant={"h4"}>
-          We are making carpool group
-        </Typography>
+        <Typography variant={'h4'}>We are making carpool group</Typography>
       </div>
       <div className={styles.progress}>
         <CircularProgress />
       </div>
       <div className={styles.quote}>
-        <Typography variant={"body1"}>
-          {quote}
-        </Typography>
+        <Typography variant={'body1'}>{quote}</Typography>
       </div>
     </div>
   );
-};
+}
 
 export default WaitingSection;
