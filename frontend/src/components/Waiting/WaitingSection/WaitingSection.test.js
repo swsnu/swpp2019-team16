@@ -1,10 +1,10 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import Button from './Button';
+import WaitingSection from './WaitingSection';
 
-describe('<Button />', () => {
+describe('<WaitingSection />', () => {
   it('SHOULD match with snapshot', async () => {
-    const { container } = render(<Button children={<div>Button Text</div>} />);
+    const { container } = render(<WaitingSection />);
 
     expect(container).toMatchSnapshot();
   });

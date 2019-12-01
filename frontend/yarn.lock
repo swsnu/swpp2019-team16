@@ -7065,6 +7065,11 @@ inquirer@^6.4.1:
     strip-ansi "^5.1.0"
     through "^2.3.6"
 
+inspirational-quotes@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/inspirational-quotes/-/inspirational-quotes-1.0.8.tgz#18220cc3e421bdd3b83b0d2804d6317f4731981e"
+  integrity sha512-G6bUixnxETEac36tXWT/EuSJ2BzZ+smiBb8cKYLYOiGgdaRnBiwhMouLB+l0eLmAa3Pokz04pto6i4Ro2UomkA==
+
 internal-ip@^4.2.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/internal-ip/-/internal-ip-4.3.0.tgz#845452baad9d2ca3b69c635a137acb9a0dad0907"

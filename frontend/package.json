@@ -12,6 +12,7 @@
     "google-map-react": "^1.1.5",
     "google-protobuf": "^3.10.0",
     "grpc-web": "^1.0.6",
+    "inspirational-quotes": "^1.0.8",
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-app-env": "^1.2.3",
