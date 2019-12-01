@@ -7,7 +7,7 @@ from json import JSONDecodeError
 from backend.common.command.user_create_command \
     import UserCreateCommand, USER_CREATE_COMMAND
 from backend.common.event.user_login_event \
-    import UserLoginEvent
+    import UserLoginEvent, USER_LOGIN_EVENT
 from backend.common.event.user_logout_event \
     import UserLogoutEvent
 from backend.common.messaging.infra.redis.redis_message_publisher \
@@ -33,19 +33,20 @@ def register_user(request):
 
 
 def __register_user(request):
-    body = json.loads(request.body.decode())
-    # TODO: check KeyError if key does not exist throw 4XX
-    command = UserCreateCommand(
-        email=body['email'],
-        password=body['password'],
-        user_type=body['userType'],
-        car_type=body['carType'],
-        plate_no=body['plateNo']
-    )
+    try:
+        body = json.loads(request.body.decode())
+        # TODO: check KeyError
+        command = UserCreateCommand(
+            email=body['email'],
+            password=body['password'],
+            user_type=body['userType'],
+            car_type=body['carType'],
+            plate_no=body['plateNo']
+        )
+    except(KeyError, JSONDecodeError) as e:
+        return HttpResponseBadRequest(e)
 
     rpc_response = RedisRpcClient().call(USER_CREATE_COMMAND, command)
-
-    # TODO: handling exception
     return JsonResponse(data=rpc_response.result, status=200)
 
 
@@ -58,17 +59,18 @@ def login_user(request):
 
 def __login_user(request):
     try:
-        req_data = json.loads(request.body.decode())
-        email = req_data['email']
-        password = req_data['password']
+        body = json.loads(request.body.decode())
+        email = body['email']
+        password = body['password']
     except(KeyError, JSONDecodeError) as e:
         return HttpResponseBadRequest(e)
     user = authenticate(email=email, password=password)
     if user is not None:
         login(request, user)
-        event = UserLoginEvent(user_id=request.user.id)
-        RedisMessagePublisher().publish_message(event)
-        return HttpResponse(status=204)
+        event = UserLoginEvent(user_id=user.id)
+        rpc_response = RedisRpcClient().call(USER_LOGIN_EVENT, event)
+        print(rpc_response.result)
+        return JsonResponse(data=rpc_response.result, status=200)
     else:
         return HttpResponse(status=401)
 

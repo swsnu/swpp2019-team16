@@ -1,13 +1,13 @@
 import React from 'react';
-import SignUpPage from './SignUpPage';
+import RegisterPage from './RegisterPage';
 import { renderWithRedux } from 'test/utils';
 import { MemoryRouter, Route } from 'react-router-dom';
 
-describe('<SignUpPage />', () => {
+describe('<RegisterPage />', () => {
   it('SHOULD match with snapshot', async () => {
     const { container } = renderWithRedux(
-      <MemoryRouter intialEntries={['/signup']}>
-        <Route component={SignUpPage} path="/signup" />
+      <MemoryRouter intialEntries={['/register']}>
+        <Route component={RegisterPage} path="/register" />
       </MemoryRouter>,
     );
     expect(container).toMatchSnapshot();

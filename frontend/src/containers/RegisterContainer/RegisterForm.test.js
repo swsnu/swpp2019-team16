@@ -1,9 +1,9 @@
 import React from 'react';
-import SignUpForm from './SignUpForm';
+import RegisterForm from './RegisterForm';
 import { renderWithRedux } from '../../test/utils';
 import { MemoryRouter, Route } from 'react-router-dom';
 
-describe('<SignUpForm />', () => {
+describe('<RegisterForm />', () => {
   const state = {
     auth: {
       register: {
@@ -16,8 +16,8 @@ describe('<SignUpForm />', () => {
   };
   it('SHOULD match with snapshot', async () => {
     const { container } = renderWithRedux(
-      <MemoryRouter initialEntries={['/signup']}>
-        <Route component={SignUpForm} path="/signup" />
+      <MemoryRouter initialEntries={['/register']}>
+        <Route component={RegisterForm} path="/register" />
       </MemoryRouter>,
       state,
     );
