@@ -12,7 +12,7 @@ class Driver(models.Model):
         'group.Group',
         null=True,
         blank=True,
-        on_delete=models.CASCADE,
+        on_delete=models.SET_NULL,
         related_name='driver_of_group'
     )
     user = models.ForeignKey(
@@ -28,6 +28,6 @@ class Driver(models.Model):
     '''
     def __str__(self):
         if self.group is None:
-            return 'user_id={}'.format(self.user.id)
+            return 'id={},user_id={}'.format(self.id, self.user.id)
         else:
-            return 'user_id={},group={}'.format(self.user.id, self.group.id)
+            return 'id={},user_id={},group={}'.format(self.id, self.user.id, self.group.id)
