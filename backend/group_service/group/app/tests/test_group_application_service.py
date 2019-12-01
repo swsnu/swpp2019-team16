@@ -4,6 +4,8 @@ from backend.group_service.group.app.group_application_service \
     import GroupApplicationService
 
 from backend.group_service.group.domain.group import Group
+from backend.user_service.user.domain.rider import Rider
+from backend.user_service.user.domain.user import User
 
 
 class GroupApplicationServiceTestCase(TestCase):
@@ -12,6 +14,11 @@ class GroupApplicationServiceTestCase(TestCase):
         self.group_application_service = GroupApplicationService()
         self.group = Group()
         self.group.save()
+        user = User()
+        Rider(user=user).save()
+        Rider(user=user).save()
+        Rider(user=user).save()
+        Rider(user=user).save()
 
     def test_create_group(self):
         RIDER_ID_LIST = [1, 2, 3, 4]

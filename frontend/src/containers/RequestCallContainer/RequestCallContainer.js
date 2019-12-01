@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as grpcClient from '../../lib/grpc/client';
-import { groupPushed, unloadGroup } from '../../modules/group';
+import { groupCreated, unloadGroup } from '../../modules/group';
 import { withRouter } from 'react-router-dom';
 import acceptGroup from '../../modules/group/group'
 import RequestCallSection from '../../components/RequestCall/RequestCallSection'
@@ -9,7 +9,7 @@ import RequestCallSection from '../../components/RequestCall/RequestCallSection'
 
 RequestCallContainer.propTypes = {};
 
-export const GROUP_PUSHED_EVENT = 'event.group_pushed';
+export const GROUP_CREATED_EVENT = 'event.group_pushed';
 
 function RequestCallContainer({ history }) {
   const dispatch = useDispatch();
@@ -20,14 +20,15 @@ function RequestCallContainer({ history }) {
   }));
 
   useEffect(() => {
-    const stream = grpcClient.createGrpcStream({ id: 3/*user.userId*/ });
+    const stream = grpcClient.createGrpcStream({ id: 5/*user.id*/ });
     stream.on('data', message => {
       const parsed = JSON.parse(message.getData());
-      if (parsed._type_name !== GROUP_PUSHED_EVENT) {
+      console.log(parsed);
+      if (parsed._type_name !== GROUP_CREATED_EVENT) {
         return;
       }
       dispatch(
-        groupPushed({
+        groupCreated({
           groupId: parsed._group_id,
           from: parsed._from_location,
           to: parsed._to_location,
@@ -71,7 +72,7 @@ function RequestCallContainer({ history }) {
   // for test
  return (
   <RequestCallSection
-    driverId={1}
+    driverId={5}
     groupId={1}
     onClickRequestCall={onClickRequestCall}
   />
