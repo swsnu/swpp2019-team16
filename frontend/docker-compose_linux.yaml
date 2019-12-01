@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  envoy:
+    network_mode: host
+    container_name: envoy
+    image: envoy:latest
+    restart: always

@@ -15,5 +15,5 @@ class GroupTestCase(TestCase):
             to_location='301 Building', cost=9, departure=False)
         self.assertEqual(
             str(mockGroup),
-            'driver=user_id=None,from_location=SNU Station,\
+            'driver=id=None,user_id=None,from_location=SNU Station,\
                 to_location=301 Building,cost=9,departure=False')

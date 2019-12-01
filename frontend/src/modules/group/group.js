@@ -44,10 +44,8 @@ export const UNLOAD_GROUP = 'group/UNLOAD_GROUP';
 
 export const groupCreated = createAction(
   GROUP_CREATED,
-  ({ groupId, riders, driver, from, to }) => ({
+  ({ groupId, from, to }) => ({
     groupId,
-    riders,
-    driver,
     from,
     to,
   }),
@@ -124,12 +122,14 @@ const group = handleActions(
   {
     [GROUP_CREATED]: (state, { payload: group }) => ({
       ...state,
-      group,
+      group: group,
     }),
+
     [UNLOAD_GROUP]: state => ({
       ...state,
       group: null,
     }),
+    
     [ACCEPT_GROUP_SUCCESS]: (state, { payload: group }) => ({
       ...state,
       group: group,
@@ -187,10 +187,6 @@ const group = handleActions(
     [CONFIRM_COST_FAILURE]: (state, { payload: error }) => ({
       ...state,
       error: error,
-    }),
-    [GROUP_CREATED]: (state, { payload: group }) => ({
-      ...state,
-      group,
     }),
   },
   initialState,

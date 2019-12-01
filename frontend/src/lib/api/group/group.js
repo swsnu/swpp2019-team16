@@ -5,11 +5,11 @@ export function createGroup({ groupId, riders, driver, from, to }) {
 }
 
 export function acceptGroup({ groupId, driverId }) {
-  return client.put(`/api/v1/group/${groupId}`, driverId);
+  return client.put(`/api/v1/group/${groupId}`, { driverId });
 }
 
 export function onTaxi(riderId) {
-  return client.put(`/api/v1/group/taxi/riders`, riderId);
+  return client.put(`/api/v1/group/taxi/riders`, { riderId });
 }
 
 export function departure({ groupId, departureTime }) {
