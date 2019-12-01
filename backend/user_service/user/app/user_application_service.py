@@ -12,6 +12,8 @@ from backend.common.messaging.infra.redis.redis_message_publisher \
 from backend.carpool_request_service.carpool_request.domain.carpool_request \
     import CarpoolRequest
 from backend.user_service.user.domain.user import UserSerializer
+from backend.user_service.user.domain.rider import RiderSerializer
+from backend.user_service.user.domain.driver import DriverSerializer
 
 
 logger = logging.getLogger(__name__)
@@ -34,14 +36,23 @@ class UserApplicationService():
     def login(self, user_id):
         user = get_user_model().objects.get(id=user_id)
         user_type = user.user_type
+
         if user_type == "rider":
-            if len(Rider.objects.filter(user_id=user_id)) == 0:
-                return Rider.objects.create(user=user, status="IDLE")
+            rider = None
+            if(len(Rider.objects.filter(user_id=user_id)) == 0):
+                rider = Rider.objects.create(user=user, status="IDLE")
+            else:
+                rider = Rider.objects.get(user=user)
+            return RiderSerializer(rider).data
+
         elif user_type == "driver":
-            if len(Driver.objects.filter(user_id=user_id)) == 0:
-                return Driver.objects.create(user=user, status="IDLE")
+            driver = None
+            if(len(Driver.objects.filter(user_id=user_id)) == 0):
+                driver = Driver.objects.create(user=user, status="IDLE")
+            else:
+                driver = Rider.objects.get(user=user)
+            return DriverSerializer(driver).data
         else:
-            # user_type error handle
             return ValueError
 
     def logout(self, user_id):

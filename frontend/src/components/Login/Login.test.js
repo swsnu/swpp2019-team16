@@ -4,8 +4,17 @@ import Login from './Login';
 
 describe('<Login />', () => {
   it('SHOULD match with snapshot', async () => {
+    const loginInfo = {
+      email: 'email',
+      password: 'password',
+    };
     const { container } = render(
-      <Login onLoginRequest={() => {}} onRegisterRequest={() => {}} />,
+      <Login
+        loginInfo={loginInfo}
+        onChange={() => {}}
+        onClickLogin={() => {}}
+        onClickRegister={() => {}}
+      />,
     );
     expect(container).toMatchSnapshot();
   });

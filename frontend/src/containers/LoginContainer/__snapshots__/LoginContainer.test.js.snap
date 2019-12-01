@@ -3,128 +3,71 @@
 exports[`<LoginContainer /> SHOULD match with snapshot 1`] = `
 <div>
   <div
-    class="loginPage"
+    class="sc-bdVaJa bDWFJH"
   >
     <div
-      class="title"
+      class="MuiBox-root MuiBox-root-2"
     >
-      <h2
-        class="MuiTypography-root MuiTypography-h2"
-        title="Login"
+      <h3
+        class="MuiTypography-root MuiTypography-h3"
       >
-        Login
-      </h2>
-    </div>
-    <div
-      class="inputID"
-    >
+        Login to Ya-Ta!
+      </h3>
       <div
-        class="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
+        class="MuiBox-root MuiBox-root-33"
       >
-        <label
-          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
-          data-shrink="false"
+        <input
+          id="email-input"
+          name="email"
+          placeholder="email"
+          type="text"
+          value="email"
+        />
+      </div>
+      <div
+        class="MuiBox-root MuiBox-root-34"
+      >
+        <input
+          id="password-input"
+          name="password"
+          placeholder="password"
+          type="password"
+          value="password"
+        />
+      </div>
+      <div
+        class="MuiBox-root MuiBox-root-35"
+      >
+        <button
+          class="MuiButtonBase-root MuiButton-root makeStyles-root-36 makeStyles-root-39 MuiButton-contained makeStyles-contained-37 makeStyles-contained-40 MuiButton-contained makeStyles-contained-37 makeStyles-contained-40"
+          tabindex="0"
+          type="button"
         >
-          ID
-        </label>
-        <div
-          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
-        >
-          <input
-            aria-invalid="false"
-            class="MuiInputBase-input MuiOutlinedInput-input"
-            type="text"
-            value=""
-          />
-          <fieldset
-            aria-hidden="true"
-            class="PrivateNotchedOutline-root-90 MuiOutlinedInput-notchedOutline"
-            style="padding-left: 8px;"
+          <span
+            class="MuiButton-label"
           >
-            <legend
-              class="PrivateNotchedOutline-legend-91"
-              style="width: 0.01px;"
-            >
-              <span>
-                ​
-              </span>
-            </legend>
-          </fieldset>
-        </div>
+            Login
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root makeStyles-root-36 makeStyles-root-73 MuiButton-contained makeStyles-contained-37 makeStyles-contained-74 MuiButton-contained makeStyles-contained-37 makeStyles-contained-74"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            Register
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
       </div>
     </div>
-    <div
-      class="input"
-    >
-      <div
-        class="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
-      >
-        <label
-          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
-          data-shrink="false"
-        >
-          Password
-        </label>
-        <div
-          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
-        >
-          <input
-            aria-invalid="false"
-            class="MuiInputBase-input MuiOutlinedInput-input"
-            type="text"
-            value=""
-          />
-          <fieldset
-            aria-hidden="true"
-            class="PrivateNotchedOutline-root-90 MuiOutlinedInput-notchedOutline"
-            style="padding-left: 8px;"
-          >
-            <legend
-              class="PrivateNotchedOutline-legend-91"
-              style="width: 0.01px;"
-            >
-              <span>
-                ​
-              </span>
-            </legend>
-          </fieldset>
-        </div>
-      </div>
-    </div>
-    <span
-      class="loginButton"
-    >
-      <button
-        class="MuiButtonBase-root MuiButton-root makeStyles-root-92 makeStyles-root-95 MuiButton-contained makeStyles-contained-93 makeStyles-contained-96 MuiButton-contained makeStyles-contained-93 makeStyles-contained-96"
-        tabindex="0"
-        type="button"
-      >
-        <span
-          class="MuiButton-label"
-        >
-          Login
-        </span>
-        <span
-          class="MuiTouchRipple-root"
-        />
-      </button>
-    </span>
-    <span>
-      <button
-        class="MuiButtonBase-root MuiButton-root makeStyles-root-92 makeStyles-root-129 MuiButton-contained makeStyles-contained-93 makeStyles-contained-130 MuiButton-contained makeStyles-contained-93 makeStyles-contained-130"
-        tabindex="0"
-        type="button"
-      >
-        <span
-          class="MuiButton-label"
-        >
-          Register
-        </span>
-        <span
-          class="MuiTouchRipple-root"
-        />
-      </button>
-    </span>
   </div>
 </div>
 `;

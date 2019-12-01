@@ -12,5 +12,5 @@ class UserLogoutEventHandler(implements(MessageHandler)):
         if message.user_id is None:
             raise ValueError("Invalid UserLogin command parameters")
 
-        self.__user_application_service.logout(
+        return self.__user_application_service.logout(
             user_id=message.user_id)

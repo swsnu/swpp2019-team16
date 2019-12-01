@@ -3,15 +3,15 @@ import { render, fireEvent } from '@testing-library/react';
 import Rider from './Rider';
 import Driver from './Driver';
 
-describe('<SignUp />', () => {
-  const signUpMode = {
+describe('<Register />', () => {
+  const registerMode = {
     rider: 'rider',
     driver: 'driver',
   };
 
   it('SHOULD match with snapshot WHEN rider', async () => {
     const form = { email: 'dkim94', password: '123' };
-    const mode = signUpMode.rider;
+    const mode = registerMode.rider;
 
     const { container } = render(
       <Rider form={form} onChange={() => {}} onClick={() => {}} />,
@@ -26,7 +26,7 @@ describe('<SignUp />', () => {
       carType: 'BMW',
       plateNo: '123',
     };
-    const mode = signUpMode.driver;
+    const mode = registerMode.driver;
 
     const { container } = render(
       <Driver form={form} onChange={() => {}} onClick={() => {}} />,

@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import SignUp from '../../components/SignUp/SignUp';
-import { register, changeField, initalizeForm } from '../../modules/auth/auth';
+import Register from '../../components/Register/Register';
+import { register, changeField, initializeForm } from '../../modules/auth/auth';
 
-function SignUpForm({ history }) {
+function RegisterForm({ history }) {
   const dispatch = useDispatch();
   const { form, auth } = useSelector(({ auth }) => ({
     form: auth.register,
@@ -53,17 +53,17 @@ function SignUpForm({ history }) {
   }, [dispatch, form]);
 
   useEffect(() => {
-    dispatch(initalizeForm('register'));
+    dispatch(initializeForm('register'));
   }, [dispatch]);
 
   useEffect(() => {
     if (auth) {
       window.alert('Successfully signed up to Ya-Ta. Welcome!');
-      history.push('/request');
+      history.push('/login');
     }
   }, [auth, history]);
 
-  return <SignUp form={form} onChange={onChange} onClick={onConfirm} />;
+  return <Register form={form} onChange={onChange} onClick={onConfirm} />;
 }
 
-export default withRouter(SignUpForm);
+export default withRouter(RegisterForm);

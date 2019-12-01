@@ -1,6 +1,7 @@
 from django.db import models
 
-from backend.user_service.user.domain.user import User
+from rest_framework import serializers
+from backend.user_service.user.domain.user import User, UserSerializer
 
 
 class Driver(models.Model):
@@ -31,3 +32,13 @@ class Driver(models.Model):
             return 'user_id={}'.format(self.user.id)
         else:
             return 'user_id={},group={}'.format(self.user.id, self.group.id)
+
+
+class DriverSerializer(serializers.ModelSerializer):
+
+    user = UserSerializer(many=False, read_only=True)
+
+    class Meta:
+        model = Driver
+        fields = ('id', 'status', 'group', 'user')
+        read_only_fields = ('id', 'status')
