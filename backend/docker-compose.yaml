@@ -21,6 +21,13 @@ services:
       - "6379:6379"
     restart: always
 
+  api_gateway:
+    container_name: api_gateway
+    image: yata-api_gateway:latest
+    ports:
+      - "8000:8000"
+    restart: always
+
 networks:
   dev:
     driver: bridge

@@ -16,3 +16,4 @@ autopep8>1.4.0,<=1.4.4
 python-coveralls
 coverage
 black
+gunicorn==20.0.4
