@@ -1,12 +1,12 @@
 import React from 'react';
-import Main from '../_layouts/Main';
 import WaitingContainer from '../../containers/WaitingContainer';
+import FullWidth from '../_layouts/FullWidth';
 
 function WaitingPage() {
   return (
-    <Main>
+    <FullWidth>
       <WaitingContainer />
-    </Main>
+    </FullWidth>
   );
 }
 export default WaitingPage;
