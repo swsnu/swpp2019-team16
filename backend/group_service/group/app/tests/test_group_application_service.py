@@ -5,6 +5,7 @@ from backend.group_service.group.app.group_application_service \
 
 from backend.group_service.group.domain.group import Group
 from backend.user_service.user.domain.rider import Rider
+from backend.user_service.user.domain.driver import Driver
 from backend.user_service.user.domain.user import User
 
 
@@ -14,7 +15,11 @@ class GroupApplicationServiceTestCase(TestCase):
         self.group_application_service = GroupApplicationService()
         self.group = Group()
         self.group.save()
-        user = User()
+        EMAIL = 'test@gmail.com'
+        PASSWORD = 1234
+
+        user = User(email=EMAIL, password=PASSWORD)
+        user.save()
         Rider(user=user).save()
         Rider(user=user).save()
         Rider(user=user).save()
@@ -36,6 +41,12 @@ class GroupApplicationServiceTestCase(TestCase):
     def test_update_group(self):
         GROUP_ID = 1
         DRIVER_ID = 1
+        EMAIL = 'driver@gmail.com'
+        PASSWORD = 1234
+
+        user = User(email=EMAIL, password=PASSWORD)
+        user.save()
+        Driver(user=user).save()
 
         result = self.group_application_service.update_group(
             group_id=GROUP_ID, driver_id=DRIVER_ID)

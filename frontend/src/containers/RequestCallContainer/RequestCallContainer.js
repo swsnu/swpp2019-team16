@@ -9,7 +9,7 @@ import RequestCallSection from '../../components/RequestCall/RequestCallSection'
 
 RequestCallContainer.propTypes = {};
 
-export const GROUP_CREATED_EVENT = 'event.group_pushed';
+export const GROUP_CREATED_EVENT = 'event.group_created';
 
 function RequestCallContainer({ history }) {
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ function RequestCallContainer({ history }) {
     const stream = grpcClient.createGrpcStream({ id: 5/*user.id*/ });
     stream.on('data', message => {
       const parsed = JSON.parse(message.getData());
-      console.log(parsed);
+      //console.log(parsed);
       if (parsed._type_name !== GROUP_CREATED_EVENT) {
         return;
       }
@@ -47,8 +47,7 @@ function RequestCallContainer({ history }) {
       dispatch(acceptGroup({groupId, driverId}));
       history.push('/group');
     }, [dispatch, history]);
-  
-  /*
+/*
   if (!user) {
     return <div>we are loading user...</div>;
   }
@@ -66,8 +65,8 @@ function RequestCallContainer({ history }) {
       />
     );
   }
-  */
-  
+
+*/  
   
   // for test
  return (
