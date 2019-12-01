@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as grpcClient from '../../lib/grpc/client';
-import { groupCreated, unloadGroup } from '../../modules/group';
+import { groupPushed, unloadGroup } from '../../modules/group';
 import { withRouter } from 'react-router-dom';
 import acceptGroup from '../../modules/group/group'
 import RequestCallSection from '../../components/RequestCall/RequestCallSection'
@@ -9,7 +9,7 @@ import RequestCallSection from '../../components/RequestCall/RequestCallSection'
 
 RequestCallContainer.propTypes = {};
 
-export const USER_CREATED_EVENT = 'event.group_created';
+export const GROUP_PUSHED_EVENT = 'event.group_pushed';
 
 function RequestCallContainer({ history }) {
   const dispatch = useDispatch();
@@ -20,15 +20,15 @@ function RequestCallContainer({ history }) {
   }));
 
   useEffect(() => {
-    // TODO: replace id with user id
-    const stream = grpcClient.createGrpcStream({ id: 3 });
+    const stream = grpcClient.createGrpcStream({ id: 3/*user.userId*/ });
     stream.on('data', message => {
       const parsed = JSON.parse(message.getData());
-      if (parsed._type_name !== USER_CREATED_EVENT) {
+      if (parsed._type_name !== GROUP_PUSHED_EVENT) {
         return;
       }
       dispatch(
-        groupCreated({
+        groupPushed({
+          groupId: parsed._group_id,
           from: parsed._from_location,
           to: parsed._to_location,
         }),
@@ -41,34 +41,42 @@ function RequestCallContainer({ history }) {
     };
   }, [dispatch]);
 
-  useEffect(() => {
-    if (group) {
-      history.push('/group');
-    }
-  }, [history, group]);
-
   const onClickRequestCall = useCallback(
     ({groupId, driverId}) => {
       dispatch(acceptGroup({groupId, driverId}));
       history.push('/group');
     }, [dispatch, history]);
-
+  
   /*
   if (!user) {
     return <div>we are loading user...</div>;
   }
 
-  if (!group) {
+  else if (!group) {
     return <div>Waiting for group to be matched...</div>;
   }
+  
+  else {
+    return (
+      <RequestCallSection
+        driverId={user.driverId}
+        groupId={group.groupId}
+        onClickRequestCall={onClickRequestCall}
+      />
+    );
+  }
   */
-  return (
-    <RequestCallSection
-      user={user}
-      group={group}
-      onClickRequestCall={onClickRequestCall}
-    />
+  
+  
+  // for test
+ return (
+  <RequestCallSection
+    driverId={1}
+    groupId={1}
+    onClickRequestCall={onClickRequestCall}
+  />
   );
+
 }
 
 export default withRouter(RequestCallContainer);

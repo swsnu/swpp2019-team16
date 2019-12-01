@@ -15,15 +15,13 @@ RequestCallSection.propTypes = {
 };
 
 function RequestCallSection({
-  user,
-  group,
+  driverId,
+  groupId,
   onClickRequestCall,
 }) {
   
   const [speechToText, setSpeechToText] = useState(false);
   const [triggerText, setTriggerText] = useState("Stop");
-  const driverId = 1 // api call을 통해 user id로 driver id 구하기...
-  const groupId = 1 // group.id
   
   const onButtonClickHandler = () => {
     onClickRequestCall({groupId, driverId})

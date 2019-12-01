@@ -56,8 +56,10 @@ export const groupCreated = createAction(
 
 export const groupPushed = createAction(
   GROUP_PUSHED,
-  ({groupId}) => ({
+  ({groupId, from, to}) => ({
     groupId,
+    from,
+    to,
   }),
 );
 
