@@ -12,4 +12,4 @@ class UserLoginEventHandler(implements(MessageHandler)):
         if message.user_id is None:
             raise ValueError("Invalid UserLogin command parameters")
 
-        self.__user_application_service.login(user_id=message.user_id)
+        return self.__user_application_service.login(user_id=message.user_id)

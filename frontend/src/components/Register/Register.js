@@ -6,45 +6,45 @@ import Typography from '@material-ui/core/Typography';
 import Rider from './Rider';
 import Driver from './Driver';
 
-const SignUpBlock = styled.div``;
+const RegisterBlock = styled.div``;
 
-SignUp.propTypes = {
+Register.propTypes = {
   form: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired,
 };
 
-const signUpMode = {
+const registerMode = {
   rider: 'rider',
   driver: 'driver',
 };
 
-function SignUp({ form, onChange, onClick }) {
-  const [mode, setMode] = useState(signUpMode.rider);
+function Register({ form, onChange, onClick }) {
+  const [mode, setMode] = useState(registerMode.rider);
 
   const onCheckRider = () => {
-    setMode(signUpMode.rider);
+    setMode(registerMode.rider);
     form.userType = 'rider';
   };
 
   const onCheckDriver = () => {
-    setMode(signUpMode.driver);
+    setMode(registerMode.driver);
     form.userType = 'driver';
   };
 
   return (
-    <SignUpBlock>
+    <RegisterBlock>
       <Typography variant="h3">Join Ya-Ta!</Typography>
       <Typography variant="h1">Create Your Account</Typography>
       <Button children="I am a Rider" onClick={onCheckRider} />
       <Button children="I am a Driver" onClick={onCheckDriver} />
-      {mode === signUpMode.rider ? (
+      {mode === registerMode.rider ? (
         <Rider form={form} onChange={onChange} onClick={onClick} />
       ) : (
         <Driver form={form} onChange={onChange} onClick={onClick} />
       )}
-    </SignUpBlock>
+    </RegisterBlock>
   );
 }
 
-export default SignUp;
+export default Register;

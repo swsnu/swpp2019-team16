@@ -1,6 +1,6 @@
 import React from 'react';
 import Main from '../_layouts/Main';
-import LoginContainer from 'containers/LoginContainer';
+import LoginContainer from '../../containers/LoginContainer/LoginContainer';
 
 function LoginPage() {
   return (

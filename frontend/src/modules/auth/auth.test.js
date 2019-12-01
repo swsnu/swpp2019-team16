@@ -3,7 +3,7 @@ import * as authAPI from '../../lib/api/auth';
 import auth, {
   authSaga,
   changeField,
-  initalizeForm,
+  initializeForm,
   initialState,
   login,
   register,
@@ -35,7 +35,7 @@ describe('auth', () => {
 
     describe('initializeForm', () => {
       it('should successfully create action', async () => {
-        const action = initalizeForm('form');
+        const action = initializeForm('form');
         expect(action.type).toStrictEqual('auth/INITIALIZE_FORM');
         expect(action.payload).toStrictEqual('form');
       });

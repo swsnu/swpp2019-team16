@@ -29,7 +29,7 @@ class MockMessage {
 describe('<RequestCallContainer />', () => {
   const initialState = {
     user: {
-      user: null,
+      user: {id: 1},
     },
     group: {
       group: null,
@@ -101,31 +101,4 @@ describe('<RequestCallContainer />', () => {
       type: 'group/UNLOAD_GROUP',
     });
   });
-
-  /*
-  it('should redirect to /group when group store data exist', async () => {
-    const _initialState = {
-      ...initialState,
-      group: {
-        group: {
-          groupId: undefined,
-          from: 'LOCATION_A',
-          to: 'LOCATION_B',
-        },
-      },
-    };
-    const MockGroupPage = () => <div>MockGroupPage</div>;
-    const { getByText } = renderWithRedux(
-      <MemoryRouter intialEntries={['/']}>
-        <Route path={'/'} component={RequestCallContainer} />
-        <Route path={'/group'} component={MockGroupPage} />
-      </MemoryRouter>,
-      _initialState,
-    );
-
-    await waitForElement(() => getByText('MockGroupPage'));
-
-    expect(getByText('MockGroupPage')).toHaveTextContent('MockGroupPage');
-  });
-  */
 });

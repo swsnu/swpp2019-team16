@@ -7,7 +7,7 @@ import WaitingPage from './pages/WaitingPage/WaitingPage';
 import GroupPage from './pages/GroupPage/GroupPage';
 import DetailPage from './pages/DetailPage/DetailPage';
 import FinalPage from './pages/FinalPage/FinalPage';
-import SignUpPage from './pages/SignUpPage/SignUpPage';
+import RegisterPage from './pages/RegisterPage/RegisterPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
     <div>
       <Switch>
         <Route component={IntroPage} path="/" exact />
-        <Route component={SignUpPage} path="/signup" exact />
+        <Route component={RegisterPage} path="/register" exact />
         <Route component={RequestPage} path="/request" exact />
         <Route component={RequestCallPage} path="/requestcall" exact />
         <Route component={WaitingPage} path="/waiting" exact />

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SignUp /> SHOULD match with snapshot WHEN driver 1`] = `
+exports[`<Register /> SHOULD match with snapshot WHEN driver 1`] = `
 <div>
   <div
     class="sc-bwzfXH uTxCW"
@@ -91,7 +91,7 @@ exports[`<SignUp /> SHOULD match with snapshot WHEN driver 1`] = `
 </div>
 `;
 
-exports[`<SignUp /> SHOULD match with snapshot WHEN rider 1`] = `
+exports[`<Register /> SHOULD match with snapshot WHEN rider 1`] = `
 <div>
   <div
     class="sc-bdVaJa bDWFJH"

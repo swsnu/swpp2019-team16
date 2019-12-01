@@ -73,6 +73,40 @@ class UserApplicationServiceTestCase(TestCase):
                 user_type=USER_TYPE, car_type=None, plate_no=None)
             self.user_application_service.login(user_id=3)
 
+    def test_login_correct(self):
+
+        EMAIL = "rider1@gmail.com"
+        PASSWORD = 1234
+        USER_TYPE = "rider"
+
+        self.user_application_service.register(
+            email=EMAIL, password=PASSWORD,
+            user_type=USER_TYPE, car_type='', plate_no='')
+        result = self.user_application_service.login(user_id=1)
+        self.assertEqual(result['status'], 'IDLE')
+        self.assertEqual(result['group'], None)
+        self.assertEqual(result['user']['id'], 1)
+        self.assertEqual(result['user']['email'], EMAIL)
+        self.assertEqual(result['user']['user_type'], USER_TYPE)
+
+        EMAIL = "driver1@gmail.com"
+        PASSWORD = 1234
+        USER_TYPE = "driver"
+        CAR_TYPE = "BMW"
+        PLATE_NO = "02로 7608"
+
+        self.user_application_service.register(
+            email=EMAIL, password=PASSWORD,
+            user_type=USER_TYPE, car_type=CAR_TYPE, plate_no=PLATE_NO)
+        result = self.user_application_service.login(user_id=2)
+        self.assertEqual(result['status'], 'IDLE')
+        self.assertEqual(result['group'], None)
+        self.assertEqual(result['user']['id'], 2)
+        self.assertEqual(result['user']['email'], EMAIL)
+        self.assertEqual(result['user']['user_type'], USER_TYPE)
+        self.assertEqual(result['user']['vehicle']['car_type'], CAR_TYPE)
+        self.assertEqual(result['user']['vehicle']['plate_no'], PLATE_NO)
+
     def test_logout(self):
         EMAIL = 'test@gmail.com'
         PASSWORD = 1234

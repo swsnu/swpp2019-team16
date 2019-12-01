@@ -1,6 +1,7 @@
 from django.db import models
 
-from backend.user_service.user.domain.user import User
+from backend.user_service.user.domain.user import User, UserSerializer
+from rest_framework import serializers
 
 
 class Rider(models.Model):
@@ -25,3 +26,13 @@ class Rider(models.Model):
         else:
             return 'user_id={},group_id={},status={}'.format(
                 self.user.id, self.group.id, self.status)
+
+
+class RiderSerializer(serializers.ModelSerializer):
+
+    user = UserSerializer(many=False, read_only=True)
+
+    class Meta:
+        model = Rider
+        fields = ('id', 'status', 'group', 'user')
+        read_only_fields = ('id', 'status')

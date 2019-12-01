@@ -3,26 +3,28 @@ import styled from 'styled-components';
 import Button from '../../common/Button';
 import Heading from '../../common/Heading';
 import PropTypes from 'prop-types';
-import recognizer from '../../../lib/speech'
+import recognizer from '../../../lib/azure'
 import Checkbox from 'components/common/Checkbox/index';
 
 const RequestCallBlock = styled.div``;
 
 RequestCallSection.propTypes = {
-  user: PropTypes.object,//.isRequired,
+  user: PropTypes.object.isRequired,
   group: PropTypes.object,
   onClickRequestCall: PropTypes.func.isRequired,
 };
 
 function RequestCallSection({
-  driverId,
-  groupId,
+  user,
+  group,
   onClickRequestCall,
 }) {
   
   const [speechToText, setSpeechToText] = useState(false);
-  const [triggerText, setTriggerText] = useState("Stop");
-  
+  const triggerText = "Stop";
+  const groupId = group.groupId;
+  const driverId = user.driverId;
+
   const onButtonClickHandler = () => {
     onClickRequestCall({groupId, driverId})
   }

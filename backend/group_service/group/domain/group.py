@@ -1,4 +1,6 @@
 from django.db import models
+from rest_framework import serializers
+from backend.user_service.user.domain.driver import DriverSerializer
 
 
 class Group(models.Model):
@@ -24,3 +26,13 @@ class Group(models.Model):
             .format(
                 self.driver, self.from_location,
                 self.to_location, self.cost, self.departure)
+
+
+class GroupSerializer(serializers.ModelSerializer):
+
+    driver = DriverSerializer(many=False, read_only=True)
+
+    class Meta:
+        model = Group
+        fields = ('driver', 'from_location', 'to_location', 'cost', 'departure')
+        read_ony_fields = ('from_location', 'to_location', 'cost', 'departure')
