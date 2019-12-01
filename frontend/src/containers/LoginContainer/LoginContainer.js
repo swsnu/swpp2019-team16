@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import Login from '../../components/Login/Login';
-import { login, changeField, initializeForm } from '../../modules/auth/auth';
+import Login from '../../components/Login';
+import { login, changeField, initializeForm } from '../../modules/auth';
 
 function LoginContainer({ history }) {
   const dispatch = useDispatch();

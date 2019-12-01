@@ -1,0 +1,104 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LoginPage /> SHOULD match with snapshot 1`] = `
+<div>
+  <div
+    class="sc-bdVaJa bPGLpq"
+  >
+    <div
+      class="makeStyles-root-1"
+    >
+      <div
+        class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+      >
+        <h4
+          class="MuiTypography-root makeStyles-title-3 MuiTypography-h4"
+        >
+          Ya-Ta!
+        </h4>
+        <button
+          class="MuiButtonBase-root MuiButton-root makeStyles-root-38 makeStyles-root-41 MuiButton-text makeStyles-text-40 makeStyles-text-43 MuiButton-text makeStyles-text-40 makeStyles-text-43"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            Log In
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+    </div>
+    <div
+      class="sc-bwzfXH uTxCW"
+    >
+      <div
+        class="MuiBox-root MuiBox-root-76"
+      >
+        <h3
+          class="MuiTypography-root MuiTypography-h3"
+        >
+          Login to Ya-Ta!
+        </h3>
+        <div
+          class="MuiBox-root MuiBox-root-77"
+        >
+          <input
+            id="email-input"
+            name="email"
+            placeholder="email"
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          class="MuiBox-root MuiBox-root-78"
+        >
+          <input
+            id="password-input"
+            name="password"
+            placeholder="password"
+            type="password"
+            value=""
+          />
+        </div>
+        <div
+          class="MuiBox-root MuiBox-root-79"
+        >
+          <button
+            class="MuiButtonBase-root MuiButton-root makeStyles-root-38 makeStyles-root-80 MuiButton-contained makeStyles-contained-39 makeStyles-contained-81 MuiButton-contained makeStyles-contained-39 makeStyles-contained-81"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              Login
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+          <button
+            class="MuiButtonBase-root MuiButton-root makeStyles-root-38 makeStyles-root-83 MuiButton-contained makeStyles-contained-39 makeStyles-contained-84 MuiButton-contained makeStyles-contained-39 makeStyles-contained-84"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              Register
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
