@@ -31,7 +31,6 @@ describe('<RequestCallContainer />', () => {
     user: {
       user: null,
     },
-    
     group: {
       group: null,
     },
