@@ -9,7 +9,7 @@ from backend.common.command.group_create_command import GroupCreateCommand
 class CarpoolRequestApplicationService():
     def create(self, from_location, to_location, minimum_passenger, rider_id):
         # TODO: handle NotFound exception
-        rider = Rider.objects.get(id=rider_id)
+        rider = Rider.objects.get(pk=rider_id)
 
         result = CarpoolRequest.objects.create(
             from_location=from_location,
@@ -38,7 +38,7 @@ class CarpoolRequestApplicationService():
         return result
 
     def delete(self, request_id):
-        return CarpoolRequest.objects.filter(id=request_id).delete()
+        return CarpoolRequest.objects.filter(pk=request_id).delete()
 
     def get(self, request_id):
-        return CarpoolRequest.objects.get(id=request_id)
+        return CarpoolRequest.objects.get(pk=request_id)

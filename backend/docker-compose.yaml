@@ -7,11 +7,15 @@ services:
     restart: always
     ports:
       - 3306:3306
+    volumes:
+      - ./db/init:/docker-entrypoint-initdb.d
+      # override my.cnf to change character set utf8
+      - ./db/config/my.cnf:/etc/mysql/my.cnf
     environment:
       MYSQL_DATABASE: "yata"
       MYSQL_USER: "team16"
       MYSQL_PASSWORD: "team16"
-      MYSQL_ROOT_PASSWORD: "team16"
+      MYSQL_ROOT_PASSWORD: "team16-su"
 
   redis:
     container_name: redis

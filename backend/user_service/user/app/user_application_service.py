@@ -34,7 +34,7 @@ class UserApplicationService():
         return UserSerializer(user).data
 
     def login(self, user_id):
-        user = get_user_model().objects.get(id=user_id)
+        user = get_user_model().objects.get(pk=user_id)
         user_type = user.user_type
 
         if user_type == "rider":

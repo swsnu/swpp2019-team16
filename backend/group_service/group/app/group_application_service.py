@@ -21,7 +21,7 @@ class GroupApplicationService:
             from_location=from_location,
             to_location=to_location)
         for i in range(len(rider_id_list)):
-            rider = Rider.objects.get(id=rider_id_list[i])
+            rider = Rider.objects.get(pk=rider_id_list[i])
             rider.group = myGroup
             rider.save()
         event = GroupCreatedEvent(
@@ -33,10 +33,10 @@ class GroupApplicationService:
         return myGroup
 
     def update_group(self, group_id, driver_id):
-        myGroup = Group.objects.get(id=group_id)
+        myGroup = Group.objects.get(pk=group_id)
         myGroup.driver_id = driver_id
         myGroup.save()
-        driver = Driver.objects.get(id=driver_id)
+        driver = Driver.objects.get(pk=driver_id)
         driver.group = myGroup
         driver.save()
 
