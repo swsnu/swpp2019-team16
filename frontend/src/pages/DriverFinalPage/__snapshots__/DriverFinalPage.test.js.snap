@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DriverFinalPage /> SHOULD match with snapshot 1`] = `
+<div>
+  <div
+    class="sc-bdVaJa bPGLpq"
+  >
+    <div
+      class="makeStyles-root-1"
+    >
+      <div
+        class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+      >
+        <h4
+          class="MuiTypography-root makeStyles-title-3 MuiTypography-h4"
+        >
+          Ya-Ta!
+        </h4>
+        <button
+          class="MuiButtonBase-root MuiButton-root makeStyles-root-38 makeStyles-root-41 MuiButton-text makeStyles-text-40 makeStyles-text-43 MuiButton-text makeStyles-text-40 makeStyles-text-43"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            Log In
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+    </div>
+    <div
+      class="sc-bwzfXH uTxCW"
+    >
+      <h2
+        class="MuiTypography-root MuiTypography-h2"
+      >
+        Total Earning: 
+        5000
+      </h2>
+      <h2
+        class="MuiTypography-root MuiTypography-h2"
+      >
+        Current Point: 
+        50000
+      </h2>
+      <button
+        class="MuiButtonBase-root MuiButton-root makeStyles-root-38 makeStyles-root-75 MuiButton-contained makeStyles-contained-39 makeStyles-contained-76 MuiButton-contained makeStyles-contained-39 makeStyles-contained-76"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          Go To Main
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+  </div>
+</div>
+`;
