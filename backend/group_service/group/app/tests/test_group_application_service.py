@@ -48,7 +48,7 @@ class GroupApplicationServiceTestCase(TestCase):
         user.save()
         Driver(user=user).save()
 
-        result = self.group_application_service.update_group(
+        result = self.group_application_service.driver_update_group(
             group_id=GROUP_ID, driver_id=DRIVER_ID)
 
         self.assertEqual(result.id, GROUP_ID)

@@ -9,8 +9,8 @@ from backend.common.messaging.infra.redis.redis_message_publisher \
     import RedisMessagePublisher
 from backend.common.event.group_created_event \
     import GroupCreatedEvent
-from backend.common.event.group_updated_event \
-    import GroupUpdatedEvent
+from backend.common.event.group_driver_updated_event \
+    import GroupDriverUpdatedEvent
 
 logger = logging.getLogger(__name__)
 
@@ -32,7 +32,7 @@ class GroupApplicationService:
         RedisMessagePublisher().publish_message(event)
         return myGroup
 
-    def update_group(self, group_id, driver_id):
+    def driver_update_group(self, group_id, driver_id):
         myGroup = Group.objects.get(id=group_id)
         myGroup.driver_id = driver_id
         myGroup.save()
@@ -40,6 +40,12 @@ class GroupApplicationService:
         driver.group = myGroup
         driver.save()
 
-        event = GroupUpdatedEvent(driver_id=driver_id)
+        event = GroupDriverUpdatedEvent(driver_id=driver_id)
         RedisMessagePublisher().publish_message(event)
+        return myGroup
+
+    def cost_update_group(self, group_id, cost):
+        myGroup = Group.objects.get(id=group_id)
+        myGroup.cost = cost
+        myGroup.save()
         return myGroup

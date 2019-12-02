@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DriverDetailPage /> SHOULD match with snapshot 1`] = `
+<div>
+  <div
+    class="sc-bdVaJa bPGLpq"
+  >
+    <div
+      class="makeStyles-root-1"
+    >
+      <div
+        class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+      >
+        <h4
+          class="MuiTypography-root makeStyles-title-3 MuiTypography-h4"
+        >
+          Ya-Ta!
+        </h4>
+        <button
+          class="MuiButtonBase-root MuiButton-root makeStyles-root-38 makeStyles-root-41 MuiButton-text makeStyles-text-40 makeStyles-text-43 MuiButton-text makeStyles-text-40 makeStyles-text-43"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            Log In
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+    </div>
+    <div
+      class="sc-bwzfXH uTxCW"
+    >
+      <input
+        id="total-cost-input"
+        name="TotalCost"
+        placeholder="Total Cost"
+        type="text"
+        value="0"
+      />
+      <button
+        class="MuiButtonBase-root MuiButton-root makeStyles-root-38 makeStyles-root-75 MuiButton-contained makeStyles-contained-39 makeStyles-contained-76 MuiButton-contained makeStyles-contained-39 makeStyles-contained-76"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          Confirm
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+  </div>
+</div>
+`;
