@@ -3,8 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import * as grpcClient from '../../lib/grpc/client';
 import { groupCreated, unloadGroup, acceptGroup } from '../../modules/group';
 import { withRouter } from 'react-router-dom';
-import RequestCallSection from '../../components/RequestCall/RequestCallSection'
-
+import RequestCallSection from '../../components/RequestCall/RequestCallSection';
 
 RequestCallContainer.propTypes = {};
 
@@ -19,7 +18,7 @@ function RequestCallContainer({ history }) {
   }));
 
   useEffect(() => {
-    if(user){
+    if (user) {
       const stream = grpcClient.createGrpcStream({ id: user.id });
       stream.on('data', message => {
         const parsed = JSON.parse(message.getData());
@@ -43,11 +42,12 @@ function RequestCallContainer({ history }) {
   }, [dispatch, user]);
 
   const onClickRequestCall = useCallback(
-    ({groupId, driverId}) => {
-      dispatch(acceptGroup({groupId, driverId}));
+    ({ groupId, driverId }) => {
+      dispatch(acceptGroup({ groupId, driverId }));
       history.push('/group');
-    }, [dispatch, history],
-    );
+    },
+    [dispatch, history],
+  );
 
   if (!user) {
     return <div>we are loading user...</div>;
@@ -56,7 +56,7 @@ function RequestCallContainer({ history }) {
   if (!group) {
     return <div>Waiting for group to be matched...</div>;
   }
-  
+
   return (
     <RequestCallSection
       user={user}
@@ -64,7 +64,6 @@ function RequestCallContainer({ history }) {
       onClickRequestCall={onClickRequestCall}
     />
   );
-  
 }
 
 export default withRouter(RequestCallContainer);

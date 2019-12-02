@@ -11,7 +11,12 @@ describe('<LoginPage />', () => {
         password: '',
       },
       auth: null,
-    }
+    },
+    user: {
+      user: {
+        id: 1,
+      },
+    },
   };
   it('SHOULD match with snapshot', async () => {
     const { container } = renderWithRedux(

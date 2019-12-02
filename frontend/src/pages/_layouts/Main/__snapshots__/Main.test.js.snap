@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Main /> SHOULD match with snapshoot 1`] = `
+exports[`<Main /> SHOULD match with snapshot 1`] = `
 <div>
   <div
     class="sc-bdVaJa bPGLpq"
@@ -31,9 +31,6 @@ exports[`<Main /> SHOULD match with snapshoot 1`] = `
           />
         </button>
       </div>
-    </div>
-    <div>
-      Page
     </div>
   </div>
 </div>

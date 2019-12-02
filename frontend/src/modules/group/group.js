@@ -129,7 +129,7 @@ const group = handleActions(
       ...state,
       group: null,
     }),
-    
+
     [ACCEPT_GROUP_SUCCESS]: (state, { payload: group }) => ({
       ...state,
       group: group,

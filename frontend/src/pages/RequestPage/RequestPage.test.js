@@ -8,11 +8,20 @@ jest.mock('@fullpage/react-fullpage', () => ({ children }) => (
 ));
 
 describe('<RequestPage />', () => {
+  const state = {
+    auth: {
+      auth: {
+        id: 1,
+      },
+    },
+  };
+
   it('SHOULD match with snapshot', async () => {
     const { container } = renderWithRedux(
       <MemoryRouter initialEntries={['/request']}>
         <Route component={RequestPage} path="/request" />
       </MemoryRouter>,
+      state,
     );
     expect(container).toMatchSnapshot();
   });

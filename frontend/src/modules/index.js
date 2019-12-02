@@ -4,7 +4,7 @@ import auth, { authSaga } from './auth';
 import carpoolRequest, { carpoolRequestSaga } from './carpoolRequest';
 import group, { groupSaga } from './group';
 import loading from './loading';
-import user from './user';
+import user, { userSaga } from './user';
 
 const rootReducer = combineReducers({
   auth,
@@ -15,7 +15,7 @@ const rootReducer = combineReducers({
 });
 
 export function* rootSaga() {
-  yield all([carpoolRequestSaga(), authSaga(), groupSaga()]);
+  yield all([carpoolRequestSaga(), authSaga(), groupSaga(), userSaga()]);
 }
 
 export default rootReducer;

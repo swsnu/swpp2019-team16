@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Header from '../../../components/common/Header';
+import HeaderContainer from '../../../containers/common/HeaderContainer/HeaderContainer';
 import theme from '../../../lib/styles/theme';
 import ThemeProvider from '@material-ui/styles/ThemeProvider';
 import { CssBaseline } from '@material-ui/core';
@@ -21,7 +21,7 @@ function Main({ children }) {
       {/* <CssBaseline /> enables lib/material-ui/theme to work */}
       <CssBaseline />
       <Root>
-        <Header />
+        <HeaderContainer />
         {children}
       </Root>
     </ThemeProvider>

@@ -3,12 +3,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Register from '../../components/Register/Register';
 import { register, changeField, initializeForm } from '../../modules/auth/auth';
+import { check } from '../../modules/user/user';
 
 function RegisterForm({ history }) {
   const dispatch = useDispatch();
-  const { form, auth } = useSelector(({ auth }) => ({
+  const { form, auth, authError, user } = useSelector(({ auth, user }) => ({
     form: auth.register,
     auth: auth.auth,
+    authError: auth.authError,
+    user: user.user,
   }));
 
   const onChange = useCallback(
@@ -51,17 +54,26 @@ function RegisterForm({ history }) {
       );
     }
   }, [dispatch, form]);
-
+  
   useEffect(() => {
     dispatch(initializeForm('register'));
   }, [dispatch]);
 
   useEffect(() => {
     if (auth) {
+      dispatch(check(auth.id));
+    } 
+    if (authError) {
+      console.log(authError);
+    }
+  }, [auth, authError, dispatch]);
+
+  useEffect(() => {
+    if (user) {
       window.alert('Successfully signed up to Ya-Ta. Welcome!');
       history.push('/login');
     }
-  }, [auth, history]);
+  }, [auth, user, history]);
 
   return <Register form={form} onChange={onChange} onClick={onConfirm} />;
 }

@@ -1,10 +1,15 @@
 import React from 'react';
 import DetailPage from './DetailPage';
-import { render, fireEvent } from '@testing-library/react';
+import { renderWithRedux } from 'test/utils';
+import { MemoryRouter, Route } from 'react-router-dom';
 
 describe('<DetailPage />', () => {
   it('SHOULD match with snapshot', async () => {
-    const { container } = render(<DetailPage />);
+    const { container } = renderWithRedux(
+      <MemoryRouter intialEntries={['/detail']}>
+        <Route component={DetailPage} path="/detail" />
+      </MemoryRouter>,
+    );
     expect(container).toMatchSnapshot();
   });
 });

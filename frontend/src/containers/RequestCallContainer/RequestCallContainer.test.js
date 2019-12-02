@@ -29,7 +29,7 @@ class MockMessage {
 describe('<RequestCallContainer />', () => {
   const initialState = {
     user: {
-      user: {id: 1},
+      user: { id: 1 },
     },
     group: {
       group: null,
