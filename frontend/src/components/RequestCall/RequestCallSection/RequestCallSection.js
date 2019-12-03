@@ -1,45 +1,57 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
 import Button from '../../common/Button';
 import Heading from '../../common/Heading';
 import PropTypes from 'prop-types';
 import recognizer from '../../../lib/azure';
 import Checkbox from 'components/common/Checkbox/index';
+import { UserPropsTypes } from '../../../types/user';
+import { GroupPropTypes } from '../../../types/group';
 
 const RequestCallBlock = styled.div``;
 
 RequestCallSection.propTypes = {
-  user: PropTypes.object.isRequired,
-  group: PropTypes.object,
+  user: UserPropsTypes,
+  group: GroupPropTypes.isRequired,
   onClickRequestCall: PropTypes.func.isRequired,
 };
 
 function RequestCallSection({ user, group, onClickRequestCall }) {
   const [speechToText, setSpeechToText] = useState(false);
   const triggerText = 'Stop';
-  const groupId = group.groupId;
-  const driverId = user.driverId;
 
-  const onButtonClickHandler = () => {
-    onClickRequestCall({ groupId, driverId });
-  };
+  const onButtonClickHandler = useCallback(() => {
+    onClickRequestCall({
+      groupId: group.groupId,
+      driverId: user.id,
+    });
+  }, [group, user]);
 
-  let onSTTHandler = () => {
-    if (!speechToText) {
-      console.log('Active STT');
-      recognizer.recognized = (r, event) => {
-        console.log('Recognized message: ' + event.result.text);
-        if (event.result.text.includes(triggerText)) {
-          console.log('Triggered message: ' + triggerText);
-        }
-      };
-      recognizer.startContinuousRecognitionAsync();
-    } else {
-      console.log('Deactive STT');
-      recognizer.stopContinuousRecognitionAsync();
-    }
-    setSpeechToText(speechToText ? false : true);
-  };
+  // TODO: add test case
+  // TODO: refactor speech recognizer -> create SpeechRecognizer class
+  const onSTTHandler = useCallback(
+    () => {
+      if (!speechToText) {
+        console.log('Active STT');
+        recognizer.recognized = (r, event) => {
+          console.log('Recognized message: ' + event.result.text);
+          if (event.result.text.includes(triggerText)) {
+            console.log('Triggered message: ' + triggerText);
+            onClickRequestCall({
+              groupId: group.groupId,
+              driverId: user.id,
+            })
+          }
+        };
+        recognizer.startContinuousRecognitionAsync();
+      } else {
+        console.log('Deactive STT');
+        recognizer.stopContinuousRecognitionAsync();
+      }
+      setSpeechToText(!speechToText);
+    },
+    [group, user]
+  );
 
   return (
     <RequestCallBlock className="requestCallBlock">

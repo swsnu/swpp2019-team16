@@ -2,6 +2,8 @@ import React from 'react';
 import RequestPage from './RequestPage';
 import { MemoryRouter, Route } from 'react-router-dom';
 import { renderWithRedux } from 'test/utils';
+import { mockRider } from '../../types/__mock__/user';
+import { mockRiderAuth } from '../../types/__mock__/auth';
 
 jest.mock('@fullpage/react-fullpage', () => ({ children }) => (
   <div>{children}</div>
@@ -9,10 +11,11 @@ jest.mock('@fullpage/react-fullpage', () => ({ children }) => (
 
 describe('<RequestPage />', () => {
   const state = {
+    user: {
+      user: mockRider,
+    },
     auth: {
-      auth: {
-        id: 1,
-      },
+      auth: mockRiderAuth,
     },
   };
 

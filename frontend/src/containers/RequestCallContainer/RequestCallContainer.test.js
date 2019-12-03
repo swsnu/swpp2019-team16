@@ -6,6 +6,7 @@ import RequestCallContainer, {
 import * as grpcClient from '../../lib/grpc/client';
 import { renderWithRedux } from '../../test/utils';
 import { MemoryRouter, Route } from 'react-router-dom';
+import { mockDriver } from '../../types/__mock__/user';
 
 class MockGrpcStream {
   registeredCallback = null;
@@ -29,7 +30,7 @@ class MockMessage {
 describe('<RequestCallContainer />', () => {
   const initialState = {
     user: {
-      user: { id: 1 },
+      user: mockDriver,
     },
     group: {
       group: null,

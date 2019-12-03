@@ -3,6 +3,7 @@ import { fireEvent, waitForElement } from '@testing-library/react';
 import LoginContainer from './LoginContainer';
 import { renderWithRedux } from '../../test/utils';
 import { MemoryRouter, Route } from 'react-router-dom';
+import { mockRider } from '../../types/__mock__/user';
 
 jest.mock('../../components/Login', () =>
   jest.fn(props => (
@@ -232,9 +233,7 @@ describe('<LoginContainer />', () => {
         auth: {}, // NOT NULL
       },
       user: {
-        user: {
-          id: 1,
-        },
+        user: mockRider,
       },
     };
     const { getByText } = renderWithRedux(

@@ -2,6 +2,7 @@ import React from 'react';
 import RequestContainer from './CarpoolRequestSectionContainer';
 import { renderWithRedux } from '../../../test/utils';
 import { MemoryRouter, Route } from 'react-router-dom';
+import { mockRider } from '../../../types/__mock__/user';
 
 jest.mock('../../../components/Request/CarpoolRequestSection', () =>
   jest.fn(props => <div>Request</div>),
@@ -10,9 +11,7 @@ jest.mock('../../../components/Request/CarpoolRequestSection', () =>
 describe('<CarpoolRequestSectionContainer />', () => {
   const state = {
     user: {
-      user: {
-        id: 1,
-      },
+      user: mockRider,
     },
   };
 
