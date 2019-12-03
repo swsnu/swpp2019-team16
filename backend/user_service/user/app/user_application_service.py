@@ -12,8 +12,6 @@ from backend.common.messaging.infra.redis.redis_message_publisher \
 from backend.carpool_request_service.carpool_request.domain.carpool_request \
     import CarpoolRequest
 from backend.user_service.user.domain.user import UserSerializer
-from backend.user_service.user.domain.rider import RiderSerializer
-from backend.user_service.user.domain.driver import DriverSerializer
 
 
 logger = logging.getLogger(__name__)
@@ -34,34 +32,40 @@ class UserApplicationService():
         return UserSerializer(user).data
 
     def login(self, user_id):
-        user = get_user_model().objects.get(pk=user_id)
-        user_type = user.user_type
+        user_type = get_user_model().objects.get(id=user_id).user_type
 
-        if user_type == "rider":
-            rider = None
-            if(len(Rider.objects.filter(user_id=user_id)) == 0):
-                rider = Rider.objects.create(user=user, status="IDLE")
-            else:
-                rider = Rider.objects.get(user=user)
-            return RiderSerializer(rider).data
-
-        elif user_type == "driver":
-            driver = None
-            if(len(Driver.objects.filter(user_id=user_id)) == 0):
-                driver = Driver.objects.create(user=user, status="IDLE")
-            else:
-                driver = Driver.objects.get(user=user)
-            return DriverSerializer(driver).data
-        else:
-            return ValueError
+        return self._create_rider_or_driver_if_not_exist(
+            user_type=user_type,
+            user_id=user_id
+        )
 
     def logout(self, user_id):
         rider = Rider.objects.filter(user_id=user_id)
-        if(len(rider) != 0):
+        if len(rider) != 0:
             rider_id = rider.values()[0]['id']
             request = CarpoolRequest.objects.filter(rider_id=rider_id)
-            if(len(request) != 0):
+            if len(request) != 0:
                 request_id = request.values()[0]['id']
                 command = CarpoolRequestDeleteCommand(request_id=request_id)
                 RedisMessagePublisher().publish_message(command)
             rider.delete()
+
+    def _create_rider_or_driver_if_not_exist(self, user_type, user_id):
+        factory = {
+            'rider': self._create_rider_if_not_exist,
+            'driver': self._create_driver_if_not_exist,
+        }.get(user_type, ValueError)
+
+        return factory(user_id)
+
+    def _create_rider_if_not_exist(self, user_id):
+        if len(Rider.objects.filter(user_id=user_id)) == 0:
+            return Rider.objects.create(user_id=user_id, status="IDLE")
+
+        return Rider.objects.get(user_id=user_id)
+
+    def _create_driver_if_not_exist(self, user_id):
+        if len(Driver.objects.filter(user_id=user_id)) == 0:
+            return Driver.objects.create(user_id=user_id, status="IDLE")
+
+        return Driver.objects.get(user_id=user_id)
