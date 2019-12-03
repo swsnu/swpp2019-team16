@@ -11,6 +11,7 @@ from backend.user_service.user.domain.user import User
 
 class GroupApplicationServiceTestCase(TestCase):
 
+    # TODO: set different user!
     def setUp(self):
         self.group_application_service = GroupApplicationService()
         self.group = Group()
@@ -39,17 +40,16 @@ class GroupApplicationServiceTestCase(TestCase):
         self.assertEqual(result.to_location, TO_LOCATION)
 
     def test_update_group(self):
-        GROUP_ID = 1
-        DRIVER_ID = 1
         EMAIL = 'driver@gmail.com'
         PASSWORD = 1234
 
         user = User(email=EMAIL, password=PASSWORD)
         user.save()
-        Driver(user=user).save()
+        driver = Driver(user=user)
+        driver.save()
 
         result = self.group_application_service.update_group(
-            group_id=GROUP_ID, driver_id=DRIVER_ID)
+            group_id=self.group.id, driver_id=driver.id)
 
-        self.assertEqual(result.id, GROUP_ID)
-        self.assertEqual(result.driver_id, DRIVER_ID)
+        self.assertEqual(result.id, self.group.id)
+        self.assertEqual(result.driver_id, driver.id)

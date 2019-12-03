@@ -4,6 +4,7 @@ services:
   mysql:
     container_name: mysql
     image: mysql:5.7.28
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     restart: always
     ports:
       - 3306:3306
@@ -11,7 +12,7 @@ services:
       MYSQL_DATABASE: "yata"
       MYSQL_USER: "team16"
       MYSQL_PASSWORD: "team16"
-      MYSQL_ROOT_PASSWORD: "team16"
+      MYSQL_ROOT_PASSWORD: "team16-su"
 
   redis:
     container_name: redis
