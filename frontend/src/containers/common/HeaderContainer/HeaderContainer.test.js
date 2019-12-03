@@ -1,24 +1,18 @@
 import React from 'react';
-import App from './App';
+import HeaderContainer from './HeaderContainer';
+import { renderWithRedux } from '../../../test/utils';
 import { MemoryRouter, Route } from 'react-router-dom';
-import { renderWithRedux } from './test/utils';
 
-jest.mock('@fullpage/react-fullpage', () => ({ children }) => (
-  <div>{children}</div>
-));
-
-describe('<App />', () => {
+describe('<HeaderContainer />', () => {
   const state = {
     auth: {
-      auth: {
-        id: 1,
-      },
+      auth: null,
     },
   };
   it('SHOULD match with snapshot', async () => {
     const { container } = renderWithRedux(
-      <MemoryRouter>
-        <Route component={App} path="/" />
+      <MemoryRouter initialEntries={['/']}>
+        <Route component={HeaderContainer} path="/" />
       </MemoryRouter>,
       state,
     );

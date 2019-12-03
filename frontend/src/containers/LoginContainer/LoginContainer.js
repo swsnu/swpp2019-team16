@@ -3,13 +3,18 @@ import { useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Login from '../../components/Login';
 import { login, changeField, initializeForm } from '../../modules/auth';
+import { check } from '../../modules/user/user';
 
 function LoginContainer({ history }) {
   const dispatch = useDispatch();
-  const { loginInfo, auth } = useSelector(({ auth }) => ({
-    loginInfo: auth.login,
-    auth: auth.auth,
-  }));
+  const { loginInfo, auth, authError, user } = useSelector(
+    ({ auth, user }) => ({
+      loginInfo: auth.login,
+      auth: auth.auth,
+      authError: auth.authError,
+      user: user.user,
+    }),
+  );
 
   const onChange = useCallback(
     e => {
@@ -25,14 +30,18 @@ function LoginContainer({ history }) {
     [dispatch],
   );
 
-  const onClickLogin = useCallback(() => {
-    const { email, password } = loginInfo;
-    if (email === '' || password === '') {
-      window.alert('Email and Password must not be empty.');
-    } else {
-      dispatch(login({ email, password }));
-    }
-  }, [dispatch, loginInfo]);
+  const onClickLogin = useCallback(
+    e => {
+      e.preventDefault();
+      const { email, password } = loginInfo;
+      if (email === '' || password === '') {
+        window.alert('Email and Password must not be empty.');
+      } else {
+        dispatch(login({ email, password }));
+      }
+    },
+    [dispatch, loginInfo],
+  );
 
   const onClickRegister = useCallback(() => {
     history.push('/register');
@@ -43,10 +52,30 @@ function LoginContainer({ history }) {
   }, [dispatch]);
 
   useEffect(() => {
-    if (auth) {
-      history.push('/request');
+    if (authError) {
+      alert('Email or password is wrong.');
+      return;
     }
-  });
+
+    if (auth) {
+      console.log(auth);
+      
+      dispatch(check(auth.id));
+    }
+  }, [auth, authError, dispatch]);
+
+  useEffect(() => {
+    if (user) {
+      console.log(user);
+      
+      history.push('/request');
+      try {
+        localStorage.setItem('user', JSON.stringify(user));
+      } catch (e) {
+        console.log('localStorage is not working');
+      }
+    }
+  }, [history, user]);
 
   return (
     <Login

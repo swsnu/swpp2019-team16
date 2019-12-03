@@ -1,10 +1,15 @@
 import React from 'react';
 import FinalPage from './FinalPage';
-import { render, fireEvent } from '@testing-library/react';
+import { renderWithRedux } from 'test/utils';
+import { MemoryRouter, Route } from 'react-router-dom';
 
 describe('<FinalPage />', () => {
   it('SHOULD match with snapshot', async () => {
-    const { container } = render(<FinalPage />);
+    const { container } = renderWithRedux(
+      <MemoryRouter intialEntries={['/final']}>
+        <Route component={FinalPage} path="/final" />
+      </MemoryRouter>,
+    );
     expect(container).toMatchSnapshot();
   });
 });

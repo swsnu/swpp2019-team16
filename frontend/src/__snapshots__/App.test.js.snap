@@ -17,20 +17,35 @@ exports[`<App /> SHOULD match with snapshot 1`] = `
           >
             Ya-Ta!
           </h4>
-          <button
-            class="MuiButtonBase-root MuiButton-root makeStyles-root-38 makeStyles-root-41 MuiButton-text makeStyles-text-40 makeStyles-text-43 MuiButton-text makeStyles-text-40 makeStyles-text-43"
-            tabindex="0"
-            type="button"
-          >
-            <span
-              class="MuiButton-label"
+          <div>
+            <button
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              aria-label="account of current user"
+              class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit"
+              tabindex="0"
+              type="button"
             >
-              Log In
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
+              <span
+                class="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  role="presentation"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+          </div>
         </div>
       </div>
       <div />

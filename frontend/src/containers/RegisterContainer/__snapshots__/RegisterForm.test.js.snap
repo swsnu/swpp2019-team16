@@ -80,7 +80,7 @@ exports[`<RegisterForm /> SHOULD match with snapshot 1`] = `
           id="password-confirmation-input"
           name="passwordConfirmation"
           type="password"
-          value=""
+          value="password"
         />
         <div
           class="MuiBox-root MuiBox-root-73"

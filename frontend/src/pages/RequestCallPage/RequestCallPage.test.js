@@ -7,10 +7,13 @@ describe('<RequestCallPage />', () => {
   it('SHOULD match with snapshot', async () => {
     const state = {
       user: {
-        user: {id:1},
+        user: { id: 1 },
       },
       group: {
         group: null,
+      },
+      auth: {
+        auth: { id: 1 },
       },
     };
 

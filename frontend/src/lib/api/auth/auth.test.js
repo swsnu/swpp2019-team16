@@ -11,7 +11,7 @@ describe('api/auth', () => {
   describe('login', () => {
     it('should successfully return params', async done => {
       jest.spyOn(client, 'post').mockImplementation((url, body) => {
-        expect(url).toBe('/api/v1/auth/login');
+        expect(url).toBe('/api/v1/user/login');
         expect(body.email).toBe('user@gmail.com');
         expect(body.password).toBe('password');
         done();

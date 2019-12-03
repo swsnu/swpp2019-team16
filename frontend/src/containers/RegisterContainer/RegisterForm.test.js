@@ -9,10 +9,13 @@ describe('<RegisterForm />', () => {
       register: {
         email: 'email',
         password: 'password',
+        passwordConfirmation: 'password',
         vehicleInfo: 'info',
       },
     },
-    passwordConfirmation: 'password',
+    user: {
+      user:null 
+    },
   };
   it('SHOULD match with snapshot', async () => {
     const { container } = renderWithRedux(

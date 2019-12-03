@@ -9,6 +9,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
 import rootReducer, { rootSaga } from './modules';
 import * as serviceWorker from './serviceWorker';
+import { check, tempSetUser } from 'modules/user/user';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -17,7 +18,21 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(sagaMiddleware)),
 );
 
+function loadUser() {
+  try {
+    const user = localStorage.getItem('user');
+    if (!user) {
+      return;
+    }
+    store.dispatch(tempSetUser(user));
+    store.dispatch(check());
+  } catch (e) {
+    console.error(e);
+  }
+}
+
 sagaMiddleware.run(rootSaga);
+loadUser();
 
 ReactDOM.render(
   <Provider store={store}>

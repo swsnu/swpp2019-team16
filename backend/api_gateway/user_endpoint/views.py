@@ -49,6 +49,23 @@ def __register_user(request):
     rpc_response = RedisRpcClient().call(USER_CREATE_COMMAND, command)
     return JsonResponse(data=rpc_response.result, status=200)
 
+def check_user(request, id):
+    if request.method == 'GET':
+        return __check_user(request, id)
+    else:
+        return HttpResponseNotAllowed(['GET'])
+
+
+def __check_user(request, id):
+    try:
+        user = get_user_model().objects.get(id=id)
+    except Exception:
+        return HttpResponseBadRequest
+    login(request, user)
+    event = UserLoginEvent(user_id=user.id)
+    rpc_response = RedisRpcClient().call(USER_LOGIN_EVENT, event)
+    return JsonResponse(data=rpc_response.result, status=200)    
+
 
 def login_user(request):
     if request.method == 'POST':
@@ -69,8 +86,11 @@ def __login_user(request):
         login(request, user)
         event = UserLoginEvent(user_id=user.id)
         rpc_response = RedisRpcClient().call(USER_LOGIN_EVENT, event)
-        print(rpc_response.result)
-        return JsonResponse(data=rpc_response.result, status=200)
+        result = {
+            'id': user.id,
+            'user_type_id': rpc_response.result['id']
+        }
+        return JsonResponse(data=result, status=200)
     else:
         return HttpResponse(status=401)
 

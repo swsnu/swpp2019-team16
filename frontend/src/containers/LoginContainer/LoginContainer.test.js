@@ -7,11 +7,11 @@ import { MemoryRouter, Route } from 'react-router-dom';
 jest.mock('../../components/Login', () =>
   jest.fn(props => (
     <div>
-      <div aria-label={"email"}>{props.loginInfo.email}</div>
-      <div aria-label={"password"}>{props.loginInfo.password}</div>
+      <div aria-label={'email'}>{props.loginInfo.email}</div>
+      <div aria-label={'password'}>{props.loginInfo.password}</div>
       <input
-        aria-label={"input-form"}
-        name={"input-form"}
+        aria-label={'input-form'}
+        name={'input-form'}
         onChange={props.onChange}
       />
       <button onClick={props.onClickLogin}>login</button>
@@ -28,6 +28,9 @@ describe('<LoginContainer />', () => {
         password: '',
       },
       auth: null,
+    },
+    user: {
+      user: null,
     },
   };
 
@@ -59,6 +62,9 @@ describe('<LoginContainer />', () => {
           password: 'password',
         },
         auth: null,
+      },
+      user: {
+        user: null,
       },
     };
     const { getByLabelText } = renderWithRedux(
@@ -109,6 +115,9 @@ describe('<LoginContainer />', () => {
         },
         auth: null,
       },
+      user: {
+        user: null,
+      },
     };
     const { getByText, store } = renderWithRedux(
       <MemoryRouter initialEntries={['/login']}>
@@ -133,6 +142,9 @@ describe('<LoginContainer />', () => {
           password: 'password',
         },
         auth: null,
+      },
+      user: {
+        user: null,
       },
     };
     const { getByText } = renderWithRedux(
@@ -170,6 +182,9 @@ describe('<LoginContainer />', () => {
           password: 'password',
         },
         auth: null,
+      },
+      user: {
+        user: null,
       },
     };
     const { getByText, store } = renderWithRedux(
@@ -216,6 +231,11 @@ describe('<LoginContainer />', () => {
         ...state.auth,
         auth: {}, // NOT NULL
       },
+      user: {
+        user: {
+          id: 1,
+        },
+      },
     };
     const { getByText } = renderWithRedux(
       <MemoryRouter initialEntries={['/login']}>
@@ -227,5 +247,5 @@ describe('<LoginContainer />', () => {
 
     await waitForElement(() => getByText('MockRequestPage'));
     expect(getByText('MockRequestPage')).toHaveTextContent('MockRequestPage');
-  })
+  });
 });
