@@ -58,16 +58,12 @@ function LoginContainer({ history }) {
     }
 
     if (auth) {
-      console.log(auth);
-      
-      dispatch(check(auth.id));
+      dispatch(check({ id: auth.id }));
     }
   }, [auth, authError, dispatch]);
 
   useEffect(() => {
     if (user) {
-      console.log(user);
-      
       history.push('/request');
       try {
         localStorage.setItem('user', JSON.stringify(user));

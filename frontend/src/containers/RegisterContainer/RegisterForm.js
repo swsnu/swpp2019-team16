@@ -61,7 +61,7 @@ function RegisterForm({ history }) {
 
   useEffect(() => {
     if (auth) {
-      dispatch(check(auth.id));
+      dispatch(check({ id: auth.id }));
     } 
     if (authError) {
       console.log(authError);
