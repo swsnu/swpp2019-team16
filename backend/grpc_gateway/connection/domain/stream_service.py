@@ -27,7 +27,9 @@ class StreamService(pb_grpc.StreamServiceServicer):
                 latest_message_index += 1
 
                 # if the message is not for this connection, continue
+                print('message.target', msg.target)
                 if request.id not in msg.target:
+                    print('not my message {}'.format(request.id))
                     continue
 
                 yield pb.Message(

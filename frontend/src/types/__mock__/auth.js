@@ -4,7 +4,7 @@ export const mockRiderAuth = {
   user_type: 'rider',
   vehicle: {
     car_type: '',
-    plate_no: ''
+    plate_no: '',
   },
 };
 
@@ -14,6 +14,6 @@ export const mockDriverAuth = {
   user_type: 'driver',
   vehicle: {
     car_type: '',
-    plate_no: ''
+    plate_no: '',
   },
 };

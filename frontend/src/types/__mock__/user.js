@@ -8,7 +8,7 @@ export const mockRider = {
     user_type: 'rider',
     vehicle: {
       car_type: '',
-      plate_no: ''
+      plate_no: '',
     },
   },
 };

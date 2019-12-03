@@ -54,7 +54,7 @@ function RegisterForm({ history }) {
       );
     }
   }, [dispatch, form]);
-  
+
   useEffect(() => {
     dispatch(initializeForm('register'));
   }, [dispatch]);
@@ -62,7 +62,7 @@ function RegisterForm({ history }) {
   useEffect(() => {
     if (auth) {
       dispatch(check({ id: auth.id }));
-    } 
+    }
     if (authError) {
       console.log(authError);
     }

@@ -102,4 +102,25 @@ describe('<RequestCallContainer />', () => {
       type: 'group/UNLOAD_GROUP',
     });
   });
+
+  it('should redirect to /login when user not exist', async () => {
+    const _initialState = {
+      ...initialState,
+      user: {
+        user: null,
+      },
+    };
+    const MockLoginPage = () => <div>MockLoginPage</div>;
+    const { getByText } = renderWithRedux(
+      <MemoryRouter initialEntries={['/request']}>
+        <Route component={RequestCallContainer} path="/request" />
+        <Route component={MockLoginPage} path="/login" />
+      </MemoryRouter>,
+      _initialState,
+    );
+
+    await waitForElement(() => getByText('MockLoginPage'));
+
+    expect(getByText('MockLoginPage')).toHaveTextContent('MockLoginPage');
+  });
 });

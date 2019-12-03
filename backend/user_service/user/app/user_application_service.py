@@ -50,7 +50,7 @@ class UserApplicationService():
             if(len(Driver.objects.filter(user_id=user_id)) == 0):
                 driver = Driver.objects.create(user=user, status="IDLE")
             else:
-                driver = Rider.objects.get(user=user)
+                driver = Driver.objects.get(user=user)
             return DriverSerializer(driver).data
         else:
             return ValueError

@@ -14,6 +14,6 @@ export const UserPropsTypes = PropTypes.shape({
     vehicle: PropTypes.shape({
       car_type: PropTypes.string.isRequired,
       plate_no: PropTypes.string.isRequired,
-    })
+    }),
   }).isRequired,
 });

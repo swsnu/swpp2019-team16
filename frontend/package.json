@@ -52,7 +52,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "CI=true yarn test && yarn build && prettier --write \"src/**/*.js\""
+      "pre-push": "CI=true yarn test && CI=true yarn build && prettier --write \"src/**/*.js\""
     }
   },
   "devDependencies": {

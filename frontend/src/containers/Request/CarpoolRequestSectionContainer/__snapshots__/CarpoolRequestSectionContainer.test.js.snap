@@ -3,7 +3,12 @@
 exports[`<CarpoolRequestSectionContainer /> SHOULD match with snapshot 1`] = `
 <div>
   <div>
-    Request
+    <button>
+      request
+    </button>
+    <div>
+      RequestPage
+    </div>
   </div>
 </div>
 `;

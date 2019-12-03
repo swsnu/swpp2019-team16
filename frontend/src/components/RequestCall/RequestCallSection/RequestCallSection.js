@@ -20,38 +20,28 @@ function RequestCallSection({ user, group, onClickRequestCall }) {
   const [speechToText, setSpeechToText] = useState(false);
   const triggerText = 'Stop';
 
-  const onButtonClickHandler = useCallback(() => {
-    onClickRequestCall({
-      groupId: group.groupId,
-      driverId: user.id,
-    });
-  }, [group, user]);
-
   // TODO: add test case
   // TODO: refactor speech recognizer -> create SpeechRecognizer class
-  const onSTTHandler = useCallback(
-    () => {
-      if (!speechToText) {
-        console.log('Active STT');
-        recognizer.recognized = (r, event) => {
-          console.log('Recognized message: ' + event.result.text);
-          if (event.result.text.includes(triggerText)) {
-            console.log('Triggered message: ' + triggerText);
-            onClickRequestCall({
-              groupId: group.groupId,
-              driverId: user.id,
-            })
-          }
-        };
-        recognizer.startContinuousRecognitionAsync();
-      } else {
-        console.log('Deactive STT');
-        recognizer.stopContinuousRecognitionAsync();
-      }
-      setSpeechToText(!speechToText);
-    },
-    [group, user]
-  );
+  const onSTTHandler = useCallback(() => {
+    if (!speechToText) {
+      console.log('Active STT');
+      recognizer.recognized = (r, event) => {
+        console.log('Recognized message: ' + event.result.text);
+        if (event.result.text.includes(triggerText)) {
+          console.log('Triggered message: ' + triggerText);
+          onClickRequestCall({
+            groupId: group.groupId,
+            driverId: user.id,
+          });
+        }
+      };
+      recognizer.startContinuousRecognitionAsync();
+    } else {
+      console.log('Deactive STT');
+      recognizer.stopContinuousRecognitionAsync();
+    }
+    setSpeechToText(!speechToText);
+  }, [group, user, speechToText, onClickRequestCall]);
 
   return (
     <RequestCallBlock className="requestCallBlock">
@@ -63,7 +53,12 @@ function RequestCallSection({ user, group, onClickRequestCall }) {
           id="request-call-submit-button"
           variant="contained"
           color="primary"
-          onClick={onButtonClickHandler}
+          onClick={() =>
+            onClickRequestCall({
+              groupId: group.groupId,
+              driverId: user.id,
+            })
+          }
           children="Accept the Request!"
         />
         <Checkbox

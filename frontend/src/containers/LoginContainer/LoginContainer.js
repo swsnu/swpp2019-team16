@@ -70,9 +70,9 @@ function LoginContainer({ history }) {
         console.log('localStorage is not working');
       } finally {
         /*
-        * if user type is rider redirect to request page
-        * otherwise (in the case of driver) redirect to request call page
-        * */
+         * if user type is rider redirect to request page
+         * otherwise (in the case of driver) redirect to request call page
+         * */
         switch (user.user.user_type) {
           case 'rider':
             history.push('/request');
@@ -81,7 +81,7 @@ function LoginContainer({ history }) {
             history.push('/requestcall');
             break;
           default:
-            console.error('Invalid user type', user.user.user_type)
+            console.error('Invalid user type', user.user.user_type);
         }
       }
     }

@@ -12,7 +12,7 @@ const Root = styled.div`
 `;
 
 Main.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 };
 
 function Main({ children }) {

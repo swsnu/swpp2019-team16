@@ -52,7 +52,6 @@ function RequestCallContainer({ history }) {
     [dispatch, history],
   );
 
-  // TODO: add test case
   useEffect(() => {
     if (!user) {
       history.push('/login');

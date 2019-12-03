@@ -65,7 +65,7 @@ def __check_user(request, id):
     login(request, user)
     event = UserLoginEvent(user_id=user.id)
     rpc_response = RedisRpcClient().call(USER_LOGIN_EVENT, event)
-    return JsonResponse(data=rpc_response.result, status=200)    
+    return JsonResponse(data=rpc_response.result, status=200)
 
 
 def login_user(request):

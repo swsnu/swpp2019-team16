@@ -28,7 +28,6 @@ function CarpoolRequestSectionContainer({ history }) {
     [dispatch, history],
   );
 
-  // TODO: add test case
   useEffect(() => {
     if (!user) {
       console.log('User not exist, should login first!');
