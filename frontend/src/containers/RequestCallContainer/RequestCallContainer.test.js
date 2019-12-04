@@ -6,6 +6,7 @@ import RequestCallContainer, {
 import * as grpcClient from '../../lib/grpc/client';
 import { renderWithRedux } from '../../test/utils';
 import { MemoryRouter, Route } from 'react-router-dom';
+import { mockDriver } from '../../types/__mock__/user';
 
 class MockGrpcStream {
   registeredCallback = null;
@@ -29,7 +30,7 @@ class MockMessage {
 describe('<RequestCallContainer />', () => {
   const initialState = {
     user: {
-      user: { id: 1 },
+      user: mockDriver,
     },
     group: {
       group: null,
@@ -100,5 +101,26 @@ describe('<RequestCallContainer />', () => {
     expect(fetchedActions[0]).toStrictEqual({
       type: 'group/UNLOAD_GROUP',
     });
+  });
+
+  it('should redirect to /login when user not exist', async () => {
+    const _initialState = {
+      ...initialState,
+      user: {
+        user: null,
+      },
+    };
+    const MockLoginPage = () => <div>MockLoginPage</div>;
+    const { getByText } = renderWithRedux(
+      <MemoryRouter initialEntries={['/request']}>
+        <Route component={RequestCallContainer} path="/request" />
+        <Route component={MockLoginPage} path="/login" />
+      </MemoryRouter>,
+      _initialState,
+    );
+
+    await waitForElement(() => getByText('MockLoginPage'));
+
+    expect(getByText('MockLoginPage')).toHaveTextContent('MockLoginPage');
   });
 });

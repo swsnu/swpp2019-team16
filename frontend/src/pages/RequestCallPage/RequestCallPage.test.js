@@ -2,18 +2,20 @@ import React from 'react';
 import RequestCallPage from './RequestCallPage';
 import { renderWithRedux } from '../../test/utils';
 import { MemoryRouter, Route } from 'react-router-dom';
+import { mockRider } from '../../types/__mock__/user';
+import { mockRiderAuth } from '../../types/__mock__/auth';
 
 describe('<RequestCallPage />', () => {
   it('SHOULD match with snapshot', async () => {
     const state = {
       user: {
-        user: { id: 1 },
+        user: mockRider,
       },
       group: {
         group: null,
       },
       auth: {
-        auth: { id: 1 },
+        auth: mockRiderAuth,
       },
     };
 

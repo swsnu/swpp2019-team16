@@ -7,7 +7,6 @@ from backend.api_gateway.user_endpoint.views import token
 from backend.api_gateway.user_endpoint.views import check_user
 
 
-
 urlpatterns = [
     path('<int:id>', check_user, name='check'),
     path('register', register_user, name='register'),

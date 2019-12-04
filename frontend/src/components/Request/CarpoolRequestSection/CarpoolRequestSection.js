@@ -8,6 +8,7 @@ import MinimumPassengerSection from './MinimumPassengerSection';
 import DecideSection from './DecideSection';
 import FullPage from '@fullpage/react-fullpage';
 import theme from '../../../lib/styles/theme';
+import { UserPropsTypes } from '../../../types/user';
 
 const useStyles = makeStyles({
   root: {
@@ -60,7 +61,7 @@ const useStyles = makeStyles({
 });
 
 CarpoolRequestSection.propTypes = {
-  user: PropTypes.object.isRequired,
+  user: UserPropsTypes,
   fromLocationList: PropTypes.array.isRequired,
   toLocationList: PropTypes.array.isRequired,
   minimumPassengerList: PropTypes.array.isRequired,
@@ -80,13 +81,13 @@ function CarpoolRequestSection({
   const [minimumPassenger, setMinimumPassenger] = useState(null);
 
   const onSendRequest = () => {
-    if (!user || !fromLocation || !toLocation || !minimumPassenger) {
+    if (!fromLocation || !toLocation || !minimumPassenger) {
       window.alert('Please check your request');
       return;
     }
 
     onCarpoolRequest({
-      riderId: user.riderId,
+      riderId: user.id,
       from: fromLocation.name,
       to: toLocation.name,
       minimumPassenger: minimumPassenger,

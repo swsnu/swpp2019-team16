@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import CarpoolRequestSection from '../../../components/Request/CarpoolRequestSection';
@@ -16,7 +16,7 @@ CarpoolRequestSectionContainer.propTypes = {
 function CarpoolRequestSectionContainer({ history }) {
   const dispatch = useDispatch();
 
-  const user = useSelector(user => ({
+  const { user } = useSelector(({ user }) => ({
     user: user.user,
   }));
 
@@ -28,9 +28,12 @@ function CarpoolRequestSectionContainer({ history }) {
     [dispatch, history],
   );
 
-  if (!user) {
-    return <div>we are loading user...</div>;
-  }
+  useEffect(() => {
+    if (!user) {
+      console.log('User not exist, should login first!');
+      history.push('/login');
+    }
+  }, [history, user]);
 
   return (
     <CarpoolRequestSection

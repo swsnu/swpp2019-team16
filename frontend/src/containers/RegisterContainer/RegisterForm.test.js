@@ -14,7 +14,7 @@ describe('<RegisterForm />', () => {
       },
     },
     user: {
-      user:null 
+      user: null,
     },
   };
   it('SHOULD match with snapshot', async () => {

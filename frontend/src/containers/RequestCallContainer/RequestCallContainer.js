@@ -19,7 +19,8 @@ function RequestCallContainer({ history }) {
 
   useEffect(() => {
     if (user) {
-      const stream = grpcClient.createGrpcStream({ id: user.id });
+      // TODO: fix test case
+      const stream = grpcClient.createGrpcStream({ id: user.user.id });
       stream.on('data', message => {
         const parsed = JSON.parse(message.getData());
         if (parsed._type_name !== GROUP_CREATED_EVENT) {
@@ -44,14 +45,18 @@ function RequestCallContainer({ history }) {
   const onClickRequestCall = useCallback(
     ({ groupId, driverId }) => {
       dispatch(acceptGroup({ groupId, driverId }));
+
+      // TODO: when group successfully updated, then redirect
       history.push('/group');
     },
     [dispatch, history],
   );
 
-  if (!user) {
-    return <div>we are loading user...</div>;
-  }
+  useEffect(() => {
+    if (!user) {
+      history.push('/login');
+    }
+  }, [user, history]);
 
   if (!group) {
     return <div>Waiting for group to be matched...</div>;

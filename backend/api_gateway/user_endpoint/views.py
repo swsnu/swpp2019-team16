@@ -1,4 +1,4 @@
-from django.contrib.auth import logout, login, authenticate
+from django.contrib.auth import logout, login, authenticate, get_user_model
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.http import HttpResponseNotAllowed, \
     JsonResponse, HttpResponse, HttpResponseBadRequest
@@ -49,6 +49,7 @@ def __register_user(request):
     rpc_response = RedisRpcClient().call(USER_CREATE_COMMAND, command)
     return JsonResponse(data=rpc_response.result, status=200)
 
+
 def check_user(request, id):
     if request.method == 'GET':
         return __check_user(request, id)
@@ -64,7 +65,7 @@ def __check_user(request, id):
     login(request, user)
     event = UserLoginEvent(user_id=user.id)
     rpc_response = RedisRpcClient().call(USER_LOGIN_EVENT, event)
-    return JsonResponse(data=rpc_response.result, status=200)    
+    return JsonResponse(data=rpc_response.result, status=200)
 
 
 def login_user(request):

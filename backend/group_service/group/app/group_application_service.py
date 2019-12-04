@@ -29,6 +29,7 @@ class GroupApplicationService:
             rider_id_list=rider_id_list,
             from_location=from_location,
             to_location=to_location)
+        print('group created: {}', event)
         RedisMessagePublisher().publish_message(event)
         return myGroup
 

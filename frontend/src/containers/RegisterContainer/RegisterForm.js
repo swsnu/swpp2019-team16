@@ -54,15 +54,15 @@ function RegisterForm({ history }) {
       );
     }
   }, [dispatch, form]);
-  
+
   useEffect(() => {
     dispatch(initializeForm('register'));
   }, [dispatch]);
 
   useEffect(() => {
     if (auth) {
-      dispatch(check(auth.id));
-    } 
+      dispatch(check({ id: auth.id }));
+    }
     if (authError) {
       console.log(authError);
     }

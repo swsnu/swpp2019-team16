@@ -2,11 +2,12 @@ import React from 'react';
 import { renderWithRedux } from '../../../test/utils';
 import { MemoryRouter, Route } from 'react-router-dom';
 import Main from './Main';
+import { mockRiderAuth } from '../../../types/__mock__/auth';
 
 describe('<Main />', () => {
   const state = {
     auth: {
-      auth: null,
+      auth: mockRiderAuth,
     },
   };
   const children = { children: 1 };

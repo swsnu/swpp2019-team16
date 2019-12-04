@@ -34,9 +34,9 @@ describe('user', () => {
 
     describe('CHECK OUT', () => {
       it('should successfully create action', async () => {
-        const action = check();
+        const action = check({ id: 1 });
         expect(action.type).toStrictEqual('user/CHECK');
-        expect(action.payload).toStrictEqual(undefined);
+        expect(action.payload).toStrictEqual({ id: 1 });
       });
     });
   });

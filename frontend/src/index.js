@@ -20,12 +20,13 @@ const store = createStore(
 
 function loadUser() {
   try {
-    const user = localStorage.getItem('user');
-    if (!user) {
+    const userStr = localStorage.getItem('user');
+    if (!userStr) {
       return;
     }
+    const user = JSON.parse(userStr);
     store.dispatch(tempSetUser(user));
-    store.dispatch(check());
+    store.dispatch(check({ id: user.user.id }));
   } catch (e) {
     console.error(e);
   }

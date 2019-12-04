@@ -15,7 +15,7 @@ describe('api/user', () => {
         done();
       });
 
-      userAPI.get(1);
+      userAPI.get({ id: 1 });
     });
   });
 });

@@ -8,7 +8,7 @@ class PeerSet(object):
         self._connections = {}
 
     def connect(self, conn_id, peer):
-        print("Peer {} connecting".format(peer))
+        print("Peer {} connected... ID: {}".format(peer, conn_id))
         with self._peers_lock:
             if peer not in self._peers:
                 self._peers[peer] = 1
@@ -17,7 +17,7 @@ class PeerSet(object):
             self._connections[conn_id] = peer
 
     def disconnect(self, conn_id, peer):
-        print("Peer {} disconnecting".format(peer))
+        print("Peer {} disconnected... ID: {}".format(peer, conn_id))
         with self._peers_lock:
             if peer not in self._peers:
                 raise RuntimeError("Tried to disconnect peer '{}' \
