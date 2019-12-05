@@ -20,16 +20,6 @@ services:
     ports:
       - "6379:6379"
     restart: always
-
-  api_gateway:
-    container_name: api_gateway
-    image: swpp2019team16/api-gateway:latest
-    command:
-      - "python manage.py migrate --settings=api_gateway.settings.production && python manage.py runserver 0.0.0.0:8000 --settings=api_gateway.settings.production"
-    ports:
-      - "8000:8000"
-    restart: always
-
 networks:
   dev:
     driver: bridge

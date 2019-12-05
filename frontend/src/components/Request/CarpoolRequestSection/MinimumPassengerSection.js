@@ -45,7 +45,7 @@ function MinimumPassengerSection({
   return (
     <div className={styles.root}>
       <div className={styles.title}>
-        <Typography variant={'h2'}>How many co-passengers at least?</Typography>
+        <Typography variant={'h4'}>How many co-passengers at least?</Typography>
       </div>
       <div className={styles.content}>
         {minimumPassengerOptions &&

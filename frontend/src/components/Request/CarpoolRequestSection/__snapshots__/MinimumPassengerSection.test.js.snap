@@ -8,11 +8,11 @@ exports[`<MinimumPassengerSection /> should match with snapshot - default 1`] = 
     <div
       class="makeStyles-title-2"
     >
-      <h2
-        class="MuiTypography-root MuiTypography-h2"
+      <h4
+        class="MuiTypography-root MuiTypography-h4"
       >
         How many co-passengers at least?
-      </h2>
+      </h4>
     </div>
     <div
       class="makeStyles-content-3"
@@ -157,11 +157,11 @@ exports[`<MinimumPassengerSection /> should match with snapshot - when no select
     <div
       class="makeStyles-title-84"
     >
-      <h2
-        class="MuiTypography-root MuiTypography-h2"
+      <h4
+        class="MuiTypography-root MuiTypography-h4"
       >
         How many co-passengers at least?
-      </h2>
+      </h4>
     </div>
     <div
       class="makeStyles-content-85"

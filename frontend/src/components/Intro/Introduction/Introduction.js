@@ -23,26 +23,26 @@ const useWhatIsSectionStyles = makeStyles({
     paddingRight: '10px',
   },
   title: {
-    marginLeft: '200px',
-    marginRight: '200px',
+    marginLeft: '1rem',
+    marginRight: '1rem',
     marginBottom: '24px',
   },
   content: {
-    marginLeft: '200px',
-    marginRight: '200px',
+    marginLeft: '1rem',
+    marginRight: '1rem',
     fontSize: '24px',
     lineHeight: '28px',
   },
   lastContent: {
-    marginLeft: '200px',
-    marginRight: '200px',
+    marginLeft: '1rem',
+    marginRight: '1rem',
     fontSize: '24px',
     lineHeight: '28px',
     marginBottom: '50px',
   },
   getStartedButton: {
-    marginLeft: '220px',
-    marginRight: '200px',
+    marginLeft: '1.5rem',
+    marginRight: '1.5rem',
     marginBottom: '100px',
   },
 });
@@ -56,20 +56,20 @@ function WhatIsSection({ onStart }) {
   return (
     <div className={clns('section', styles.root)}>
       <div className={styles.title}>
-        <Typography variant="h1">Ya-Ta comes to rescue!</Typography>
+        <Typography variant="h2">Ya-Ta comes to rescue!</Typography>
       </div>
       <div className={styles.content}>
-        <Typography variant="h2">
+        <Typography variant="h3">
           Ya-Ta helps students who need to urgently get to class
         </Typography>
       </div>
       <div className={styles.content}>
-        <Typography variant="h2">
+        <Typography variant="h3">
           through luring taxi drivers with the incentives
         </Typography>
       </div>
       <div className={styles.lastContent}>
-        <Typography variant="h2">
+        <Typography variant="h3">
           and save money through a carpool system
         </Typography>
       </div>
@@ -98,18 +98,18 @@ const useSubSectionStyles = makeStyles({
     paddingRight: '10px',
   },
   title: {
-    marginLeft: '200px',
-    marginRight: '200px',
+    marginLeft: '1rem',
+    marginRight: '1rem',
     marginBottom: '24px',
   },
   subtitle: {
-    marginLeft: '200px',
-    marginRight: '200px',
+    marginLeft: '1rem',
+    marginRight: '1rem',
     marginBottom: '50px',
   },
   getStartedButton: {
-    marginLeft: '220px',
-    marginRight: '200px',
+    marginLeft: '1.5rem',
+    marginRight: '1.5rem',
     marginBottom: '100px',
   },
 });
@@ -123,10 +123,10 @@ function SubSection({ onStart }) {
   return (
     <div className={clns('section', styles.root)}>
       <div className={styles.title}>
-        <Typography variant="h1">The clock is ticking.</Typography>
+        <Typography variant="h2">The clock is ticking.</Typography>
       </div>
       <div className={styles.subtitle}>
-        <Typography variant="h2">
+        <Typography variant="h3">
           The professor will check the attendance as soon as class starts
         </Typography>
       </div>
@@ -155,18 +155,18 @@ const useMainSectionStyles = makeStyles({
     paddingRight: '10px',
   },
   title: {
-    marginLeft: '200px',
-    marginRight: '200px',
+    marginLeft: '1rem',
+    marginRight: '1rem',
     marginBottom: '24px',
   },
   subtitle: {
-    marginLeft: '200px',
-    marginRight: '200px',
+    marginLeft: '1rem',
+    marginRight: '1rem',
     marginBottom: '50px',
   },
   getStartedButton: {
-    marginLeft: '220px',
-    marginRight: '200px',
+    marginLeft: '1.5rem',
+    marginRight: '1.5rem',
     marginBottom: '100px',
   },
 });
@@ -180,12 +180,12 @@ function MainSection({ onStart }) {
   return (
     <div className={clns('section', styles.root)}>
       <div className={styles.title}>
-        <Typography variant="h1">
+        <Typography variant="h2">
           No more waiting long line of SNU shuttle bus!
         </Typography>
       </div>
       <div className={styles.subtitle}>
-        <Typography variant="h2">
+        <Typography variant="h3">
           On a bad day, it may take around 20~30 minutes to get to class
         </Typography>
       </div>

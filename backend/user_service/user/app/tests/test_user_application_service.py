@@ -132,8 +132,8 @@ class UserApplicationServiceTestCase(TestCase):
         rider = Rider.objects.create(user_id=user.id, status="IDLE")
 
         result = self.user_application_service._create_rider_if_not_exist(user.id)
-        self.assertEqual(result.user.id, user.id)
-        self.assertEqual(result.id, rider.id)
+        self.assertEqual(result['user']['id'], user.id)
+        self.assertEqual(result['id'], rider.id)
 
     def test_create_rider_or_driver_if_not_exist_when_user_type_is_rider(self):
         user = get_user_model().objects.create_user(
@@ -158,8 +158,7 @@ class UserApplicationServiceTestCase(TestCase):
         result = self.user_application_service._create_rider_or_driver_if_not_exist(
             user_type='driver', user_id=user.id
         )
-
-        self.assertEqual(result.user.id, user.id)
+        self.assertEqual(result.user_id, user.id)
 
     def test_create_rider_or_driver_if_not_exist_return_value_error(self):
         result = self.user_application_service._create_rider_or_driver_if_not_exist(
