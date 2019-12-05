@@ -4,7 +4,7 @@ const { Syn } = require('../../proto/message_pb');
 export function createGrpcStream({ id }) {
   // TODO: extract endpoint to config
   const streamService = new StreamServiceClient(
-    'http://localhost:8080',
+    'http://40.82.156.157:8080',
     null,
     null,
   );

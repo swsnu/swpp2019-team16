@@ -16,8 +16,9 @@ RUN pip install -r ./development.txt
 
 COPY . .
 
-WORKDIR /app/backend/api_gateway
+WORKDIR /app/backend/user_service
 
 EXPOSE 8000
 
 ENTRYPOINT ["/bin/sh", "-c"]
+

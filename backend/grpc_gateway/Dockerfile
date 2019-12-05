@@ -16,8 +16,8 @@ RUN pip install -r ./development.txt
 
 COPY . .
 
-WORKDIR /app/backend/api_gateway
+WORKDIR /app/backend/grpc_gateway
 
-EXPOSE 8000
+EXPOSE 9090
 
 ENTRYPOINT ["/bin/sh", "-c"]

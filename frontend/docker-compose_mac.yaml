@@ -8,3 +8,10 @@ services:
       - "8080:8080"
       - "9901:9901"
     restart: always
+
+  web:
+    container_name: web
+    image: swpp2019team16/web:latest
+    ports:
+      - "80:80"
+    restart: always
