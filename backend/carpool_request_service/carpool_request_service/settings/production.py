@@ -3,7 +3,7 @@ import environ
 from redis import ConnectionPool
 
 env = environ.Env()
-env.read_env(os.path.join(BASE_DIR, 'env/.env.development'))
+env.read_env(os.path.join(BASE_DIR, 'env/.env.production'))
 
 DEBUG = True
 
@@ -23,5 +23,3 @@ DATABASES = {
         'PORT': env('MYSQL_DB_PORT'),
     }
 }
-
-ALLOWED_HOSTS = ['*']

@@ -9,12 +9,14 @@
     "@material-ui/styles": "^4.5.0",
     "axios": "^0.19.0",
     "classnames": "^2.2.6",
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
+    "express": "^4.17.1",
     "google-map-react": "^1.1.5",
     "google-protobuf": "^3.10.0",
     "grpc-web": "^1.0.6",
-    "microsoft-cognitiveservices-speech-sdk": "^1.8.0",
     "inspirational-quotes": "^1.0.8",
+    "microsoft-cognitiveservices-speech-sdk": "^1.8.0",
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-app-env": "^1.2.3",
@@ -29,7 +31,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start:prod": "node index.js",
+    "build": "react-app-env --env-file=config/.${BUILD_ENV}.env build",
+    "build:dev": "BUILD_ENV=development yarn build",
+    "build:prod": "BUILD_ENV=production yarn build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006",
@@ -52,7 +57,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "CI=true yarn test && CI=true yarn build && prettier --write \"src/**/*.js\""
+      "pre-push": "CI=true yarn test && CI=true yarn build:dev && prettier --write \"src/**/*.js\""
     }
   },
   "devDependencies": {
@@ -76,6 +81,5 @@
       "!src/index.js",
       "!src/serviceWorker.js"
     ]
-  },
-  "proxy": "http://localhost:8000"
+  }
 }

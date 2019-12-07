@@ -3,7 +3,7 @@ import environ
 from redis import ConnectionPool
 
 env = environ.Env()
-env.read_env(os.path.join(BASE_DIR, 'env/.env.development'))
+env.read_env(os.path.join(BASE_DIR, 'env/.env.production'))
 
 DEBUG = True
 
@@ -24,4 +24,4 @@ DATABASES = {
     }
 }
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '40.82.152.153']

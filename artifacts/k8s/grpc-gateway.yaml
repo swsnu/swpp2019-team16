@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grpc-gateway-service
+  labels:
+    service: grpc-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: grpc-gateway
+  template:
+    metadata:
+      labels:
+        service: grpc-gateway
+    spec:
+      containers:
+        - name: grpc-gateway
+          image: swpp2019team16/grpc-gateway:latest
+          command:
+            - "/bin/sh"
+            - "-c"
+            - "python manage.py migrate --settings=grpc_gateway.settings.production && python manage.py rungrpcserver --settings=grpc_gateway.settings.production"
+          imagePullPolicy: Always
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: grpc-gateway-service
+  labels:
+    service: grpc-gateway
+spec:
+  type: ClusterIP
+  ports:
+    - port: 9090
+      targetPort: 9090
+      protocol: TCP
+      name: http
+  selector:
+    service: grpc-gateway

@@ -44,7 +44,7 @@ function FromSection({ fromList, selectedFrom, onClickFrom }) {
   return (
     <div className={styles.root}>
       <div className={styles.title}>
-        <Typography variant={'h2'}>Where are you?</Typography>
+        <Typography variant={'h4'}>Where are you?</Typography>
       </div>
       <div className={styles.content}>
         {fromList &&

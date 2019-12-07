@@ -20,7 +20,6 @@ services:
     ports:
       - "6379:6379"
     restart: always
-
 networks:
   dev:
     driver: bridge

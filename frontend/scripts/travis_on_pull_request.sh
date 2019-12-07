@@ -9,7 +9,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # run build
-yarn build
+yarn build:dev
 
 if [ $? -ne 0 ]; then
     echo "frontend build failed" >&2

@@ -47,7 +47,7 @@ def __register_user(request):
         return HttpResponseBadRequest(e)
 
     rpc_response = RedisRpcClient().call(USER_CREATE_COMMAND, command)
-    return JsonResponse(data=rpc_response.result, status=200)
+    return JsonResponse(data=rpc_response.result, status=200, safe=False)
 
 
 def check_user(request, id):
@@ -65,7 +65,7 @@ def __check_user(request, id):
     login(request, user)
     event = UserLoginEvent(user_id=user.id)
     rpc_response = RedisRpcClient().call(USER_LOGIN_EVENT, event)
-    return JsonResponse(data=rpc_response.result, status=200)
+    return JsonResponse(data=rpc_response.result, status=200, safe=False)
 
 
 def login_user(request):
@@ -91,7 +91,7 @@ def __login_user(request):
             'id': user.id,
             'user_type_id': rpc_response.result['id']
         }
-        return JsonResponse(data=result, status=200)
+        return JsonResponse(data=result, status=200, safe=False)
     else:
         return HttpResponse(status=401)
 

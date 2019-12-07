@@ -8,11 +8,11 @@ exports[`<FromSection /> should match with snapshot - default 1`] = `
     <div
       class="makeStyles-title-2"
     >
-      <h2
-        class="MuiTypography-root MuiTypography-h2"
+      <h4
+        class="MuiTypography-root MuiTypography-h4"
       >
         Where are you?
-      </h2>
+      </h4>
     </div>
     <div
       class="makeStyles-content-3"
@@ -210,11 +210,11 @@ exports[`<FromSection /> should match with snapshot - when no selected location 
     <div
       class="makeStyles-title-88"
     >
-      <h2
-        class="MuiTypography-root MuiTypography-h2"
+      <h4
+        class="MuiTypography-root MuiTypography-h4"
       >
         Where are you?
-      </h2>
+      </h4>
     </div>
     <div
       class="makeStyles-content-89"

@@ -2,8 +2,6 @@
 .idea/
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# configuration
-config/
 
 # dependencies
 node_modules/
@@ -217,3 +215,5 @@ dmypy.json
 # Pyre type checker
 
 # End of https://www.gitignore.io/api/python,django
+
+scripts/env.sh

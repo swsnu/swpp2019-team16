@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-service
+  labels:
+    service: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: web
+  template:
+    metadata:
+      labels:
+        service: web
+    spec:
+      containers:
+        - name: web
+          image: swpp2019team16/web:latest
+          imagePullPolicy: Always
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-service
+  labels:
+    service: web
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      name: http
+  selector:
+    service: web

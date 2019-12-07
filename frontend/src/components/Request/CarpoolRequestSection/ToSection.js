@@ -44,7 +44,7 @@ function ToSection({ toList, selectedTo, onClickTo }) {
   return (
     <div className={styles.root}>
       <div className={styles.title}>
-        <Typography variant={'h2'}>Where do you want to go?</Typography>
+        <Typography variant={'h4'}>Where do you want to go?</Typography>
       </div>
       <div className={styles.content}>
         {toList &&
