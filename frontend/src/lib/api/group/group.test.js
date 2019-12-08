@@ -82,7 +82,7 @@ describe('api/group', () => {
   describe('confirmCost', () => {
     it('should successfully put cost info', async done => {
       jest.spyOn(client, 'put').mockImplementation(url => {
-        expect(url).toBe('/api/v1/group/cost');
+        expect(url).toBe('/api/v1/group/1/cost');
         done();
       });
 

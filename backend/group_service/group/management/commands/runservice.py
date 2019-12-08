@@ -4,16 +4,20 @@ from django.core.management import BaseCommand
 
 from backend.group_service.group.infra.adapter.group_create_command_handler \
     import GroupCreateCommandHandler
-from backend.group_service.group.infra.adapter.group_update_command_handler \
-    import GroupUpdateCommandHandler
+from backend.group_service.group.infra.adapter.group_driver_update_command_handler \
+    import GroupDriverUpdateCommandHandler
+from backend.group_service.group.infra.adapter.group_cost_update_command_handler \
+    import GroupCostUpdateCommandHandler
 from backend.group_service.group.app.group_application_service \
     import GroupApplicationService
 from backend.common.messaging.infra.redis.redis_message_subscriber \
     import RedisMessageSubscriber
 from backend.common.command.group_create_command \
     import GROUP_CREATE_COMMAND
-from backend.common.command.group_update_command \
-    import GROUP_UPDATE_COMMAND
+from backend.common.command.group_driver_update_command \
+    import GROUP_DRIVER_UPDATE_COMMAND
+from backend.common.command.group_cost_update_command \
+    import GROUP_COST_UPDATE_COMMAND
 from backend.common.rpc.infra.adapter.redis.redis_rpc_server \
     import RedisRpcServer
 from backend.common.utils.signal_handler \
@@ -25,7 +29,9 @@ class Command(BaseCommand):
     group_application_service = GroupApplicationService()
     group_create_command_handler = GroupCreateCommandHandler(
         group_application_service=group_application_service)
-    group_update_command_handler = GroupUpdateCommandHandler(
+    group_driver_update_command_handler = GroupDriverUpdateCommandHandler(
+        group_application_service=group_application_service)
+    group_cost_update_command_handler = GroupCostUpdateCommandHandler(
         group_application_service=group_application_service)
     subscriber = RedisMessageSubscriber()
     rpc_server = RedisRpcServer()
@@ -49,23 +55,34 @@ class Command(BaseCommand):
                     topic=GROUP_CREATE_COMMAND,
                     request_handler=self.group_create_command_handler))
 
-            group_update_subscription_task = asyncio.create_task(
+            group_driver_update_subscription_task = asyncio.create_task(
                 self.subscriber.subscribe_message(
-                    topic=GROUP_UPDATE_COMMAND,
-                    message_handler=self.group_update_command_handler))
+                    topic=GROUP_DRIVER_UPDATE_COMMAND,
+                    message_handler=self.group_driver_update_command_handler))
 
-            group_update_rpc_task = asyncio.create_task(
+            group_driver_update_rpc_task = asyncio.create_task(
                 self.rpc_server.register_handler(
-                    topic=GROUP_UPDATE_COMMAND,
-                    request_handler=self.group_update_command_handler))
+                    topic=GROUP_DRIVER_UPDATE_COMMAND,
+                    request_handler=self.group_driver_update_command_handler))
+            group_cost_update_subscription_task = asyncio.create_task(
+                self.subscriber.subscribe_message(
+                    topic=GROUP_COST_UPDATE_COMMAND,
+                    message_handler=self.group_cost_update_command_handler))
+
+            group_cost_update_rpc_task = asyncio.create_task(
+                self.rpc_server.register_handler(
+                    topic=GROUP_COST_UPDATE_COMMAND,
+                    request_handler=self.group_cost_update_command_handler))
             """
             wait until application stop
             """
             await asyncio.gather(
                 group_create_subscription_task,
                 group_create_rpc_task,
-                group_update_subscription_task,
-                group_update_rpc_task,
+                group_driver_update_subscription_task,
+                group_driver_update_rpc_task,
+                group_cost_update_subscription_task,
+                group_cost_update_rpc_task,
             )
 
         loop.create_task(main())

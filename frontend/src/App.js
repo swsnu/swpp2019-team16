@@ -9,6 +9,7 @@ import DetailPage from './pages/DetailPage/DetailPage';
 import FinalPage from './pages/FinalPage/FinalPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
 import LoginPage from './pages/LoginPage/LoginPage';
+import DriverDetailPage from './pages/DriverDetailPage/DriverDetailPage'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route component={WaitingPage} path="/waiting" exact />
         <Route component={GroupPage} path="/group" exact />
         <Route component={DetailPage} path="/detail" exact />
+        <Route component={DriverDetailPage} path="/driverdetail" exact />
         <Route component={FinalPage} path="/final" exact />
         <Route component={LoginPage} path="/login" exact />
       </Switch>

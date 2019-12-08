@@ -29,5 +29,5 @@ export function notifyDriverLocation({ driverId, groupId, locationInfo }) {
 }
 
 export function confirmCost({ groupId, totalCost }) {
-  return client.put(`/api/v1/group/cost`, { groupId, totalCost });
+  return client.put(`/api/v1/group/${groupId}/cost`, { groupId, totalCost });
 }
