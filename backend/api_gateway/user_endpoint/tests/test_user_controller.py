@@ -29,3 +29,4 @@ class UserControllerTestCase(TestCase):
                                     content_type='application/json')
 
         self.assertEqual(response.status_code, 405)
+    
