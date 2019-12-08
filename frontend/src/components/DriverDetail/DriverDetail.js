@@ -6,6 +6,7 @@ import Button from '../common/Button/Button';
 const DriverDetailBlock = styled.div``;
 
 DriverDetail.propTypes = {
+  userId: PropTypes.number.isRequired,
   groupId: PropTypes.number.isRequired,
   onClickConfirm: PropTypes.func.isRequired,
 };
@@ -28,7 +29,7 @@ function DriverDetail({ groupId, onClickConfirm }) {
         children="Confirm"
         variant="contained"
         fullwidth="false"
-        onClick={()=> onClickConfirm({groupId, totalCost})}
+        onClick={()=> onClickConfirm({userId, groupId, totalCost})}
       />
       
     </DriverDetailBlock>

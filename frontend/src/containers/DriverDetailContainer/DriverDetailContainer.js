@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { confirmCost } from '../../modules/group';
 import { withRouter } from 'react-router-dom';
 import DriverDetail from '../../components/DriverDetail'
+import { updatePoint } from 'lib/api/user/user';
 
 DriverDetailContainer.propTypes = {};
 
@@ -15,9 +16,11 @@ function DriverDetailContainer({ history }) {
   }));
 
   const onClickConfirm = useCallback(
-    ({ groupId, totalCost }) => {
+    ({ userId, groupId, totalCost }) => {
       console.log(groupId, totalCost)
+      var premium_cost = Math.floor(totalCost * 1.2 * 0.01) * 100;
       dispatch(confirmCost({groupId, totalCost}));
+      dispatch(updatePoint({userId, premium_cost}));
       history.push('/driverfinal');
     }, [dispatch, history],
   );
@@ -32,6 +35,7 @@ function DriverDetailContainer({ history }) {
   
   return (
     <DriverDetail
+      userId={user.id}
       groupId={group.groupId}
       onClickConfirm={onClickConfirm}
     />
