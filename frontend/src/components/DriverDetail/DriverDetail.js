@@ -11,7 +11,7 @@ DriverDetail.propTypes = {
   onClickConfirm: PropTypes.func.isRequired,
 };
 
-function DriverDetail({ groupId, onClickConfirm }) {
+function DriverDetail({ userId, groupId, onClickConfirm }) {
   const [totalCost, setTotalCost] = useState(0);
   
   return (

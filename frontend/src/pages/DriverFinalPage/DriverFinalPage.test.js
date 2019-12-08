@@ -5,7 +5,13 @@ import { MemoryRouter, Route } from 'react-router-dom';
 
 describe('<DriverFinalPage />', () => {
   it('SHOULD match with snapshot', async () => {
+
     const state = {
+      auth: {
+        auth: {
+          id: 1,
+        },
+      },
       user: {
         user: {
           id: 1,

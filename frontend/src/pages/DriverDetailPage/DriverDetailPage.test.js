@@ -5,7 +5,14 @@ import { MemoryRouter, Route } from 'react-router-dom';
 
 describe('<DriverDetailPage />', () => {
   it('SHOULD match with snapshot', async () => {
+    
     const state = {
+      auth: {
+        auth: {
+          id: 1,
+        },
+      },
+
       user: {
         user: {
           id:1
@@ -17,12 +24,13 @@ describe('<DriverDetailPage />', () => {
         },
       },
     };
+    
 
     const { container } = renderWithRedux(
       <MemoryRouter initialEntries={['/driverdetail']}>
         <Route component={DriverDetailPage} path={'/driverdetail'} />
       </MemoryRouter>,
-      state,
+      state
     );
     expect(container).toMatchSnapshot();
   });

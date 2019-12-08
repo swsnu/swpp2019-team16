@@ -17,14 +17,14 @@ function DriverDetailContainer({ history }) {
 
   const onClickConfirm = useCallback(
     ({ userId, groupId, totalCost }) => {
-      console.log(groupId, totalCost)
-      var premium_cost = Math.floor(totalCost * 1.2 * 0.01) * 100;
+      //console.log(groupId, totalCost)
+      var point = Math.floor(totalCost * 1.2 * 0.01) * 100;
       dispatch(confirmCost({groupId, totalCost}));
-      dispatch(updatePoint({userId, premium_cost}));
+      dispatch(updatePoint({userId, point}));
       history.push('/driverfinal');
     }, [dispatch, history],
   );
-
+/*
   if (!user) {
     return <div>we are loading user...</div>;
   }
@@ -40,6 +40,13 @@ function DriverDetailContainer({ history }) {
       onClickConfirm={onClickConfirm}
     />
   );
+  */
+ return (
+  <DriverDetail
+    userId={1}
+    groupId={2}
+    onClickConfirm={onClickConfirm}
+  />);
 }
 
 export default withRouter(DriverDetailContainer);
