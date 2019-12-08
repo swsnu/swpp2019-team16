@@ -34,7 +34,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         app_label = 'user'
 
     email = models.EmailField(max_length=255, unique=True)
-    point = models.IntegerField(default=0)
+    point = models.IntegerField(default=5000)
     user_type = models.CharField(max_length=127)
     vehicle = models.ForeignKey(
         Vehicle,

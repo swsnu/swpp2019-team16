@@ -6,6 +6,7 @@ import user, {
   tempSetUser,
   check,
   logout,
+  updatePoint,
 } from './user';
 
 jest.mock('../../lib/api/user');
@@ -16,6 +17,14 @@ describe('user', () => {
   });
 
   describe('action', () => {
+    describe('UPDATE_POINT', () => {
+      it('should successfully create action', async () => {
+        const action = updatePoint({id: 1, point: 1000});
+        expect(action.type).toStrictEqual('user/UPDATE_POINT');
+        expect(action.payload).toStrictEqual({id: 1, point: 1000});
+      });
+    });
+
     describe('TEMP_SET_USER', () => {
       it('should successfully create action', async () => {
         const action = tempSetUser('TEST_USER');
@@ -51,6 +60,33 @@ describe('user', () => {
           ),
         ).toStrictEqual({
           user: { id: 'TEST_USER' },
+        });
+      });
+    });
+    describe('UPDATE_POINT_SUCCESS', () => {
+      it('should successfully update states', async () => {
+        expect(
+          user(
+            { user: { id: 'TEST_USER', point: 0 } },
+            { type: 'user/UPDATE_POINT_SUCCESS', payload: { id: 'TEST_USER', point: 1234 } },
+          ),
+        ).toStrictEqual({
+          user: { id: 'TEST_USER', point: 1234 },
+          updatePointError: null,
+        });
+      });
+    });
+
+    describe('UPDATE_POINT_FAILURE', () => {
+      it('should successfully update states', async () => {
+        expect(
+          user(
+            { user: { id: 'TEST_USER', point: 0 } },
+            { type: 'user/UPDATE_POINT_FAILURE', payload: { error: 'TEST_ERROR' } },
+          ),
+        ).toStrictEqual({
+          user: { id: 'TEST_USER', point: 0 },
+          updatePointError: { error: 'TEST_ERROR' },
         });
       });
     });
@@ -159,6 +195,36 @@ describe('user', () => {
 
         expect(result).toContainEqual({
           type: 'user/LOGOUT_FAILURE',
+        });
+      });
+    });
+
+    describe('updatePointSaga', () => {
+      it('should throw error when server respond with error', async () => {
+        jest.spyOn(userAPI, 'updatePoint').mockImplementation(() => {
+          throw new Error('Internal Error');
+        });
+
+        const sagaTester = new SagaTester({
+          initialState,
+          reducers: user,
+        });
+
+        sagaTester.start(userSaga);
+
+        sagaTester.dispatch({
+          type: 'user/UPDATE_POINT',
+          payload: { id: 1, point: 1000},
+        });
+
+        await sagaTester.waitFor('user/UPDATE_POINT_FAILURE');
+
+        const result = sagaTester.getCalledActions();
+
+        expect(result).toContainEqual({
+          type: 'user/UPDATE_POINT_FAILURE',
+          payload: new Error('Internal Error'),
+          error: true,
         });
       });
     });
