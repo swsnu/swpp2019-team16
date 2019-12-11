@@ -11,6 +11,8 @@ from backend.common.event.group_created_event \
     import GroupCreatedEvent
 from backend.common.event.group_driver_updated_event \
     import GroupDriverUpdatedEvent
+from backend.common.event.group_cost_updated_event \
+    import GroupCostUpdatedEvent
 
 logger = logging.getLogger(__name__)
 
@@ -54,7 +56,7 @@ class GroupApplicationService:
             to_location=group.to_location,
         )
 
-        print('group updated: {}'.format(event))
+        print('group driver updated: {}'.format(event))
         RedisMessagePublisher().publish_message(event)
         return GroupSerializer(group).data
 
@@ -62,4 +64,14 @@ class GroupApplicationService:
         group = Group.objects.get(pk=group_id)
         group.cost = cost
         group.save()
-        return group
+        event = GroupCostUpdatedEvent(
+            group_id=group.id,
+            rider_id_list=list(map(
+                lambda rider: rider.id,
+                Rider.objects.filter(group_id=group_id))),
+            cost=cost,
+        )
+
+        print('group cost updated: {}'.format(event))
+        RedisMessagePublisher().publish_message(event)
+        return GroupSerializer(group).data

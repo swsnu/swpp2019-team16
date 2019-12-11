@@ -23,7 +23,7 @@ class UserCreateCommandHandlerTestCase(TestCase):
             def __init__(self, assert_func):
                 self.assert_func = assert_func
 
-            def point(self, user_id, point):
+            def update_point(self, user_id, point):
                 self.assert_func(user_id, point)
 
         USER_ID = 1

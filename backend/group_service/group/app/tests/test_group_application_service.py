@@ -40,9 +40,9 @@ class GroupApplicationServiceTestCase(TestCase):
         self.rider2.save()
         self.rider3.save()
         self.rider4.save()
-
+    
     def test_create_group(self):
-        RIDER_ID_LIST = [1, 2, 3, 4]
+        RIDER_ID_LIST = [self.rider1.id, self.rider2.id, self.rider3.id, self.rider4.id]
         FROM_LOCATION = 'SNU Station'
         TO_LOCATION = '301 Building'
 
@@ -53,9 +53,10 @@ class GroupApplicationServiceTestCase(TestCase):
 
         self.assertEqual(result['from_location'], FROM_LOCATION)
         self.assertEqual(result['to_location'], TO_LOCATION)
+    
 
     @patch.object(RedisMessagePublisher, 'publish_message')
-    def test_update_group(self, publish_message_fn):
+    def test_driver_update_group(self, publish_message_fn):
         EMAIL = 'driver@gmail.com'
         PASSWORD = 1234
 
@@ -64,7 +65,7 @@ class GroupApplicationServiceTestCase(TestCase):
         driver = Driver(user=user)
         driver.save()
 
-        result = self.group_application_service.update_group(
+        result = self.group_application_service.driver_update_group(
             group_id=self.group.id,
             driver_id=driver.id
         )
@@ -81,3 +82,26 @@ class GroupApplicationServiceTestCase(TestCase):
         )
         self.assertEqual(args[0].from_location, self.FROM_LOCATION)
         self.assertEqual(args[0].to_location, self.TO_LOCATION)
+
+
+    @patch.object(RedisMessagePublisher, 'publish_message')
+    def test_cost_update_group(self, publish_message_fn):
+        #RIDER_ID_LIST = [1, 2, 3, 4]
+        FROM_LOCATION = 'SNU Station'
+        TO_LOCATION = '301 Building'
+        COST = 5000
+
+        result = self.group_application_service.cost_update_group(
+            group_id=self.group.id,
+            cost=COST)
+
+        self.assertEqual(result['id'], self.group.id)
+        self.assertEqual(result['cost'], COST)
+        
+        args, kwargs = publish_message_fn.call_args
+        self.assertEqual(args[0].group_id, self.group.id)
+        self.assertEqual(args[0].cost, COST)
+        self.assertEqual(
+            args[0].rider_id_list,
+            [self.rider1.id, self.rider2.id, self.rider3.id, self.rider4.id]
+        )
