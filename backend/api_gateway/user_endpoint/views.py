@@ -60,20 +60,22 @@ def check_user(request, id):
     else:
         return HttpResponseNotAllowed(['GET', 'PUT'])
 
+
 def __point_user(request, id):
     try:
-        user = get_user_model().objects.get(id=id)
+        user = get_user_model().objects.get(pk=id)
     except Exception:
         return HttpResponseBadRequest
     try:
         body = json.loads(request.body.decode())
         point = body['point']
+        print(point)
     except(KeyError, JSONDecodeError) as e:
         return HttpResponseBadRequest(e)
-
-    command = UserPointUpdateCommand(user_id=id, point=point)
+    command = UserPointUpdateCommand(user_id=user.id, point=point)
     rpc_response = RedisRpcClient().call(USER_POINT_UPDATE_COMMAND, command)
     return JsonResponse(data=rpc_response.result, status=200, safe=False)
+
 
 def __check_user(request, id):
     try:

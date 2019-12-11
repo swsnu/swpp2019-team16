@@ -26,7 +26,7 @@ describe('api/user', () => {
         done();
       });
 
-      userAPI.updatePoint({ id: 1, point: 1000 });
+      userAPI.updatePoint({ userId: 1, point: 1000 });
     });
   })
 });

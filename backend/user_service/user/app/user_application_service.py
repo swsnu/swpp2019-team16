@@ -70,8 +70,8 @@ class UserApplicationService():
                 RedisMessagePublisher().publish_message(command)
             rider.delete()
 
-    def point(self, user_id, point):
-        user = get_user_model().objects.get(id=user_id)
+    def update_point(self, user_id, point):
+        user = get_user_model().objects.get(pk=user_id)
         user.point = point
         user.save()
         return UserSerializer(user).data

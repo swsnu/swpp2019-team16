@@ -6,13 +6,15 @@ import Button from '../common/Button/Button';
 const DriverDetailBlock = styled.div``;
 
 DriverDetail.propTypes = {
-  userId: PropTypes.number.isRequired,
-  groupId: PropTypes.number.isRequired,
+  user: PropTypes.object.isRequired,
+  group: PropTypes.object.isRequired,
   onClickConfirm: PropTypes.func.isRequired,
 };
 
-function DriverDetail({ userId, groupId, onClickConfirm }) {
+function DriverDetail({ user, group, onClickConfirm }) {
   const [totalCost, setTotalCost] = useState(0);
+  const userId = user.id;
+  const groupId = group.groupId;
   
   return (
     <DriverDetailBlock>

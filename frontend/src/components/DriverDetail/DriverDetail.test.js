@@ -6,8 +6,8 @@ describe('<DriverDetail />', () => {
   it('SHOULD match with snapshot', async () => { 
     const { container } = render(
       <DriverDetail
-        userId = {1}
-        groupId = {1}
+        user={{id: 1, point: 5000}}
+        group={{groupId:1}}
         onClickConfirm={() => {}}
       />,
     );

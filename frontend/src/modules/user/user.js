@@ -19,7 +19,7 @@ const [UPDATE_POINT, UPDATE_POINT_SUCCESS, UPDATE_POINT_FAILURE] = createRequest
 export const tempSetUser = createAction(TEMP_SET_USER, user => user);
 export const check = createAction(CHECK, ({ id }) => ({ id }));
 export const logout = createAction(LOGOUT);
-export const updatePoint = createAction(UPDATE_POINT, ({id, point})=>({id, point}));
+export const updatePoint = createAction(UPDATE_POINT, ({userId, point})=>({userId, point}));
 
 export const checkSaga = createRequestSaga(CHECK, userAPI.get);
 export function checkFailureSaga() {

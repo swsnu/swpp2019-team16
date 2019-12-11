@@ -10,7 +10,7 @@ class UserPointUpdateCommandHandler(implements(MessageHandler)):
 
     def handle(self, message):
         if message.user_id is None or message.point is None:
-            raise ValueError("Invalid UserCreate command parameters")
+            raise ValueError("Invalid UserPointUpdate command parameters")
 
-        return self.__user_application_service.point(
+        return self.__user_application_service.update_point(
             user_id=message.user_id, point=message.point)

@@ -15,6 +15,7 @@ class UserPointUpdateCommand(Command):
     def user_id(self):
         return self._user_id
 
+    @property
     def point(self):
         return self._point
 

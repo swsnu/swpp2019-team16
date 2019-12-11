@@ -26,8 +26,8 @@ class UserCreateCommandHandlerTestCase(TestCase):
             def point(self, user_id, point):
                 self.assert_func(user_id, point)
 
-        USER_ID=1
-        POINT=1234
+        USER_ID = 1
+        POINT = 1234
 
         def assert_func(user_id, point):
             self.assertEqual(user_id, USER_ID)

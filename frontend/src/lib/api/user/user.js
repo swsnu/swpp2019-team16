@@ -5,6 +5,5 @@ export function get({ id }) {
 }
 
 export function updatePoint({ userId, point }){
-  console.log({userId, point})
   return client.put(`/api/v1/user/${userId}`, { point });
 }

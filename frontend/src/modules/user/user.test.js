@@ -19,9 +19,9 @@ describe('user', () => {
   describe('action', () => {
     describe('UPDATE_POINT', () => {
       it('should successfully create action', async () => {
-        const action = updatePoint({id: 1, point: 1000});
+        const action = updatePoint({userId: 1, point: 1000});
         expect(action.type).toStrictEqual('user/UPDATE_POINT');
-        expect(action.payload).toStrictEqual({id: 1, point: 1000});
+        expect(action.payload).toStrictEqual({userId: 1, point: 1000});
       });
     });
 
