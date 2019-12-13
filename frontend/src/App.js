@@ -9,10 +9,10 @@ import DetailPage from './pages/DetailPage/DetailPage';
 import FinalPage from './pages/FinalPage/FinalPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
 import LoginPage from './pages/LoginPage/LoginPage';
-import DriverDetailPage from './pages/DriverDetailPage/DriverDetailPage'
-import RiderDetailPage from './pages/RiderDetailPage/RiderDetailPage'
-import DriverFinalPage from './pages/DriverFinalPage/DriverFinalPage'
-import RiderFinalPage from './pages/RiderFinalPage/RiderFinalPage'
+import DriverDetailPage from './pages/DriverDetailPage/DriverDetailPage';
+import RiderDetailPage from './pages/RiderDetailPage/RiderDetailPage';
+import DriverFinalPage from './pages/DriverFinalPage/DriverFinalPage';
+import RiderFinalPage from './pages/RiderFinalPage/RiderFinalPage';
 
 function App() {
   return (

@@ -1,7 +1,9 @@
 from django.db import models
-
+from rest_framework import serializers
+from backend.user_service.user.domain.rider import RiderSerializer
 
 class CarpoolRequest(models.Model):
+
     class Meta:
         app_label = 'carpool_request'
 
@@ -20,3 +22,19 @@ class CarpoolRequest(models.Model):
     def __str__(self):
         return 'rider_id={},from={},to={}'\
             .format(self.rider_id, self.from_location, self.to_location)
+
+
+class CarpoolRequestSerializer(serializers.ModelSerializer):
+
+    rider = RiderSerializer(many=False, read_only=True)
+
+    class Meta:
+        model = CarpoolRequest
+        fields = (
+            'id', 'status', 'from_location',
+            'to_location', 'minimum_passenger', 'rider'
+        )
+        read_only_fields = (
+            'id', 'status', 'from_location',
+            'to_location', 'minimum_passenger'
+        )

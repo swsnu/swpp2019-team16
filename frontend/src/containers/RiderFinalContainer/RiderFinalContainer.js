@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import RiderFinal from '../../components/RiderFinal/RiderFinal'
+import RiderFinal from '../../components/RiderFinal/RiderFinal';
 
 RiderFinalContainer.propTypes = {};
 
@@ -11,11 +11,9 @@ function RiderFinalContainer({ history }) {
     group: group.group,
   }));
 
-  const onClickGoToMain = useCallback(
-    () => {
-      history.push('/request');
-    }, [history],
-  );
+  const onClickGoToMain = useCallback(() => {
+    history.push('/request');
+  }, [history]);
 
   if (!user) {
     return <div>we are loading user...</div>;
@@ -24,14 +22,8 @@ function RiderFinalContainer({ history }) {
   if (!group) {
     return <div>There is no group...</div>;
   }
-  
-  return (
-    <RiderFinal
-      group={group}
-      onClickGoToMain={onClickGoToMain}
-    />
-  );
-  
+
+  return <RiderFinal group={group} onClickGoToMain={onClickGoToMain} />;
 }
 
 export default withRouter(RiderFinalContainer);

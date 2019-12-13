@@ -18,15 +18,6 @@ from backend.common.rpc.infra.adapter.redis.redis_rpc_client \
     import RedisRpcClient
 
 
-"""
-TODO: add exception controller
-"""
-
-
-def with_json_response(status, data):
-    return JsonResponse(data=json.dumps(data), status=status, safe=False)
-
-
 def register_user(request):
     if request.method == 'POST':
         return __register_user(request)
@@ -37,7 +28,6 @@ def register_user(request):
 def __register_user(request):
     try:
         body = json.loads(request.body.decode())
-        # TODO: check KeyError
         command = UserCreateCommand(
             email=body['email'],
             password=body['password'],
@@ -80,8 +70,9 @@ def __point_user(request, id):
 def __check_user(request, id):
     try:
         user = get_user_model().objects.get(id=id)
-    except Exception:
-        return HttpResponseBadRequest
+    except KeyError as e:
+        return HttpResponseBadRequest(e)
+
     login(request, user)
     event = UserLoginEvent(user_id=user.id)
     rpc_response = RedisRpcClient().call(USER_LOGIN_EVENT, event)
@@ -102,6 +93,7 @@ def __login_user(request):
         password = body['password']
     except(KeyError, JSONDecodeError) as e:
         return HttpResponseBadRequest(e)
+
     user = authenticate(email=email, password=password)
     if user is not None:
         login(request, user)

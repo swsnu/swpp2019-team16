@@ -11,7 +11,7 @@ describe('<RiderFinalContainer />', () => {
       user: {
         user: mockRider,
       },
-      group : mockGroup,
+      group: mockGroup,
     };
 
     const { container } = renderWithRedux(

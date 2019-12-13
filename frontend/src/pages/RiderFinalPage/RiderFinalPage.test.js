@@ -5,7 +5,6 @@ import { MemoryRouter, Route } from 'react-router-dom';
 
 describe('<RiderFinalPage />', () => {
   it('SHOULD match with snapshot', async () => {
-
     const state = {
       auth: {
         auth: {
@@ -15,14 +14,14 @@ describe('<RiderFinalPage />', () => {
       user: {
         user: {
           user: {
-            id:1
+            id: 1,
           },
-          point: 50000
+          point: 50000,
         },
       },
       group: {
         group: {
-          gourpId:1,
+          gourpId: 1,
           cost: 5000,
         },
       },

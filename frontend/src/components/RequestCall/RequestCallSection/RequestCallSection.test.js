@@ -5,12 +5,12 @@ import { mockDriver } from 'types/__mock__/user';
 import { mockGroup } from 'types/__mock__/group';
 
 describe('RequestCall />', () => {
-  it('SHOULD match with snapshot WHEN all data in', async () => {    
+  it('SHOULD match with snapshot WHEN all data in', async () => {
     const { container } = render(
       <RequestCallSection
         user={mockDriver}
         group={mockGroup}
-        onClickRequestCall={()=>{}}
+        onClickRequestCall={() => {}}
       />,
     );
     expect(container).toMatchSnapshot();

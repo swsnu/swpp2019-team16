@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { confirmCost } from '../../modules/group';
 import { withRouter } from 'react-router-dom';
-import DriverDetail from '../../components/DriverDetail'
+import DriverDetail from '../../components/DriverDetail';
 import { updatePoint } from '../../modules/user';
 
 DriverDetailContainer.propTypes = {};
@@ -19,10 +19,11 @@ function DriverDetailContainer({ history }) {
     ({ userId, groupId, totalCost }) => {
       //var totalCost = Math.floor(totalCost * 1.2 * 0.01) * 100;
       var point = user.point + Math.floor(totalCost * 1.2 * 0.01) * 100;
-      dispatch(confirmCost({groupId, totalCost}));
-      dispatch(updatePoint({userId, point}));
+      dispatch(confirmCost({ groupId, totalCost }));
+      dispatch(updatePoint({ userId, point }));
       history.push('/driverfinal');
-    }, [dispatch, user, history],
+    },
+    [dispatch, user, history],
   );
 
   if (!user) {
@@ -32,13 +33,9 @@ function DriverDetailContainer({ history }) {
   if (!group) {
     return <div>Waiting for group to be matched...</div>;
   }
-  
+
   return (
-    <DriverDetail
-      user={user}
-      group={group}
-      onClickConfirm={onClickConfirm}
-    />
+    <DriverDetail user={user} group={group} onClickConfirm={onClickConfirm} />
   );
 }
 

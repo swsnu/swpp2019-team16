@@ -5,7 +5,6 @@ import { MemoryRouter, Route } from 'react-router-dom';
 
 describe('<RiderDetailPage />', () => {
   it('SHOULD match with snapshot', async () => {
-    
     const state = {
       auth: {
         auth: {
@@ -15,24 +14,23 @@ describe('<RiderDetailPage />', () => {
 
       user: {
         user: {
-          user:{
-            id:1
-          }
+          user: {
+            id: 1,
+          },
         },
       },
       group: {
         group: {
-          groupId: 1
+          groupId: 1,
         },
       },
     };
-    
 
     const { container } = renderWithRedux(
       <MemoryRouter initialEntries={['/riderdetail']}>
         <Route component={RiderDetailPage} path={'/riderdetail'} />
       </MemoryRouter>,
-      state
+      state,
     );
     expect(container).toMatchSnapshot();
   });

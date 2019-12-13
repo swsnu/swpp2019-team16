@@ -13,8 +13,8 @@ RiderDetail.propTypes = {
 function RiderDetail({ group }) {
   return (
     <RiderDetailBlock>
-        <Typography variant={'body1'}>From: {group.from}</Typography>
-        <Typography variant={'body1'}>To: {group.to}</Typography>      
+      <Typography variant={'body1'}>From: {group.from}</Typography>
+      <Typography variant={'body1'}>To: {group.to}</Typography>
     </RiderDetailBlock>
   );
 }
