@@ -11,10 +11,12 @@ function DriverFinalContainer({ history }) {
     group: group.group,
   }));
 
-  const onClickGoToMain = useCallback(() => {
-    history.push('/requestcall');
-  }, [history]);
-
+  const onClickGoToMain = useCallback(
+    () => {
+      history.push('/requestcall');
+    }, [history],
+  );
+/*
   if (!user) {
     return <div>we are loading user...</div>;
   }
@@ -25,11 +27,20 @@ function DriverFinalContainer({ history }) {
 
   return (
     <DriverFinal
-      earning={group.cost}
-      point={user.point}
+      user={user}
+      group={group}
       onClickGoToMain={onClickGoToMain}
     />
   );
+  */
+ return (
+  <DriverFinal
+    user={{point:1000}}
+    group={{totalCost:5000}}
+    onClickGoToMain={onClickGoToMain}
+  />
+);
+
 }
 
 export default withRouter(DriverFinalContainer);
