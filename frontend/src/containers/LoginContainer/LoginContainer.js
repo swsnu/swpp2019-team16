@@ -80,9 +80,9 @@ function LoginContainer({ history }) {
     history.push('/register');
   }, [history]);
 
-  useEffect(() => {
-    dispatch(authNull());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(authNull());
+  // }, [dispatch]);
 
   useEffect(() => {
     dispatch(initializeForm('login'));
