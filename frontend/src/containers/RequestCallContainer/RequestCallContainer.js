@@ -58,10 +58,6 @@ function RequestCallContainer({ history }) {
     }
   }, [user, history]);
 
-  if (!group) {
-    return <div>Waiting for group to be matched...</div>;
-  }
-
   return (
     <RequestCallSection
       user={user}
