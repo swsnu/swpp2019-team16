@@ -1,4 +1,5 @@
 import json
+from json import JSONDecodeError
 from django.http \
     import HttpResponseNotAllowed, JsonResponse
 
@@ -11,14 +12,6 @@ from backend.common.command.group_cost_update_command \
 from backend.common.rpc.infra.adapter.redis.redis_rpc_client \
     import RedisRpcClient
 
-"""
-TODO: add exception controller
-"""
-
-
-def with_json_response(status, data):
-    return JsonResponse(data=json.dumps(data), status=status, safe=False)
-
 
 def group(request):
     if request.method == 'POST':
@@ -28,18 +21,18 @@ def group(request):
 
 
 def __create_group(request):
-    body = json.loads(request.body.decode())
-    # TODO: check KeyError
-    command = GroupCreateCommand(
-        from_location=body['from_location'],
-        to_location=body['to_location'])
+    try:
+        body = json.loads(request.body.decode())
+        command = GroupCreateCommand(
+            rider_id_list=body['rider_id_list'],
+            from_location=body['from_location'],
+            to_location=body['to_location']
+        )
+    except (KeyError, JSONDecodeError) as e:
+        return HttpResponseBadRequest(e)
 
-    result = RedisRpcClient().call(GROUP_CREATE_COMMAND, command)
-    data = {'jsonrpc': result.jsonrpc,
-            'id': result.id, 'result': result.result}
-
-    # TODO: handling exception
-    return with_json_response(status=204, data=data)
+    rpc_response = RedisRpcClient().call(GROUP_CREATE_COMMAND, command)
+    return JsonResponse(data=rpc_response.result, status=204, safe=False)
 
 
 def update_driver(request, group_id):

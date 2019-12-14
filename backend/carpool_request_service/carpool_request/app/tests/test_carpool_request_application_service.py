@@ -26,10 +26,10 @@ class CarpoolRequestApplicationServiceTestCase(TestCase):
         result = self.carpool_request_application_service.create(
             from_location, to_location, minimum_passenger, self.rider.id
         )
-        self.assertEqual(result.from_location, from_location)
-        self.assertEqual(result.to_location, to_location)
-        self.assertEqual(result.minimum_passenger, minimum_passenger)
-        self.assertEqual(result.rider_id, self.rider.id)
+        self.assertEqual(result['from_location'], from_location)
+        self.assertEqual(result['to_location'], to_location)
+        self.assertEqual(result['minimum_passenger'], minimum_passenger)
+        self.assertEqual(result['rider']['id'], self.rider.id)
 
     def test_del(self):
         from_location = "TEST_FROM"
@@ -40,7 +40,7 @@ class CarpoolRequestApplicationServiceTestCase(TestCase):
             from_location, to_location, minimum_passenger, self.rider.id
         )
         result = self.carpool_request_application_service.delete(
-            request_id=carpool_request.id
+            request_id=carpool_request['id']
         )
         self.assertEqual(result[0], 1)
 
@@ -53,10 +53,10 @@ class CarpoolRequestApplicationServiceTestCase(TestCase):
             from_location, to_location, minimum_passenger, self.rider.id
         )
         result = self.carpool_request_application_service.get(
-            request_id=carpool_request.id
+            request_id=carpool_request['id']
         )
 
-        self.assertEqual(result.from_location, from_location)
-        self.assertEqual(result.to_location, to_location)
-        self.assertEqual(result.minimum_passenger, minimum_passenger)
-        self.assertEqual(result.rider_id, self.rider.id)
+        self.assertEqual(result['from_location'], from_location)
+        self.assertEqual(result['to_location'], to_location)
+        self.assertEqual(result['minimum_passenger'], minimum_passenger)
+        self.assertEqual(result['rider']['id'], self.rider.id)

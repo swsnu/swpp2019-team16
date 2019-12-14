@@ -1,6 +1,6 @@
 from backend.user_service.user.domain.rider import Rider
 from backend.carpool_request_service.carpool_request.domain.carpool_request \
-    import CarpoolRequest
+    import CarpoolRequest, CarpoolRequestSerializer
 from backend.common.messaging.infra.redis.redis_message_publisher \
     import RedisMessagePublisher
 from backend.common.command.group_create_command import GroupCreateCommand
@@ -8,8 +8,11 @@ from backend.common.command.group_create_command import GroupCreateCommand
 
 class CarpoolRequestApplicationService():
     def create(self, from_location, to_location, minimum_passenger, rider_id):
-        # TODO: handle NotFound exception
-        rider = Rider.objects.get(pk=rider_id)
+        try:
+            rider = Rider.objects.get(pk=rider_id)
+        except KeyError as e:
+            print('No such rider exists')
+            return e
 
         result = CarpoolRequest.objects.create(
             from_location=from_location,
@@ -35,10 +38,11 @@ class CarpoolRequestApplicationService():
                 to_location=to_location
             )
             RedisMessagePublisher().publish_message(command)
-        return result
+        return CarpoolRequestSerializer(result).data
 
     def delete(self, request_id):
         return CarpoolRequest.objects.filter(pk=request_id).delete()
 
     def get(self, request_id):
-        return CarpoolRequest.objects.get(pk=request_id)
+        result = CarpoolRequest.objects.get(pk=request_id)
+        return CarpoolRequestSerializer(result).data
