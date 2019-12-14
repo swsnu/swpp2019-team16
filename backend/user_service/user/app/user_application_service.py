@@ -49,14 +49,16 @@ class UserApplicationService():
 
     def _create_rider_if_not_exist(self, user_id):
         if len(Rider.objects.filter(user_id=user_id)) == 0:
-            return Rider.objects.create(user_id=user_id, status="IDLE")
+            rider = Rider.objects.create(user_id=user_id, status="IDLE");
+            return RiderSerializer(rider).data;
 
         return RiderSerializer(Rider.objects.get(user_id=user_id)).data
 
     def _create_driver_if_not_exist(self, user_id):
         if len(Driver.objects.filter(user_id=user_id)) == 0:
-            return Driver.objects.create(user_id=user_id, status="IDLE")
-
+            driver = Driver.objects.create(user_id=user_id, status="IDLE")
+            return DriverSerializer(driver).data;
+            
         return DriverSerializer(Driver.objects.get(user_id=user_id)).data
 
     def logout(self, user_id):

@@ -15,7 +15,9 @@ describe('<RiderDetailPage />', () => {
 
       user: {
         user: {
-          id:1
+          user:{
+            id:1
+          }
         },
       },
       group: {

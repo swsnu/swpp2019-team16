@@ -1,6 +1,6 @@
 import React from 'react';
 import Main from '../_layouts/Main';
-import RiderDetailContainer from '../../containers/RiderDetailContainer';
+import RiderDetailContainer from '../../containers/RiderDetailContainer/RiderDetailContainer';
 
 function RiderDetailPage() {
   return (

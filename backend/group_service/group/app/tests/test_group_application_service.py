@@ -1,5 +1,5 @@
 from unittest.mock import patch
-
+import math
 from django.test import TestCase
 
 from backend.group_service.group.app.group_application_service \
@@ -90,7 +90,8 @@ class GroupApplicationServiceTestCase(TestCase):
         FROM_LOCATION = 'SNU Station'
         TO_LOCATION = '301 Building'
         COST = 5000
-
+        RIDER_COST = math.ceil(COST / 4 / 100)*100
+        
         result = self.group_application_service.cost_update_group(
             group_id=self.group.id,
             cost=COST)
@@ -98,10 +99,14 @@ class GroupApplicationServiceTestCase(TestCase):
         self.assertEqual(result['id'], self.group.id)
         self.assertEqual(result['cost'], COST)
         
+        #self.assertEqual(result['total_cost'], COST)
+        #self.asserEqual(result['rider_cost'], RIDER_COST)
+        
         args, kwargs = publish_message_fn.call_args
         self.assertEqual(args[0].group_id, self.group.id)
-        self.assertEqual(args[0].cost, COST)
+        self.assertEqual(args[0].total_cost, COST)
         self.assertEqual(
             args[0].rider_id_list,
             [self.rider1.id, self.rider2.id, self.rider3.id, self.rider4.id]
         )
+        self.assertEqual(args[0].rider_cost, RIDER_COST)

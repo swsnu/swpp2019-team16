@@ -1,4 +1,5 @@
 import logging
+import math
 
 from backend.group_service.group.domain.group import Group, GroupSerializer
 from backend.user_service.user.domain.rider import Rider
@@ -64,12 +65,17 @@ class GroupApplicationService:
         group = Group.objects.get(pk=group_id)
         group.cost = cost
         group.save()
+        
+        rider_id_list = list(map(lambda rider: rider.id, \
+                Rider.objects.filter(group_id=group_id)))
+
+        rider_cost = math.ceil(cost / len(rider_id_list) / 100)*100;
+
         event = GroupCostUpdatedEvent(
             group_id=group.id,
-            rider_id_list=list(map(
-                lambda rider: rider.id,
-                Rider.objects.filter(group_id=group_id))),
-            cost=cost,
+            rider_id_list=rider_id_list,
+            total_cost=cost,
+            rider_cost=rider_cost,
         )
 
         print('group cost updated: {}'.format(event))

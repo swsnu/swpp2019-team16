@@ -54,9 +54,9 @@ export const groupCreated = createAction(
 
 export const groupCostUpdated = createAction(
   GROUP_COST_UPDATED,
-  ({ groupId, cost }) => ({
+  ({ groupId, riderCost }) => ({
     groupId,
-    cost,
+    riderCost,
   }),
 );
 
