@@ -19,9 +19,9 @@ describe('user', () => {
   describe('action', () => {
     describe('UPDATE_POINT', () => {
       it('should successfully create action', async () => {
-        const action = updatePoint({userId: 1, point: 1000});
+        const action = updatePoint({ userId: 1, point: 1000 });
         expect(action.type).toStrictEqual('user/UPDATE_POINT');
-        expect(action.payload).toStrictEqual({userId: 1, point: 1000});
+        expect(action.payload).toStrictEqual({ userId: 1, point: 1000 });
       });
     });
 
@@ -68,7 +68,10 @@ describe('user', () => {
         expect(
           user(
             { user: { id: 'TEST_USER', point: 0 } },
-            { type: 'user/UPDATE_POINT_SUCCESS', payload: { id: 'TEST_USER', point: 1234 } },
+            {
+              type: 'user/UPDATE_POINT_SUCCESS',
+              payload: { id: 'TEST_USER', point: 1234 },
+            },
           ),
         ).toStrictEqual({
           user: { id: 'TEST_USER', point: 1234 },
@@ -82,7 +85,10 @@ describe('user', () => {
         expect(
           user(
             { user: { id: 'TEST_USER', point: 0 } },
-            { type: 'user/UPDATE_POINT_FAILURE', payload: { error: 'TEST_ERROR' } },
+            {
+              type: 'user/UPDATE_POINT_FAILURE',
+              payload: { error: 'TEST_ERROR' },
+            },
           ),
         ).toStrictEqual({
           user: { id: 'TEST_USER', point: 0 },
@@ -214,7 +220,7 @@ describe('user', () => {
 
         sagaTester.dispatch({
           type: 'user/UPDATE_POINT',
-          payload: { id: 1, point: 1000},
+          payload: { id: 1, point: 1000 },
         });
 
         await sagaTester.waitFor('user/UPDATE_POINT_FAILURE');

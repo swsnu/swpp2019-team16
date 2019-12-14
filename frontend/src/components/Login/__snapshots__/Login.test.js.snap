@@ -3,18 +3,22 @@
 exports[`<Login /> SHOULD match with snapshot 1`] = `
 <div>
   <div
-    class="sc-bdVaJa bDWFJH"
+    class="makeStyles-root-1"
   >
     <div
-      class="MuiBox-root MuiBox-root-2"
+      class="makeStyles-whiteBox-3"
     >
-      <h3
-        class="MuiTypography-root MuiTypography-h3"
-      >
-        Login to Ya-Ta!
-      </h3>
       <div
-        class="MuiBox-root MuiBox-root-33"
+        class="makeStyles-container-2"
+      >
+        <h3
+          class="MuiTypography-root MuiTypography-h3"
+        >
+          Login to Ya-Ta!
+        </h3>
+      </div>
+      <div
+        class="makeStyles-container-2"
       >
         <input
           id="email-input"
@@ -25,7 +29,7 @@ exports[`<Login /> SHOULD match with snapshot 1`] = `
         />
       </div>
       <div
-        class="MuiBox-root MuiBox-root-34"
+        class="makeStyles-container-2"
       >
         <input
           id="password-input"
@@ -36,36 +40,22 @@ exports[`<Login /> SHOULD match with snapshot 1`] = `
         />
       </div>
       <div
-        class="MuiBox-root MuiBox-root-35"
+        class="makeStyles-container-2"
       >
-        <button
-          class="MuiButtonBase-root MuiButton-root makeStyles-root-36 makeStyles-root-39 MuiButton-contained makeStyles-contained-37 makeStyles-contained-40 MuiButton-contained makeStyles-contained-37 makeStyles-contained-40"
-          tabindex="0"
-          type="button"
+        <div
+          class="makeStyles-button-4"
+          fullwidth="false"
+          variant="contained"
         >
-          <span
-            class="MuiButton-label"
-          >
-            Login
-          </span>
-          <span
-            class="MuiTouchRipple-root"
-          />
-        </button>
-        <button
-          class="MuiButtonBase-root MuiButton-root makeStyles-root-36 makeStyles-root-73 MuiButton-contained makeStyles-contained-37 makeStyles-contained-74 MuiButton-contained makeStyles-contained-37 makeStyles-contained-74"
-          tabindex="0"
-          type="button"
+          Login
+        </div>
+        <div
+          class="makeStyles-button-4"
+          fullwidth="false"
+          variant="contained"
         >
-          <span
-            class="MuiButton-label"
-          >
-            Register
-          </span>
-          <span
-            class="MuiTouchRipple-root"
-          />
-        </button>
+          Register
+        </div>
       </div>
     </div>
   </div>

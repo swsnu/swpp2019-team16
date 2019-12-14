@@ -12,14 +12,19 @@ const [CHECK, CHECK_SUCCESS, CHECK_FAILURE] = createRequestActionTypes(
 const [LOGOUT, LOGOUT_SUCCESS, LOGOUT_FAILURE] = createRequestActionTypes(
   'user/LOGOUT',
 );
-const [UPDATE_POINT, UPDATE_POINT_SUCCESS, UPDATE_POINT_FAILURE] = createRequestActionTypes(
-  'user/UPDATE_POINT',
-);
+const [
+  UPDATE_POINT,
+  UPDATE_POINT_SUCCESS,
+  UPDATE_POINT_FAILURE,
+] = createRequestActionTypes('user/UPDATE_POINT');
 
 export const tempSetUser = createAction(TEMP_SET_USER, user => user);
 export const check = createAction(CHECK, ({ id }) => ({ id }));
 export const logout = createAction(LOGOUT);
-export const updatePoint = createAction(UPDATE_POINT, ({userId, point})=>({userId, point}));
+export const updatePoint = createAction(UPDATE_POINT, ({ userId, point }) => ({
+  userId,
+  point,
+}));
 
 export const checkSaga = createRequestSaga(CHECK, userAPI.get);
 export function checkFailureSaga() {
@@ -40,7 +45,10 @@ export function* logoutSaga() {
   }
 }
 
-export const updatePointSaga = createRequestSaga(UPDATE_POINT, userAPI.updatePoint)
+export const updatePointSaga = createRequestSaga(
+  UPDATE_POINT,
+  userAPI.updatePoint,
+);
 export function* userSaga() {
   yield takeLatest(CHECK, checkSaga);
   yield takeLatest(CHECK_FAILURE, checkFailureSaga);
@@ -84,11 +92,11 @@ const user = handleActions(
       ...state,
       user,
       updatePointError: null,
-    }), 
-    [UPDATE_POINT_FAILURE]: ( state, { payload: error }) => ({
+    }),
+    [UPDATE_POINT_FAILURE]: (state, { payload: error }) => ({
       ...state,
       updatePointError: error,
-    })
+    }),
   },
   initialState,
 );

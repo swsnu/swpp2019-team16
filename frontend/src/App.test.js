@@ -14,6 +14,9 @@ describe('<App />', () => {
         id: 1,
       },
     },
+    user: {
+      user: null,
+    },
   };
   it('SHOULD match with snapshot', async () => {
     const { container } = renderWithRedux(

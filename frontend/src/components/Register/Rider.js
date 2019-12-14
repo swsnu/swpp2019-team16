@@ -1,11 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import Box from '../common/Box/Box';
-import Button from '../common/Button/Button';
 import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/styles';
+import theme from '../../lib/styles/theme';
 
-const RiderBlock = styled.div``;
+const useStyles = makeStyles({
+  container: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column',
+  },
+  whiteBox: {
+    boxShadow: '0 0 8px rgba(0, 0, 0, 0.25)',
+    padding: '2rem',
+    width: '360px',
+    background: 'white',
+    borderRadius: '2px',
+  },
+  button: {
+    background: theme.palette.primary.dark,
+    borderRadius: 5,
+    color: 'white',
+    cursor: 'pointer',
+    paddingLeft: '1rem',
+    paddingRight: '1rem',
+    paddingBottom: '0.3rem',
+    paddingTop: '0.3rem',
+    marginBottom: '10px',
+    marginTop: '10px',
+  },
+});
 
 Rider.propTypes = {
   form: PropTypes.object.isRequired,
@@ -14,10 +39,12 @@ Rider.propTypes = {
 };
 
 function Rider({ form, onChange, onClick }) {
+  const styles = useStyles();
   return (
-    <RiderBlock>
-      <Box>
-        <Typography variant="h4">Email</Typography>
+    <div className={styles.whiteBox}>
+      <div className={styles.container}>
+        <Typography variant="h4">Rider Info</Typography>
+        <Typography variant="h5">Email</Typography>
         <input
           type="text"
           id="email-input"
@@ -25,7 +52,7 @@ function Rider({ form, onChange, onClick }) {
           onChange={onChange}
           value={form.email}
         />
-        <Typography variant="h4">Password</Typography>
+        <Typography variant="h5">Password</Typography>
         <input
           type="password"
           id="password-input"
@@ -33,7 +60,7 @@ function Rider({ form, onChange, onClick }) {
           onChange={onChange}
           value={form.password}
         />
-        <Typography variant="h4">Password Confirm</Typography>
+        <Typography variant="h5">Password Confirm</Typography>
         <input
           type="password"
           id="password-confirmation-input"
@@ -41,16 +68,15 @@ function Rider({ form, onChange, onClick }) {
           onChange={onChange}
           value={form.passwordConfirmation}
         />
-        <Box>
-          <Button
-            children="Confirm"
-            onClick={onClick}
-            variant="contained"
-            fullwidth="false"
-          />
-        </Box>
-      </Box>
-    </RiderBlock>
+        <div
+          className={styles.button}
+          children="Confirm"
+          onClick={onClick}
+          variant="contained"
+          fullwidth="false"
+        />
+      </div>
+    </div>
   );
 }
 

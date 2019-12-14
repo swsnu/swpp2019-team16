@@ -9,6 +9,9 @@ describe('<Main />', () => {
     auth: {
       auth: mockRiderAuth,
     },
+    user: {
+      user: null,
+    },
   };
   const children = { children: 1 };
   it('SHOULD match with snapshot', async () => {

@@ -63,7 +63,7 @@ exports[`<DriverFinalPage /> SHOULD match with snapshot 1`] = `
         50000
       </h2>
       <button
-        class="MuiButtonBase-root MuiButton-root makeStyles-root-62 makeStyles-root-65 MuiButton-contained makeStyles-contained-63 makeStyles-contained-66 MuiButton-contained makeStyles-contained-63 makeStyles-contained-66"
+        class="MuiButtonBase-root MuiButton-root makeStyles-root-63 makeStyles-root-66 MuiButton-contained makeStyles-contained-64 makeStyles-contained-67 MuiButton-contained makeStyles-contained-64 makeStyles-contained-67"
         tabindex="0"
         type="button"
       >

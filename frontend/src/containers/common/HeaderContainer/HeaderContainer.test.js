@@ -5,6 +5,9 @@ import { MemoryRouter, Route } from 'react-router-dom';
 
 describe('<HeaderContainer />', () => {
   const state = {
+    user: {
+      user: null,
+    },
     auth: {
       auth: null,
     },

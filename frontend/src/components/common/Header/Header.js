@@ -7,12 +7,11 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import PropTypes from 'prop-types';
-import Button from '../Button';
 
 export const HEADER_HEIGHT = '64px';
 
 HeaderMaterial.propTypes = {
-  auth: PropTypes.object,
+  user: PropTypes.object,
   onClickLogo: PropTypes.func,
   onCLickLogin: PropTypes.func,
   onClickLogout: PropTypes.func,
@@ -32,9 +31,20 @@ const useStyles = makeStyles(theme => ({
   title: {
     flexGrow: 1,
   },
+  button: {
+    color: 'white',
+    cursor: 'pointer',
+    paddingLeft: '1rem',
+    paddingRight: '1rem',
+    paddingBottom: '0.3rem',
+    paddingTop: '0.3rem',
+    marginBottom: '10px',
+    marginTop: '10px',
+  },
 }));
 
 export default function HeaderMaterial({
+  user,
   auth,
   onClickLogo,
   onClickLogin,
@@ -63,7 +73,7 @@ export default function HeaderMaterial({
         >
           Ya-Ta!
         </Typography>
-        {auth !== null ? (
+        {user !== null && auth !== null ? (
           <div>
             <IconButton
               aria-label="account of current user"
@@ -94,7 +104,11 @@ export default function HeaderMaterial({
             </Menu>
           </div>
         ) : (
-          <Button children={'Log In'} variant={'text'} onClick={onClickLogin} />
+          <div
+            className={classes.button}
+            children={'LOGIN'}
+            onClick={onClickLogin}
+          />
         )}
       </Toolbar>
     </div>

@@ -1,31 +1,44 @@
 import React, { useCallback } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Header from '../../../components/common/Header/Header';
+import { logout } from '../../../modules/user/user';
+import { authNull } from '../../../modules/auth/auth';
 
 function HeaderContainer({ history }) {
-  const { auth } = useSelector(({ auth }) => ({
+  const dispatch = useDispatch();
+  const { user, auth } = useSelector(({ user, auth }) => ({
+    user: user.user,
     auth: auth.auth,
   }));
 
   const onClickLogo = useCallback(() => {
-    if (auth === null) {
-      history.push('/intro');
+    if (user === null) {
+      history.push('/');
     } else {
       history.push('/request');
     }
-  }, [auth, history]);
+  }, [user, history]);
 
   const onClickLogin = useCallback(() => {
     history.push('/login');
   }, [history]);
 
+  const onClickLogout = useCallback(() => {
+    dispatch(logout());
+    dispatch(authNull());
+
+    alert('Successfully logged out.');
+    history.push('/');
+  }, [dispatch, history]);
+
   return (
     <Header
+      user={user}
       auth={auth}
       onClickLogo={onClickLogo}
       onClickLogin={onClickLogin}
-      onClickLogout={() => {}}
+      onClickLogout={onClickLogout}
       onClickPoint={() => {}}
     />
   );
