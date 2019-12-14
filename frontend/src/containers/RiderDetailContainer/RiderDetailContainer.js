@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as grpcClient from '../../lib/grpc/client';
 import { groupCostUpdated, unloadGroup } from '../../modules/group';
+import { updatePoint } from '../../modules/user';
 import { withRouter } from 'react-router-dom';
 import RiderDetail from '../../components/RiderDetail/RiderDetail';
 
@@ -47,7 +48,7 @@ function RiderDetailContainer({ history }) {
         stream.cancel();
       };
     }
-  }, [dispatch, user]);
+  }, [dispatch, user, history]);
 
   useEffect(() => {
     if (!user) {

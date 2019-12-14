@@ -34,4 +34,4 @@ function RiderFinalContainer({ history }) {
   
 }
 
-export default withRouter(DriverFinalContainer);
+export default withRouter(RiderFinalContainer);

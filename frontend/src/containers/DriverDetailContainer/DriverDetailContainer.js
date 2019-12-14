@@ -22,7 +22,7 @@ function DriverDetailContainer({ history }) {
       dispatch(confirmCost({groupId, totalCost}));
       dispatch(updatePoint({userId, point}));
       history.push('/driverfinal');
-    }, [dispatch, history],
+    }, [dispatch, user, history],
   );
 
   if (!user) {
