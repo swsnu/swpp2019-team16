@@ -1,11 +1,11 @@
 from django.test import TestCase
 
-from backend.common.event.group_updated_event import GroupUpdatedEvent
+from backend.common.event.group_driver_updated_event import GroupDriverUpdatedEvent
 
 
-class GroupUpdatedEventTestCase(TestCase):
+class GroupDriverUpdatedEventTestCase(TestCase):
     def test_event_properties(self):
-        event = GroupUpdatedEvent(
+        event = GroupDriverUpdatedEvent(
             group_id=1,
             driver_id=2,
             rider_id_list=[3, 4, 5, 6],
@@ -19,7 +19,7 @@ class GroupUpdatedEventTestCase(TestCase):
         self.assertEqual(event.to_location, 'B')
 
     def test_str(self):
-        event = GroupUpdatedEvent(
+        event = GroupDriverUpdatedEvent(
             group_id=1,
             driver_id=2,
             rider_id_list=[3, 4, 5, 6],

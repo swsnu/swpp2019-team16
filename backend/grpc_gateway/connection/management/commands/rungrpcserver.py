@@ -14,6 +14,9 @@ from backend.common.messaging.infra.redis.redis_message_subscriber \
 from backend.common.event.group_created_event import GROUP_CREATED_EVENT
 from backend.grpc_gateway.connection.infra.adapter.\
     group_created_event_handler import GroupCreatedEventHandler
+from backend.common.event.group_cost_updated_event import GROUP_COST_UPDATED_EVENT
+from backend.grpc_gateway.connection.infra.adapter.\
+    group_cost_updated_event_handler import GroupCostUpdatedEventHandler
 from backend.grpc_gateway.connection.infra.adapter.ping_command_handler \
     import PingCommandHandler
 from backend.common.command.ping_command import PING_COMMAND
@@ -28,6 +31,8 @@ class Command(BaseCommand):
         grpc.insecure_channel('localhost' + ':' + str(9090)))
 
     group_created_event_handler = GroupCreatedEventHandler(conn=conn)
+    group_cost_updated_event_handler = GroupCostUpdatedEventHandler(conn=conn)
+    
     ping_command_handler = PingCommandHandler()
 
     grpc_server = GrpcServer(stream_service)
@@ -42,6 +47,11 @@ class Command(BaseCommand):
                 self.subscriber.subscribe_message(
                     topic=GROUP_CREATED_EVENT,
                     message_handler=self.group_created_event_handler))
+
+            group_cost_updated_subscription_task = asyncio.create_task(
+                self.subscriber.subscribe_message(
+                    topic=GROUP_COST_UPDATED_EVENT,
+                    message_handler=self.group_cost_updated_event_handler))
 
             ping_subscription_task = asyncio.create_task(
                 self.subscriber.subscribe_message(

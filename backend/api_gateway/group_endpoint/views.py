@@ -4,8 +4,10 @@ from django.http \
 
 from backend.common.command.group_create_command \
     import GroupCreateCommand, GROUP_CREATE_COMMAND
-from backend.common.command.group_update_command \
-    import GroupUpdateCommand, GROUP_UPDATE_COMMAND
+from backend.common.command.group_driver_update_command \
+    import GroupDriverUpdateCommand, GROUP_DRIVER_UPDATE_COMMAND
+from backend.common.command.group_cost_update_command \
+    import GroupCostUpdateCommand, GROUP_COST_UPDATE_COMMAND
 from backend.common.rpc.infra.adapter.redis.redis_rpc_client \
     import RedisRpcClient
 
@@ -40,19 +42,39 @@ def __create_group(request):
     return with_json_response(status=204, data=data)
 
 
-def group_detail(request, group_id):
+def update_driver(request, group_id):
     if request.method == 'PUT':
-        return __update_group(request, group_id)
+        return __update_driver(request, group_id)
     else:
         return HttpResponseNotAllowed(['PUT'])
 
 
-def __update_group(request, group_id):
+def __update_driver(request, group_id):
     body = json.loads(request.body.decode())
     # TODO: check KeyError
-    command = GroupUpdateCommand(driver_id=body['driverId'], group_id=group_id)
+    command = GroupDriverUpdateCommand(driver_id=body['driverId'], group_id=group_id)
 
-    result = RedisRpcClient().call(GROUP_UPDATE_COMMAND, command)
+    result = RedisRpcClient().call(GROUP_DRIVER_UPDATE_COMMAND, command)
+    data = {'jsonrpc': result.jsonrpc,
+            'id': result.id, 'result': result.result}
+
+    # TODO: handling exception
+    return with_json_response(status=204, data=data)
+
+
+def update_cost(request, group_id):
+    if request.method == 'PUT':
+        return __update_cost(request, group_id)
+    else:
+        return HttpResponseNotAllowed(['PUT'])
+
+
+def __update_cost(request, group_id):
+    body = json.loads(request.body.decode())
+    # TODO: check KeyError
+    command = GroupCostUpdateCommand(cost=body['totalCost'], group_id=group_id)
+
+    result = RedisRpcClient().call(GROUP_COST_UPDATE_COMMAND, command)
     data = {'jsonrpc': result.jsonrpc,
             'id': result.id, 'result': result.result}
 

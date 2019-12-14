@@ -21,7 +21,6 @@ function RequestCallSection({ user, group, onClickRequestCall }) {
   const triggerText = 'Stop';
 
   // TODO: add test case
-  // TODO: refactor speech recognizer -> create SpeechRecognizer class
   const onSTTHandler = useCallback(() => {
     if (!speechToText) {
       console.log('Active STT');

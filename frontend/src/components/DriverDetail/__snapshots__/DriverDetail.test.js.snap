@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DriverDetail /> SHOULD match with snapshot 1`] = `
+<div>
+  <div
+    class="sc-bdVaJa bDWFJH"
+  >
+    <input
+      id="total-cost-input"
+      name="TotalCost"
+      placeholder="Total Cost"
+      type="text"
+      value="0"
+    />
+    <button
+      class="MuiButtonBase-root MuiButton-root makeStyles-root-1 makeStyles-root-4 MuiButton-contained makeStyles-contained-2 makeStyles-contained-5 MuiButton-contained makeStyles-contained-2 makeStyles-contained-5"
+      tabindex="0"
+      type="button"
+    >
+      <span
+        class="MuiButton-label"
+      >
+        Confirm
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
+  </div>
+</div>
+`;

@@ -41,6 +41,7 @@ const [
 
 export const GROUP_CREATED = 'group/GROUP_CREATED';
 export const UNLOAD_GROUP = 'group/UNLOAD_GROUP';
+export const GROUP_COST_UPDATED = 'group/GROUP_COST_UPDATED';
 
 export const groupCreated = createAction(
   GROUP_CREATED,
@@ -48,6 +49,14 @@ export const groupCreated = createAction(
     groupId,
     from,
     to,
+  }),
+);
+
+export const groupCostUpdated = createAction(
+  GROUP_COST_UPDATED,
+  ({ groupId, riderCost }) => ({
+    groupId,
+    riderCost,
   }),
 );
 
@@ -128,6 +137,11 @@ const group = handleActions(
     [UNLOAD_GROUP]: state => ({
       ...state,
       group: null,
+    }),
+
+    [GROUP_COST_UPDATED]: (state, { payload: group }) => ({
+      ...state,
+      group: group,
     }),
 
     [ACCEPT_GROUP_SUCCESS]: (state, { payload: group }) => ({

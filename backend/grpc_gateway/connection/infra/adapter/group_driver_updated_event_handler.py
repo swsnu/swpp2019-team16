@@ -17,7 +17,7 @@ def _extract_user_id_list_from(rider_id_list):
     return result
 
 
-class GroupUpdatedEventHandler(implements(MessageHandler)):
+class GroupDriverUpdatedEventHandler(implements(MessageHandler)):
 
     def __init__(self, conn):
         self.conn = conn

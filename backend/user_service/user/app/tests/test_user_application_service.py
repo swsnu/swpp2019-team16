@@ -84,11 +84,11 @@ class UserApplicationServiceTestCase(TestCase):
             email=EMAIL, password=PASSWORD,
             user_type=USER_TYPE, car_type='', plate_no='')
         result = self.user_application_service.login(user_id=user1['id'])
-        self.assertEqual(result.status, 'IDLE')
-        self.assertEqual(result.group, None)
-        self.assertEqual(result.user.id, user1['id'])
-        self.assertEqual(result.user.email, EMAIL)
-        self.assertEqual(result.user.user_type, USER_TYPE)
+        self.assertEqual(result['status'], 'IDLE')
+        self.assertEqual(result['group'], None)
+        self.assertEqual(result['user']['id'], user1['id'])
+        self.assertEqual(result['user']['email'], EMAIL)
+        self.assertEqual(result['user']['user_type'], USER_TYPE)
 
         EMAIL = "driver1@gmail.com"
         PASSWORD = 1234
@@ -100,13 +100,13 @@ class UserApplicationServiceTestCase(TestCase):
             email=EMAIL, password=PASSWORD,
             user_type=USER_TYPE, car_type=CAR_TYPE, plate_no=PLATE_NO)
         result = self.user_application_service.login(user_id=user2['id'])
-        self.assertEqual(result.status, 'IDLE')
-        self.assertEqual(result.group, None)
-        self.assertEqual(result.user.id, user2['id'])
-        self.assertEqual(result.user.email, EMAIL)
-        self.assertEqual(result.user.user_type, USER_TYPE)
-        self.assertEqual(result.user.vehicle.car_type, CAR_TYPE)
-        self.assertEqual(result.user.vehicle.plate_no, PLATE_NO)
+        self.assertEqual(result['status'], 'IDLE')
+        self.assertEqual(result['group'], None)
+        self.assertEqual(result['user']['id'], user2['id'])
+        self.assertEqual(result['user']['email'], EMAIL)
+        self.assertEqual(result['user']['user_type'], USER_TYPE)
+        self.assertEqual(result['user']['vehicle']['car_type'], CAR_TYPE)
+        self.assertEqual(result['user']['vehicle']['plate_no'], PLATE_NO)
 
     def test_logout(self):
         EMAIL = 'test@gmail.com'
@@ -146,7 +146,7 @@ class UserApplicationServiceTestCase(TestCase):
             user_type='rider', user_id=user.id
         )
 
-        self.assertEqual(result.user.id, user.id)
+        self.assertEqual(result['user']['id'], user.id)
 
     def test_create_rider_or_driver_if_not_exist_when_user_type_is_driver(self):
         user = get_user_model().objects.create_user(
@@ -158,7 +158,7 @@ class UserApplicationServiceTestCase(TestCase):
         result = self.user_application_service._create_rider_or_driver_if_not_exist(
             user_type='driver', user_id=user.id
         )
-        self.assertEqual(result.user_id, user.id)
+        self.assertEqual(result['user']['id'], user.id)
 
     def test_create_rider_or_driver_if_not_exist_return_value_error(self):
         result = self.user_application_service._create_rider_or_driver_if_not_exist(

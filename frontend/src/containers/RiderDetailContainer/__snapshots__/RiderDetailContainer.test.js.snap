@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RiderDetailContainer /> SHOULD match with snapshot 1`] = `
+<div>
+  <div
+    class="sc-bdVaJa bDWFJH"
+  >
+    <p
+      class="MuiTypography-root MuiTypography-body1"
+    >
+      From: 
+    </p>
+    <p
+      class="MuiTypography-root MuiTypography-body1"
+    >
+      To: 
+    </p>
+  </div>
+</div>
+`;

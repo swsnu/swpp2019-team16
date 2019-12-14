@@ -18,4 +18,15 @@ describe('api/user', () => {
       userAPI.get({ id: 1 });
     });
   });
+
+  describe('updatePoint', () => {
+    it('should successfully update point', async done => {
+      jest.spyOn(client, 'put').mockImplementation(url => {
+        expect(url).toBe('/api/v1/user/1');
+        done();
+      });
+
+      userAPI.updatePoint({ userId: 1, point: 1000 });
+    });
+  })
 });

@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DriverFinal /> SHOULD match with snapshot 1`] = `
+<div>
+  <div
+    class="sc-bdVaJa bDWFJH"
+  >
+    <h2
+      class="MuiTypography-root MuiTypography-h2"
+    >
+      Total Earning: 
+      5000
+    </h2>
+    <h2
+      class="MuiTypography-root MuiTypography-h2"
+    >
+      Current Point: 
+      50000
+    </h2>
+    <button
+      class="MuiButtonBase-root MuiButton-root makeStyles-root-31 makeStyles-root-34 MuiButton-contained makeStyles-contained-32 makeStyles-contained-35 MuiButton-contained makeStyles-contained-32 makeStyles-contained-35"
+      tabindex="0"
+      type="button"
+    >
+      <span
+        class="MuiButton-label"
+      >
+        Go To Main
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
+  </div>
+</div>
+`;
