@@ -24,11 +24,11 @@ class UserApplicationService():
 
         if car_type is not None and plate_no is not None:
             vehicle = Vehicle.objects.create(car_type=car_type, plate_no=plate_no)
-
+        
         user = get_user_model().objects.create_user(
             email=email, password=password,
             user_type=user_type, vehicle=vehicle)
-
+        
         return UserSerializer(user).data
 
     def login(self, user_id):

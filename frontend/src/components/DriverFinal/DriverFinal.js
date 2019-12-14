@@ -42,10 +42,9 @@ const DriverFinalStyles = makeStyles({
     marginBottom: '10px',
     marginTop: '10px',
     marginLeft: '10px',
-    marginRight: '10px'
+    marginRight: '10px',
   },
 });
-
 
 DriverFinal.propTypes = {
   user: PropTypes.object.isRequired,
@@ -55,30 +54,33 @@ DriverFinal.propTypes = {
 
 function DriverFinal({ user, group, onClickGoToMain }) {
   const styles = DriverFinalStyles();
-  const earning = Math.floor(group.totalCost * 1.2 /100) * 100;
+  const earning = Math.floor((group.totalCost * 1.2) / 100) * 100;
   const premium = earning - group.totalCost;
   const point = user.point;
 
   return (
     <div className={styles.root}>
       <div className={styles.whiteBox}>
-          <div className={styles.container}>
-            <Typography variant="h3">Total Earning: {earning}&#8361;</Typography>
-          </div>
-          <div className={styles.container}>
-            <Typography variant="h3">Current Point: {point}&#8361;</Typography>
-          </div>
-          <div className={styles.container}>
-            <Typography variant="h3">You earned {premium}&#8361; more!</Typography>
-          </div>
-          <div className={styles.container}>
-            <div className={styles.button}
-              children="Go To Main"
-              variant="contained"
-              fullwidth="false"
-              onClick={()=>onClickGoToMain()}
-            />
-          </div>
+        <div className={styles.container}>
+          <Typography variant="h3">Total Earning: {earning}&#8361;</Typography>
+        </div>
+        <div className={styles.container}>
+          <Typography variant="h3">Current Point: {point}&#8361;</Typography>
+        </div>
+        <div className={styles.container}>
+          <Typography variant="h3">
+            You earned {premium}&#8361; more!
+          </Typography>
+        </div>
+        <div className={styles.container}>
+          <div
+            className={styles.button}
+            children="Go To Main"
+            variant="contained"
+            fullwidth="false"
+            onClick={() => onClickGoToMain()}
+          />
+        </div>
       </div>
     </div>
   );

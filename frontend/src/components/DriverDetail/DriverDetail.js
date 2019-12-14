@@ -43,10 +43,9 @@ const DriverDetailStyles = makeStyles({
     marginBottom: '10px',
     marginTop: '10px',
     marginLeft: '10px',
-    marginRight: '10px'
+    marginRight: '10px',
   },
 });
-
 
 DriverDetail.propTypes = {
   user: PropTypes.object.isRequired,
@@ -63,26 +62,27 @@ function DriverDetail({ user, group, onClickConfirm }) {
   return (
     <div className={styles.root}>
       <div className={styles.whiteBox}>
-      <div className={styles.container}>
-        <Typography variant="h2">Confirm Taxi Fare</Typography>
-      </div>
-      <div className={styles.container}>
-      <input
-        type="text"
-        id="total-cost-input"
-        name="TotalCost"
-        placeholder="Total Cost"
-        onChange={e => setTotalCost(e.target.value)}
-        value={totalCost}
-      />
+        <div className={styles.container}>
+          <Typography variant="h2">Confirm Taxi Fare</Typography>
+        </div>
+        <div className={styles.container}>
+          <input
+            type="text"
+            id="total-cost-input"
+            name="TotalCost"
+            placeholder="Total Cost"
+            onChange={e => setTotalCost(e.target.value)}
+            value={totalCost}
+          />
 
-      <div className={styles.button}
-        children="Confirm"
-        variant="contained"
-        fullwidth="false"
-        onClick={() => onClickConfirm({ userId, groupId, totalCost })}
-      />
-      </div>
+          <div
+            className={styles.button}
+            children="Confirm"
+            variant="contained"
+            fullwidth="false"
+            onClick={() => onClickConfirm({ userId, groupId, totalCost })}
+          />
+        </div>
       </div>
     </div>
   );
