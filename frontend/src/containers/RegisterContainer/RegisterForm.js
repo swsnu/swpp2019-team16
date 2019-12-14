@@ -1,11 +1,36 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Register from '../../components/Register/Register';
 import { register, changeField, initializeForm } from '../../modules/auth/auth';
 import { check } from '../../modules/user/user';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { makeStyles } from '@material-ui/styles';
+import theme from '../../lib/styles/theme';
+
+const useStyles = makeStyles({
+  root: {
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    bottom: 0,
+    right: 0,
+    backgroundColor: theme.palette.primary.main,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  container: {
+    marginTop: '25px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
 
 function RegisterForm({ history }) {
+  const styles = useStyles();
   const dispatch = useDispatch();
   const { form, auth, authError, user } = useSelector(({ auth, user }) => ({
     form: auth.register,
@@ -13,6 +38,8 @@ function RegisterForm({ history }) {
     authError: auth.authError,
     user: user.user,
   }));
+
+  const [loading, setLoading] = useState(false);
 
   const onChange = useCallback(
     e => {
@@ -29,6 +56,7 @@ function RegisterForm({ history }) {
   );
 
   const onConfirm = useCallback(() => {
+    setLoading(true);
     const { email, password, passwordConfirmation, carType, plateNo } = form;
     let userType = form.userType;
     if (userType === '') {
@@ -75,7 +103,19 @@ function RegisterForm({ history }) {
     }
   }, [auth, user, history]);
 
-  return <Register form={form} onChange={onChange} onClick={onConfirm} />;
+  return (
+    <div>
+      {loading === true ? (
+        <div className={styles.root}>
+          <div className={styles.container}>
+            <CircularProgress color="secondary" />
+          </div>
+        </div>
+      ) : (
+        <Register form={form} onChange={onChange} onClick={onConfirm} />
+      )}
+    </div>
+  );
 }
 
 export default withRouter(RegisterForm);

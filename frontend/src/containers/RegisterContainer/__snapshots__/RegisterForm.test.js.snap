@@ -2,106 +2,108 @@
 
 exports[`<RegisterForm /> SHOULD match with snapshot 1`] = `
 <div>
-  <div
-    class="makeStyles-root-1"
-  >
+  <div>
     <div
-      class="makeStyles-whiteBox-3"
+      class="makeStyles-root-3"
     >
       <div
-        class="makeStyles-container-2"
-      >
-        <h4
-          class="MuiTypography-root MuiTypography-h4"
-        >
-          Join Ya-Ta!
-        </h4>
-      </div>
-      <div
-        class="makeStyles-container-2"
-      >
-        <h3
-          class="MuiTypography-root MuiTypography-h3"
-        >
-          Create Your Account
-        </h3>
-      </div>
-      <div
-        class="makeStyles-container-2"
-      >
-        <h4
-          class="MuiTypography-root MuiTypography-h4"
-        >
-          What are you?
-        </h4>
-      </div>
-      <div
-        class="makeStyles-container-2"
+        class="makeStyles-whiteBox-5"
       >
         <div
-          class="makeStyles-button-4"
+          class="makeStyles-container-4"
         >
-          I am a Rider
+          <h4
+            class="MuiTypography-root MuiTypography-h4"
+          >
+            Join Ya-Ta!
+          </h4>
         </div>
         <div
-          class="makeStyles-button-4"
+          class="makeStyles-container-4"
         >
-          I am a Driver
+          <h3
+            class="MuiTypography-root MuiTypography-h3"
+          >
+            Create Your Account
+          </h3>
         </div>
-      </div>
-      <div
-        class="makeStyles-container-2"
-      >
         <div
-          class="makeStyles-whiteBox-36"
+          class="makeStyles-container-4"
+        >
+          <h4
+            class="MuiTypography-root MuiTypography-h4"
+          >
+            What are you?
+          </h4>
+        </div>
+        <div
+          class="makeStyles-container-4"
         >
           <div
-            class="makeStyles-container-35"
+            class="makeStyles-button-6"
           >
-            <h4
-              class="MuiTypography-root MuiTypography-h4"
-            >
-              Rider Info
-            </h4>
-            <h5
-              class="MuiTypography-root MuiTypography-h5"
-            >
-              Email
-            </h5>
-            <input
-              id="email-input"
-              name="email"
-              type="text"
-              value="email"
-            />
-            <h5
-              class="MuiTypography-root MuiTypography-h5"
-            >
-              Password
-            </h5>
-            <input
-              id="password-input"
-              name="password"
-              type="password"
-              value="password"
-            />
-            <h5
-              class="MuiTypography-root MuiTypography-h5"
-            >
-              Password Confirm
-            </h5>
-            <input
-              id="password-confirmation-input"
-              name="passwordConfirmation"
-              type="password"
-              value="password"
-            />
+            I am a Rider
+          </div>
+          <div
+            class="makeStyles-button-6"
+          >
+            I am a Driver
+          </div>
+        </div>
+        <div
+          class="makeStyles-container-4"
+        >
+          <div
+            class="makeStyles-whiteBox-38"
+          >
             <div
-              class="makeStyles-button-37"
-              fullwidth="false"
-              variant="contained"
+              class="makeStyles-container-37"
             >
-              Confirm
+              <h4
+                class="MuiTypography-root MuiTypography-h4"
+              >
+                Rider Info
+              </h4>
+              <h5
+                class="MuiTypography-root MuiTypography-h5"
+              >
+                Email
+              </h5>
+              <input
+                id="email-input"
+                name="email"
+                type="text"
+                value="email"
+              />
+              <h5
+                class="MuiTypography-root MuiTypography-h5"
+              >
+                Password
+              </h5>
+              <input
+                id="password-input"
+                name="password"
+                type="password"
+                value="password"
+              />
+              <h5
+                class="MuiTypography-root MuiTypography-h5"
+              >
+                Password Confirm
+              </h5>
+              <input
+                id="password-confirmation-input"
+                name="passwordConfirmation"
+                type="password"
+                value="password"
+              />
+              <div
+                class="makeStyles-button-39"
+                fullwidth="false"
+                variant="contained"
+              >
+                Confirm
+              </div>
             </div>
           </div>
         </div>
