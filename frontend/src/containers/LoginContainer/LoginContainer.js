@@ -71,12 +71,9 @@ function LoginContainer({ history }) {
         setLoading(false);
       } else {
         dispatch(login({ email, password }));
-        if (authError) {
-          window.alert('Email or password is wrong.');
-        }
       }
     },
-    [dispatch, loginInfo, authError],
+    [dispatch, loginInfo],
   );
 
   const onClickRegister = useCallback(() => {
@@ -93,6 +90,7 @@ function LoginContainer({ history }) {
 
   useEffect(() => {
     if (authError) {
+      window.alert('Email or password is wrong.');
       setLoading(false);
     }
     if (auth) {
