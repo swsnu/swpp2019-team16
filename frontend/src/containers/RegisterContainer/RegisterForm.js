@@ -91,9 +91,9 @@ function RegisterForm({ history }) {
     }
   }, [dispatch, form]);
 
-  useEffect(() => {
-    dispatch(authNull());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(authNull());
+  // }, [dispatch]);
 
   useEffect(() => {
     dispatch(initializeForm('register'));
