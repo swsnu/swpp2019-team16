@@ -11,7 +11,7 @@ import Button from '../../common/Button';
 import { UserPropsTypes } from '../../../types/user';
 import { Typography } from '@material-ui/core';
 
-const INITIAL_TIME_LEFT = 1000;
+const INITIAL_TIME_LEFT = 10000;
 
 const useStyles = makeStyles({
   root: {

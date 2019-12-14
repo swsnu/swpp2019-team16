@@ -47,12 +47,12 @@ describe('<LoginContainer />', () => {
       state,
     );
     const fetchedActions = store.getActions();
-    expect(fetchedActions.length).toBe(2);
+    expect(fetchedActions.length).toBe(1);
     expect(fetchedActions[0]).toStrictEqual({
-      type: 'auth/AUTH_NULL',
+      payload: 'login',
+      type: 'auth/INITIALIZE_FORM',
     });
   });
-
   it('should fetch loginInfo from store', () => {
     const _initialState = {
       ...state,
@@ -91,13 +91,16 @@ describe('<LoginContainer />', () => {
       },
     });
     const fetchedActions = store.getActions();
-    expect(fetchedActions.length).toBe(3);
+    expect(fetchedActions.length).toBe(2);
     expect(fetchedActions[1]).toStrictEqual({
-      payload: 'login',
-      type: 'auth/INITIALIZE_FORM',
+      payload: {
+        form: 'login',
+        key: 'input-form',
+        value: 'WHOAMI',
+      },
+      type: 'auth/CHANGE_FIELD',
     });
   });
-
   it('should show alert window when email is empty', () => {
     const alertSpy = jest.spyOn(window, 'alert').mockImplementation(message => {
       expect(message).toEqual('Email and Password must not be empty.');
@@ -193,13 +196,15 @@ describe('<LoginContainer />', () => {
     fireEvent.click(getByText('login'));
 
     const fetchedActions = store.getActions();
-    expect(fetchedActions.length).toBe(3);
+    expect(fetchedActions.length).toBe(2);
     expect(fetchedActions[1]).toStrictEqual({
-      payload: 'login',
-      type: 'auth/INITIALIZE_FORM',
+      payload: {
+        email: 'zeroFruit@gmail.com',
+        password: 'password',
+      },
+      type: 'auth/LOGIN',
     });
   });
-
   it('should redirect to /register when click register button', async () => {
     const MockRegisterPage = () => <div>MockRegisterPage</div>;
     const { getByText } = renderWithRedux(
