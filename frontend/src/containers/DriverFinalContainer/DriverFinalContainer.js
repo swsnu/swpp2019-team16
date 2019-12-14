@@ -16,7 +16,7 @@ function DriverFinalContainer({ history }) {
       history.push('/requestcall');
     }, [history],
   );
-/*
+
   if (!user) {
     return <div>we are loading user...</div>;
   }
@@ -32,15 +32,6 @@ function DriverFinalContainer({ history }) {
       onClickGoToMain={onClickGoToMain}
     />
   );
-  */
- return (
-  <DriverFinal
-    user={{point:1000}}
-    group={{totalCost:5000}}
-    onClickGoToMain={onClickGoToMain}
-  />
-);
-
 }
 
 export default withRouter(DriverFinalContainer);

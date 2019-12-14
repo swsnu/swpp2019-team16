@@ -17,7 +17,6 @@ function DriverDetailContainer({ history }) {
 
   const onClickConfirm = useCallback(
     ({ userId, groupId, totalCost }) => {
-      //var totalCost = Math.floor(totalCost * 1.2 * 0.01) * 100;
       var point = user.point + Math.floor(totalCost * 1.2 * 0.01) * 100;
       dispatch(confirmCost({ groupId, totalCost }));
       dispatch(updatePoint({ userId, point }));
@@ -25,7 +24,7 @@ function DriverDetailContainer({ history }) {
     },
     [dispatch, user, history],
   );
-/*
+
   if (!user) {
     return <div>we are loading user...</div>;
   }
@@ -37,13 +36,6 @@ function DriverDetailContainer({ history }) {
   return (
     <DriverDetail user={user} group={group} onClickConfirm={onClickConfirm} />
   );
-  */
- return(
-   <DriverDetail
-    user={{id:1}}
-    group={{groupId:1}}
-   />
- );
 }
 
 export default withRouter(DriverDetailContainer);

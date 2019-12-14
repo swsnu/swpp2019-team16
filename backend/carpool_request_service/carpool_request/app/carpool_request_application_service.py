@@ -23,10 +23,10 @@ class CarpoolRequestApplicationService():
             .filter(from_location=result.from_location)\
             .filter(to_location=result.to_location)
 
-        if len(same_location_requests) == 4:
+        if len(same_location_requests) == 2:
             target_request = same_location_requests
             rider_id_list = []
-            for i in range(4):
+            for i in range(len(same_location_requests)):
                 rider_id_list.append(target_request.values()[i]['rider_id'])
             target_request.delete()
             command = GroupCreateCommand(
