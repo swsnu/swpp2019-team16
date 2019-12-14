@@ -24,7 +24,7 @@ function DriverDetailContainer({ history }) {
     },
     [dispatch, user, history],
   );
-
+/*
   if (!user) {
     return <div>we are loading user...</div>;
   }
@@ -36,6 +36,13 @@ function DriverDetailContainer({ history }) {
   return (
     <DriverDetail user={user} group={group} onClickConfirm={onClickConfirm} />
   );
+  */
+ return(
+   <DriverDetail
+    user={{id:1}}
+    group={{groupId:1}}
+   />
+ );
 }
 
 export default withRouter(DriverDetailContainer);
