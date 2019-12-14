@@ -16,7 +16,10 @@ from backend.common.messaging.infra.redis.redis_message_publisher \
     import RedisMessagePublisher
 from backend.common.rpc.infra.adapter.redis.redis_rpc_client \
     import RedisRpcClient
-
+from backend.common.command.driver_go_taxi_command import \
+    DRIVER_GO_TAXI_COMMAND, DriverGoTaxiCommand
+from backend.common.command.rider_on_taxi_command import \
+    RIDER_ON_TAXI_COMMAND, RiderOnTaxiCommand
 
 """
 TODO: add exception controller
@@ -68,8 +71,9 @@ def __point_user(request, id):
         return HttpResponseBadRequest
     try:
         body = json.loads(request.body.decode())
-        point = body['point']
-        print(point)
+        print('body>>', body)
+        point = int(body['point'])
+        print('point>>', point)
     except(KeyError, JSONDecodeError) as e:
         return HttpResponseBadRequest(e)
     command = UserPointUpdateCommand(user_id=user.id, point=point)
@@ -132,6 +136,43 @@ def __logout_user(request):
         return HttpResponse(status=204)
     else:
         return HttpResponse(status=401)
+
+
+def rider_on_taxi(request, rider_id):
+    if request.method == 'PUT':
+        return __rider_on_taxi(rider_id)
+    else:
+        return HttpResponseNotAllowed(['PUT'])
+
+
+def __rider_on_taxi(rider_id):
+    rpc_response = RedisRpcClient().call(
+        RIDER_ON_TAXI_COMMAND,
+        RiderOnTaxiCommand(rider_id=rider_id)
+    )
+    print('[UserEndpoint] rider_on_taxi rpc_response: {}'.format(rpc_response))
+    if type(rpc_response.result) == ValueError:
+        return HttpResponse(status=500)
+    return HttpResponse(status=200)
+
+
+def driver_go_taxi(request, driver_id):
+    if request.method == 'PUT':
+        return __driver_go_taxi(driver_id=driver_id)
+    else:
+        return HttpResponseNotAllowed(['PUT'])
+
+
+def __driver_go_taxi(driver_id):
+    print('driver_go_taxi', driver_id)
+    rpc_response = RedisRpcClient().call(
+        DRIVER_GO_TAXI_COMMAND,
+        DriverGoTaxiCommand(driver_id=driver_id)
+    )
+    print('[UserEndpoint] driver_go_taxi rpc_response: {}'.format(rpc_response))
+    if type(rpc_response.result) == ValueError:
+        return HttpResponse(status=500)
+    return HttpResponse(status=200)
 
 
 @ensure_csrf_cookie

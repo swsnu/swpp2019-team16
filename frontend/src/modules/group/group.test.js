@@ -302,6 +302,7 @@ describe('group', () => {
             },
           ),
         ).toStrictEqual({
+          costConfirmed: true,
           group: { id: 'TEST_REQUEST' },
           error: null,
         });

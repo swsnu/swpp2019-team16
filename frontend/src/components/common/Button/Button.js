@@ -88,6 +88,7 @@ ButtonMaterial.propTypes = {
   color: PropTypes.oneOf(['primary', 'secondary']),
   backgroundColor: PropTypes.oneOf(['primary', 'secondary']),
   size: PropTypes.oneOf(['small', 'medium', 'large']),
+  disabled: PropTypes.bool,
   onClick: PropTypes.func,
   href: PropTypes.string,
   fullWidth: PropTypes.bool,
@@ -101,11 +102,18 @@ function ButtonMaterial({
   size = 'medium',
   disableShadow = false,
   fullWidth = false,
+  disabled = false,
   onClick = () => {},
   href,
   endIcon,
 }) {
-  const styles = useStyles({ size, color, backgroundColor, disableShadow });
+  const styles = useStyles({
+    size,
+    color,
+    backgroundColor,
+    disableShadow,
+    disabled,
+  });
   return (
     <Button
       classes={{
@@ -113,6 +121,7 @@ function ButtonMaterial({
         contained: styles.contained,
         text: styles.text,
       }}
+      disabled={disabled}
       variant={variant}
       onClick={onClick}
       fullWidth={fullWidth}

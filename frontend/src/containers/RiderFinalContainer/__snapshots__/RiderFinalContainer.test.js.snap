@@ -2,8 +2,42 @@
 
 exports[`<RiderFinalContainer /> SHOULD match with snapshot 1`] = `
 <div>
-  <div>
-    There is no group...
+  <div
+    class="makeStyles-root-1"
+  >
+    <div
+      class="makeStyles-whiteBox-3"
+    >
+      <div
+        class="makeStyles-container-2"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body1"
+        >
+          TotalCost is ₩
+          0
+        </p>
+        <p
+          class="MuiTypography-root MuiTypography-body1"
+        >
+          Your fee ₩
+          0
+        </p>
+        <p
+          class="MuiTypography-root MuiTypography-body1"
+        >
+          You saved ₩
+          0
+        </p>
+        <div
+          class="makeStyles-button-4"
+          fullwidth="false"
+          variant="contained"
+        >
+          Go To Main
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;

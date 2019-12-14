@@ -6,7 +6,12 @@ import { MemoryRouter, Route } from 'react-router-dom';
 describe('<DriverDetailContainer />', () => {
   const initialState = {
     user: {
-      user: { id: 1 },
+      user: {
+        id: 1,
+        user: {
+          id: 2,
+        },
+      },
     },
     group: {
       group: { groupId: 1 },

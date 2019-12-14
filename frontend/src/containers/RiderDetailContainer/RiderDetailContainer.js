@@ -30,25 +30,24 @@ function RiderDetailContainer({ history }) {
         dispatch(
           groupCostUpdated({
             groupId: parsed._group_id,
-            totalCost: parsed._total_cost,
+            cost: parsed._total_cost,
             riderCost: parsed._rider_cost,
           }),
         );
         dispatch(
           updatePoint({
             userId: user.user.id,
-            point: user.point - parsed._rider_cost,
+            point: user.user.point - parsed._rider_cost,
           }),
         );
         history.push('/riderfinal');
       });
 
       return () => {
-        dispatch(unloadGroup());
         stream.cancel();
       };
     }
-  }, [dispatch, user, history]);
+  }, [dispatch, history]);
 
   useEffect(() => {
     if (!user) {

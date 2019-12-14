@@ -13,18 +13,19 @@ const useStyles = makeStyles({
 Map.propTypes = {
   width: PropTypes.string.isRequired,
   height: PropTypes.string.isRequired,
-  children: PropTypes.element.isRequired,
+  children: PropTypes.node.isRequired,
   center: PropTypes.shape({
     lat: PropTypes.number.isRequired,
     lng: PropTypes.number.isRequired,
   }).isRequired,
+  zoom: PropTypes.number,
 };
 
-function Map({ width, height, children, center }) {
+function Map({ width, height, children, center, zoom = 17 }) {
   const styles = useStyles({ width, height });
   return (
     <div className={styles.root}>
-      <GoogleMap center={center} defaultZoom={17}>
+      <GoogleMap center={center} defaultZoom={zoom}>
         {children}
       </GoogleMap>
     </div>

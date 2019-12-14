@@ -1,6 +1,7 @@
 import logging
 
 from django.contrib.auth import get_user_model
+from django.core.exceptions import ObjectDoesNotExist
 
 from backend.user_service.user.domain.vehicle import Vehicle
 from backend.user_service.user.domain.driver import Driver, DriverSerializer
@@ -12,7 +13,8 @@ from backend.common.messaging.infra.redis.redis_message_publisher \
 from backend.carpool_request_service.carpool_request.domain.carpool_request \
     import CarpoolRequest
 from backend.user_service.user.domain.user import UserSerializer
-
+from backend.common.event.rider_on_taxi_event import RiderOnTaxiEvent
+from backend.common.event.driver_go_taxi_event import DriverGoTaxiEvent
 
 logger = logging.getLogger(__name__)
 
@@ -49,16 +51,16 @@ class UserApplicationService():
 
     def _create_rider_if_not_exist(self, user_id):
         if len(Rider.objects.filter(user_id=user_id)) == 0:
-            rider = Rider.objects.create(user_id=user_id, status="IDLE");
-            return RiderSerializer(rider).data;
+            rider = Rider.objects.create(user_id=user_id, status="IDLE")
+            return RiderSerializer(rider).data
 
         return RiderSerializer(Rider.objects.get(user_id=user_id)).data
 
     def _create_driver_if_not_exist(self, user_id):
         if len(Driver.objects.filter(user_id=user_id)) == 0:
             driver = Driver.objects.create(user_id=user_id, status="IDLE")
-            return DriverSerializer(driver).data;
-            
+            return DriverSerializer(driver).data
+
         return DriverSerializer(Driver.objects.get(user_id=user_id)).data
 
     def logout(self, user_id):
@@ -77,3 +79,35 @@ class UserApplicationService():
         user.point = point
         user.save()
         return UserSerializer(user).data
+
+    def rider_on_taxi(self, rider_id):
+        try:
+            rider = Rider.objects.get(pk=rider_id)
+        except ObjectDoesNotExist:
+            return ValueError('rider does not exist: {}'.format(rider_id))
+
+        rider.status = 'ON_TAXI'
+        rider.save()
+        result = RiderSerializer(rider).data
+        RedisMessagePublisher().publish_message(RiderOnTaxiEvent(
+            group_id=rider.group.id,
+            rider=result
+        ))
+        print('[UserService] rider on taxi: {}'.format(rider))
+        return result
+
+    def driver_go_taxi(self, driver_id):
+        try:
+            driver = Driver.objects.get(pk=driver_id)
+        except ObjectDoesNotExist:
+            return ValueError('drider does not exist: {}'.format(driver_id))
+
+        driver.status = 'DRIVING'
+        driver.save()
+        result = DriverSerializer(driver).data
+        RedisMessagePublisher().publish_message(DriverGoTaxiEvent(
+            group_id=driver.group.id,
+            driver=result
+        ))
+        print('[UserService] driver on taxi: {}'.format(driver))
+        return result

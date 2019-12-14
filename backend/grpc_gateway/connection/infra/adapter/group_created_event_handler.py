@@ -39,6 +39,8 @@ class GroupCreatedEventHandler(implements(MessageHandler)):
         target = target.union(
             _get_all_driver_user_id_list()
         )
+        print('GroupCreatedEventHandler.target', target)
+        print('GroupCreatedEventHandler.message', message)
         self.conn.SendMessage(pb.Message(
             id=shortuuid.uuid(),
             target=list(target),

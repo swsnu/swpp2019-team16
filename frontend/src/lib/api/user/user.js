@@ -7,3 +7,11 @@ export function get({ id }) {
 export function updatePoint({ userId, point }) {
   return client.put(`/api/v1/user/${userId}`, { point });
 }
+
+export function riderOnTaxi({ riderId }) {
+  return client.put(`/api/v1/user/taxi/rider/${riderId}`);
+}
+
+export function driverGoTaxi({ driverId }) {
+  return client.put(`/api/v1/user/taxi/driver/${driverId}`);
+}

@@ -59,9 +59,8 @@ exports[`<DriverFinalPage /> SHOULD match with snapshot 1`] = `
           <h3
             class="MuiTypography-root MuiTypography-h3"
           >
-            Total Earning: 
-            NaN
-            ₩
+            Total Earning: ₩
+            6000
           </h3>
         </div>
         <div
@@ -70,9 +69,8 @@ exports[`<DriverFinalPage /> SHOULD match with snapshot 1`] = `
           <h3
             class="MuiTypography-root MuiTypography-h3"
           >
-            Current Point: 
+            Current Point: ₩
             50000
-            ₩
           </h3>
         </div>
         <div
@@ -81,9 +79,9 @@ exports[`<DriverFinalPage /> SHOULD match with snapshot 1`] = `
           <h3
             class="MuiTypography-root MuiTypography-h3"
           >
-            You earned 
-            NaN
-            ₩ more!
+            You earned ₩
+            1000
+             more!
           </h3>
         </div>
         <div

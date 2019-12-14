@@ -6,100 +6,165 @@ exports[`RequestCall /> SHOULD match with snapshot WHEN all data in 1`] = `
     class="makeStyles-root-1"
   >
     <div
-      class="makeStyles-whiteBox-6"
+      class="makeStyles-title-2"
     >
-      <div
-        class="makeStyles-row-3"
+      <h2
+        class="MuiTypography-root MuiTypography-h2"
+        title="There's new carpool group!"
       >
-        <div
-          class="makeStyles-title-2"
+        There's new carpool group!
+      </h2>
+    </div>
+    <div>
+      <div>
+        <label
+          class="MuiFormControlLabel-root"
+          data-testid="STT Mode"
         >
-          <h3
-            class="MuiTypography-root MuiTypography-h3"
-          >
-            Request Call
-          </h3>
-        </div>
-        <div
-          class="makeStyles-checkbox-5"
-        >
-          <div>
-            <label
-              class="MuiFormControlLabel-root"
-              data-testid="STT Mode"
-            >
-              <span
-                aria-disabled="false"
-                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-51 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
-              >
-                <span
-                  class="MuiIconButton-label"
-                >
-                  <input
-                    class="PrivateSwitchBase-input-54"
-                    data-indeterminate="false"
-                    name="STT"
-                    type="checkbox"
-                    value="STT Mode"
-                  />
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root"
-                    focusable="false"
-                    role="presentation"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
-                    />
-                  </svg>
-                </span>
-                <span
-                  class="MuiTouchRipple-root"
-                />
-              </span>
-              <span
-                class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
-              >
-                STT Mode
-              </span>
-            </label>
-          </div>
-        </div>
-      </div>
-      <div
-        class="makeStyles-groupinfo-4"
-      >
-        <p
-          class="MuiTypography-root MuiTypography-body1"
-        >
-          From: 
-          from
-        </p>
-        <p
-          class="MuiTypography-root MuiTypography-body1"
-        >
-          To: 
-          to
-        </p>
-        <div
-          class="makeStyles-content-8"
-        >
-          <button
-            class="MuiButtonBase-root MuiButton-root makeStyles-root-76 makeStyles-root-79 MuiButton-contained makeStyles-contained-77 makeStyles-contained-80 MuiButton-contained makeStyles-contained-77 makeStyles-contained-80"
-            tabindex="0"
-            type="button"
+          <span
+            aria-disabled="false"
+            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-48 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
           >
             <span
-              class="MuiButton-label"
+              class="MuiIconButton-label"
             >
-              Accept the Request!
+              <input
+                class="PrivateSwitchBase-input-51"
+                data-indeterminate="false"
+                name="STT"
+                type="checkbox"
+                value="STT Mode"
+              />
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                />
+              </svg>
             </span>
             <span
               class="MuiTouchRipple-root"
             />
-          </button>
+          </span>
+          <span
+            class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+          >
+            STT Mode
+          </span>
+        </label>
+      </div>
+    </div>
+    <div>
+      <div
+        class="makeStyles-map-3"
+      >
+        <div
+          class="makeStyles-root-73 makeStyles-root-74"
+        >
+          <div
+            style="width: 100%; height: 100%; margin: 0px; padding: 0px; position: relative;"
+          >
+            <div
+              style="width: 100%; height: 100%; left: 0px; top: 0px; margin: 0px; padding: 0px; position: absolute;"
+            />
+            <div
+              style="width: 50%; height: 50%; left: 50%; top: 50%; margin: 0px; padding: 0px; position: absolute;"
+            >
+              <div
+                style="width: 100%; height: 100%; left: 0px; top: 0px; margin: 0px; padding: 0px; position: absolute;"
+              >
+                <div
+                  style="width: 0px; height: 0px; left: 0px; top: 0px; background-color: transparent; position: absolute;"
+                >
+                  <button
+                    class="MuiButtonBase-root MuiIconButton-root makeStyles-root-75"
+                    tabindex="0"
+                    type="button"
+                  >
+                    <span
+                      class="MuiIconButton-label"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root makeStyles-icon-76 MuiSvgIcon-colorSecondary"
+                        focusable="false"
+                        role="presentation"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M12 2c-4.97 0-9 4.03-9 9 0 4.17 2.84 7.67 6.69 8.69L12 22l2.31-2.31C18.16 18.67 21 15.17 21 11c0-4.97-4.03-9-9-9zm0 2c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.3c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"
+                        />
+                      </svg>
+                    </span>
+                    <span
+                      class="MuiTouchRipple-root"
+                    />
+                  </button>
+                </div>
+                <div
+                  style="width: 0px; height: 0px; left: 221.85537991020828px; top: 91.11249785777181px; background-color: transparent; position: absolute;"
+                >
+                  <button
+                    class="MuiButtonBase-root MuiIconButton-root makeStyles-root-75"
+                    tabindex="0"
+                    type="button"
+                  >
+                    <span
+                      class="MuiIconButton-label"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root makeStyles-icon-76 MuiSvgIcon-colorSecondary"
+                        focusable="false"
+                        role="presentation"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M12 2c-4.97 0-9 4.03-9 9 0 4.17 2.84 7.67 6.69 8.69L12 22l2.31-2.31C18.16 18.67 21 15.17 21 11c0-4.97-4.03-9-9-9zm0 2c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.3c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"
+                        />
+                      </svg>
+                    </span>
+                    <span
+                      class="MuiTouchRipple-root"
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+      <div
+        class="makeStyles-location-4"
+      >
+        <h3
+          class="MuiTypography-root MuiTypography-h3"
+        >
+           ~ 
+        </h3>
+      </div>
+      <div
+        class="makeStyles-button-5"
+      >
+        <button
+          class="MuiButtonBase-root MuiButton-root makeStyles-root-77 makeStyles-root-80 MuiButton-contained makeStyles-contained-78 makeStyles-contained-81 MuiButton-contained makeStyles-contained-78 makeStyles-contained-81"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            Accept request
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
       </div>
     </div>
   </div>

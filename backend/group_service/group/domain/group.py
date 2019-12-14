@@ -35,4 +35,4 @@ class GroupSerializer(serializers.ModelSerializer):
     class Meta:
         model = Group
         fields = ('id', 'driver', 'from_location', 'to_location', 'cost', 'departure')
-        read_ony_fields = ('from_location', 'to_location', 'cost', 'departure')
+        read_ony_fields = ('from_location', 'to_location', 'departure')

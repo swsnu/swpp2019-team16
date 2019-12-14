@@ -30,7 +30,6 @@ function CarpoolRequestSectionContainer({ history }) {
 
   useEffect(() => {
     if (!user) {
-      console.log('User not exist, should login first!');
       history.push('/login');
     }
   }, [history, user]);

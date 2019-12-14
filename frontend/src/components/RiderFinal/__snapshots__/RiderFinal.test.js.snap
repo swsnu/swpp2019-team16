@@ -14,18 +14,18 @@ exports[`<RiderFinal /> SHOULD match with snapshot 1`] = `
         <p
           class="MuiTypography-root MuiTypography-body1"
         >
-          TotalCost is 
+          TotalCost is ₩
           100
         </p>
         <p
           class="MuiTypography-root MuiTypography-body1"
         >
-          Your fee 
+          Your fee ₩
         </p>
         <p
           class="MuiTypography-root MuiTypography-body1"
         >
-          You saved 
+          You saved ₩
           NaN
         </p>
         <div
