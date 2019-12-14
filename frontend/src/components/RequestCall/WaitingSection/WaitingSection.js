@@ -7,11 +7,7 @@ const useStyles = makeStyles({
 
 function WaitingSection() {
   const styles = useStyles();
-  return (
-    <div className={styles.root}>
-      Waiting for group to be matched...
-    </div>
-  );
-};
+  return <div className={styles.root}>Waiting for group to be matched...</div>;
+}
 
 export default WaitingSection;

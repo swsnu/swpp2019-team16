@@ -21,49 +21,51 @@ const useStyles = makeStyles({
 
 RiderList.propTypes = {
   riders: PropTypes.arrayOf(UserPropsTypes),
-  onTaxiRidersList: PropTypes.arrayOf(PropTypes.shape({
-    riderId: PropTypes.number,
-  })),
+  onTaxiRidersList: PropTypes.arrayOf(
+    PropTypes.shape({
+      riderId: PropTypes.number,
+    }),
+  ),
 };
 function RiderList({ riders, onTaxiRidersList }) {
-
   const classes = useStyles();
 
   return (
     <List dense className={classes.root}>
-      {riders && riders.map(rider => {
-        return (
-          <ListItem key={rider.user.id} button>
-            <ListItemAvatar>
-              <AccountCircle />
-            </ListItemAvatar>
-            <ListItemText
-              id={rider.user.id}
-              primary={(
-                <Typography variant={'h4'}>
-                  {rider.user.email}
-                </Typography>
-              )}
-            />
-            <ListItemSecondaryAction>
-              <Checkbox
-                edge="end"
-                onChange={() => {}}
-                checked={
-                  onTaxiRidersList && onTaxiRidersList
-                    .map(rider => rider.riderId)
-                    .includes(rider.id)
-                }
-                disabled={
-                  onTaxiRidersList && !(onTaxiRidersList
-                    .map(rider => rider.riderId)
-                    .includes(rider.id))
+      {riders &&
+        riders.map(rider => {
+          return (
+            <ListItem key={rider.user.id} button>
+              <ListItemAvatar>
+                <AccountCircle />
+              </ListItemAvatar>
+              <ListItemText
+                id={rider.user.id}
+                primary={
+                  <Typography variant={'h4'}>{rider.user.email}</Typography>
                 }
               />
-            </ListItemSecondaryAction>
-          </ListItem>
-        );
-      })}
+              <ListItemSecondaryAction>
+                <Checkbox
+                  edge="end"
+                  onChange={() => {}}
+                  checked={
+                    onTaxiRidersList &&
+                    onTaxiRidersList
+                      .map(rider => rider.riderId)
+                      .includes(rider.id)
+                  }
+                  disabled={
+                    onTaxiRidersList &&
+                    !onTaxiRidersList
+                      .map(rider => rider.riderId)
+                      .includes(rider.id)
+                  }
+                />
+              </ListItemSecondaryAction>
+            </ListItem>
+          );
+        })}
     </List>
   );
 }

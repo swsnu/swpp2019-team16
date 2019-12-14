@@ -74,9 +74,6 @@ def __update_cost(request, group_id):
     # TODO: check KeyError
     command = GroupCostUpdateCommand(cost=body['totalCost'], group_id=group_id)
 
-    result = RedisRpcClient().call(GROUP_COST_UPDATE_COMMAND, command)
-    data = {'jsonrpc': result.jsonrpc,
-            'id': result.id, 'result': result.result}
-
+    rpc_response = RedisRpcClient().call(GROUP_COST_UPDATE_COMMAND, command)
     # TODO: handling exception
-    return with_json_response(status=204, data=data)
+    return JsonResponse(data=rpc_response.result, status=200, safe=False)

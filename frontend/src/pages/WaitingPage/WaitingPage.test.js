@@ -9,7 +9,7 @@ import { mockGroup } from '../../types/__mock__/group';
 describe('<WaitingPage />', () => {
   const initialState = {
     user: {
-      user: mockRider
+      user: mockRider,
     },
     group: {
       group: mockGroup,

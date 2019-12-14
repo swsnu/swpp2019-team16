@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-export const mockGroup = {
-  groupId: 1,
-  from: 'from',
-  to: 'to',
-};
-=======
 import { createMockRider, mockDriver } from './user';
 
 export const mockGroup = {
@@ -16,6 +9,5 @@ export const mockGroup = {
     createMockRider(3, 1, 'c@gmail.com'),
   ],
   fromLocation: 'A',
-  toLocation : 'B',
+  toLocation: 'B',
 };
->>>>>>> feat: implement group onTaxi/goTaxi features

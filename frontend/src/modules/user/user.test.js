@@ -74,7 +74,15 @@ describe('user', () => {
             },
           ),
         ).toStrictEqual({
-          user: { id: 'TEST_USER', point: 1234 },
+          pointUpdated: true,
+          user: {
+            id: 'TEST_USER',
+            point: 1234,
+            user: {
+              id: 'TEST_USER',
+              point: 1234,
+            },
+          },
           updatePointError: null,
         });
       });

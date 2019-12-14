@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { withRouter, useHistory } from 'react-router-dom';
 import WaitingSection from '../../components/Waiting/WaitingSection';
 import * as grpcClient from '../../lib/grpc/client';
-import { GROUP_UPDATED_EVENT } from '../../types/event';
+import { GROUP_DRIVER_UPDATED_EVENT } from '../../types/event';
 import { groupUpdated } from '../../modules/group';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -21,7 +21,7 @@ function WaitingContainer() {
       stream.on('data', message => {
         const parsed = JSON.parse(message.getData());
         console.log('WaitingContainer', parsed);
-        if (parsed._type_name !== GROUP_UPDATED_EVENT) {
+        if (parsed._type_name !== GROUP_DRIVER_UPDATED_EVENT) {
           return;
         }
         dispatch(

@@ -11,7 +11,7 @@ import Button from '../../common/Button';
 import { UserPropsTypes } from '../../../types/user';
 import { Typography } from '@material-ui/core';
 
-const INITIAL_TIME_LEFT = 10000;
+const INITIAL_TIME_LEFT = 1000;
 
 const useStyles = makeStyles({
   root: {
@@ -59,26 +59,28 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-  }
+  },
 });
 
 UserGroupSection.propTypes = {
   user: UserPropsTypes.isRequired,
   group: GroupPropTypes.isRequired,
-  onTaxiRidersList: PropTypes.arrayOf(PropTypes.shape({
-    riderId: PropTypes.number,
-  })),
+  onTaxiRidersList: PropTypes.arrayOf(
+    PropTypes.shape({
+      riderId: PropTypes.number,
+    }),
+  ),
   onClickOnTaxi: PropTypes.func.isRequired,
   onClickGoTaxi: PropTypes.func.isRequired,
 };
 
 // TODO: dynamic map pin
 function UserGroupSection({
-                            user,
-                            group,
-                            onTaxiRidersList,
-                            onClickOnTaxi = () => {},
-                            onClickGoTaxi = () => {}
+  user,
+  group,
+  onTaxiRidersList,
+  onClickOnTaxi = () => {},
+  onClickGoTaxi = () => {},
 }) {
   const [onTaxied, setOnTaxied] = useState(false);
   const [timeover, setTimeover] = useState(false);
@@ -96,34 +98,23 @@ function UserGroupSection({
           width={'100%'}
           height={'400px'}
         >
-          <MapPin
-            lat={37.480126}
-            lng={126.952436}
-          />
-          <MapPin
-            lat={37.477023}
-            lng={126.961957}
-          />
+          <MapPin lat={37.480126} lng={126.952436} />
+          <MapPin lat={37.477023} lng={126.961957} />
         </Map>
       </div>
       <div className={styles.location}>
         <div className={styles.locationTitle}>
-          <Typography variant={'h4'}>
-            We are going from
-          </Typography>
+          <Typography variant={'h4'}>We are going from</Typography>
         </div>
         <Typography variant={'h2'}>
           {group.from} ~ {group.to}
         </Typography>
       </div>
       <div className={styles.driver}>
-        <DriverInfo driver={group.driver}/>
+        <DriverInfo driver={group.driver} />
       </div>
       <div className={styles.riderList}>
-        <RiderList
-          riders={group.riders}
-          onTaxiRidersList={onTaxiRidersList}
-        />
+        <RiderList riders={group.riders} onTaxiRidersList={onTaxiRidersList} />
       </div>
       <div className={styles.timer}>
         <Timer
@@ -133,8 +124,8 @@ function UserGroupSection({
             {
               time: 0,
               callback: () => {
-                console.log('timeover!')
-                setTimeover(true)
+                console.log('timeover!');
+                setTimeover(true);
               },
             },
           ]}
@@ -147,32 +138,21 @@ function UserGroupSection({
         </Timer>
       </div>
       <div className={styles.footer}>
-        {
-          user.user.user_type === 'rider'
-            ? (
-              <Button
-                onClick={() => {
-                  setOnTaxied(true);
-                  onClickOnTaxi();
-                }}
-                disabled={onTaxied}
-              >
-                <Typography variant={'body1'}>
-                  On Taxi
-                </Typography>
-              </Button>
-            )
-            : (
-              <Button
-                onClick={onClickGoTaxi}
-                disabled={!timeover}
-              >
-                <Typography variant={'body1'}>
-                  Go
-                </Typography>
-              </Button>
-            )
-        }
+        {user.user.user_type === 'rider' ? (
+          <Button
+            onClick={() => {
+              setOnTaxied(true);
+              onClickOnTaxi();
+            }}
+            disabled={onTaxied}
+          >
+            <Typography variant={'body1'}>On Taxi</Typography>
+          </Button>
+        ) : (
+          <Button onClick={onClickGoTaxi} disabled={!timeover}>
+            <Typography variant={'body1'}>Go</Typography>
+          </Button>
+        )}
       </div>
     </div>
   );

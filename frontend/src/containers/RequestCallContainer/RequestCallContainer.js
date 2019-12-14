@@ -4,7 +4,10 @@ import * as grpcClient from '../../lib/grpc/client';
 import { groupCreated, acceptGroup, groupUpdated } from '../../modules/group';
 import { withRouter } from 'react-router-dom';
 import RequestCallSection from '../../components/RequestCall/RequestCallSection';
-import { GROUP_CREATED_EVENT, GROUP_UPDATED_EVENT } from '../../types/event';
+import {
+  GROUP_CREATED_EVENT,
+  GROUP_DRIVER_UPDATED_EVENT,
+} from '../../types/event';
 
 RequestCallContainer.propTypes = {};
 
@@ -33,7 +36,7 @@ function RequestCallContainer({ history }) {
           );
         }
 
-        if (parsed._type_name === GROUP_UPDATED_EVENT) {
+        if (parsed._type_name === GROUP_DRIVER_UPDATED_EVENT) {
           dispatch(
             groupUpdated({
               groupId: parsed._group_id,

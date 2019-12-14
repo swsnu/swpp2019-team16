@@ -11,16 +11,14 @@ function RiderFinalContainer({ history }) {
     group: group.group,
   }));
 
+  console.log('RiderFinalContainer', group);
+
   const onClickGoToMain = useCallback(() => {
     history.push('/request');
   }, [history]);
 
   if (!user) {
     return <div>we are loading user...</div>;
-  }
-
-  if (!group) {
-    return <div>There is no group...</div>;
   }
 
   return <RiderFinal group={group} onClickGoToMain={onClickGoToMain} />;

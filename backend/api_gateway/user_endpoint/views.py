@@ -71,8 +71,9 @@ def __point_user(request, id):
         return HttpResponseBadRequest
     try:
         body = json.loads(request.body.decode())
-        point = body['point']
-        print(point)
+        print('body>>', body)
+        point = int(body['point'])
+        print('point>>', point)
     except(KeyError, JSONDecodeError) as e:
         return HttpResponseBadRequest(e)
     command = UserPointUpdateCommand(user_id=user.id, point=point)

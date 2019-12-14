@@ -11,10 +11,13 @@ describe('<DriverDetailPage />', () => {
           id: 1,
         },
       },
-
       user: {
         user: {
           id: 1,
+          user: {
+            id: 2,
+            point: 50000,
+          },
         },
       },
       group: {

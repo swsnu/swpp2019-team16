@@ -13,7 +13,7 @@ jest.mock('../../../components/UserGroup/UserGroupSection', () =>
 describe('<UserGroupSectionContainer />', () => {
   const initialState = {
     user: {
-      user: mockRider
+      user: mockRider,
     },
     group: {
       group: mockGroup,

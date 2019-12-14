@@ -83,21 +83,14 @@ class GroupApplicationServiceTestCase(TestCase):
 
     @patch.object(RedisMessagePublisher, 'publish_message')
     def test_cost_update_group(self, publish_message_fn):
-        #RIDER_ID_LIST = [1, 2, 3, 4]
-        FROM_LOCATION = 'SNU Station'
-        TO_LOCATION = '301 Building'
         COST = 5000
-        RIDER_COST = math.ceil(COST / 4 / 100)*100
-        
+        RIDER_COST = math.ceil(COST *1.2 / len([1, 2, 3, 4]) / 100)*100
         result = self.group_application_service.cost_update_group(
             group_id=self.group.id,
             cost=COST)
 
         self.assertEqual(result['id'], self.group.id)
         self.assertEqual(result['cost'], COST)
-        
-        #self.assertEqual(result['total_cost'], COST)
-        #self.asserEqual(result['rider_cost'], RIDER_COST)
         
         args, kwargs = publish_message_fn.call_args
         self.assertEqual(args[0].group_id, self.group.id)

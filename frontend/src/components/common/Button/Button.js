@@ -107,7 +107,13 @@ function ButtonMaterial({
   href,
   endIcon,
 }) {
-  const styles = useStyles({ size, color, backgroundColor, disableShadow, disabled });
+  const styles = useStyles({
+    size,
+    color,
+    backgroundColor,
+    disableShadow,
+    disabled,
+  });
   return (
     <Button
       classes={{

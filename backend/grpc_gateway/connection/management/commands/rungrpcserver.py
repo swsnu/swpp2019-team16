@@ -20,15 +20,15 @@ from backend.grpc_gateway.connection.infra.adapter.\
 from backend.grpc_gateway.connection.infra.adapter.ping_command_handler \
     import PingCommandHandler
 from backend.common.command.ping_command import PING_COMMAND
-from backend.common.event.group_updated_event import GROUP_UPDATED_EVENT
-from backend.grpc_gateway.connection.infra.adapter.group_updated_event_handler \
-    import GroupUpdatedEventHandler
 from backend.grpc_gateway.connection.infra.adapter.rider_on_taxi_event_handler \
     import RiderOnTaxiEventHandler
 from backend.common.event.rider_on_taxi_event import RIDER_ON_TAXI_EVENT
 from backend.common.event.driver_go_taxi_event import DRIVER_GO_TAXI_EVENT
 from backend.grpc_gateway.connection.infra.adapter.driver_go_taxi_event_handler \
     import DriverGoTaxiEventHandler
+from backend.grpc_gateway.connection.infra.adapter.group_driver_updated_event_handler \
+    import GroupDriverUpdatedEventHandler
+from backend.common.event.group_driver_updated_event import GROUP_DRIVER_UPDATED_EVENT
 
 
 class Command(BaseCommand):
@@ -41,7 +41,7 @@ class Command(BaseCommand):
 
     group_created_event_handler = GroupCreatedEventHandler(conn=conn)
     group_cost_updated_event_handler = GroupCostUpdatedEventHandler(conn=conn)
-    group_updated_event_handler = GroupUpdatedEventHandler(conn=conn)
+    group_driver_updated_event_handler = GroupDriverUpdatedEventHandler(conn=conn)
     ping_command_handler = PingCommandHandler()
     rider_on_taxi_event_handler = RiderOnTaxiEventHandler(conn=conn)
     driver_go_taxi_event_handler = DriverGoTaxiEventHandler(conn=conn)
@@ -63,10 +63,10 @@ class Command(BaseCommand):
                 self.subscriber.subscribe_message(
                     topic=GROUP_COST_UPDATED_EVENT,
                     message_handler=self.group_cost_updated_event_handler))
-            group_updated_subscription_task = asyncio.create_task(
+            group_driver_updated_subscription_task = asyncio.create_task(
                 self.subscriber.subscribe_message(
-                    topic=GROUP_UPDATED_EVENT,
-                    message_handler=self.group_updated_event_handler))
+                    topic=GROUP_DRIVER_UPDATED_EVENT,
+                    message_handler=self.group_driver_updated_event_handler))
 
             ping_subscription_task = asyncio.create_task(
                 self.subscriber.subscribe_message(
@@ -85,10 +85,11 @@ class Command(BaseCommand):
 
             await asyncio.gather(
                 group_created_subscription_task,
-                group_updated_subscription_task,
+                group_driver_updated_subscription_task,
                 ping_subscription_task,
                 rider_on_taxi_event_task,
                 driver_go_taxi_event_task,
+                group_cost_updated_subscription_task,
             )
 
         thread = threading.Thread(target=self.grpc_server.listen)

@@ -56,7 +56,7 @@ DriverDetail.propTypes = {
 function DriverDetail({ user, group, onClickConfirm }) {
   const styles = DriverDetailStyles();
   const [totalCost, setTotalCost] = useState(0);
-  const userId = user.id;
+  const userId = user.user.id;
   const groupId = group.groupId;
 
   return (
@@ -80,7 +80,13 @@ function DriverDetail({ user, group, onClickConfirm }) {
             children="Confirm"
             variant="contained"
             fullwidth="false"
-            onClick={() => onClickConfirm({ userId, groupId, totalCost })}
+            onClick={() =>
+              onClickConfirm({
+                userId,
+                groupId,
+                totalCost: parseInt(totalCost),
+              })
+            }
           />
         </div>
       </div>

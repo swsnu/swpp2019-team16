@@ -1,2 +1,2 @@
-import DriverInfo  from './DriverInfo';
+import DriverInfo from './DriverInfo';
 export default DriverInfo;

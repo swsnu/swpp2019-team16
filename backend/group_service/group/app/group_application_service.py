@@ -65,11 +65,11 @@ class GroupApplicationService:
         group = Group.objects.get(pk=group_id)
         group.cost = cost
         group.save()
-        
+        print('cost', cost, 'group_id', group_id)
         rider_id_list = list(map(lambda rider: rider.id, \
                 Rider.objects.filter(group_id=group_id)))
-
-        rider_cost = math.ceil(cost / len(rider_id_list) / 100)*100;
+        print('rider_id_list', rider_id_list)
+        rider_cost = math.ceil(float(int(cost))*1.2 / float(len(rider_id_list)) / 100.0)*100
 
         event = GroupCostUpdatedEvent(
             group_id=group.id,

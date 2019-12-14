@@ -54,22 +54,24 @@ DriverFinal.propTypes = {
 
 function DriverFinal({ user, group, onClickGoToMain }) {
   const styles = DriverFinalStyles();
-  const earning = Math.floor((group.totalCost * 1.2) / 100) * 100;
-  const premium = earning - group.totalCost;
-  const point = user.point;
+  const earning = group
+    ? Math.floor((parseInt(group.cost) * 1.2) / 100) * 100
+    : 0;
+  const premium = group ? earning - parseInt(group.cost) : 0;
+  const point = user.user.point;
 
   return (
     <div className={styles.root}>
       <div className={styles.whiteBox}>
         <div className={styles.container}>
-          <Typography variant="h3">Total Earning: {earning}&#8361;</Typography>
+          <Typography variant="h3">Total Earning: &#8361;{earning}</Typography>
         </div>
         <div className={styles.container}>
-          <Typography variant="h3">Current Point: {point}&#8361;</Typography>
+          <Typography variant="h3">Current Point: &#8361;{point}</Typography>
         </div>
         <div className={styles.container}>
           <Typography variant="h3">
-            You earned {premium}&#8361; more!
+            You earned &#8361;{premium} more!
           </Typography>
         </div>
         <div className={styles.container}>

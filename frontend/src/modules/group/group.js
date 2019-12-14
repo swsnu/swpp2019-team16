@@ -43,6 +43,7 @@ export const GROUP_CREATED = 'group/GROUP_CREATED';
 export const GROUP_UPDATED = 'group/GROUP_UPDATED';
 export const UNLOAD_GROUP = 'group/UNLOAD_GROUP';
 export const GROUP_COST_UPDATED = 'group/GROUP_COST_UPDATED';
+export const INIT_COST_CONFIRMED = 'group/INIT_COST_CONFIRMED';
 
 export const groupCreated = createAction(
   GROUP_CREATED,
@@ -55,9 +56,10 @@ export const groupCreated = createAction(
 
 export const groupCostUpdated = createAction(
   GROUP_COST_UPDATED,
-  ({ groupId, riderCost }) => ({
+  ({ groupId, riderCost, cost }) => ({
     groupId,
     riderCost,
+    cost,
   }),
 );
 
@@ -105,6 +107,7 @@ export const confirmCost = createAction(
     totalCost,
   }),
 );
+export const initCostConfirmed = createAction(INIT_COST_CONFIRMED);
 
 export const acceptGroupSaga = createRequestSaga(
   ACCEPT_GROUP,
@@ -137,6 +140,7 @@ export function* groupSaga() {
 const initialState = {
   group: null,
   error: null,
+  costConfirmed: false,
 };
 
 const group = handleActions(
@@ -158,7 +162,10 @@ const group = handleActions(
 
     [GROUP_COST_UPDATED]: (state, { payload: group }) => ({
       ...state,
-      group: group,
+      group: {
+        ...state.group,
+        ...group,
+      },
     }),
 
     [ACCEPT_GROUP_SUCCESS]: (state, { payload: group }) => ({
@@ -212,12 +219,21 @@ const group = handleActions(
 
     [CONFIRM_COST_SUCCESS]: (state, { payload: group }) => ({
       ...state,
-      group: group,
+      group: {
+        ...state.group,
+        ...group,
+      },
+      error: null,
+      costConfirmed: true,
     }),
 
     [CONFIRM_COST_FAILURE]: (state, { payload: error }) => ({
       ...state,
       error: error,
+    }),
+    [INIT_COST_CONFIRMED]: state => ({
+      ...state,
+      costConfirmed: initialState.costConfirmed,
     }),
   },
   initialState,

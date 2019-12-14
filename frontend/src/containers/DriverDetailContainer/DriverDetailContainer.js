@@ -1,29 +1,47 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { confirmCost } from '../../modules/group';
+import { confirmCost, initCostConfirmed } from '../../modules/group';
 import { withRouter } from 'react-router-dom';
 import DriverDetail from '../../components/DriverDetail';
-import { updatePoint } from '../../modules/user';
+import { initPointUpdatedFlag, updatePoint } from '../../modules/user';
 
 DriverDetailContainer.propTypes = {};
 
 function DriverDetailContainer({ history }) {
   const dispatch = useDispatch();
 
-  const { user, group } = useSelector(({ user, group }) => ({
-    user: user.user,
-    group: group.group,
-  }));
+  const { user, group, pointUpdated, costConfirmed } = useSelector(
+    ({ user, group }) => ({
+      user: user.user,
+      pointUpdated: user.pointUpdated,
+      costConfirmed: group.costConfirmed,
+      group: group.group,
+    }),
+  );
 
   const onClickConfirm = useCallback(
     ({ userId, groupId, totalCost }) => {
-      var point = user.point + Math.floor(totalCost * 1.2 * 0.01) * 100;
+      console.log('user2222', user);
+      const point = user.user.point + Math.floor(totalCost * 1.2 * 0.01) * 100;
+      console.log('DriverDetailContainer', point);
       dispatch(confirmCost({ groupId, totalCost }));
       dispatch(updatePoint({ userId, point }));
-      history.push('/driverfinal');
     },
     [dispatch, user, history],
   );
+
+  useEffect(() => {
+    if (pointUpdated && costConfirmed) {
+      history.push('/driverfinal');
+    }
+  }, [pointUpdated, costConfirmed]);
+
+  useEffect(() => {
+    return () => {
+      dispatch(initPointUpdatedFlag());
+      dispatch(initCostConfirmed());
+    };
+  }, [dispatch]);
 
   if (!user) {
     return <div>we are loading user...</div>;

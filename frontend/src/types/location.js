@@ -62,7 +62,7 @@ export const toLocationList = [
   new Location({
     name: 'Dormitory three-way',
     coordinate: {
-      lat: 37.461211, 
+      lat: 37.461211,
       lng: 126.956347,
     },
   }),

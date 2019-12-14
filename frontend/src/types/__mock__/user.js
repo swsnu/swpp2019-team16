@@ -42,7 +42,7 @@ export const createMockRider = (id, groupId, email) => {
         plate_no: '',
       },
     },
-  }
+  };
 };
 
 export const createMockDriver = (id, groupId, email) => {
@@ -59,5 +59,5 @@ export const createMockDriver = (id, groupId, email) => {
         plate_no: '1234',
       },
     },
-  }
+  };
 };
