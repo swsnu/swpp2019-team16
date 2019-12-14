@@ -48,18 +48,30 @@ exports[`<RiderDetailPage /> SHOULD match with snapshot 1`] = `
       </div>
     </div>
     <div
-      class="sc-bwzfXH uTxCW"
+      class="makeStyles-root-63"
     >
-      <p
-        class="MuiTypography-root MuiTypography-body1"
+      <div
+        class="makeStyles-whiteBox-65"
       >
-        From: 
-      </p>
-      <p
-        class="MuiTypography-root MuiTypography-body1"
-      >
-        To: 
-      </p>
+        <div
+          class="makeStyles-container-64"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1"
+          >
+            From: 
+          </p>
+        </div>
+        <div
+          class="makeStyles-container-64"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1"
+          >
+            To: 
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </div>

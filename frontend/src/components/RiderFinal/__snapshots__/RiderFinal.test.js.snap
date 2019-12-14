@@ -3,39 +3,40 @@
 exports[`<RiderFinal /> SHOULD match with snapshot 1`] = `
 <div>
   <div
-    class="sc-bdVaJa bH"
+    class="makeStyles-root-1"
   >
-    <p
-      class="MuiTypography-root MuiTypography-body1"
+    <div
+      class="makeStyles-whiteBox-3"
     >
-      TotalCost is 
-      100
-    </p>
-    <p
-      class="MuiTypography-root MuiTypography-body1"
-    >
-      Your fee 
-    </p>
-    <p
-      class="MuiTypography-root MuiTypography-body1"
-    >
-      You saved 
-      NaN
-    </p>
-    <button
-      class="MuiButtonBase-root MuiButton-root makeStyles-root-31 makeStyles-root-34 MuiButton-contained makeStyles-contained-32 makeStyles-contained-35 MuiButton-contained makeStyles-contained-32 makeStyles-contained-35"
-      tabindex="0"
-      type="button"
-    >
-      <span
-        class="MuiButton-label"
+      <div
+        class="makeStyles-container-2"
       >
-        Go To Main
-      </span>
-      <span
-        class="MuiTouchRipple-root"
-      />
-    </button>
+        <p
+          class="MuiTypography-root MuiTypography-body1"
+        >
+          TotalCost is 
+          100
+        </p>
+        <p
+          class="MuiTypography-root MuiTypography-body1"
+        >
+          Your fee 
+        </p>
+        <p
+          class="MuiTypography-root MuiTypography-body1"
+        >
+          You saved 
+          NaN
+        </p>
+        <div
+          class="makeStyles-button-4"
+          fullwidth="false"
+          variant="contained"
+        >
+          Go To Main
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;
