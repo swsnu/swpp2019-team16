@@ -3,20 +3,32 @@
 exports[`<RiderDetail /> SHOULD match with snapshot 1`] = `
 <div>
   <div
-    class="sc-bdVaJa bDWFJH"
+    class="makeStyles-root-1"
   >
-    <p
-      class="MuiTypography-root MuiTypography-body1"
+    <div
+      class="makeStyles-whiteBox-3"
     >
-      From: 
-      from
-    </p>
-    <p
-      class="MuiTypography-root MuiTypography-body1"
-    >
-      To: 
-      to
-    </p>
+      <div
+        class="makeStyles-container-2"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body1"
+        >
+          From: 
+          from
+        </p>
+      </div>
+      <div
+        class="makeStyles-container-2"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body1"
+        >
+          To: 
+          to
+        </p>
+      </div>
+    </div>
   </div>
 </div>
 `;

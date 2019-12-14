@@ -3,34 +3,55 @@
 exports[`<DriverFinal /> SHOULD match with snapshot 1`] = `
 <div>
   <div
-    class="sc-bdVaJa bDWFJH"
+    class="makeStyles-root-1"
   >
-    <h2
-      class="MuiTypography-root MuiTypography-h2"
+    <div
+      class="makeStyles-whiteBox-3"
     >
-      Total Earning: 
-      5000
-    </h2>
-    <h2
-      class="MuiTypography-root MuiTypography-h2"
-    >
-      Current Point: 
-      50000
-    </h2>
-    <button
-      class="MuiButtonBase-root MuiButton-root makeStyles-root-31 makeStyles-root-34 MuiButton-contained makeStyles-contained-32 makeStyles-contained-35 MuiButton-contained makeStyles-contained-32 makeStyles-contained-35"
-      tabindex="0"
-      type="button"
-    >
-      <span
-        class="MuiButton-label"
+      <div
+        class="makeStyles-container-2"
       >
-        Go To Main
-      </span>
-      <span
-        class="MuiTouchRipple-root"
-      />
-    </button>
+        <h3
+          class="MuiTypography-root MuiTypography-h3"
+        >
+          Total Earning: 
+          NaN
+          ₩
+        </h3>
+      </div>
+      <div
+        class="makeStyles-container-2"
+      >
+        <h3
+          class="MuiTypography-root MuiTypography-h3"
+        >
+          Current Point: 
+          ₩
+        </h3>
+      </div>
+      <div
+        class="makeStyles-container-2"
+      >
+        <h3
+          class="MuiTypography-root MuiTypography-h3"
+        >
+          You earned 
+          NaN
+          ₩ more!
+        </h3>
+      </div>
+      <div
+        class="makeStyles-container-2"
+      >
+        <div
+          class="makeStyles-button-4"
+          fullwidth="false"
+          variant="contained"
+        >
+          Go To Main
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;

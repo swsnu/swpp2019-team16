@@ -1,8 +1,10 @@
 import React from 'react';
 import Main from '../_layouts/Main';
-//import RiderFinalContainer from '../../containers/RiderFinalContainer/RiderFinalContainer';
+import RiderFinalContainer from '../../containers/RiderFinalContainer/RiderFinalContainer';
 
 function RiderFinalPage() {
-  return <Main></Main>;
+  return <Main>
+    <RiderFinalContainer/>
+  </Main>;
 }
 export default RiderFinalPage;

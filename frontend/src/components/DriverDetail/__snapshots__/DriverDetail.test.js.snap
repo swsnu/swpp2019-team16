@@ -3,29 +3,39 @@
 exports[`<DriverDetail /> SHOULD match with snapshot 1`] = `
 <div>
   <div
-    class="sc-bdVaJa bDWFJH"
+    class="makeStyles-root-1"
   >
-    <input
-      id="total-cost-input"
-      name="TotalCost"
-      placeholder="Total Cost"
-      type="text"
-      value="0"
-    />
-    <button
-      class="MuiButtonBase-root MuiButton-root makeStyles-root-1 makeStyles-root-4 MuiButton-contained makeStyles-contained-2 makeStyles-contained-5 MuiButton-contained makeStyles-contained-2 makeStyles-contained-5"
-      tabindex="0"
-      type="button"
+    <div
+      class="makeStyles-whiteBox-3"
     >
-      <span
-        class="MuiButton-label"
+      <div
+        class="makeStyles-container-2"
       >
-        Confirm
-      </span>
-      <span
-        class="MuiTouchRipple-root"
-      />
-    </button>
+        <h2
+          class="MuiTypography-root MuiTypography-h2"
+        >
+          Confirm Taxi Fare
+        </h2>
+      </div>
+      <div
+        class="makeStyles-container-2"
+      >
+        <input
+          id="total-cost-input"
+          name="TotalCost"
+          placeholder="Total Cost"
+          type="text"
+          value="0"
+        />
+        <div
+          class="makeStyles-button-4"
+          fullwidth="false"
+          variant="contained"
+        >
+          Confirm
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;

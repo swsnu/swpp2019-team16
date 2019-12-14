@@ -17,7 +17,6 @@ function DriverDetailContainer({ history }) {
 
   const onClickConfirm = useCallback(
     ({ userId, groupId, totalCost }) => {
-      //var totalCost = Math.floor(totalCost * 1.2 * 0.01) * 100;
       var point = user.point + Math.floor(totalCost * 1.2 * 0.01) * 100;
       dispatch(confirmCost({ groupId, totalCost }));
       dispatch(updatePoint({ userId, point }));

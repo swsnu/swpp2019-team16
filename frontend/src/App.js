@@ -26,7 +26,7 @@ function App() {
         <Route component={GroupPage} path="/group" exact />
         <Route component={DetailPage} path="/detail" exact />
         <Route component={DriverDetailPage} path="/driverdetail" exact />
-        <Route component={DriverFinalPage} path="/driverdetail" exact />
+        <Route component={DriverFinalPage} path="/driverfinal" exact />
         <Route component={RiderDetailPage} path="/riderdetail" exact />
         <Route component={RiderFinalPage} path="/riderfinal" exact />
         <Route component={FinalPage} path="/final" exact />
