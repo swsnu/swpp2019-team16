@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NotFoundPage /> SHOULD match with snapshot 1`] = `
+<div>
+  <div
+    class="sc-bdVaJa bPGLpq"
+  >
+    <div
+      class="makeStyles-root-1"
+    >
+      <div
+        class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+      >
+        <h4
+          class="MuiTypography-root makeStyles-title-3 MuiTypography-h4"
+        >
+          Ya-Ta!
+        </h4>
+        <div
+          class="makeStyles-button-4"
+        >
+          LOGIN
+        </div>
+      </div>
+    </div>
+    <div
+      class="makeStyles-root-39"
+    >
+      <div
+        class="makeStyles-whiteBox-41"
+      >
+        <div
+          class="makeStyles-container-40"
+        >
+          <h1
+            class="MuiTypography-root MuiTypography-h1"
+          >
+            404
+          </h1>
+        </div>
+        <div
+          class="makeStyles-container-40"
+        >
+          <h1
+            class="MuiTypography-root MuiTypography-h1"
+          >
+            Page Not Found
+          </h1>
+        </div>
+        <div
+          class="makeStyles-container-40"
+        >
+          <h2
+            class="MuiTypography-root MuiTypography-h2"
+          >
+            This is not the page you are looking for
+          </h2>
+        </div>
+        <div
+          class="makeStyles-container-40"
+        >
+          <div
+            class="makeStyles-button-42"
+            fullwidth="false"
+            variant="contained"
+          >
+            Go Home
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

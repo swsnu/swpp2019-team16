@@ -13,6 +13,7 @@ import DriverDetailPage from './pages/DriverDetailPage/DriverDetailPage';
 import RiderDetailPage from './pages/RiderDetailPage/RiderDetailPage';
 import DriverFinalPage from './pages/DriverFinalPage/DriverFinalPage';
 import RiderFinalPage from './pages/RiderFinalPage/RiderFinalPage';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route component={RiderFinalPage} path="/riderfinal" exact />
         <Route component={FinalPage} path="/final" exact />
         <Route component={LoginPage} path="/login" exact />
+        <Route component={NotFoundPage} />
       </Switch>
     </div>
   );
