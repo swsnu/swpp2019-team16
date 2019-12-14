@@ -10,6 +10,9 @@ import FinalPage from './pages/FinalPage/FinalPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import DriverDetailPage from './pages/DriverDetailPage/DriverDetailPage'
+import RiderDetailPage from './pages/RiderDetailPage/RiderDetailPage'
+import DriverFinalPage from './pages/DriverFinalPage/DriverFinalPage'
+import RiderFinalPage from './pages/RiderFinalPage/RiderFinalPage'
 
 function App() {
   return (
@@ -23,6 +26,9 @@ function App() {
         <Route component={GroupPage} path="/group" exact />
         <Route component={DetailPage} path="/detail" exact />
         <Route component={DriverDetailPage} path="/driverdetail" exact />
+        <Route component={DriverFinalPage} path="/driverdetail" exact />
+        <Route component={RiderDetailPage} path="/riderdetail" exact />
+        <Route component={RiderFinalPage} path="/riderfinal" exact />
         <Route component={FinalPage} path="/final" exact />
         <Route component={LoginPage} path="/login" exact />
       </Switch>
