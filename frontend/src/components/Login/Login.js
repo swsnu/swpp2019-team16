@@ -1,11 +1,50 @@
 import React from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import Box from '../common/Box/Box';
-import Button from '../common/Button/Button';
 import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/styles';
+import theme from '../../lib/styles/theme';
 
-const LoginBlock = styled.div``;
+const useStyles = makeStyles({
+  root: {
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    bottom: 0,
+    right: 0,
+    backgroundColor: theme.palette.primary.main,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  container: {
+    marginTop: '25px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  whiteBox: {
+    boxShadow: '0 0 8px rgba(0, 0, 0, 0.25)',
+    padding: '2rem',
+    width: '400px',
+    background: 'white',
+    borderRadius: '2px',
+  },
+  button: {
+    background: theme.palette.primary.dark,
+    borderRadius: 5,
+    color: 'white',
+    cursor: 'pointer',
+    paddingLeft: '1rem',
+    paddingRight: '1rem',
+    paddingBottom: '0.3rem',
+    paddingTop: '0.3rem',
+    marginBottom: '10px',
+    marginTop: '10px',
+    marginLeft: '10px',
+    marginRight: '10px',
+  },
+});
 
 Login.propTypes = {
   loginInfo: PropTypes.object.isRequired,
@@ -15,11 +54,14 @@ Login.propTypes = {
 };
 
 function Login({ loginInfo, onChange, onClickLogin, onClickRegister }) {
+  const styles = useStyles();
   return (
-    <LoginBlock>
-      <Box>
-        <Typography variant="h3">Login to Ya-Ta!</Typography>
-        <Box>
+    <div className={styles.root}>
+      <div className={styles.whiteBox}>
+        <div className={styles.container}>
+          <Typography variant="h3">Login to Ya-Ta!</Typography>
+        </div>
+        <div className={styles.container}>
           <input
             type="text"
             id="email-input"
@@ -28,8 +70,8 @@ function Login({ loginInfo, onChange, onClickLogin, onClickRegister }) {
             onChange={onChange}
             value={loginInfo.email}
           />
-        </Box>
-        <Box>
+        </div>
+        <div className={styles.container}>
           <input
             type="password"
             id="password-input"
@@ -38,23 +80,25 @@ function Login({ loginInfo, onChange, onClickLogin, onClickRegister }) {
             onChange={onChange}
             value={loginInfo.password}
           />
-        </Box>
-        <Box>
-          <Button
+        </div>
+        <div className={styles.container}>
+          <div
+            className={styles.button}
             children="Login"
             variant="contained"
             fullwidth="false"
             onClick={onClickLogin}
           />
-          <Button
+          <div
+            className={styles.button}
             children="Register"
             variant="contained"
             fullwidth="false"
             onClick={onClickRegister}
           />
-        </Box>
-      </Box>
-    </LoginBlock>
+        </div>
+      </div>
+    </div>
   );
 }
 export default Login;

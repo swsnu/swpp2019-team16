@@ -3,44 +3,53 @@
 exports[`<Register /> SHOULD match with snapshot WHEN driver 1`] = `
 <div>
   <div
-    class="sc-bwzfXH uTxCW"
+    class="makeStyles-whiteBox-35"
   >
     <div
-      class="MuiBox-root MuiBox-root-82"
+      class="makeStyles-container-34"
     >
       <h4
         class="MuiTypography-root MuiTypography-h4"
       >
-        Email
+        Driver Info
       </h4>
+      <h5
+        class="MuiTypography-root MuiTypography-h5"
+      >
+        Email
+      </h5>
       <input
         id="email-input"
         name="email"
         type="text"
         value="dkim94"
       />
-      <h4
-        class="MuiTypography-root MuiTypography-h4"
+      <h5
+        class="MuiTypography-root MuiTypography-h5"
       >
         Password
-      </h4>
+      </h5>
       <input
         id="password-input"
         name="password"
         type="password"
         value="123"
       />
-      <h4
-        class="MuiTypography-root MuiTypography-h4"
+      <h5
+        class="MuiTypography-root MuiTypography-h5"
       >
         Password Confirm
-      </h4>
+      </h5>
       <input
         id="password-confirmation-input"
         name="passwordConfirmation"
         type="password"
         value=""
       />
+    </div>
+    <div
+      class="makeStyles-container-34"
+    >
       <h4
         class="MuiTypography-root MuiTypography-h4"
       >
@@ -69,22 +78,11 @@ exports[`<Register /> SHOULD match with snapshot WHEN driver 1`] = `
         value=""
       />
       <div
-        class="MuiBox-root MuiBox-root-113"
+        class="makeStyles-button-36"
+        fullwidth="false"
+        variant="contained"
       >
-        <button
-          class="MuiButtonBase-root MuiButton-root makeStyles-root-114 makeStyles-root-117 MuiButton-contained makeStyles-contained-115 makeStyles-contained-118 MuiButton-contained makeStyles-contained-115 makeStyles-contained-118"
-          tabindex="0"
-          type="button"
-        >
-          <span
-            class="MuiButton-label"
-          >
-            Confirm
-          </span>
-          <span
-            class="MuiTouchRipple-root"
-          />
-        </button>
+        Confirm
       </div>
     </div>
   </div>
@@ -94,38 +92,43 @@ exports[`<Register /> SHOULD match with snapshot WHEN driver 1`] = `
 exports[`<Register /> SHOULD match with snapshot WHEN rider 1`] = `
 <div>
   <div
-    class="sc-bdVaJa bDWFJH"
+    class="makeStyles-whiteBox-2"
   >
     <div
-      class="MuiBox-root MuiBox-root-2"
+      class="makeStyles-container-1"
     >
       <h4
         class="MuiTypography-root MuiTypography-h4"
       >
-        Email
+        Rider Info
       </h4>
+      <h5
+        class="MuiTypography-root MuiTypography-h5"
+      >
+        Email
+      </h5>
       <input
         id="email-input"
         name="email"
         type="text"
         value="dkim94"
       />
-      <h4
-        class="MuiTypography-root MuiTypography-h4"
+      <h5
+        class="MuiTypography-root MuiTypography-h5"
       >
         Password
-      </h4>
+      </h5>
       <input
         id="password-input"
         name="password"
         type="password"
         value="123"
       />
-      <h4
-        class="MuiTypography-root MuiTypography-h4"
+      <h5
+        class="MuiTypography-root MuiTypography-h5"
       >
         Password Confirm
-      </h4>
+      </h5>
       <input
         id="password-confirmation-input"
         name="passwordConfirmation"
@@ -133,22 +136,11 @@ exports[`<Register /> SHOULD match with snapshot WHEN rider 1`] = `
         value=""
       />
       <div
-        class="MuiBox-root MuiBox-root-33"
+        class="makeStyles-button-3"
+        fullwidth="false"
+        variant="contained"
       >
-        <button
-          class="MuiButtonBase-root MuiButton-root makeStyles-root-34 makeStyles-root-37 MuiButton-contained makeStyles-contained-35 makeStyles-contained-38 MuiButton-contained makeStyles-contained-35 makeStyles-contained-38"
-          tabindex="0"
-          type="button"
-        >
-          <span
-            class="MuiButton-label"
-          >
-            Confirm
-          </span>
-          <span
-            class="MuiTouchRipple-root"
-          />
-        </button>
+        Confirm
       </div>
     </div>
   </div>

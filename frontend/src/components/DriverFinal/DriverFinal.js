@@ -15,14 +15,14 @@ DriverFinal.propTypes = {
 function DriverFinal({ earning, point, onClickGoToMain }) {
   return (
     <DriverFinalBlock>
-          <Typography variant="h2">Total Earning: {earning}</Typography>
-          <Typography variant="h2">Current Point: {point}</Typography>
-          <Button
-            children="Go To Main"
-            variant="contained"
-            fullwidth="false"
-            onClick={()=>onClickGoToMain()}
-          />
+      <Typography variant="h2">Total Earning: {earning}</Typography>
+      <Typography variant="h2">Current Point: {point}</Typography>
+      <Button
+        children="Go To Main"
+        variant="contained"
+        fullwidth="false"
+        onClick={() => onClickGoToMain()}
+      />
     </DriverFinalBlock>
   );
 }

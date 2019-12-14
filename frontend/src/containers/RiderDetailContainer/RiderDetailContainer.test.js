@@ -7,11 +7,11 @@ describe('<RiderDetailContainer />', () => {
   const initialState = {
     user: {
       user: {
-        user:{id: 1},
-      }
+        user: { id: 1 },
+      },
     },
     group: {
-      group: {groupId: 1},
+      group: { groupId: 1 },
     },
   };
 

@@ -15,7 +15,7 @@ function DriverDetail({ user, group, onClickConfirm }) {
   const [totalCost, setTotalCost] = useState(0);
   const userId = user.id;
   const groupId = group.groupId;
-  
+
   return (
     <DriverDetailBlock>
       <input
@@ -31,9 +31,8 @@ function DriverDetail({ user, group, onClickConfirm }) {
         children="Confirm"
         variant="contained"
         fullwidth="false"
-        onClick={()=> onClickConfirm({userId, groupId, totalCost})}
+        onClick={() => onClickConfirm({ userId, groupId, totalCost })}
       />
-      
     </DriverDetailBlock>
   );
 }

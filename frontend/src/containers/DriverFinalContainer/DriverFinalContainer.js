@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import DriverFinal from '../../components/DriverFinal/DriverFinal'
+import DriverFinal from '../../components/DriverFinal/DriverFinal';
 
 DriverFinalContainer.propTypes = {};
 
@@ -11,11 +11,9 @@ function DriverFinalContainer({ history }) {
     group: group.group,
   }));
 
-  const onClickGoToMain = useCallback(
-    () => {
-      history.push('/requestcall');
-    }, [history],
-  );
+  const onClickGoToMain = useCallback(() => {
+    history.push('/requestcall');
+  }, [history]);
 
   if (!user) {
     return <div>we are loading user...</div>;
@@ -24,7 +22,7 @@ function DriverFinalContainer({ history }) {
   if (!group) {
     return <div>There is no group...</div>;
   }
-  
+
   return (
     <DriverFinal
       earning={group.cost}
@@ -32,7 +30,6 @@ function DriverFinalContainer({ history }) {
       onClickGoToMain={onClickGoToMain}
     />
   );
-  
 }
 
 export default withRouter(DriverFinalContainer);

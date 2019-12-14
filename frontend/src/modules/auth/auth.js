@@ -16,6 +16,10 @@ const [LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE] = createRequestActionTypes(
   'auth/LOGIN',
 );
 
+const AUTH_NULL = 'auth/AUTH_NULL';
+
+export const authNull = createAction(AUTH_NULL);
+
 export const changeField = createAction(
   CHANGE_FIELD,
   ({ form, key, value }) => ({
@@ -80,6 +84,10 @@ const auth = handleActions(
     [INITIALIZE_FORM]: (state, { payload: form }) => ({
       ...state,
       [form]: initialState[form],
+    }),
+    [AUTH_NULL]: (state, { payload: auth }) => ({
+      ...state,
+      auth: null,
     }),
     [REGISTER_SUCCESS]: (state, { payload: auth }) => ({
       ...state,

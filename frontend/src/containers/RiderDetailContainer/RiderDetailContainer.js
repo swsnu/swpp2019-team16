@@ -35,13 +35,13 @@ function RiderDetailContainer({ history }) {
           }),
         );
         dispatch(
-            updatePoint({
-                userId: user.user.id,
-                point: user.point - parsed._rider_cost,
-            }),
+          updatePoint({
+            userId: user.user.id,
+            point: user.point - parsed._rider_cost,
+          }),
         );
         history.push('/riderfinal');
-    });
+      });
 
       return () => {
         dispatch(unloadGroup());
@@ -60,12 +60,7 @@ function RiderDetailContainer({ history }) {
     return <div>Waiting for group to be matched...</div>;
   }
 
-  return (
-    <RiderDetail
-      group={group}
-    />
-  );
-
+  return <RiderDetail group={group} />;
 }
 
 export default withRouter(RiderDetailContainer);
