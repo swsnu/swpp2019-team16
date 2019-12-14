@@ -47,10 +47,9 @@ describe('<LoginContainer />', () => {
       state,
     );
     const fetchedActions = store.getActions();
-    expect(fetchedActions.length).toBe(1);
+    expect(fetchedActions.length).toBe(2);
     expect(fetchedActions[0]).toStrictEqual({
-      type: 'auth/INITIALIZE_FORM',
-      payload: 'login',
+      type: 'auth/AUTH_NULL',
     });
   });
 
@@ -92,14 +91,10 @@ describe('<LoginContainer />', () => {
       },
     });
     const fetchedActions = store.getActions();
-    expect(fetchedActions.length).toBe(2);
+    expect(fetchedActions.length).toBe(3);
     expect(fetchedActions[1]).toStrictEqual({
-      type: 'auth/CHANGE_FIELD',
-      payload: {
-        form: 'login',
-        key: 'input-form',
-        value: 'WHOAMI',
-      },
+      payload: 'login',
+      type: 'auth/INITIALIZE_FORM',
     });
   });
 
@@ -198,13 +193,10 @@ describe('<LoginContainer />', () => {
     fireEvent.click(getByText('login'));
 
     const fetchedActions = store.getActions();
-    expect(fetchedActions.length).toBe(2);
+    expect(fetchedActions.length).toBe(3);
     expect(fetchedActions[1]).toStrictEqual({
-      type: 'auth/LOGIN',
-      payload: {
-        email: 'zeroFruit@gmail.com',
-        password: 'password',
-      },
+      payload: 'login',
+      type: 'auth/INITIALIZE_FORM',
     });
   });
 

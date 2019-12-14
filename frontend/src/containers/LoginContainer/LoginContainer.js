@@ -2,7 +2,12 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Login from '../../components/Login';
-import { login, changeField, initializeForm } from '../../modules/auth';
+import {
+  login,
+  changeField,
+  initializeForm,
+  authNull,
+} from '../../modules/auth';
 import { check } from '../../modules/user/user';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { makeStyles } from '@material-ui/styles';
@@ -63,11 +68,15 @@ function LoginContainer({ history }) {
       const { email, password } = loginInfo;
       if (email === '' || password === '') {
         window.alert('Email and Password must not be empty.');
+        setLoading(false);
       } else {
         dispatch(login({ email, password }));
+        if (authError) {
+          window.alert('Email or password is wrong.');
+        }
       }
     },
-    [dispatch, loginInfo],
+    [dispatch, loginInfo, authError],
   );
 
   const onClickRegister = useCallback(() => {
@@ -75,15 +84,17 @@ function LoginContainer({ history }) {
   }, [history]);
 
   useEffect(() => {
+    dispatch(authNull());
+  }, [dispatch]);
+
+  useEffect(() => {
     dispatch(initializeForm('login'));
   }, [dispatch]);
 
   useEffect(() => {
     if (authError) {
-      alert('Email or password is wrong.');
-      return;
+      setLoading(false);
     }
-
     if (auth) {
       dispatch(check({ id: auth.id }));
     }

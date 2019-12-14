@@ -43,7 +43,7 @@ const RiderFinalStyles = makeStyles({
     marginBottom: '10px',
     marginTop: '10px',
     marginLeft: '10px',
-    marginRight: '10px'
+    marginRight: '10px',
   },
 });
 
@@ -56,15 +56,18 @@ function RiderFinal({ group, onClickGoToMain }) {
   const premiumTotalCost = Math.floor((group.totalCost * 1.2) / 100) * 100;
   const riderFee = group.riderCost;
   const saved = premiumTotalCost - riderFee;
-  console.log("rider final component");
+  console.log('rider final component');
   return (
     <div className={styles.root}>
       <div className={styles.whiteBox}>
         <div className={styles.container}>
-          <Typography variant={'body1'}>TotalCost is {premiumTotalCost}</Typography>
+          <Typography variant={'body1'}>
+            TotalCost is {premiumTotalCost}
+          </Typography>
           <Typography variant={'body1'}>Your fee {riderFee}</Typography>
           <Typography variant={'body1'}>You saved {saved}</Typography>
-          <div className={styles.button}
+          <div
+            className={styles.button}
             children="Go To Main"
             variant="contained"
             fullwidth="false"

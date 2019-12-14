@@ -43,7 +43,7 @@ const RiderDetailStyles = makeStyles({
     marginBottom: '10px',
     marginTop: '10px',
     marginLeft: '10px',
-    marginRight: '10px'
+    marginRight: '10px',
   },
 });
 

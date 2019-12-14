@@ -2,7 +2,12 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Register from '../../components/Register/Register';
-import { register, changeField, initializeForm } from '../../modules/auth/auth';
+import {
+  register,
+  changeField,
+  initializeForm,
+  authNull,
+} from '../../modules/auth/auth';
 import { check } from '../../modules/user/user';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { makeStyles } from '@material-ui/styles';
@@ -38,7 +43,6 @@ function RegisterForm({ history }) {
     authError: auth.authError,
     user: user.user,
   }));
-
   const [loading, setLoading] = useState(false);
 
   const onChange = useCallback(
@@ -64,12 +68,16 @@ function RegisterForm({ history }) {
     }
     if (!email) {
       window.alert('Email must not be empty.');
+      setLoading(false);
     } else if (!password) {
       window.alert('Password must not be empty.');
+      setLoading(false);
     } else if (password !== passwordConfirmation) {
       window.alert('Password confirm does not match password.');
+      setLoading(false);
     } else if (userType === 'driver' && (carType === '' || plateNo === '')) {
       window.alert('Driver Info must not be empty.');
+      setLoading(false);
     } else {
       dispatch(
         register({
@@ -84,6 +92,10 @@ function RegisterForm({ history }) {
   }, [dispatch, form]);
 
   useEffect(() => {
+    dispatch(authNull());
+  }, [dispatch]);
+
+  useEffect(() => {
     dispatch(initializeForm('register'));
   }, [dispatch]);
 
@@ -92,16 +104,18 @@ function RegisterForm({ history }) {
       dispatch(check({ id: auth.id }));
     }
     if (authError) {
-      console.log(authError);
+      window.alert('This email already exists. Please try another email.');
+      dispatch(authNull());
+      setLoading(false);
     }
-  }, [auth, authError, dispatch]);
+  }, [auth, authError, dispatch, history]);
 
   useEffect(() => {
     if (user) {
       window.alert('Successfully signed up to Ya-Ta. Welcome!');
       history.push('/login');
     }
-  }, [auth, user, history]);
+  }, [auth, user, history, dispatch]);
 
   return (
     <div>

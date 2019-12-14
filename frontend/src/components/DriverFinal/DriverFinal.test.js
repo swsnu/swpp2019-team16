@@ -7,7 +7,11 @@ import { mockDriver } from 'types/__mock__/user';
 describe('<DriverFinal />', () => {
   it('SHOULD match with snapshot', async () => {
     const { container } = render(
-      <DriverFinal group={mockGroup} user={mockDriver} onClickGoToMain={() => {}} />,
+      <DriverFinal
+        group={mockGroup}
+        user={mockDriver}
+        onClickGoToMain={() => {}}
+      />,
     );
     expect(container).toMatchSnapshot();
   });
