@@ -1,11 +1,36 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Login from '../../components/Login';
 import { login, changeField, initializeForm } from '../../modules/auth';
 import { check } from '../../modules/user/user';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { makeStyles } from '@material-ui/styles';
+import theme from '../../lib/styles/theme';
+
+const useStyles = makeStyles({
+  root: {
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    bottom: 0,
+    right: 0,
+    backgroundColor: theme.palette.primary.main,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  container: {
+    marginTop: '25px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
 
 function LoginContainer({ history }) {
+  const styles = useStyles();
   const dispatch = useDispatch();
   const { loginInfo, auth, authError, user } = useSelector(
     ({ auth, user }) => ({
@@ -15,6 +40,7 @@ function LoginContainer({ history }) {
       user: user.user,
     }),
   );
+  const [loading, setLoading] = useState(false);
 
   const onChange = useCallback(
     e => {
@@ -32,6 +58,7 @@ function LoginContainer({ history }) {
 
   const onClickLogin = useCallback(
     e => {
+      setLoading(true);
       e.preventDefault();
       const { email, password } = loginInfo;
       if (email === '' || password === '') {
@@ -88,12 +115,22 @@ function LoginContainer({ history }) {
   }, [history, user]);
 
   return (
-    <Login
-      loginInfo={loginInfo}
-      onChange={onChange}
-      onClickLogin={onClickLogin}
-      onClickRegister={onClickRegister}
-    />
+    <div>
+      {loading === true ? (
+        <div className={styles.root}>
+          <div className={styles.container}>
+            <CircularProgress color="secondary" />
+          </div>
+        </div>
+      ) : (
+        <Login
+          loginInfo={loginInfo}
+          onChange={onChange}
+          onClickLogin={onClickLogin}
+          onClickRegister={onClickRegister}
+        />
+      )}
+    </div>
   );
 }
 export default withRouter(LoginContainer);
