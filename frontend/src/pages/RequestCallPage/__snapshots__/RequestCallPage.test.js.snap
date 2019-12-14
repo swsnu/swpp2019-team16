@@ -47,8 +47,81 @@ exports[`<RequestCallPage /> SHOULD match with snapshot 1`] = `
         </div>
       </div>
     </div>
-    <div>
-      Waiting for group to be matched...
+    <div
+      class="makeStyles-root-63"
+    >
+      <div
+        class="makeStyles-whiteBox-68"
+      >
+        <div
+          class="makeStyles-row-65"
+        >
+          <div
+            class="makeStyles-title-64"
+          >
+            <h3
+              class="MuiTypography-root MuiTypography-h3"
+            >
+              Request Call
+            </h3>
+          </div>
+          <div
+            class="makeStyles-checkbox-67"
+          >
+            <div>
+              <label
+                class="MuiFormControlLabel-root"
+                data-testid="STT Mode"
+              >
+                <span
+                  aria-disabled="false"
+                  class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-83 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
+                >
+                  <span
+                    class="MuiIconButton-label"
+                  >
+                    <input
+                      class="PrivateSwitchBase-input-86"
+                      data-indeterminate="false"
+                      name="STT"
+                      type="checkbox"
+                      value="STT Mode"
+                    />
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root"
+                      focusable="false"
+                      role="presentation"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    class="MuiTouchRipple-root"
+                  />
+                </span>
+                <span
+                  class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+                >
+                  STT Mode
+                </span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div
+          class="makeStyles-content-70"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1"
+          >
+            Waiting for Carpool Request...
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
