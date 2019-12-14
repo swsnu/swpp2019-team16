@@ -1,9 +1,14 @@
+from unittest.mock import patch
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 
 from backend.user_service.user.app.user_application_service \
     import UserApplicationService
-from backend.user_service.user.domain.rider import Rider
+from backend.user_service.user.domain.rider import Rider, RiderSerializer
+from backend.common.messaging.infra.redis.redis_message_publisher \
+    import RedisMessagePublisher
+from backend.user_service.user.domain.driver import Driver, DriverSerializer
+from backend.group_service.group.domain.group import Group
 
 
 class UserApplicationServiceTestCase(TestCase):
@@ -165,3 +170,55 @@ class UserApplicationServiceTestCase(TestCase):
             user_type='something_wrong', user_id=1
         )
         self.assertTrue(type(result) is ValueError)
+
+    def test_rider_on_taxi_when_rider_not_exist_return_error(self):
+        result = self.user_application_service.rider_on_taxi(9999)
+        self.assertEqual(type(result), ValueError)
+
+    @patch.object(RedisMessagePublisher, 'publish_message')
+    def test_rider_on_taxi_when_rider_exist_then_publish_message(
+            self, publish_message_fn):
+        user = get_user_model().objects.create_user(
+            id=123,
+            email='zeroFruit@gmail.com',
+            password='password',
+            user_type='rider'
+        )
+        group = Group()
+        group.save()
+        rider = Rider.objects.create(user_id=user.id, status="IDLE", group=group)
+        serialized = RiderSerializer(rider).data
+
+        result = self.user_application_service.rider_on_taxi(rider.id)
+
+        args, kwargs = publish_message_fn.call_args
+        self.assertEqual(args[0].rider['id'], serialized['id'])
+        self.assertEqual(args[0].group_id, group.id)
+        self.assertEqual(result['id'], serialized['id'])
+        self.assertEqual(Rider.objects.get(pk=rider.id).status, 'ON_TAXI')
+
+    def test_driver_go_taxi_when_driver_not_exist_return_error(self):
+        result = self.user_application_service.driver_go_taxi(9999)
+        self.assertEqual(type(result), ValueError)
+
+    @patch.object(RedisMessagePublisher, 'publish_message')
+    def test_driver_go_taxi_when_driver_exist_then_publish_message(
+            self, publish_message_fn):
+        user = get_user_model().objects.create_user(
+            id=123,
+            email='zeroFruit@gmail.com',
+            password='password',
+            user_type='rider'
+        )
+        group = Group()
+        group.save()
+        driver = Driver.objects.create(user_id=user.id, status="IDLE", group=group)
+        serialized = DriverSerializer(driver).data
+
+        result = self.user_application_service.driver_go_taxi(driver.id)
+
+        args, kwargs = publish_message_fn.call_args
+        self.assertEqual(args[0].driver['id'], serialized['id'])
+        self.assertEqual(args[0].group_id, group.id)
+        self.assertEqual(result['id'], serialized['id'])
+        self.assertEqual(Driver.objects.get(pk=driver.id).status, 'DRIVING')

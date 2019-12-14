@@ -1,111 +1,398 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`UserGroup /> SHOULD match with snapshot WHEN all data in 1`] = `
+exports[`<UserGroup /> SHOULD match with snapshot WHEN all data in 1`] = `
 <div>
   <div
-    class="sc-bwzfXH uTxCW"
+    class="makeStyles-root-1"
   >
-    <main
-      class="sc-bdVaJa ekJyAd"
-    >
-      <h2
-        class="MuiTypography-root MuiTypography-h2"
-        title="My Group"
-      >
-        My Group
-      </h2>
-    </main>
-    <main
-      class="sc-bdVaJa ekJyAd"
+    <div
+      class="makeStyles-map-2"
     >
       <div
-        class="MuiPaper-root MuiPaper-elevation1 MuiCard-root MuiPaper-rounded"
+        class="makeStyles-root-10 makeStyles-root-11"
       >
         <div
-          class="MuiCardContent-root"
+          style="width: 100%; height: 100%; margin: 0px; padding: 0px; position: relative;"
         >
-          <h5
-            class="MuiTypography-root MuiTypography-h5 MuiTypography-alignCenter"
+          <div
+            style="width: 100%; height: 100%; left: 0px; top: 0px; margin: 0px; padding: 0px; position: absolute;"
+          />
+          <div
+            style="width: 50%; height: 50%; left: 50%; top: 50%; margin: 0px; padding: 0px; position: absolute;"
           >
-            This is where 
-            GoogleMap
-             will be
-          </h5>
+            <div
+              style="width: 100%; height: 100%; left: 0px; top: 0px; margin: 0px; padding: 0px; position: absolute;"
+            >
+              <div
+                style="width: 0px; height: 0px; left: 0px; top: 0px; background-color: transparent; position: absolute;"
+              >
+                <button
+                  class="MuiButtonBase-root MuiIconButton-root makeStyles-root-12"
+                  tabindex="0"
+                  type="button"
+                >
+                  <span
+                    class="MuiIconButton-label"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root makeStyles-icon-13 MuiSvgIcon-colorSecondary"
+                      focusable="false"
+                      role="presentation"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12 2c-4.97 0-9 4.03-9 9 0 4.17 2.84 7.67 6.69 8.69L12 22l2.31-2.31C18.16 18.67 21 15.17 21 11c0-4.97-4.03-9-9-9zm0 2c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.3c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    class="MuiTouchRipple-root"
+                  />
+                </button>
+              </div>
+              <div
+                style="width: 0px; height: 0px; left: 221.85537991020828px; top: 91.11249785777181px; background-color: transparent; position: absolute;"
+              >
+                <button
+                  class="MuiButtonBase-root MuiIconButton-root makeStyles-root-12"
+                  tabindex="0"
+                  type="button"
+                >
+                  <span
+                    class="MuiIconButton-label"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root makeStyles-icon-13 MuiSvgIcon-colorSecondary"
+                      focusable="false"
+                      role="presentation"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12 2c-4.97 0-9 4.03-9 9 0 4.17 2.84 7.67 6.69 8.69L12 22l2.31-2.31C18.16 18.67 21 15.17 21 11c0-4.97-4.03-9-9-9zm0 2c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.3c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    class="MuiTouchRipple-root"
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </main>
-    <main
-      class="sc-bdVaJa ekJyAd"
+    </div>
+    <div
+      class="makeStyles-location-3"
     >
-      <h4
-        class="MuiTypography-root MuiTypography-h4"
+      <div
+        class="makeStyles-locationTitle-4"
       >
-        Driver Info
-      </h4>
-      <h5
-        class="MuiTypography-root MuiTypography-h5"
+        <h4
+          class="MuiTypography-root MuiTypography-h4"
+        >
+          We are going from
+        </h4>
+      </div>
+      <h2
+        class="MuiTypography-root MuiTypography-h2"
       >
-        Name: 
-        MockDriver
-      </h5>
-      <h5
-        class="MuiTypography-root MuiTypography-h5"
-      >
-        Vehicle: 
-        BMW
-      </h5>
-      <h5
-        class="MuiTypography-root MuiTypography-h5"
-      >
-        Plate No.: 
-      </h5>
-    </main>
-    <main
-      class="sc-bdVaJa ekJyAd"
+         ~ 
+      </h2>
+    </div>
+    <div
+      class="makeStyles-driver-7"
     >
-      <h4
-        class="MuiTypography-root MuiTypography-h4"
+      <div
+        class="makeStyles-root-65"
       >
-        Group Info
-      </h4>
-      <h5
-        class="MuiTypography-root MuiTypography-h5"
-      >
-        Riders: 
-        [ rider1 ] 
-        [ rider2 ] 
-        [ rider3 ] 
-        [ rider4 ] 
-         
-      </h5>
-    </main>
-    <main
-      class="sc-bdVaJa ekJyAd"
+        <h4
+          class="MuiTypography-root MuiTypography-h4"
+        >
+          Your driver email is
+        </h4>
+        <div
+          class="makeStyles-email-66"
+        >
+          <h3
+            class="MuiTypography-root MuiTypography-h3"
+          >
+            driver1@gmail.com
+          </h3>
+        </div>
+        <h4
+          class="MuiTypography-root MuiTypography-h4"
+        >
+          with
+        </h4>
+        <div
+          class="makeStyles-carInfo-67"
+        >
+          <h3
+            class="MuiTypography-root MuiTypography-h3"
+          >
+            benz
+            , 
+            1234
+          </h3>
+        </div>
+      </div>
+    </div>
+    <div
+      class="makeStyles-riderList-8"
     >
-      <h4
-        class="MuiTypography-root MuiTypography-h4"
+      <ul
+        class="MuiList-root makeStyles-root-68 MuiList-dense MuiList-padding"
       >
-        Time left until departure: 3:00 
-      </h4>
-    </main>
-    <main
-      class="sc-bdVaJa ekJyAd"
+        <li
+          class="MuiListItem-container"
+        >
+          <div
+            aria-disabled="false"
+            class="MuiButtonBase-root MuiListItem-root MuiListItem-dense MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="MuiListItemAvatar-root"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"
+                />
+              </svg>
+            </div>
+            <div
+              class="MuiListItemText-root MuiListItemText-dense"
+              id="2"
+            >
+              <h4
+                class="MuiTypography-root MuiTypography-h4"
+              >
+                a@gmail.com
+              </h4>
+            </div>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </div>
+          <div
+            class="MuiListItemSecondaryAction-root"
+          >
+            <span
+              aria-disabled="true"
+              class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-99 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-disabled-101 Mui-disabled MuiIconButton-colorSecondary Mui-disabled MuiIconButton-edgeEnd Mui-disabled"
+              tabindex="-1"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <input
+                  class="PrivateSwitchBase-input-102"
+                  data-indeterminate="false"
+                  disabled=""
+                  type="checkbox"
+                  value=""
+                />
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  role="presentation"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                  />
+                </svg>
+              </span>
+            </span>
+          </div>
+        </li>
+        <li
+          class="MuiListItem-container"
+        >
+          <div
+            aria-disabled="false"
+            class="MuiButtonBase-root MuiListItem-root MuiListItem-dense MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="MuiListItemAvatar-root"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"
+                />
+              </svg>
+            </div>
+            <div
+              class="MuiListItemText-root MuiListItemText-dense"
+              id="2"
+            >
+              <h4
+                class="MuiTypography-root MuiTypography-h4"
+              >
+                b@gmail.com
+              </h4>
+            </div>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </div>
+          <div
+            class="MuiListItemSecondaryAction-root"
+          >
+            <span
+              aria-disabled="true"
+              class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-99 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-disabled-101 Mui-disabled MuiIconButton-colorSecondary Mui-disabled MuiIconButton-edgeEnd Mui-disabled"
+              tabindex="-1"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <input
+                  class="PrivateSwitchBase-input-102"
+                  data-indeterminate="false"
+                  disabled=""
+                  type="checkbox"
+                  value=""
+                />
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  role="presentation"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                  />
+                </svg>
+              </span>
+            </span>
+          </div>
+        </li>
+        <li
+          class="MuiListItem-container"
+        >
+          <div
+            aria-disabled="false"
+            class="MuiButtonBase-root MuiListItem-root MuiListItem-dense MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="MuiListItemAvatar-root"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"
+                />
+              </svg>
+            </div>
+            <div
+              class="MuiListItemText-root MuiListItemText-dense"
+              id="2"
+            >
+              <h4
+                class="MuiTypography-root MuiTypography-h4"
+              >
+                c@gmail.com
+              </h4>
+            </div>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </div>
+          <div
+            class="MuiListItemSecondaryAction-root"
+          >
+            <span
+              aria-disabled="true"
+              class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-99 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-disabled-101 Mui-disabled MuiIconButton-colorSecondary Mui-disabled MuiIconButton-edgeEnd Mui-disabled"
+              tabindex="-1"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <input
+                  class="PrivateSwitchBase-input-102"
+                  data-indeterminate="false"
+                  disabled=""
+                  type="checkbox"
+                  value=""
+                />
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  role="presentation"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                  />
+                </svg>
+              </span>
+            </span>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div
+      class="makeStyles-timer-6"
+    >
+      <h3
+        class="MuiTypography-root MuiTypography-h3"
+      >
+        10
+         seconds left, before taxi leave
+      </h3>
+    </div>
+    <div
+      class="makeStyles-footer-9"
     >
       <button
-        class="MuiButtonBase-root MuiButton-root makeStyles-root-60 makeStyles-root-63 MuiButton-contained makeStyles-contained-61 makeStyles-contained-64 MuiButton-contained makeStyles-contained-61 makeStyles-contained-64"
+        class="MuiButtonBase-root MuiButton-root makeStyles-root-103 makeStyles-root-106 MuiButton-contained makeStyles-contained-104 makeStyles-contained-107 MuiButton-contained makeStyles-contained-104 makeStyles-contained-107"
         tabindex="0"
         type="button"
       >
         <span
           class="MuiButton-label"
         >
-          On Taxi
+          <p
+            class="MuiTypography-root MuiTypography-body1"
+          >
+            On Taxi
+          </p>
         </span>
         <span
           class="MuiTouchRipple-root"
         />
       </button>
-    </main>
+    </div>
   </div>
 </div>
 `;

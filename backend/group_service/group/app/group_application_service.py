@@ -2,9 +2,8 @@ import logging
 import math
 
 from backend.group_service.group.domain.group import Group, GroupSerializer
-from backend.user_service.user.domain.rider import Rider
-from backend.user_service.user.domain.driver import Driver
-
+from backend.user_service.user.domain.rider import Rider, RiderSerializer
+from backend.user_service.user.domain.driver import Driver, DriverSerializer
 
 from backend.common.messaging.infra.redis.redis_message_publisher \
     import RedisMessagePublisher
@@ -49,10 +48,11 @@ class GroupApplicationService:
 
         event = GroupDriverUpdatedEvent(
             group_id=group.id,
-            driver_id=driver_id,
-            rider_id_list=list(map(
-                lambda rider: rider.id,
-                Rider.objects.filter(group_id=group_id))),
+            driver=DriverSerializer(driver).data,
+            rider_list=list(map(
+                lambda rider: RiderSerializer(rider).data,
+                Rider.objects.filter(group_id=group_id)
+            )),
             from_location=group.from_location,
             to_location=group.to_location,
         )

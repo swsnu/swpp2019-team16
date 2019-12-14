@@ -27,6 +27,12 @@ from backend.common.rpc.infra.adapter.redis.redis_rpc_server \
     import RedisRpcServer
 from backend.common.utils.signal_handler \
     import register_signal_handler, shutdown_process
+from backend.user_service.user.infra.adapter.rider_on_taxi_command_handler \
+    import RiderOnTaxiCommandHandler
+from backend.common.command.rider_on_taxi_command import RIDER_ON_TAXI_COMMAND
+from backend.common.command.driver_go_taxi_command import DRIVER_GO_TAXI_COMMAND
+from backend.user_service.user.infra.adapter.driver_go_taxi_command_handler \
+    import DriverGoTaxiCommandHandler
 
 
 class Command(BaseCommand):
@@ -39,6 +45,12 @@ class Command(BaseCommand):
         user_application_service=user_application_service)
     user_logout_event_handler = UserLogoutEventHandler(
         user_application_service=user_application_service
+    )
+    rider_on_taxi_command_handler = RiderOnTaxiCommandHandler(
+        user_application_service=user_application_service,
+    )
+    driver_go_taxi_command_handler = DriverGoTaxiCommandHandler(
+        user_application_service=user_application_service,
     )
     subscriber = RedisMessageSubscriber()
     rpc_server = RedisRpcServer()
@@ -91,6 +103,16 @@ class Command(BaseCommand):
                 self.rpc_server.register_handler(
                     topic=USER_LOGOUT_EVENT,
                     request_handler=self.user_logout_event_handler))
+
+            rider_on_taxi_rpc_task = asyncio.create_task(
+                self.rpc_server.register_handler(
+                    topic=RIDER_ON_TAXI_COMMAND,
+                    request_handler=self.rider_on_taxi_command_handler))
+
+            driver_go_taxi_rpc_task = asyncio.create_task(
+                self.rpc_server.register_handler(
+                    topic=DRIVER_GO_TAXI_COMMAND,
+                    request_handler=self.driver_go_taxi_command_handler))
             """
             wait until application stop
             """
@@ -103,6 +125,8 @@ class Command(BaseCommand):
                 user_login_rpc_task,
                 user_logout_subscription_task,
                 user_logout_rpc_task,
+                rider_on_taxi_rpc_task,
+                driver_go_taxi_rpc_task,
             )
 
         loop.create_task(main())

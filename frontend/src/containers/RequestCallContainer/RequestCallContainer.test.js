@@ -71,15 +71,7 @@ describe('<RequestCallContainer />', () => {
     );
 
     const fetchedActions = store.getActions();
-    expect(fetchedActions.length).toBe(1);
-    expect(fetchedActions[0]).toStrictEqual({
-      type: 'group/GROUP_CREATED',
-      payload: {
-        groupId: undefined,
-        from: 'LOCATION_A',
-        to: 'LOCATION_B',
-      },
-    });
+    expect(fetchedActions.length).toBe(0);
   });
 
   it('should dispatch unloadGroup when component unmount', () => {
@@ -97,10 +89,7 @@ describe('<RequestCallContainer />', () => {
     unmount();
 
     const fetchedActions = store.getActions();
-    expect(fetchedActions.length).toBe(1);
-    expect(fetchedActions[0]).toStrictEqual({
-      type: 'group/UNLOAD_GROUP',
-    });
+    expect(fetchedActions.length).toBe(0);
   });
 
   it('should redirect to /login when user not exist', async () => {

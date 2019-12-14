@@ -51,6 +51,7 @@ test_component common
 test_component user_service
 test_component carpool_request_service
 test_component group_service
+test_component grpc_gateway
 
 coverage report -m
 

@@ -75,11 +75,8 @@ class GroupApplicationServiceTestCase(TestCase):
 
         args, kwargs = publish_message_fn.call_args
         self.assertEqual(args[0].group_id, self.group.id)
-        self.assertEqual(args[0].driver_id, driver.id)
-        self.assertEqual(
-            args[0].rider_id_list,
-            [self.rider1.id, self.rider2.id, self.rider3.id, self.rider4.id]
-        )
+        self.assertEqual(args[0].driver['id'], driver.id)
+        self.assertEqual(len(args[0].rider_list), 4)
         self.assertEqual(args[0].from_location, self.FROM_LOCATION)
         self.assertEqual(args[0].to_location, self.TO_LOCATION)
 

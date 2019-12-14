@@ -40,6 +40,7 @@ const [
 ] = createRequestActionTypes('group/CONFIRM_COST');
 
 export const GROUP_CREATED = 'group/GROUP_CREATED';
+export const GROUP_UPDATED = 'group/GROUP_UPDATED';
 export const UNLOAD_GROUP = 'group/UNLOAD_GROUP';
 export const GROUP_COST_UPDATED = 'group/GROUP_COST_UPDATED';
 
@@ -57,6 +58,17 @@ export const groupCostUpdated = createAction(
   ({ groupId, riderCost }) => ({
     groupId,
     riderCost,
+  }),
+);
+
+export const groupUpdated = createAction(
+  GROUP_UPDATED,
+  ({ groupId, driver, riders, fromLocation, toLocation }) => ({
+    groupId,
+    driver,
+    riders,
+    from: fromLocation,
+    to: toLocation,
   }),
 );
 
@@ -131,7 +143,12 @@ const group = handleActions(
   {
     [GROUP_CREATED]: (state, { payload: group }) => ({
       ...state,
-      group: group,
+      group,
+    }),
+
+    [GROUP_UPDATED]: (state, { payload: group }) => ({
+      ...state,
+      group,
     }),
 
     [UNLOAD_GROUP]: state => ({

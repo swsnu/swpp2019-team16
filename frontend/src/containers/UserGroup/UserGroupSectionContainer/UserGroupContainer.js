@@ -1,34 +1,73 @@
-import React, { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useCallback, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import UserGroupSection from '../../../components/UserGroup/UserGroupSection';
-import { withRouter } from 'react-router-dom';
-import { onTaxi } from '../../../modules/group/group';
-
-// todo: need to send Google Map API as props
-// todo: need to add timer
-// todo: need to get data from backend
-// current state : group has been formed
+import { withRouter, useHistory } from 'react-router-dom';
+import * as grpcClient from '../../../lib/grpc/client';
+import { DRIVER_GO_TAXI_EVENT, RIDER_ON_TAXI_EVENT } from '../../../types/event';
+import { taxiGone, goTaxi, riderOnTaxi, someoneOnTaxi } from '../../../modules/user';
 
 function UserGroupContainer() {
+  const history = useHistory();
   const dispatch = useDispatch();
-  const onClickOnTaxi = useCallback(({ id }) => dispatch(onTaxi(id)), [
-    dispatch,
-  ]);
-  const googleMap = {
-    map: 'Google Map',
-  };
-  const driverInfo = {
-    Name: 'MockDriver',
-    Vehicle: 'BMW',
-    Plate: '01A 1234',
-  };
-  const group = ['Rider1', 'Rider2', 'Rider3', 'Rider4'];
+
+  const {
+    user,
+    group,
+    onTaxiRidersList,
+    driverGoTaxi,
+  } = useSelector(({ user, group }) => ({
+    user: user.user,
+    group: group.group,
+    onTaxiRidersList: user.onTaxiRidersList,
+    driverGoTaxi: user.driverGoTaxi,
+  }));
+
+  useEffect(() => {
+    if (user) {
+      const stream = grpcClient.createGrpcStream({ id: user.user.id });
+      stream.on('data', message => {
+        const parsed = JSON.parse(message.getData());
+        if (parsed._type_name === RIDER_ON_TAXI_EVENT) {
+          dispatch(someoneOnTaxi({
+            riderId: parsed._rider.id,
+          }));
+        }
+
+        if (parsed._type_name === DRIVER_GO_TAXI_EVENT) {
+          dispatch(taxiGone());
+        }
+      });
+      return () => {
+        stream.cancel();
+      };
+    }
+  }, [user]);
+
+  useEffect(() => {
+    if (driverGoTaxi) {
+      history.push('/detail');
+    }
+  }, [driverGoTaxi]);
+
+  const onClickOnTaxi = useCallback(() => {
+    dispatch(riderOnTaxi({ riderId: user.id }));
+  }, [dispatch, user]);
+
+  const onClickGoTaxi = useCallback(() => {
+    dispatch(goTaxi({ driverId: user.id }));
+  }, [dispatch, user]);
+
+  if (!group) {
+    return <div>We are loading your group...</div>;
+  }
+
   return (
     <UserGroupSection
+      user={user}
       group={group}
-      onClick={onClickOnTaxi}
-      googleMap={googleMap}
-      driverInfo={driverInfo}
+      onTaxiRidersList={onTaxiRidersList}
+      onClickOnTaxi={onClickOnTaxi}
+      onClickGoTaxi={onClickGoTaxi}
     />
   );
 }

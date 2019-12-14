@@ -20,6 +20,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-app-env": "^1.2.3",
+    "react-compound-timer": "^1.1.15",
     "react-dom": "^16.10.2",
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.1.2",
@@ -32,7 +33,7 @@
   },
   "proxy": "http://localhost:8000",
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-app-env --env-file=config/.development.env start",
     "start:prod": "node index.js",
     "build": "react-app-env --env-file=config/.${BUILD_ENV}.env build",
     "build:dev": "BUILD_ENV=development yarn build",
@@ -83,5 +84,6 @@
       "!src/index.js",
       "!src/serviceWorker.js"
     ]
-  }
+  },
+  "proxy": "http://localhost:8000"
 }

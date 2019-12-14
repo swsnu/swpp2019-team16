@@ -37,6 +37,7 @@ class StreamService(pb_grpc.StreamServiceServicer):
                     type=msg.type,
                     data=msg.data,
                 )
+                print('After stream message', len(self.__message_list), latest_message_index)
 
     def SendMessage(self, request, context):
         self.__message_list.append(request)
