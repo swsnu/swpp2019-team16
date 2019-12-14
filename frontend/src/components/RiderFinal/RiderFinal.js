@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
+import Button from '../common/Button'
 
 const RiderFinalBlock = styled.div``;
 
@@ -11,7 +12,7 @@ RiderFinal.propTypes = {
 
 function RiderFinal({ group, onClickGoToMain }) {
 
-    const premiumTotalCost = math.floor((group.totalCost * 1.2)/100)*100
+    const premiumTotalCost = Math.floor((group.totalCost * 1.2)/100)*100
     const riderFee = group.riderCost;
     const saved = premiumTotalCost - riderFee;
     return (
