@@ -6,6 +6,9 @@ from backend.common.messaging.infra.redis.redis_message_publisher \
 from backend.common.command.group_create_command import GroupCreateCommand
 
 
+SAME_LOCATION_REQUESTS_TO_MATCH = 2
+
+
 class CarpoolRequestApplicationService():
     def create(self, from_location, to_location, minimum_passenger, rider_id):
         # TODO: handle NotFound exception
@@ -22,11 +25,12 @@ class CarpoolRequestApplicationService():
         same_location_requests = hold_request\
             .filter(from_location=result.from_location)\
             .filter(to_location=result.to_location)
-
-        if len(same_location_requests) == 2:
+        print('[CarpoolRequestApplicationService] Carpool request created by rider: {}, {}, {}'
+              .format(rider_id, from_location, to_location))
+        if len(same_location_requests) >= SAME_LOCATION_REQUESTS_TO_MATCH:
             target_request = same_location_requests
             rider_id_list = []
-            for i in range(len(same_location_requests)):
+            for i in range(SAME_LOCATION_REQUESTS_TO_MATCH):
                 rider_id_list.append(target_request.values()[i]['rider_id'])
             target_request.delete()
             command = GroupCreateCommand(
@@ -35,6 +39,8 @@ class CarpoolRequestApplicationService():
                 to_location=to_location
             )
             RedisMessagePublisher().publish_message(command)
+            print('[CarpoolRequestApplicationService] Same location requests grouped: {}, {}, {}'
+                  .format(rider_id_list, from_location, to_location))
         return result
 
     def delete(self, request_id):

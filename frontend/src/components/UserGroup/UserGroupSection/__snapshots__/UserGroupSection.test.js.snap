@@ -367,7 +367,7 @@ exports[`<UserGroup /> SHOULD match with snapshot WHEN all data in 1`] = `
       <h3
         class="MuiTypography-root MuiTypography-h3"
       >
-        1
+        10
          seconds left, before taxi leave
       </h3>
     </div>

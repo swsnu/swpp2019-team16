@@ -33,7 +33,7 @@ function WaitingSection() {
   useEffect(() => {
     const taskId = setInterval(() => {
       setQuote(quoteGenerator.getRandomQuote());
-    }, 4000);
+    }, 8000);
     return () => clearInterval(taskId);
   }, []);
 
